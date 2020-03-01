@@ -1,1 +1,17 @@
-
+[
+	{
+		"photos": [],
+		"name": "",
+		"description": "",
+		"events": "",
+		"hours": "",
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [],
+		"address": [],
+		"parkingAvailable": "",
+		"linkToSite": "",
+		"tags": ["indoor", "athletic", "food"],
+		"rating": ""
+	}
+]

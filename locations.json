@@ -24,6 +24,15 @@
 		"linkToSite": "https://sandboxvr.com/sanfrancisco/",
 		"tags": ["indoor", "athletic", "games"],
 		"rating": 4.7,
-		"teamSize": "2-12"
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"type": "game",
+		"indoor": true,
+		"recommendedGroupsize": [4, 6],
+		"price": "$",
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		}
 	}
 ]

@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from 'react-router-dom';
 import HeaderNavigation from './components/header-navigation';
 import Discovery from './pages/discovery';

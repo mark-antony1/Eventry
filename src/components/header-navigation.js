@@ -12,25 +12,7 @@ export default () => {
   return (
     <HeaderNavigation>
       <StyledNavigationList $align={ALIGN.left}>
-        <StyledNavigationItem>Uber</StyledNavigationItem>
-      </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.center} />
-      <StyledNavigationList $align={ALIGN.right}>
-        <StyledNavigationItem>
-          <StyledLink href="#basic-link1">
-            Tab Link One
-          </StyledLink>
-        </StyledNavigationItem>
-        <StyledNavigationItem>
-          <StyledLink href="#basic-link2">
-            Tab Link Two
-          </StyledLink>
-        </StyledNavigationItem>
-      </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.right}>
-        <StyledNavigationItem>
-          <Button>Get started</Button>
-        </StyledNavigationItem>
+        <StyledNavigationItem>Eventry</StyledNavigationItem>
       </StyledNavigationList>
     </HeaderNavigation>
   );

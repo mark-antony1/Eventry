@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
 
@@ -70,6 +70,9 @@ function getViewport(venues) {
 export default function DiscoveryMap({ venues, hoveredVenueId }) {
   const [ viewport, setViewport ] = useState(getViewport(venues));
 
+  useEffect(() => {
+    setViewport(getViewport(venues));
+  }, [venues]);
   return (
     <ReactMapGL
       {...viewport}

@@ -10,7 +10,6 @@ import {
 import { Tag } from 'baseui/tag';
 
 function Vibe({ vibe }) {
-  console.log(vibe);
   if (vibe === 'Fun') {
     return <Label3>Fun</Label3>;
   }
@@ -76,9 +75,17 @@ export default function VenueCell({ venue }) {
           alignItems="flex-start"
           padding="24px"
         >
-          <Tag closeable={false} kind="accent">
-            {venue.type}
-          </Tag>
+          <Block>
+          {
+            venue.tags.map((tag, index) => {
+              return (
+                <Tag key={index} closeable={false} kind="accent">
+                  {tag}
+                </Tag>
+              );
+            })
+          }
+          </Block>
           <Block display="flex">
             {
               venue.vibe.map((vibe, index) => {

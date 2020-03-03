@@ -109,4 +109,77 @@ export const venues = [
 		},
 		"symbol": "sandbox-vr-sf"
 	},
+	{
+		"id": 4	,
+		"photos": [
+			"https://pandorakaraoke.com/wp-content/uploads/2019/04/home-2.jpg"
+		],
+		"name": "Pandora Karaoke",
+		"description": "Guests belt out songs in the main lounge or in themed private rooms at this bar with bottle service.",
+		"events": ["drinking", "dancing", "singing"],
+		"hours": {
+			"Sunday": { "start": 18, "end": 26 },
+			"Monday": { "start": 18, "end": 26 },
+			"Tuesday": { "start": 18, "end": 26 },
+			"Wednesday": { "start": 18, "end": 26 },
+			"Thursday": { "start": 18, "end": 26 },
+			"Friday": { "start": 18, "end": 26 },
+			"Saturday": { "start": 18, "end": 26 }
+		},
+		"phoneNumber": "(415) 817-1580",
+		"email": "",
+		"vibe": ["chill", "fun", "club"],
+		"address": "50 Mason St, San Francisco, CA 94102",
+		"parkingAvailable": false,
+		"linkToSite": "http://www.pandorakaraoke.com/",
+		"tags": ["indoor", "sing", "dance"],
+		"rating": 4.1,
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"indoor": true,
+		"recommendedGroupsize": [4, 25],
+		"price": "$$",
+		"location": {
+			"latitude": 37.784889,
+			"longitude": -122.408961
+		},
+		"symbol": "sandbox-vr-sf"
+	},
+	{
+		"id": 5	,
+		"photos": [
+			"http://coinopsf.com/wp-content/uploads/2017/11/image-home-scroll-6@2x.jpg",
+			"http://coinopsf.com/wp-content/uploads/2018/05/KJB0159.jpg"
+		],
+		"name": "The Grid",
+		"description": "Coin-operated arcade games with a bar.",
+		"events": ["drinking", "dancing", "gaming"],
+		"hours": {
+			"Sunday": { "start": 14, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 18, "end": 26 },
+			"Saturday": { "start": 18, "end": 26 }
+		},
+		"phoneNumber": "628-444-3277",
+		"email": "info@coinopsf.com",
+		"vibe": ["chill", "fun", "club"],
+		"address": "508 4th St Ste. 1, San Francisco, CA 94107",
+		"parkingAvailable": false,
+		"linkToSite": "coinopsf.com",
+		"tags": ["indoor", "sing", "dance"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 60,
+		"indoor": true,
+		"recommendedGroupsize": [4, 25],
+		"price": "$$",
+		"location": {
+			"latitude": 37.779493,
+			"longitude": -122.398096
+		},
+		"symbol": "sandbox-vr-sf"
+	},
 ]

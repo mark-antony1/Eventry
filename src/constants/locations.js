@@ -43,7 +43,7 @@ export const venues = [
 			"https://image.cnbcfm.com/api/v1/image/106033668-1563864541401sandbox.jpeg?v=1563864607&w=740&h=416",
 			"https://image.cnbcfm.com/api/v1/image/106033677-1563864964164concept1.png?v=1563865076&w=740&h=416"
 		],
-		"name": "Sandbox VR",
+		"name": "Sandbox VR2",
 		"description": "Go on thrilling adventures, transform into heroic characters. With your friends. See and interact inside VR just like it's real life. Great for Teams. See your friends in VR. Full-Body VR. The Star Trek Holodeck. Real-time Motion Capture. The Matrix. Hollywood Equipment.",
 		"events": "Immersive VR Team Experience",
 		"hours": {

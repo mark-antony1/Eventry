@@ -67,7 +67,7 @@ function getViewport(venues) {
   return vp;
 }
 
-export default function DiscoveryMap({ venues, hoveredVenueId }) {
+export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom }) {
   const [ viewport, setViewport ] = useState(getViewport(venues));
 
   useEffect(() => {
@@ -79,6 +79,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId }) {
       width="100%"
       height="100%"
       onViewportChange={(vp) => setViewport(vp)}
+      scrollZoom={disableScrollZoom ? false : true}
       mapboxApiAccessToken="pk.eyJ1IjoianVuc3VobGVlOTQiLCJhIjoiY2pzbDk3aHI5MXQycDQzazZxNXc5cG52ayJ9.bMXJRfKZO38TdR7szbu4xw"
     >
       {venues.map((venue, index) => <VenuePoint venue={venue} hoveredVenueId={hoveredVenueId} id={venue.id} key={index} />)}

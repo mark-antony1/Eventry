@@ -5,14 +5,17 @@ import {
   StyledNavigationList,
   StyledNavigationItem
 } from "baseui/header-navigation";
-import { StyledLink } from "baseui/link";
 import { Button } from "baseui/button";
 
 export default () => {
   return (
     <HeaderNavigation>
       <StyledNavigationList $align={ALIGN.left}>
-        <StyledNavigationItem>Eventry</StyledNavigationItem>
+        <StyledNavigationItem>
+          <Button kind="minimal" $as="a" href="/">
+            Eventry
+          </Button>
+        </StyledNavigationItem>
       </StyledNavigationList>
     </HeaderNavigation>
   );

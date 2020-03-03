@@ -9,30 +9,23 @@ import {
 } from 'baseui/typography';
 import { Tag } from 'baseui/tag';
 
-function Vibe({ vibe }) {
-  if (vibe === 'Fun') {
-    return <Label3>Fun</Label3>;
+function minutesToAverageTimeSpent(minutes) {
+  if (minutes <= 60) {
+    return '1 hour or less';
   }
 
-  if (vibe === 'Exciting') {
-    return <Label3>Exciting</Label3>;
+  if (minutes > 60 && minutes <= 180) {
+    return '1 - 3 hours';
   }
 
-  return null;
-}
-
-function StarRating({ rate }) {
-  return (
-    <Block>
-      ⭐{rate}
-    </Block>
-  );
+  return '3 hours or more';
 }
 
 export default function VenueCell({ venue }) {
   const [ photoIndex, setPhotoIndex ] = useState(0);
 
-  const onPrevPhoto = () => {
+  const onPrevPhoto = (e) => {
+    e.stopPropagation();
     if (photoIndex === 0) {
       setPhotoIndex(venue.photos.length - 1)
     } else {
@@ -40,7 +33,8 @@ export default function VenueCell({ venue }) {
     }
   };
 
-  const onNextPhoto = () => {
+  const onNextPhoto = (e) => {
+    e.stopPropagation();
     if (photoIndex === venue.photos.length - 1) {
       setPhotoIndex(0)
     } else {
@@ -75,7 +69,7 @@ export default function VenueCell({ venue }) {
           alignItems="flex-start"
           padding="24px"
         >
-          <Block>
+          <Block marginLeft="-6px">
           {
             venue.tags.map((tag, index) => {
               return (
@@ -85,25 +79,23 @@ export default function VenueCell({ venue }) {
               );
             })
           }
+          {
+            venue.vibe.map((vibe, index) => {
+              return (
+                <Tag key={index} closeable={false} kind="accent">
+                  {vibe}
+                </Tag>
+              );
+            })
+          }
           </Block>
-          <Block display="flex">
-            {
-              venue.vibe.map((vibe, index) => {
-                if (venue.vibe.length > index + 1) {
-                  return (
-                    <Block key={index}>
-                      <Vibe vibe={vibe} />
-                    </Block>
-                  );
-                }
-                return <Vibe vibe={vibe} key={index} />;
-              })
-            }
+          <Label3 marginTop="12px">Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</Label3>
+          <Label3 marginTop="12px">People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</Label3>
+          <Label3 marginTop="12px">Price: {venue.price}</Label3>
+          <Label3 marginTop="12px">⭐{venue.rating}</Label3>
+          <Block marginTop="12px">
+            <Button $as="a" href={venue.linkToSite} target="_blank">Book</Button>
           </Block>
-          <Label2>{venue.price}</Label2>
-          <StarRating rate={venue.rating} />
-          <Label3>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</Label3>
-          <Button $as="a" href={venue.linkToSite} target="_blank">Book</Button>
         </Block>
       </Block>
     </Block>

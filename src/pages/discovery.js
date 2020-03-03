@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Block } from 'baseui/block';
+import { useHistory } from 'react-router-dom';
+import { StyledLink } from 'baseui/link';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
@@ -52,16 +54,18 @@ function Filter({ filterValue, updateFilterValue }) {
     <Block display="flex" alignItems="center" flexWrap="wrap">
       <Block width="150px" padding="12px">
         <Select
+          clearable={false}
           options={groupSizeOptions}
-          value={filterValue.recommendedGroupsize ? {id: filterValue.recommendedGroupsize} : null}
+          value={filterValue.recommendedGroupsize ? [{id: filterValue.recommendedGroupsize}] : null}
           placeholder="Group Size"
           onChange={params => updateFilterValue({ recommendedGroupsize: params.value[0].id })}
         />
       </Block>
       <Block width="150px" padding="12px">
         <Select
+          clearable={false}
           options={typeOptions}
-          value={filterValue.type ? {id: filterValue.type} : null}
+          value={filterValue.type ? [{id: filterValue.type}] : null}
           placeholder="Activity Type"
           onChange={params => updateFilterValue({ type: params.value[0].id })}
         />
@@ -81,8 +85,9 @@ function Filter({ filterValue, updateFilterValue }) {
       </Block>
       <Block width="200px" padding="12px">
         <Select
+          clearable={false}
           options={durationOptions}
-          value={filterValue.duration ? {id: filterValue.duration} : null}
+          value={filterValue.duration ? [{id: filterValue.duration}] : null}
           placeholder="Preferred Duration"
           onChange={params => updateFilterValue({ duration: params.value[0].id })}
         />
@@ -135,6 +140,7 @@ function filterVenues(venues, filterValue) {
 }
 
 export default function Discovery() {
+  const history = useHistory();
   const [ venues, setVenues ] = useState(allVenues);
   const [ hoveredVenueId , setHoveredVenueId ] = useState(null);
   const [ filterValue , setFilterValue ] = useState({
@@ -155,7 +161,7 @@ export default function Discovery() {
     }));
   };
   return (
-    <Block display="flex" flexDirection="column" height="calc(100vh - 49px)">
+    <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
       <Block>
         <Filter filterValue={filterValue} updateFilterValue={updateFilterValue} />
       </Block>
@@ -177,6 +183,7 @@ export default function Discovery() {
                       }
                     }
                   }}
+                  onClick={() => { history.push(`/${venue.symbol}`) }}
                   onMouseLeave={() => { setHoveredVenueId(null) }}
                   onMouseEnter={() => { setHoveredVenueId(venue.id) }}
                 >

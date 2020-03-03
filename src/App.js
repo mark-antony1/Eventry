@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import HeaderNavigation from './components/header-navigation';
 import Discovery from './pages/discovery';
+import Details from './pages/details';
 
 import './App.css';
 
@@ -16,6 +17,7 @@ function App() {
         <HeaderNavigation />
         <Switch>
           <Route exact component={Discovery} path="/" />
+          <Route exact component={Details} path="/:venueSymbol" />
         </Switch>
       </div>
     </Router>

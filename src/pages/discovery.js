@@ -167,7 +167,7 @@ export default function Discovery() {
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4">
-          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} />
+          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId}/>
         </Block>
         <Block flex="5" display="flex" flexDirection="column" overflow="auto">
           {

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
 
-function VenuePoint({ venue, hoveredVenueId }) {
+function VenuePoint({ venue, hoveredVenueId, setHoveredVenueId }) {
   return (
     <Marker latitude={venue.location.latitude} longitude={venue.location.longitude}>
       <Block
         width="24px"
         height="24px"
+        onMouseLeave={() => { setHoveredVenueId(null) }}
+        onMouseEnter={() => { setHoveredVenueId(venue.id) }}
         backgroundColor={venue.id === hoveredVenueId ? '#FFBA2E' : '#00C09B'}
         overrides={{
           Block: {
@@ -68,7 +70,7 @@ function getViewport(venues) {
   return vp;
 }
 
-export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom }) {
+export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom, setHoveredVenueId }) {
   const [ viewport, setViewport ] = useState(getViewport(venues));
 
   useEffect(() => {
@@ -83,7 +85,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
       scrollZoom={disableScrollZoom ? false : true}
       mapboxApiAccessToken="pk.eyJ1IjoianVuc3VobGVlOTQiLCJhIjoiY2pzbDk3aHI5MXQycDQzazZxNXc5cG52ayJ9.bMXJRfKZO38TdR7szbu4xw"
     >
-      {venues.map((venue, index) => <VenuePoint venue={venue} hoveredVenueId={hoveredVenueId} id={venue.id} key={index} />)}
+      {venues.map((venue, index) => <VenuePoint setHoveredVenueId={setHoveredVenueId} venue={venue} hoveredVenueId={hoveredVenueId} id={venue.id} key={index} />)}
     </ReactMapGL>
   );
 }

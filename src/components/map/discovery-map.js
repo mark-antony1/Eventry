@@ -17,6 +17,7 @@ function VenuePoint({ venue, hoveredVenueId }) {
           }
         }}
       />
+      {venue.id === hoveredVenueId ? venue.name : ""}
     </Marker>
   );
 }

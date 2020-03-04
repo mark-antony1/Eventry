@@ -71,7 +71,7 @@ export const venues = [
 			"latitude": 37.787777,
 			"longitude": -122.403161
 		},
-		"symbol": "sandbox-vr-sf"
+		"symbol": "local-edition"
 	},
 	{
 		"id": 3,
@@ -107,7 +107,7 @@ export const venues = [
 			"latitude": 37.809205,
 			"longitude": -122.411324
 		},
-		"symbol": "sandbox-vr-sf"
+		"symbol": "awesome-ferry"
 	},
 	{
 		"id": 4	,
@@ -143,7 +143,7 @@ export const venues = [
 			"latitude": 37.784889,
 			"longitude": -122.408961
 		},
-		"symbol": "sandbox-vr-sf"
+		"symbol": "pandora-karaoke"
 	},
 	{
 		"id": 5	,
@@ -180,6 +180,6 @@ export const venues = [
 			"latitude": 37.779493,
 			"longitude": -122.398096
 		},
-		"symbol": "sandbox-vr-sf"
+		"symbol": "the-grid"
 	},
 ]

@@ -18,8 +18,8 @@ function VenuePoint({ venue, hoveredVenueId, setHoveredVenueId }) {
   return (
     <Marker latitude={venue.location.latitude} longitude={venue.location.longitude}>
       <Block
-        onMouseLeave={() => { setHoveredVenueId(null) }}
-        onMouseEnter={() => { setHoveredVenueId(venue.id) }}
+        onMouseLeave={() => { if (setHoveredVenueId) setHoveredVenueId(null) }}
+        onMouseEnter={() => { if (setHoveredVenueId) setHoveredVenueId(venue.id) }}
       >
         <MarkerIcon hovered={venue.id === hoveredVenueId} />
         {

@@ -187,4 +187,77 @@ export const venues = [
 		},
 		"symbol": "the-grid"
 	},
+	{
+		"id": 6	,
+		"photos": [
+			"https://wearespin.com/wp-content/uploads/2018/08/SPIN_San_Francisco_Gray_Table_Website.jpg",
+			"https://wearespin.com/wp-content/uploads/2020/03/T1_8783.jpg"
+		],
+		"name": "Spin",
+		"description": "Expansive Ping-Pong place serving upscale American comfort food & drinks in a bright setting.",
+		"events": ["drinking", "ping-pong"],
+		"hours": {
+			"Sunday": { "start": 12, "end": 20 },
+			"Monday": { "start": 12, "end": 23 },
+			"Tuesday": { "start": 12, "end": 23 },
+			"Wednesday": { "start": 12, "end": 23 },
+			"Thursday": { "start": 12, "end": 24 },
+			"Friday": { "start": 12, "end": 26 },
+			"Saturday": { "start": 12, "end": 26 }
+		},
+		"phoneNumber": "(415) 636-5995",
+		"email": "wearespin.com",
+		"vibe": ["chill", "fun"],
+		"address": "690 Folsom St #100, San Francisco, CA 94107",
+		"parkingAvailable": false,
+		"linkToSite": "coinopsf.com",
+		"tags": ["indoor", "sing", "dance"],
+		"rating": 4.5,
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"indoor": true,
+		"recommendedGroupsize": [4, 25],
+		"price": "$$",
+		"location": {
+			"latitude": 37.785049,
+			"longitude": -122.399168
+		},
+		"symbol": "spin"
+	},
+	{
+		"id": 7	,
+		"photos": [
+			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-san-francisco-northern-end.jpg",
+		],
+		"name": "Ocean Beach",
+		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
+		"events": ["bon-fire", "picnic"],
+		"hours": {
+			"Sunday": { "start": 6, "end": 18 },
+			"Monday": { "start": 6, "end": 18 },
+			"Tuesday": { "start": 6, "end": 18 },
+			"Wednesday": { "start": 6, "end": 18 },
+			"Thursday": { "start": 6, "end": 18 },
+			"Friday": { "start": 6, "end": 18 },
+			"Saturday": { "start": 6, "end": 18 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["chill", "fun"],
+		"address": "Point Lobos Ave, Great Hwy San Francisco, CA 94121",
+		"parkingAvailable": true,
+		"linkToSite": "",
+		"tags": ["outdoor", "sing", "fire"],
+		"rating": 4.6,
+		"takesReservations": false,
+		"averageTimeSpent": 60,
+		"indoor": true,
+		"recommendedGroupsize": [4, 25],
+		"price": "$$",
+		"location": {
+			"latitude": 37.777037,
+			"longitude": -122.511938
+		},
+		"symbol": "ocean-beach"
+	},
 ]

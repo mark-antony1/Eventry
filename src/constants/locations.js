@@ -29,7 +29,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"indoor": true,
 		"recommendedGroupsize": [4, 6],
-		"price": "$$$",
+		"price": 48,
+		"priceReasoning": "Sandbox VR's experience costs $48 per person",
 		"location": {
 			"latitude": 37.786426,
 			"longitude": -122.404609
@@ -66,7 +67,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"indoor": true,
 		"recommendedGroupsize": [4, 14],
-		"price": "$$",
+		"price": 20,
+		"priceReasoning": "Each glass of cocktail costs $15 or less - you may have 2 glasses",
 		"location": {
 			"latitude": 37.787777,
 			"longitude": -122.403161
@@ -102,7 +104,8 @@ export const venues = [
 		"averageTimeSpent": 35,
 		"indoor": true,
 		"recommendedGroupsize": [0, 100],
-		"price": "$",
+		"price": 40,
+		"priceReasoning": "Experiences cost vary, but their core cruise experience costs about $35 - $42",
 		"location": {
 			"latitude": 37.809205,
 			"longitude": -122.411324
@@ -138,7 +141,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"indoor": true,
 		"recommendedGroupsize": [4, 25],
-		"price": "$$",
+		"price": 60,
+		"priceReasoning": "Assuming you spend 2 hours there and have a shot of alcohol each, you may spend more/less depends on alcohol consumption",
 		"location": {
 			"latitude": 37.784889,
 			"longitude": -122.408961
@@ -175,7 +179,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"indoor": true,
 		"recommendedGroupsize": [4, 25],
-		"price": "$$",
+		"price": 30,
+		"priceReasoning": "Average price of beverage is $15",
 		"location": {
 			"latitude": 37.779493,
 			"longitude": -122.398096

@@ -4,6 +4,7 @@ import { Button } from 'baseui/button';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
+  Label1,
   Label2,
   Label3
 } from 'baseui/typography';
@@ -46,7 +47,7 @@ export default function VenueCell({ venue }) {
     <Block display="flex" flexDirection="column">
       <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
         <Label3 color="#fff">{venue.name}</Label3>
-        <Label2 color="#fff">{venue.events}</Label2>
+        <Label1 color="#fff">{venue.events}</Label1>
       </Block>
       <Block display="flex">
         <Block flex="1" position="relative">

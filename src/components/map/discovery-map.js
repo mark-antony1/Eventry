@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useStyletron } from 'baseui';
 import { Block } from 'baseui/block';
 import { Label3 } from 'baseui/typography';
 import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
@@ -15,8 +16,18 @@ function MarkerIcon({ hovered }) {
   );
 }
 function VenuePoint({ venue, hoveredVenueId, setHoveredVenueId }) {
+  const [css] = useStyletron();
   return (
-    <Marker latitude={venue.location.latitude} longitude={venue.location.longitude}>
+    <Marker
+      className={
+        venue.id === hoveredVenueId &&
+        css({
+          zIndex: 1
+        })
+      }
+      latitude={venue.location.latitude}
+      longitude={venue.location.longitude}
+    >
       <Block
         marginTop="-48px"
         marginLeft="-24px"

@@ -6,11 +6,11 @@ import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
 
 function MarkerIcon({ hovered }) {
   return (
-    <svg viewport="0 0 32 32" width="48" height="48" aria-labelledby="title"
+    <svg viewport="0 0 32 32" width="24" height="48" aria-labelledby="title"
     aria-describedby="desc" role="img">
-      <path strokeWidth="2"
+      <path strokeWidth="1"
       fill={hovered ? "#FFBE2E" : "#2EFFB5"}
-      strokeMiterlimit="10" stroke="#202020" d="M24,5 L14,18 L24,48 L34,18 L24,5"
+      strokeMiterlimit="10" stroke="#202020" d="M12,15 L0,23 L12,48 L24,23 L12,15"
       data-name="layer2" strokeLinejoin="round" strokeLinecap="round"></path>
     </svg>
   );
@@ -30,7 +30,7 @@ function VenuePoint({ venue, hoveredVenueId, setHoveredVenueId }) {
     >
       <Block
         marginTop="-48px"
-        marginLeft="-24px"
+        marginLeft="-12px"
         onMouseLeave={() => { if (setHoveredVenueId) setHoveredVenueId(null) }}
         onMouseEnter={() => { if (setHoveredVenueId) setHoveredVenueId(venue.id) }}
       >

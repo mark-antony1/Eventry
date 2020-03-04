@@ -20,8 +20,16 @@ const typeOptions = [
     label: 'Game'
   },
   {
-    id: 'lunch',
-    label: 'Lunch'
+    id: 'sing',
+    label: 'Sing'
+  },
+  {
+    id: 'dance',
+    label: 'Dance'
+  },
+  {
+    id: 'active',
+    label: 'Active'
   },
 ];
 
@@ -217,6 +225,7 @@ export default function Discovery() {
                       }
                     }
                   }}
+                  marginBottom="12px"
                   onClick={() => { history.push(`/${venue.symbol}`) }}
                   onMouseLeave={() => { setHoveredVenueId(null) }}
                   onMouseEnter={() => { setHoveredVenueId(venue.id) }}

@@ -192,6 +192,12 @@ export default function Discovery() {
     type: null,
     place: null
   });
+
+  const venueRefs = venues.reduce((acc, venue) => {
+    acc[venue.id] = React.createRef();
+    return acc;
+  }, {});
+
   const updateFilterValue = (payload) => {
     setFilterValue({
       ...filterValue,
@@ -202,6 +208,13 @@ export default function Discovery() {
       ...payload
     }));
   };
+
+  const onVenueClicked = (id) => {
+    venueRefs[id].current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
   return (
     <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
       <Block>
@@ -209,13 +222,14 @@ export default function Discovery() {
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4">
-          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId}/>
+          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
         <Block flex="5" display="flex" flexDirection="column" overflow="auto">
           {
             venues.map((venue, index) => {
               return (
                 <Block
+                  ref={venueRefs[venue.id]}
                   key={`cell-${index}`}
                   overrides={{
                     Block: {

@@ -51,10 +51,11 @@ function Filter({ filterValue, updateFilterValue }) {
   }
 
   return (
-    <Block display="flex" alignItems="center" flexWrap="wrap">
+    <Block display="flex" alignItems="center" flexWrap="wrap" backgroundColor="#f4f4f4">
       <Block width="150px" padding="12px">
         <Select
           clearable={false}
+          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={groupSizeOptions}
           value={filterValue.recommendedGroupsize ? [{id: filterValue.recommendedGroupsize}] : null}
           placeholder="Group Size"
@@ -64,6 +65,7 @@ function Filter({ filterValue, updateFilterValue }) {
       <Block width="150px" padding="12px">
         <Select
           clearable={false}
+          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={typeOptions}
           value={filterValue.type ? [{id: filterValue.type}] : null}
           placeholder="Activity Type"
@@ -86,6 +88,7 @@ function Filter({ filterValue, updateFilterValue }) {
       <Block width="200px" padding="12px">
         <Select
           clearable={false}
+          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={durationOptions}
           value={filterValue.duration ? [{id: filterValue.duration}] : null}
           placeholder="Preferred Duration"

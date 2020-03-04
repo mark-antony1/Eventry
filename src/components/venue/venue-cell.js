@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { StatefulTooltip } from 'baseui/tooltip';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
@@ -92,7 +93,13 @@ export default function VenueCell({ venue }) {
           </Block>
           <Label3 marginTop="12px">Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</Label3>
           <Label3 marginTop="12px">People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</Label3>
-          <Label3 marginTop="12px">Price: {venue.price}</Label3>
+          <StatefulTooltip
+            content={venue.priceReasoning}
+            returnFocus
+            autoFocus
+          >
+            <Label3 marginTop="12px">Budget per person: ${venue.price}</Label3>
+          </StatefulTooltip>
           <Label3 marginTop="12px">⭐{venue.rating}</Label3>
           <Block marginTop="12px">
             <Button $as="a" href={venue.linkToSite} target="_blank">Book</Button>

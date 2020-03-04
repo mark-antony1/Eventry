@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { StatefulTooltip } from 'baseui/tooltip';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
+  Label1,
   Label2,
   Label3
 } from 'baseui/typography';
@@ -46,7 +48,7 @@ export default function VenueCell({ venue }) {
     <Block display="flex" flexDirection="column">
       <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
         <Label3 color="#fff">{venue.name}</Label3>
-        <Label2 color="#fff">{venue.events}</Label2>
+        <Label1 color="#fff">{venue.events}</Label1>
       </Block>
       <Block display="flex">
         <Block flex="1" position="relative">
@@ -91,7 +93,13 @@ export default function VenueCell({ venue }) {
           </Block>
           <Label3 marginTop="12px">Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</Label3>
           <Label3 marginTop="12px">People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</Label3>
-          <Label3 marginTop="12px">Price: {venue.price}</Label3>
+          <StatefulTooltip
+            content={venue.priceReasoning}
+            returnFocus
+            autoFocus
+          >
+            <Label3 marginTop="12px">Budget per person: ${venue.price}</Label3>
+          </StatefulTooltip>
           <Label3 marginTop="12px">⭐{venue.rating}</Label3>
           <Block marginTop="12px">
             <Button $as="a" href={venue.linkToSite} target="_blank">Book</Button>

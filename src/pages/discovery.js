@@ -40,6 +40,25 @@ const durationOptions = [
   }
 ];
 
+const budgetOptions = [
+  {
+    id: 1,
+    label: '$20 or less'
+  },
+  {
+    id: 2,
+    label: '$20 to $50'
+  },
+  {
+    id: 3,
+    label: '$50 to $100'
+  },
+  {
+    id: 4,
+    label: 'More than $100'
+  }
+];
+
 function Filter({ filterValue, updateFilterValue }) {
 
   const groupSizeOptions = [];
@@ -72,18 +91,15 @@ function Filter({ filterValue, updateFilterValue }) {
           onChange={params => updateFilterValue({ type: params.value[0].id })}
         />
       </Block>
-      <Block padding="12px">
-        <RadioGroup
-          align="horizontal"
-          name="horizontal"
-          onChange={e => updateFilterValue({ price: e.target.value })}
-          value={filterValue.price}
-        >
-          <Radio value="$">$</Radio>
-          <Radio value="$$">$$</Radio>
-          <Radio value="$$$">$$$</Radio>
-          <Radio value="$$$$">$$$$</Radio>
-        </RadioGroup>
+      <Block width="200px" padding="12px">
+        <Select
+          clearable={false}
+          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
+          options={budgetOptions}
+          value={filterValue.price ? [{id: filterValue.price}] : null}
+          placeholder="Budget Per Person"
+          onChange={params => updateFilterValue({ price: params.value[0].id })}
+        />
       </Block>
       <Block width="200px" padding="12px">
         <Select
@@ -112,8 +128,23 @@ function Filter({ filterValue, updateFilterValue }) {
 
 function filterVenues(venues, filterValue) {
   return venues.filter(venue => {
-    if (filterValue.price && venue.price !== filterValue.price) {
-      return false;
+    if (filterValue.price) {
+      // $20 or less
+      if (filterValue.price === 1 && venue.price > 20) {
+        return false;
+      }
+      // $20 to $50
+      if (filterValue.price === 2 && (venue.price < 20 || venue.price > 50)) {
+        return false;
+      }
+      // $50 to $100
+      if (filterValue.price === 3 && (venue.price < 50 || venue.price > 100)) {
+        return false;
+      }
+      // More than $100
+      if (filterValue.price === 4 && venue.price < 100) {
+        return false;
+      }
     }
     if (filterValue.recommendedGroupsize && (venue.recommendedGroupsize[0] > filterValue.recommendedGroupsize || venue.recommendedGroupsize[1] < filterValue.recommendedGroupsize)) {
       return false;

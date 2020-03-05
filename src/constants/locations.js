@@ -292,25 +292,26 @@ export const venues = [
 	{
 		"id": 9,
 		"photos": [
-			"",
+			"https://www.nps.gov/goga/planyourvisit/images/MUBE_141122_KW_033.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+			"https://www.parksconservancy.org/sites/default/files/styles/basic/public/resource-gallery/A_MUBE_100727_MCu_1.jpg?itok=MaxtPUMX"
 		],
 		"name": "Muir Beach",
 		"description": "Beach located 16.5 miles northwest of San Francisco",
 		"teaserDescription": "Isolated Coastal Beach",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 6, "end": 18 },
+			"Monday": { "start": 6, "end": 18 },
+			"Tuesday": { "start": 6, "end": 18 },
+			"Wednesday": { "start": 6, "end": 18 },
+			"Thursday": { "start": 6, "end": 18 },
+			"Friday": { "start": 6, "end": 18 },
+			"Saturday": { "start": 6, "end": 18 }
 		},
 		"phoneNumber": "",
 		"email": "",
 		"vibe": ["chill"],
-		"address": "",
-		"parkingAvailable": false,
+		"address": "Muir Beach, CA",
+		"parkingAvailable": true,
 		"linkToSite": "",
 		"tags": ["beach", "outdoor"],
 		"rating": 4.5,
@@ -320,8 +321,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.8664252,
+			"longitude": -122.6036196
 		},
 		"symbol": "muir-beach"
 	},
@@ -345,55 +346,56 @@ export const venues = [
 		"phoneNumber": "",
 		"email": "",
 		"vibe": ["chill"],
-		"address": "",
-		"parkingAvailable": false,
+		"address": "Kirby Cove Road, CA 94941",
+		"parkingAvailable": true,
 		"linkToSite": "",
 		"tags": ["beach", "outdoor"],
 		"rating": 4.5,
 		"takesReservations": false,
-		"averageTimeSpent": 120,
+		"averageTimeSpent": 60,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.8260793,
+			"longitude": -122.5073465
 		},
 		"symbol": "kirby-cove"
 	},
 	{
 		"id": 11,
 		"photos": [
-			"",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/8_VRoCXV-dUPEhCgnXRWVg/o.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/FPsfaVnr2bB4_izn1WHTpQ/o.jpg"
 		],
 		"name": "Bad Axe",
 		"description": "Learn to throw axes with friends.",
 		"teaserDescription": "Axe Throwing",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 8, "end": 23 },
+			"Monday": { "start": 8, "end": 23 },
+			"Tuesday": { "start": 8, "end": 23 },
+			"Wednesday": { "start": 8, "end": 23 },
+			"Thursday": { "start": 8, "end": 23 },
+			"Friday": { "start": 8, "end": 23 },
+			"Saturday": { "start": 8, "end": 23 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(844) 818-0999",
 		"email": "",
 		"vibe": ["adventure"],
-		"address": "",
+		"address": "30 Hill St, Daly City, CA 94014",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://badaxethrowing.com/locations/axe-throwing-san-francisco/",
 		"tags": ["indoor", "athletic"],
 		"rating": 4.8,
-		"takesReservations": false,
+		"takesReservations": true,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"recommendedGroupsize": [4, 30],
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "bad-axe"
 	},

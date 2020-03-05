@@ -47,12 +47,12 @@ export const venues = [
 		"teaserDescription": "drink",
 		"hours": {
 			"Sunday": { "start": 0, "end": 0 },
-			"Monday": { "start": 17, "end": 26 },
-			"Tuesday": { "start": 17, "end": 26 },
-			"Wednesday": { "start": 17, "end": 26 },
-			"Thursday": { "start": 17, "end": 26 },
-			"Friday": { "start": 16.5, "end": 26 },
-			"Saturday": { "start": 19, "end": 26 }
+			"Monday": { "start": 17, "end": 2 },
+			"Tuesday": { "start": 17, "end": 2 },
+			"Wednesday": { "start": 17, "end": 2 },
+			"Thursday": { "start": 17, "end": 2 },
+			"Friday": { "start": 16.5, "end": 2 },
+			"Saturday": { "start": 19, "end": 2 }
 		},
 		"phoneNumber": "(415) 795-1375",
 		"email": "",

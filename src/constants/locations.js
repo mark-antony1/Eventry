@@ -44,7 +44,7 @@ export const venues = [
 		],
 		"name": "Local Edition",
 		"description": "An extensive cocktail menu is offered at this underground lounge with a vintage newspaper theme.",
-		"teaserDescription": "drink",
+		"teaserDescription": "Old Age-styled Bar",
 		"hours": {
 			"Sunday": { "start": 0, "end": 0 },
 			"Monday": { "start": 17, "end": 2 },
@@ -80,7 +80,7 @@ export const venues = [
 		],
 		"name": "Blue and Gold Fleet",
 		"description": "Ferry and Boat tour operator in San Francisco, California",
-		"teaserDescription": "ferry to island",
+		"teaserDescription": "Ferry Operator",
 		"hours": {
 			"Sunday": { "start": 9, "end": 18.45 },
 			"Monday": { "start": 9, "end": 18.45 },
@@ -116,7 +116,7 @@ export const venues = [
 		],
 		"name": "Pandora Karaoke",
 		"description": "Guests belt out songs in the main lounge or in themed private rooms at this bar with bottle service.",
-		"teaserDescription": "drinking",
+		"teaserDescription": "Karaoke Bar",
 		"hours": {
 			"Sunday": { "start": 18, "end": 26 },
 			"Monday": { "start": 18, "end": 26 },
@@ -153,7 +153,7 @@ export const venues = [
 		],
 		"name": "The Grid",
 		"description": "Coin-operated arcade games with a bar.",
-		"teaserDescription": "drinking",
+		"teaserDescription": "Coin-op Bar",
 		"hours": {
 			"Sunday": { "start": 14, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -190,7 +190,7 @@ export const venues = [
 		],
 		"name": "Spin",
 		"description": "Expansive Ping-Pong place serving upscale American comfort food & drinks in a bright setting.",
-		"teaserDescription": "drinking",
+		"teaserDescription": "Ping-Pong Bar",
 		"hours": {
 			"Sunday": { "start": 12, "end": 20 },
 			"Monday": { "start": 12, "end": 23 },
@@ -225,7 +225,7 @@ export const venues = [
 		],
 		"name": "Ocean Beach",
 		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
-		"teaserDescription": "bon-fire",
+		"teaserDescription": "Beach",
 		"hours": {
 			"Sunday": { "start": 6, "end": 18 },
 			"Monday": { "start": 6, "end": 18 },
@@ -259,8 +259,8 @@ export const venues = [
 			"https://i.pinimg.com/originals/7b/5a/58/7b5a581f1a2853a2ca5aa533acf4dd81.jpg",
 		],
 		"name": "Urban Putt",
-		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
-		"teaserDescription": "mini-golf",
+		"description": "Unique restaurant featuring American grub & drinks in an informal space housing a mini-golf course.",
+		"teaserDescription": "Mini-golf",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1237,8 +1237,8 @@ export const venues = [
 			"",
 		],
 		"name": "Oracle Park",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Baseball park located in the South Beach",
+		"teaserDescription": "Baseball Park",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1273,8 +1273,8 @@ export const venues = [
 			"",
 		],
 		"name": "Exploratorium",
-		"description": "",
-		"teaserDescription": "",
+		"description": "The Exploratorium is a museum of science, technology, and arts in San Francisco. Its mission is to create inquiry-based experiences that transform learning worldwide.",
+		"teaserDescription": "Science Museum",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1308,9 +1308,9 @@ export const venues = [
 		"photos": [
 			"",
 		],
-		"name": "Ice Cream Museum",
-		"description": "",
-		"teaserDescription": "",
+		"name": "Museum of Ice Cream",
+		"description": "Museum of Ice Cream transforms concepts and dreams into spaces that provoke imagination and creativity.",
+		"teaserDescription": "Ice Cream Museum",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1345,8 +1345,8 @@ export const venues = [
 			"",
 		],
 		"name": "Alcatraz Island",
-		"description": "",
-		"teaserDescription": "",
+		"description": "The small island was developed with facilities for a lighthouse, a military fortification, and a military prison.",
+		"teaserDescription": "Prison Island turned Tour",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1381,8 +1381,8 @@ export const venues = [
 			"",
 		],
 		"name": "Golden Gate Fortune Cookie Factory",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Landmark bakery prepares homemade fortune cookies in a tiny open kitchen, with free tours available.",
+		"teaserDescription": "Fortune Cookie Tours and Store",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1417,8 +1417,8 @@ export const venues = [
 			"",
 		],
 		"name": "Aquarium of the Bay",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Aquarium of the Bay is a public aquarium located at The Embarcadero.",
+		"teaserDescription": "Aquarium",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1453,8 +1453,8 @@ export const venues = [
 			"",
 		],
 		"name": "Mission Dolores Park",
-		"description": "",
-		"teaserDescription": "",
+		"description": "A city park in San Francisco, California. Known for its various social and recreational activities.",
+		"teaserDescription": "Fun City Park",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1484,13 +1484,13 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 71,
 		"photos": [
 			"",
 		],
-		"name": "Whale Tour",
-		"description": "",
-		"teaserDescription": "",
+		"name": "San Francisco Whale Tours",
+		"description": "Whale watching tour agency in San Francisco, California.",
+		"teaserDescription": "Whale Watching Tours",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1525,8 +1525,8 @@ export const venues = [
 			"",
 		],
 		"name": "Ghiradelli Factory",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Ghirardelli represents a range of truly exceptional chocolate and ice cream experiences.",
+		"teaserDescription": "Ice cream and Chcocolate Factory",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1561,8 +1561,8 @@ export const venues = [
 			"",
 		],
 		"name": "Blue and Gold Sausolito",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Boat tour agency in San Francisco, California.",
+		"teaserDescription": "Ferry Boat",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1597,8 +1597,8 @@ export const venues = [
 			"",
 		],
 		"name": "Blue and Gold Angel Island",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Boat tour agency in San Francisco, California.",
+		"teaserDescription": "Ferry Boat to Angel Island",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1633,8 +1633,8 @@ export const venues = [
 			"",
 		],
 		"name": "Angel Island State Park",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Originally the home of a military installation, the island now offers picturesque views of the San Francisco skyline.",
+		"teaserDescription": "Island",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1669,8 +1669,8 @@ export const venues = [
 			"",
 		],
 		"name": "Japanese Tea Garden",
-		"description": "",
-		"teaserDescription": "",
+		"description": "The oldest public Japanese garden in the United States located inside Golden Gate Park in San Francisco, California.",
+		"teaserDescription": "Public Garden",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1705,8 +1705,8 @@ export const venues = [
 			"",
 		],
 		"name": "San Francisco Zoo",
-		"description": "",
-		"teaserDescription": "",
+		"description": "The San Francisco Zoo is a 100-acre zoo",
+		"teaserDescription": "City Zoo",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1741,8 +1741,8 @@ export const venues = [
 			"",
 		],
 		"name": "Encore Karaoke Lounge",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
+		"teaserDescription": "Karaoke Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1777,8 +1777,8 @@ export const venues = [
 			"",
 		],
 		"name": "Fillmore Karaoke",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
+		"teaserDescription": "Karaoke Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1813,8 +1813,8 @@ export const venues = [
 			"",
 		],
 		"name": "Dandelion Chocolate Factory",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Dandelion Chocolate is a small-batch bean-to-bar craft chocolate maker offering classes, factory tours, cafès and retail shops from San Francisco.",
+		"teaserDescription": "Chocolate Classes and Tours",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1848,9 +1848,9 @@ export const venues = [
 		"photos": [
 			"",
 		],
-		"name": "SF Museum Of Chocolate",
-		"description": "",
-		"teaserDescription": "",
+		"name": "The San Francisco Chocolate Factory",
+		"description": "Small chocolate factory and store.",
+		"teaserDescription": "Chocolate Factory",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1885,8 +1885,8 @@ export const venues = [
 			"",
 		],
 		"name": "Gregangelo Museum",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Circus troupe and entertainment company that incorporates the arts.",
+		"teaserDescription": "Entertainment And Museum",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1921,8 +1921,8 @@ export const venues = [
 			"",
 		],
 		"name": "Pacifica Archery",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Full-service archery shop with a range of bows & accessories, plus indoor practice lanes & lessons.",
+		"teaserDescription": "Archery Lessons",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1957,8 +1957,8 @@ export const venues = [
 			"",
 		],
 		"name": "Lucky Strike",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Mod bowling spot offering many lanes, a lounge, dancing & regular DJs, with a 21+ policy at night.",
+		"teaserDescription": "Bowling Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -1993,8 +1993,8 @@ export const venues = [
 			"",
 		],
 		"name": "Mission Bowling Club",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Retro bowling alley with 6 lanes, a full bar & attached restaurant serving upscale comfort fare.",
+		"teaserDescription": "Bowling",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2029,8 +2029,8 @@ export const venues = [
 			"",
 		],
 		"name": "Yerba Buena Ice Skating and Bowling",
-		"description": "",
-		"teaserDescription": "",
+		"description": "San Francisco's premier Ice Skating and Bowling Center open daily.",
+		"teaserDescription": "Ice Skating and Bowling.",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2101,8 +2101,8 @@ export const venues = [
 			"",
 		],
 		"name": "Maritime Wine Tasting Studio",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Urban winetasting, bar, and restaurant.",
+		"teaserDescription": "Winetasting",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2137,8 +2137,8 @@ export const venues = [
 			"",
 		],
 		"name": "Treasure Island",
-		"description": "",
-		"teaserDescription": "",
+		"description": "An artificial island in the San Francisco Bay.",
+		"teaserDescription": "Island",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2172,9 +2172,9 @@ export const venues = [
 		"photos": [
 			"",
 		],
-		"name": "View Winery and Bocce",
-		"description": "",
-		"teaserDescription": "",
+		"name": "Vie Winery and Bocce",
+		"description": "Fun winery and bar accommadated with a bocce bit.",
+		"teaserDescription": "Winery and Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2208,9 +2208,9 @@ export const venues = [
 		"photos": [
 			"",
 		],
-		"name": "Solrouge Winery",
-		"description": "",
-		"teaserDescription": "",
+		"name": "Sol Rouge Winery",
+		"description": "Wine tasting room with roots in Napa Valley.",
+		"teaserDescription": "Wine Tasting",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2245,8 +2245,8 @@ export const venues = [
 			"",
 		],
 		"name": "Dogpatch WineWorks",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Airy, industrial-style winery with collective winemaking & classes, plus tastings on Sunday.",
+		"teaserDescription": "Winery",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -2281,8 +2281,8 @@ export const venues = [
 			"",
 		],
 		"name": "Bar Bocce",
-		"description": "",
-		"teaserDescription": "",
+		"description": "Low-key fan favorite bar with pizza and drinks overlooking the bay of Sausolito.",
+		"teaserDescription": "Bar with Bocce Pit",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },

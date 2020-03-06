@@ -48,7 +48,7 @@ export default function VenueCell({ venue }) {
     <Block display="flex" flexDirection="column">
       <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
         <Label3 color="#fff">{venue.name}</Label3>
-        <Label1 color="#fff">{venue.events}</Label1>
+        <Label1 color="#fff">{venue.teaserDescription}</Label1>
       </Block>
       <Block display="flex">
         <Block flex="1" position="relative">
@@ -98,7 +98,7 @@ export default function VenueCell({ venue }) {
             returnFocus
             autoFocus
           >
-            <Label3 marginTop="12px">Budget per person: ${venue.price}</Label3>
+            <Label3 marginTop="12px">Budget: ${venue.price} per person</Label3>
           </StatefulTooltip>
           <Label3 marginTop="12px">⭐{venue.rating}</Label3>
           <Block marginTop="12px">

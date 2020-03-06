@@ -34,6 +34,12 @@ function minutesToAverageTimeSpent(minutes) {
 }
 
 function getHourFromMilitaryHour(hour) {
+  if (hour === 12) {
+    return '12PM';
+  }
+  if (hour === 24) {
+    return '12AM';
+  }
   if (hour > 12) {
     return `${hour - 12}PM`;
   }
@@ -110,7 +116,12 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                       const hour = venue.hours[day];
                       return [
                         <StyledHeadCell key={day}>{day}</StyledHeadCell>,
-                        <StyledBodyCell key={`${day}1`}>{getHourFromMilitaryHour(hour.start)} - {getHourFromMilitaryHour(hour.end)}</StyledBodyCell>
+                        <StyledBodyCell key={`${day}1`}>
+                          {
+                            isNaN(hour.start) ?
+                            'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
+                          }
+                        </StyledBodyCell>
                       ];
                     })
                   }

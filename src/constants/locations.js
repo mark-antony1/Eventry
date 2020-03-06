@@ -761,14 +761,698 @@ export const venues = [
 			"latitude": 0,
 			"longitude": 0
 		},
-		"symbol": "grand-hot-pot"
+		"symbol": "coin-op"
 	},
 	{
-		"id": 8,
+		"id": 22,
+		"photos": [
+			"",
+		],
+		"name": "Emporium",
+		"description": "Pinball, pool & old-school arcade games, plus music, cocktails & craft beers, in hip, historic digs.",
+		"teaserDescription": "Arcade Bar",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["fun", "silly"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["game", "bar", "drink", "indoor"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based upon price for 1 drink and 5 games..',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "emporium"
+	},
+	{
+		"id": 23,
+		"photos": [
+			"",
+		],
+		"name": "Reason",
+		"description": "SF's highest technology escape room with a flair for the future.",
+		"teaserDescription": "Escape Room",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["tech", "adventure"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "escape"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based upon price for 1 games.',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "reason"
+	},
+	{
+		"id": 24,
+		"photos": [
+			"",
+		],
+		"name": "Everdene",
+		"description": "The lively, 12th-story cocktail den at Virgin Hotels SF has big views, live DJs & New American eats.",
+		"teaserDescription": "Rooftop Bar",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["high-end"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["bar", "indoor", "outdoor"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on cost of 2 drinks',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "everdenes"
+	},
+	{
+		"id": 25,
+		"photos": [
+			"",
+		],
+		"name": "Clay By The Bay",
+		"description": "Pottery Class",
+		"teaserDescription": "Pottery Class",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["fun", "creative"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "class", "messy"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per class',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "clay-bays"
+	},
+	{
+		"id": 26,
+		"photos": [
+			"",
+		],
+		"name": "Jordan's Kitchen",
+		"description": "The premier place in San Francisco for hands on cooking classes.",
+		"teaserDescription": "Cooking Class",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["fun"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["food", "cooking", "indoor"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per class',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "jordans-kitchens"
+	},
+	{
+		"id": 27,
+		"photos": [
+			"",
+		],
+		"name": "Fat Tire Tours",
+		"description": "Segway Tour",
+		"teaserDescription": "Segway Tour",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["explore"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["outdoor", "segway", "tour"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per tour per person',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "fat-tire"
+	},
+	{
+		"id": 28,
+		"photos": [
+			"",
+		],
+		"name": "K1 Speed",
+		"description": "Chain of indoor racing centers featuring electric go-karting for all skill levels, plus food.",
+		"teaserDescription": "Indoor Go Karts",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["competitve", "thrill"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "go kart", "food"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per race',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "k1-speed"
+	},
+	{
+		"id": 29,
+		"photos": [
+			"",
+		],
+		"name": "Dogpatch WineWorks",
+		"description": "Airy, industrial-style winery with collective winemaking & classes, plus tastings on Sunday.",
+		"teaserDescription": "Wine-based Classes and Tasting",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["chill"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "class", "wine"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per class',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "dogpatch-wine"
+	},
+	{
+		"id": 30,
+		"photos": [
+			"",
+		],
+		"name": "San Francisco-Marin Food Bank",
+		"description": "Food Bank",
+		"teaserDescription": "Food Bank",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "charity"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "sf-food-bank"
+	},
+	{
+		"id": 31,
+		"photos": [
+			"",
+		],
+		"name": "Breakthrough Sushi",
+		"description": "The first and only sustainable sushi making classes company, serving San Francisco Bay Area.",
+		"teaserDescription": "Sushi Classes",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["fun", "creative"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "class", "food"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per class',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "break-sushi"
+	},
+	{
+		"id": 32,
+		"photos": [
+			"",
+		],
+		"name": "Gott's Roadside",
+		"description": "Retro eatery offering locally sourced burgers, fish tacos & beer, plus outdoor picnic tables.",
+		"teaserDescription": "Low-key Restaurant",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["chill"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["food", "outdoor"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "gotts"
+	},
+	{
+		"id": 33,
+		"photos": [
+			"",
+		],
+		"name": "Dave and Buster's",
+		"description": "Family-friendly chain offering a sports-bar-style setting for American food & arcade games.",
+		"teaserDescription": "Arcade Bar and Grill",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["fun", "exciting"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "game", "bar", "food"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on 1 hour of play time',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": "dave-buster"
+	},
+	{
+		"id": 34,
 		"photos": [
 			"",
 		],
 		"name": "",
+		"description": "MoMA contains exhibitions and collection of modern and contemporary art",
+		"teaserDescription": "High-End Art Museum",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["creative"],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": ["indoor", "museum", "art"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price per ticket',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 35,
+		"photos": [
+			"",
+		],
+		"name": "Oracle Park",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 36,
+		"photos": [
+			"",
+		],
+		"name": "Exploratorium",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 37,
+		"photos": [
+			"",
+		],
+		"name": "Ice Cream Museum",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 38,
+		"photos": [
+			"",
+		],
+		"name": "Alcatraz Island",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 39,
+		"photos": [
+			"",
+		],
+		"name": "Golden Gate Fortune Cookie Factory",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 40,
+		"photos": [
+			"",
+		],
+		"name": "Aquarium of the Bay",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 41,
+		"photos": [
+			"",
+		],
+		"name": "Mission Dolores Park",
 		"description": "",
 		"teaserDescription": "",
 		"hours": {
@@ -804,7 +1488,7 @@ export const venues = [
 		"photos": [
 			"",
 		],
-		"name": "",
+		"name": "Whale Tour",
 		"description": "",
 		"teaserDescription": "",
 		"hours": {
@@ -836,7 +1520,799 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 42,
+		"photos": [
+			"",
+		],
+		"name": "Ghiradelli Factory",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 43,
+		"photos": [
+			"",
+		],
+		"name": "Blue and Gold Sausolito",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 44,
+		"photos": [
+			"",
+		],
+		"name": "Blue and Gold Angel Island",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 45,
+		"photos": [
+			"",
+		],
+		"name": "Angel Island State Park",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 46,
+		"photos": [
+			"",
+		],
+		"name": "Japanese Tea Garden",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 47,
+		"photos": [
+			"",
+		],
+		"name": "San Francisco Zoo",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 48,
+		"photos": [
+			"",
+		],
+		"name": "Encore Karaoke Lounge",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 49,
+		"photos": [
+			"",
+		],
+		"name": "Fillmore Karaoke",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 50,
+		"photos": [
+			"",
+		],
+		"name": "Dandelion Chocolate Factory",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 51,
+		"photos": [
+			"",
+		],
+		"name": "SF Museum Of Chocolate",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 52,
+		"photos": [
+			"",
+		],
+		"name": "Gregangelo Museum",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 53,
+		"photos": [
+			"",
+		],
+		"name": "Pacifica Archery",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 54,
+		"photos": [
+			"",
+		],
+		"name": "Lucky Strike",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 55,
+		"photos": [
+			"",
+		],
+		"name": "Mission Bowling Club",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 56,
+		"photos": [
+			"",
+		],
+		"name": "Yerba Buena Ice Skating and Bowling",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 57,
+		"photos": [
+			"",
+		],
+		"name": "Paniq Escape Room",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 58,
+		"photos": [
+			"",
+		],
+		"name": "Maritime Wine Tasting Studio",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 59,
+		"photos": [
+			"",
+		],
+		"name": "Treasure Island",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 60,
+		"photos": [
+			"",
+		],
+		"name": "View Winery and Bocce",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 61,
+		"photos": [
+			"",
+		],
+		"name": "Solrouge Winery",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 62,
+		"photos": [
+			"",
+		],
+		"name": "Dogpatch WineWorks",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 63,
+		"photos": [
+			"",
+		],
+		"name": "Bar Bocce",
+		"description": "",
+		"teaserDescription": "",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 0,
+			"longitude": 0
+		},
+		"symbol": ""
+	},
+	{
+		"id": 64,
 		"photos": [
 			"",
 		],
@@ -872,7 +2348,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 65,
 		"photos": [
 			"",
 		],
@@ -908,7 +2384,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 66,
 		"photos": [
 			"",
 		],
@@ -944,7 +2420,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 67,
 		"photos": [
 			"",
 		],
@@ -980,7 +2456,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 68,
 		"photos": [
 			"",
 		],
@@ -1016,7 +2492,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 69,
 		"photos": [
 			"",
 		],
@@ -1052,7 +2528,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 70,
 		"photos": [
 			"",
 		],
@@ -1088,7 +2564,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 71,
 		"photos": [
 			"",
 		],
@@ -1124,7 +2600,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 72,
 		"photos": [
 			"",
 		],
@@ -1160,7 +2636,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 73,
 		"photos": [
 			"",
 		],
@@ -1196,7 +2672,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
+		"id": 74,
 		"photos": [
 			"",
 		],
@@ -1232,1483 +2708,7 @@ export const venues = [
 		"symbol": ""
 	},
 	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
-		"photos": [
-			"",
-		],
-		"name": "",
-		"description": "",
-		"teaserDescription": "",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 0,
-			"longitude": 0
-		},
-		"symbol": ""
-	},
-	{
-		"id": 8,
+		"id": 75,
 		"photos": [
 			"",
 		],

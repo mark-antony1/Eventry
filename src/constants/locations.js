@@ -578,8 +578,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price per person for a game',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "real-escape-game"
 	},
@@ -614,8 +614,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price per person per game.',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "stagecoach-greens"
 	},
@@ -650,8 +650,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price per person per game.',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "presidio-golf-course"
 	},
@@ -686,8 +686,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price per person per game.',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "sub-par-greens"
 	},
@@ -722,8 +722,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price for 1 entree and 1 drink.',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "grand-hot-pot"
 	},
@@ -758,8 +758,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price for 1 drink and 5 games.',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "coin-op"
 	},
@@ -794,8 +794,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price for 1 drink and 5 games..',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "emporium"
 	},
@@ -830,8 +830,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based upon price for 1 games.',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "reason"
 	},
@@ -866,8 +866,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on cost of 2 drinks',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "everdenes"
 	},
@@ -902,8 +902,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per class',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "clay-bays"
 	},
@@ -938,8 +938,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per class',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "jordans-kitchens"
 	},
@@ -974,8 +974,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per tour per person',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "fat-tire"
 	},
@@ -1010,8 +1010,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per race',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "k1-speed"
 	},
@@ -1046,8 +1046,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per class',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "dogpatch-wine"
 	},
@@ -1082,8 +1082,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "sf-food-bank"
 	},
@@ -1118,8 +1118,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per class',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "break-sushi"
 	},
@@ -1154,8 +1154,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "gotts"
 	},
@@ -1190,8 +1190,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on 1 hour of play time',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": "dave-buster"
 	},
@@ -1226,8 +1226,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price per ticket',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1262,8 +1262,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1298,8 +1298,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1334,8 +1334,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1370,8 +1370,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1406,8 +1406,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1442,8 +1442,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1478,8 +1478,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1514,8 +1514,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1550,8 +1550,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1586,8 +1586,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1622,8 +1622,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1658,8 +1658,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1694,8 +1694,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1730,8 +1730,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1766,8 +1766,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1802,8 +1802,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1838,8 +1838,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1874,8 +1874,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1910,8 +1910,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1946,8 +1946,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -1982,8 +1982,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2018,8 +2018,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2054,8 +2054,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2090,8 +2090,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2126,8 +2126,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2162,8 +2162,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2198,8 +2198,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2234,8 +2234,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2270,8 +2270,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	},
@@ -2306,8 +2306,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 0,
-			"longitude": 0
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
 		},
 		"symbol": ""
 	}

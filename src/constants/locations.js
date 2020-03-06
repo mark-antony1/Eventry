@@ -1260,7 +1260,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per cheap ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1296,7 +1296,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1332,7 +1332,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per museum ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1368,7 +1368,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for ferry and tour ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1404,7 +1404,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for tour',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1440,7 +1440,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per museum ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1476,7 +1476,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'No cost',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1512,7 +1512,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per tour ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1548,7 +1548,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per ice cream',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1584,7 +1584,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1620,7 +1620,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1656,7 +1656,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'No cost',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1692,7 +1692,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for individual entry',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1728,7 +1728,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for individual entry',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1764,7 +1764,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1800,7 +1800,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1836,7 +1836,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for choclate class',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1872,7 +1872,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for small chocolate',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1908,7 +1908,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for entertainment event',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1944,7 +1944,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per lesson',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1980,7 +1980,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for 1 game and 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2016,7 +2016,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for 1 game',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2052,7 +2052,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for 1 bowling game',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2088,7 +2088,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price per game',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2124,7 +2124,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2160,7 +2160,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'No cost',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2196,7 +2196,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2232,7 +2232,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2268,7 +2268,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2304,11 +2304,47 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": '',
+		"priceReasoning": 'Based on price for 1 pizza and 1 drink',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
 		},
 		"symbol": ""
-	}
+	},
+	{
+		"id": 64,
+		"photos": [
+			"",
+		],
+		"name": "Angel Island–Tiburon Ferry",
+		"description": "Ferry to Angel Island in San Francisco, California.",
+		"teaserDescription": "Ferry Boat to Angel Island",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": [""],
+		"address": "",
+		"parkingAvailable": false,
+		"linkToSite": "",
+		"tags": [""],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": 'Based on price for round-trip ferry ticket',
+		"location": {
+			"latitude": 37.2288683,
+			"longitude": -122.2603425
+		},
+		"symbol": ""
+	},
 ]

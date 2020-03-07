@@ -34,6 +34,12 @@ function minutesToAverageTimeSpent(minutes) {
 }
 
 function getHourFromMilitaryHour(hour) {
+  if (hour === 12) {
+    return '12PM';
+  }
+  if (hour === 24) {
+    return '12AM';
+  }
   if (hour > 12) {
     return `${hour - 12}PM`;
   }
@@ -64,7 +70,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
     <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
       <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
         <Display4 color="#fff">{venue.name}</Display4>
-        <Label1 color="#fff">{venue.events}</Label1>
+        <Label1 color="#fff">{venue.teaserDescription}</Label1>
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4" position="relative">
@@ -97,7 +103,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             <Block display="flex">
               <Block>
                 <Card>
-                  <Label1 paddingBottom="24px"><i>{venue.events}</i></Label1>
+                  <Label1 paddingBottom="24px"><i>{venue.teaserDescription}</i></Label1>
                   <StyledBody>
                     {venue.description}
                   </StyledBody>
@@ -110,7 +116,12 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                       const hour = venue.hours[day];
                       return [
                         <StyledHeadCell key={day}>{day}</StyledHeadCell>,
-                        <StyledBodyCell key={`${day}1`}>{getHourFromMilitaryHour(hour.start)} - {getHourFromMilitaryHour(hour.end)}</StyledBodyCell>
+                        <StyledBodyCell key={`${day}1`}>
+                          {
+                            isNaN(hour.start) ?
+                            'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
+                          }
+                        </StyledBodyCell>
                       ];
                     })
                   }
@@ -119,7 +130,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             </Block>
             <Block marginTop="24px">
               <StyledTable $gridTemplateColumns="minmax(max-content, max-content) minmax(200px, max-content)">
-                <StyledHeadCell>Type</StyledHeadCell>
+                <StyledHeadCell>#</StyledHeadCell>
                 <StyledBodyCell>
                   {
                     venue.tags.map((tag, index) => {
@@ -130,9 +141,16 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                       );
                     })
                   }
+                  {
+                    venue.vibe.map((tag, index) => {
+                      return (
+                        <Tag key={index} closeable={false} kind="accent">
+                          {tag}
+                        </Tag>
+                      );
+                    })
+                  }
                 </StyledBodyCell>
-                <StyledHeadCell>Vibe</StyledHeadCell>
-                <StyledBodyCell>{venue.vibe.join(',')}</StyledBodyCell>
                 <StyledHeadCell>Price</StyledHeadCell>
                 <StyledBodyCell>{venue.price}</StyledBodyCell>
                 <StyledHeadCell>Average Duration</StyledHeadCell>
@@ -141,8 +159,6 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                 <StyledBodyCell>⭐{venue.rating}</StyledBodyCell>
                 <StyledHeadCell>Recommend Group Size</StyledHeadCell>
                 <StyledBodyCell>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</StyledBodyCell>
-                <StyledHeadCell>Place</StyledHeadCell>
-                <StyledBodyCell>{venue.place}</StyledBodyCell>
                 <StyledHeadCell>Address</StyledHeadCell>
                 <StyledBodyCell>{venue.address}</StyledBodyCell>
                 <StyledHeadCell>Phone</StyledHeadCell>

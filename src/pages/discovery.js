@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Block } from 'baseui/block';
 import { useHistory } from 'react-router-dom';
 import { StyledLink } from 'baseui/link';
+import { Button } from 'baseui/button';
+import ChevronLeft from 'baseui/icon/chevron-left';
+import ChevronRight from 'baseui/icon/chevron-right';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
@@ -181,8 +184,11 @@ function filterVenues(venues, filterValue) {
   });
 }
 
+const LIST_SIZE = 10;
+
 export default function Discovery() {
   const history = useHistory();
+  const [ venueIndex, setVenueIndex ] = useState(0);
   const [ venues, setVenues ] = useState(allVenues);
   const [ hoveredVenueId , setHoveredVenueId ] = useState(null);
   const [ filterValue , setFilterValue ] = useState({
@@ -207,6 +213,7 @@ export default function Discovery() {
       ...filterValue,
       ...payload
     }));
+    setVenueIndex(0);
   };
 
   const onVenueClicked = (id) => {
@@ -215,6 +222,19 @@ export default function Discovery() {
       block: 'start',
     });
   };
+
+  const handlePrevPage = () => {
+    if (venueIndex !== 0) {
+      setVenueIndex(venueIndex - LIST_SIZE);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (venueIndex + LIST_SIZE <= venues.length) {
+      setVenueIndex(venueIndex + LIST_SIZE);
+    }
+  };
+
   return (
     <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
       <Block>
@@ -222,15 +242,15 @@ export default function Discovery() {
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4">
-          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
+          <DiscoveryMap venues={venues.slice(venueIndex, venueIndex + LIST_SIZE)} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
         <Block flex="5" display="flex" flexDirection="column" overflow="auto">
           {
-            venues.map((venue, index) => {
+            venues.slice(venueIndex, venueIndex + LIST_SIZE).map((venue, index) => {
               return (
                 <Block
                   ref={venueRefs[venue.id]}
-                  key={`cell-${index}`}
+                  key={venue.id}
                   overrides={{
                     Block: {
                       style: {
@@ -249,6 +269,18 @@ export default function Discovery() {
               );
             })
           }
+          <Block display="flex">
+            <Block flex="1" display="flex" flexDirection="column">
+              <Button onClick={handlePrevPage}>
+                <ChevronLeft color="#fff" size={36} />
+              </Button>
+            </Block>
+            <Block flex="1" display="flex" flexDirection="column">
+              <Button onClick={handleNextPage}>
+                <ChevronRight color="#fff" size={36} />
+              </Button>
+            </Block>
+          </Block>
         </Block>
       </Block>
     </Block>

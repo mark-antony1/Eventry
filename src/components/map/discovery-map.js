@@ -77,6 +77,8 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
   useEffect(() => {
     if (hoveredVenueId) {
       setPinnedVenue(venues.find((v) => v.id === hoveredVenueId));
+    } else {
+      setPinnedVenue(null);
     }
   }, [hoveredVenueId]);
 

@@ -116,7 +116,7 @@ export const venues = [
 		],
 		"name": "Pandora Karaoke",
 		"description": "Guests belt out songs in the main lounge or in themed private rooms at this bar with bottle service.",
-		"teaserDescription": "Karaoke Bar",
+		"teaserDescription": "Karaoke Bar With Private Rooms",
 		"hours": {
 			"Sunday": { "start": 18, "end": 26 },
 			"Monday": { "start": 18, "end": 26 },
@@ -153,7 +153,7 @@ export const venues = [
 		],
 		"name": "The Grid",
 		"description": "Coin-operated arcade games with a bar.",
-		"teaserDescription": "Coin-op Bar",
+		"teaserDescription": "Coin Operated Game Bar",
 		"hours": {
 			"Sunday": { "start": 14, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -190,7 +190,7 @@ export const venues = [
 		],
 		"name": "Spin",
 		"description": "Expansive Ping-Pong place serving upscale American comfort food & drinks in a bright setting.",
-		"teaserDescription": "Ping-Pong Bar",
+		"teaserDescription": "Social Ping-Pong and Bar Scene",
 		"hours": {
 			"Sunday": { "start": 12, "end": 20 },
 			"Monday": { "start": 12, "end": 23 },
@@ -226,7 +226,7 @@ export const venues = [
 		],
 		"name": "Ocean Beach",
 		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
-		"teaserDescription": "Beach",
+		"teaserDescription": "Secluded Beach on the West",
 		"hours": {
 			"Sunday": { "start": 6, "end": 18 },
 			"Monday": { "start": 6, "end": 18 },
@@ -262,7 +262,7 @@ export const venues = [
 		],
 		"name": "Urban Putt",
 		"description": "Unique restaurant featuring American grub & drinks in an informal space housing a mini-golf course.",
-		"teaserDescription": "Mini-golf",
+		"teaserDescription": "Indoor Mini-golf",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -299,7 +299,7 @@ export const venues = [
 		],
 		"name": "Muir Beach",
 		"description": "Beach located 16.5 miles northwest of San Francisco",
-		"teaserDescription": "Isolated Coastal Beach",
+		"teaserDescription": "Far-Out Isolated Coastal Beach",
 		"hours": {
 			"Sunday": { "start": 6, "end": 18 },
 			"Monday": { "start": 6, "end": 18 },
@@ -335,7 +335,7 @@ export const venues = [
 		],
 		"name": "Kirby Cove",
 		"description": "Beach front looking towards Golden Gate bridge.",
-		"teaserDescription": "Beach front looking towards Golden Gate bridge.",
+		"teaserDescription": "Beach Front overlooking Golden Gate bridge.",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -372,7 +372,7 @@ export const venues = [
 		],
 		"name": "Bad Axe",
 		"description": "Learn to throw axes with friends.",
-		"teaserDescription": "Axe Throwing",
+		"teaserDescription": "Axe Throwing Range and Lessons ",
 		"hours": {
 			"Sunday": { "start": 8, "end": 23 },
 			"Monday": { "start": 8, "end": 23 },
@@ -409,7 +409,7 @@ export const venues = [
 		],
 		"name": "Pinos Palette",
 		"description": "Attendees paint during evening classes at this art studio chain serving alcohol at most locations.",
-		"teaserDescription": "Wine and Paint",
+		"teaserDescription": "Social Painting and Drinking",
 		"hours": {
 			"Sunday": { "start": 9, "end": 22 },
 			"Monday": { "start": 9, "end": 22 },
@@ -446,7 +446,7 @@ export const venues = [
 		],
 		"name": "Paint Nite",
 		"description": "Attendees paint during evening classes at this art studio chain serving alcohol at most locations.",
-		"teaserDescription": "Wine and Paint",
+		"teaserDescription": "Social Painting and Drinking",
 		"hours": {
 			"Sunday": { "start": 9, "end": 22 },
 			"Monday": { "start": 9, "end": 22 },
@@ -483,7 +483,7 @@ export const venues = [
 		],
 		"name": "Palace Games",
 		"description": "Historic escape rooms in San Francisco's Palace of Fine Arts. The Great Houdini, Roosevelt, and Edison Escape Rooms are great for team building or just fun!",
-		"teaserDescription": "Escape Room",
+		"teaserDescription": "Escape Room with a flair for History",
 		"hours": {
 			"Sunday": { "start": 9, "end": 22 },
 			"Monday": { "start": 10, "end": 22 },
@@ -556,7 +556,7 @@ export const venues = [
 		],
 		"name": "Stagecoach Greens",
 		"description": "Outdoor mini golf course and experience the history, invention and fun of San Francisco.",
-		"teaserDescription": "Mini Golf",
+		"teaserDescription": "Outdoor Mini Golf",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -592,7 +592,7 @@ export const venues = [
 		],
 		"name": "Presidio Golf Course",
 		"description": "Outdoor golf course and experience the history, invention and fun of San Francisco.",
-		"teaserDescription": "Golf",
+		"teaserDescription": "18 Hole Golf Course",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -628,7 +628,7 @@ export const venues = [
 		],
 		"name": "Sub Par Miniture Golf",
 		"description": "Indoor golf course and experience the history, invention and fun of San Francisco.",
-		"teaserDescription": "Golf",
+		"teaserDescription": "Indoor Mini Golf with SF Style Holes",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -664,7 +664,7 @@ export const venues = [
 		],
 		"name": "Grand Hot Pot Lounge",
 		"description": "Large, trendy eatery offering unlimited fixed-price hot pot, plus some à la carte Chinese entrees.",
-		"teaserDescription": "Hot Pot",
+		"teaserDescription": "Trendy Social Hot Pot",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -700,7 +700,7 @@ export const venues = [
 		],
 		"name": "Coin Op",
 		"description": "New American bites, cocktails & craft beer in a spacious barcade with arcade classics & other games.",
-		"teaserDescription": "Arcade Bar",
+		"teaserDescription": "Laid Back Coin Operated Game Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -736,7 +736,7 @@ export const venues = [
 		],
 		"name": "Emporium",
 		"description": "Pinball, pool & old-school arcade games, plus music, cocktails & craft beers, in hip, historic digs.",
-		"teaserDescription": "Arcade Bar",
+		"teaserDescription": "Laid Back Coin Operated Game Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -772,7 +772,7 @@ export const venues = [
 		],
 		"name": "Reason",
 		"description": "SF's highest technology escape room with a flair for the future.",
-		"teaserDescription": "Escape Room",
+		"teaserDescription": "Futuristic Tech-Based and Escape Room",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -808,7 +808,7 @@ export const venues = [
 		],
 		"name": "Everdene",
 		"description": "The lively, 12th-story cocktail den at Virgin Hotels SF has big views, live DJs & New American eats.",
-		"teaserDescription": "Rooftop Bar",
+		"teaserDescription": "After-work Rooftop Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -880,7 +880,7 @@ export const venues = [
 		],
 		"name": "Jordan's Kitchen",
 		"description": "The premier place in San Francisco for hands on cooking classes.",
-		"teaserDescription": "Cooking Class",
+		"teaserDescription": "Hands on Cooking Class",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },

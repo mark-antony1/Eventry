@@ -159,8 +159,6 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                 <StyledBodyCell>⭐{venue.rating}</StyledBodyCell>
                 <StyledHeadCell>Recommend Group Size</StyledHeadCell>
                 <StyledBodyCell>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</StyledBodyCell>
-                <StyledHeadCell>Place</StyledHeadCell>
-                <StyledBodyCell>{venue.place}</StyledBodyCell>
                 <StyledHeadCell>Address</StyledHeadCell>
                 <StyledBodyCell>{venue.address}</StyledBodyCell>
                 <StyledHeadCell>Phone</StyledHeadCell>

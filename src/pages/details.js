@@ -130,7 +130,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             </Block>
             <Block marginTop="24px">
               <StyledTable $gridTemplateColumns="minmax(max-content, max-content) minmax(200px, max-content)">
-                <StyledHeadCell>Type</StyledHeadCell>
+                <StyledHeadCell>#</StyledHeadCell>
                 <StyledBodyCell>
                   {
                     venue.tags.map((tag, index) => {
@@ -141,9 +141,16 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                       );
                     })
                   }
+                  {
+                    venue.vibe.map((tag, index) => {
+                      return (
+                        <Tag key={index} closeable={false} kind="accent">
+                          {tag}
+                        </Tag>
+                      );
+                    })
+                  }
                 </StyledBodyCell>
-                <StyledHeadCell>Vibe</StyledHeadCell>
-                <StyledBodyCell>{venue.vibe.join(',')}</StyledBodyCell>
                 <StyledHeadCell>Price</StyledHeadCell>
                 <StyledBodyCell>{venue.price}</StyledBodyCell>
                 <StyledHeadCell>Average Duration</StyledHeadCell>

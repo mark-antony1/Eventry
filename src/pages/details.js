@@ -70,7 +70,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
     <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
       <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
         <Display4 color="#fff">{venue.name}</Display4>
-        <Label1 color="#fff">{venue.events}</Label1>
+        <Label1 color="#fff">{venue.teaserDescription}</Label1>
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4" position="relative">
@@ -103,7 +103,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             <Block display="flex">
               <Block>
                 <Card>
-                  <Label1 paddingBottom="24px"><i>{venue.events}</i></Label1>
+                  <Label1 paddingBottom="24px"><i>{venue.teaserDescription}</i></Label1>
                   <StyledBody>
                     {venue.description}
                   </StyledBody>

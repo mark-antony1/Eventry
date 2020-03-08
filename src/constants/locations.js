@@ -65,8 +65,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 14],
-		"price": 20,
-		"priceReasoning": "Each glass of cocktail costs $15 or less - you may have 2 glasses",
+		"price": 26,
+		"priceReasoning": "Based on price of two individual drinks, pitchers are cheaper",
 		"location": {
 			"latitude": 37.787777,
 			"longitude": -122.403161
@@ -80,7 +80,7 @@ export const venues = [
 		],
 		"name": "Blue and Gold Fleet",
 		"description": "Ferry and Boat tour operator in San Francisco, California",
-		"teaserDescription": "Ferry Operator",
+		"teaserDescription": "Ferrys Across The San Francisco Bay",
 		"hours": {
 			"Sunday": { "start": 9, "end": 18.45 },
 			"Monday": { "start": 9, "end": 18.45 },
@@ -102,7 +102,7 @@ export const venues = [
 		"averageTimeSpent": 35,
 		"recommendedGroupsize": [0, 100],
 		"price": 40,
-		"priceReasoning": "Experiences cost vary, but their core cruise experience costs about $35 - $42",
+		"priceReasoning": "Based on core cruise experience round trip",
 		"location": {
 			"latitude": 37.809205,
 			"longitude": -122.411324
@@ -116,7 +116,7 @@ export const venues = [
 		],
 		"name": "Pandora Karaoke",
 		"description": "Guests belt out songs in the main lounge or in themed private rooms at this bar with bottle service.",
-		"teaserDescription": "Karaoke Bar",
+		"teaserDescription": "Karaoke Bar With Private Rooms",
 		"hours": {
 			"Sunday": { "start": 18, "end": 26 },
 			"Monday": { "start": 18, "end": 26 },
@@ -137,8 +137,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 25],
-		"price": 60,
-		"priceReasoning": "Assuming you spend 2 hours there and have a shot of alcohol each, you may spend more/less depends on alcohol consumption",
+		"price": 50,
+		"priceReasoning": "Based on cost of two drinks and two hours in private room",
 		"location": {
 			"latitude": 37.784889,
 			"longitude": -122.408961
@@ -153,7 +153,7 @@ export const venues = [
 		],
 		"name": "The Grid",
 		"description": "Coin-operated arcade games with a bar.",
-		"teaserDescription": "Coin-op Bar",
+		"teaserDescription": "Coin Operated Game Bar",
 		"hours": {
 			"Sunday": { "start": 14, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -175,7 +175,7 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 25],
 		"price": 30,
-		"priceReasoning": "Average price of beverage is $15",
+		"priceReasoning": "Based on price for two drinks",
 		"location": {
 			"latitude": 37.779493,
 			"longitude": -122.398096
@@ -190,7 +190,7 @@ export const venues = [
 		],
 		"name": "Spin",
 		"description": "Expansive Ping-Pong place serving upscale American comfort food & drinks in a bright setting.",
-		"teaserDescription": "Ping-Pong Bar",
+		"teaserDescription": "Social Ping-Pong and Bar Scene",
 		"hours": {
 			"Sunday": { "start": 12, "end": 20 },
 			"Monday": { "start": 12, "end": 23 },
@@ -211,7 +211,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 25],
-		"price": "$$",
+		"price": 40,
+		"priceReasoning": "Based on price for two drinks and 1 hour table reservation",
 		"location": {
 			"latitude": 37.785049,
 			"longitude": -122.399168
@@ -225,7 +226,7 @@ export const venues = [
 		],
 		"name": "Ocean Beach",
 		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
-		"teaserDescription": "Beach",
+		"teaserDescription": "Secluded Beach on the West",
 		"hours": {
 			"Sunday": { "start": 6, "end": 18 },
 			"Monday": { "start": 6, "end": 18 },
@@ -246,7 +247,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 25],
-		"price": "$$",
+		"price": 0,
+		"priceReasoning": "",
 		"location": {
 			"latitude": 37.777037,
 			"longitude": -122.511938
@@ -260,7 +262,7 @@ export const venues = [
 		],
 		"name": "Urban Putt",
 		"description": "Unique restaurant featuring American grub & drinks in an informal space housing a mini-golf course.",
-		"teaserDescription": "Mini-golf",
+		"teaserDescription": "Indoor Mini-golf",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -281,8 +283,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [3, 25],
-		"price": 25,
-		"priceReasoning": 'Mini-golf costs about $12 per adult. Average price for beverage is $12 or less',
+		"price": 12,
+		"priceReasoning": 'Based on price per game',
 		"location": {
 			"latitude": 37.7557255,
 			"longitude": -122.4190383
@@ -297,7 +299,7 @@ export const venues = [
 		],
 		"name": "Muir Beach",
 		"description": "Beach located 16.5 miles northwest of San Francisco",
-		"teaserDescription": "Isolated Coastal Beach",
+		"teaserDescription": "Far-Out Isolated Coastal Beach",
 		"hours": {
 			"Sunday": { "start": 6, "end": 18 },
 			"Monday": { "start": 6, "end": 18 },
@@ -333,7 +335,7 @@ export const venues = [
 		],
 		"name": "Kirby Cove",
 		"description": "Beach front looking towards Golden Gate bridge.",
-		"teaserDescription": "Beach front looking towards Golden Gate bridge.",
+		"teaserDescription": "Beach Front overlooking Golden Gate bridge.",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -370,7 +372,7 @@ export const venues = [
 		],
 		"name": "Bad Axe",
 		"description": "Learn to throw axes with friends.",
-		"teaserDescription": "Axe Throwing",
+		"teaserDescription": "Axe Throwing Range and Lessons ",
 		"hours": {
 			"Sunday": { "start": 8, "end": 23 },
 			"Monday": { "start": 8, "end": 23 },
@@ -391,8 +393,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [4, 30],
-		"price": 0,
-		"priceReasoning": '',
+		"price": 40,
+		"priceReasoning": 'Based on 2 hours of group event with coaches',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -407,7 +409,7 @@ export const venues = [
 		],
 		"name": "Pinos Palette",
 		"description": "Attendees paint during evening classes at this art studio chain serving alcohol at most locations.",
-		"teaserDescription": "Wine and Paint",
+		"teaserDescription": "Social Painting and Drinking",
 		"hours": {
 			"Sunday": { "start": 9, "end": 22 },
 			"Monday": { "start": 9, "end": 22 },
@@ -428,8 +430,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [10, 50],
-		"price": 0,
-		"priceReasoning": '',
+		"price": 39,
+		"priceReasoning": 'Based on price per class',
 		"location": {
 			"latitude": 37.7860192,
 			"longitude": -122.4350784
@@ -444,7 +446,7 @@ export const venues = [
 		],
 		"name": "Paint Nite",
 		"description": "Attendees paint during evening classes at this art studio chain serving alcohol at most locations.",
-		"teaserDescription": "Wine and Paint",
+		"teaserDescription": "Social Painting and Drinking",
 		"hours": {
 			"Sunday": { "start": 9, "end": 22 },
 			"Monday": { "start": 9, "end": 22 },
@@ -465,8 +467,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [10, 50],
-		"price": 0,
-		"priceReasoning": '',
+		"price": 27,
+		"priceReasoning": 'Based on price per class',
 		"location": {
 			"latitude": 37.7855034,
 			"longitude": -122.4349522
@@ -481,7 +483,7 @@ export const venues = [
 		],
 		"name": "Palace Games",
 		"description": "Historic escape rooms in San Francisco's Palace of Fine Arts. The Great Houdini, Roosevelt, and Edison Escape Rooms are great for team building or just fun!",
-		"teaserDescription": "Escape Room",
+		"teaserDescription": "Escape Room with a flair for History",
 		"hours": {
 			"Sunday": { "start": 9, "end": 22 },
 			"Monday": { "start": 10, "end": 22 },
@@ -502,8 +504,8 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [4, 15],
-		"price": 0,
-		"priceReasoning": 'Based upon price per person for a game',
+		"price": 50,
+		"priceReasoning": 'Based upon price per room',
 		"location": {
 			"latitude": 37.8032781,
 			"longitude": -122.4516369
@@ -539,47 +541,11 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [4, 20],
-		"price": 0,
-		"priceReasoning": 'Based upon price per person for a game',
+		"price": 16,
+		"priceReasoning": 'Based upon price per game',
 		"location": {
 			"latitude": 37.785756,
 			"longitude": -122.4327911
-		},
-		"symbol": "real-escape-game"
-	},
-	{
-		"id": 16,
-		"photos": [
-			"",
-		],
-		"name": "Real Escape Game",
-		"description": "A unique and interactive live puzzle event where teams solve mysteries and clues within a time limit.",
-		"teaserDescription": "Escape Room",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": ["fun", "adventurous"],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": ["indoor", "game"],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based upon price per person for a game',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
 		},
 		"symbol": "real-escape-game"
 	},
@@ -590,7 +556,7 @@ export const venues = [
 		],
 		"name": "Stagecoach Greens",
 		"description": "Outdoor mini golf course and experience the history, invention and fun of San Francisco.",
-		"teaserDescription": "Mini Golf",
+		"teaserDescription": "Outdoor Mini Golf",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -611,8 +577,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based upon price per person per game.',
+		"price": 16,
+		"priceReasoning": 'Based upon price per game.',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -626,7 +592,7 @@ export const venues = [
 		],
 		"name": "Presidio Golf Course",
 		"description": "Outdoor golf course and experience the history, invention and fun of San Francisco.",
-		"teaserDescription": "Golf",
+		"teaserDescription": "18 Hole Golf Course",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -647,8 +613,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based upon price per person per game.',
+		"price": 130,
+		"priceReasoning": 'Based upon price per person per game with all amenities.',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -662,7 +628,7 @@ export const venues = [
 		],
 		"name": "Sub Par Miniture Golf",
 		"description": "Indoor golf course and experience the history, invention and fun of San Francisco.",
-		"teaserDescription": "Golf",
+		"teaserDescription": "Indoor Mini Golf with SF Style Holes",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -683,7 +649,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 12,
 		"priceReasoning": 'Based upon price per person per game.',
 		"location": {
 			"latitude": 37.2288683,
@@ -698,7 +664,7 @@ export const venues = [
 		],
 		"name": "Grand Hot Pot Lounge",
 		"description": "Large, trendy eatery offering unlimited fixed-price hot pot, plus some à la carte Chinese entrees.",
-		"teaserDescription": "Hot Pot",
+		"teaserDescription": "Trendy Social Hot Pot",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -719,8 +685,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based upon price for 1 entree and 1 drink.',
+		"price": 28,
+		"priceReasoning": 'Based upon price for all you can eat and drink',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -734,7 +700,7 @@ export const venues = [
 		],
 		"name": "Coin Op",
 		"description": "New American bites, cocktails & craft beer in a spacious barcade with arcade classics & other games.",
-		"teaserDescription": "Arcade Bar",
+		"teaserDescription": "Laid Back Coin Operated Game Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -755,7 +721,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 20,
 		"priceReasoning": 'Based upon price for 1 drink and 5 games.',
 		"location": {
 			"latitude": 37.2288683,
@@ -770,7 +736,7 @@ export const venues = [
 		],
 		"name": "Emporium",
 		"description": "Pinball, pool & old-school arcade games, plus music, cocktails & craft beers, in hip, historic digs.",
-		"teaserDescription": "Arcade Bar",
+		"teaserDescription": "Laid Back Coin Operated Game Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -791,7 +757,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 20,
 		"priceReasoning": 'Based upon price for 1 drink and 5 games..',
 		"location": {
 			"latitude": 37.2288683,
@@ -806,7 +772,7 @@ export const venues = [
 		],
 		"name": "Reason",
 		"description": "SF's highest technology escape room with a flair for the future.",
-		"teaserDescription": "Escape Room",
+		"teaserDescription": "Futuristic Tech-Based and Escape Room",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -827,7 +793,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 50,
 		"priceReasoning": 'Based upon price for 1 games.',
 		"location": {
 			"latitude": 37.2288683,
@@ -842,7 +808,7 @@ export const venues = [
 		],
 		"name": "Everdene",
 		"description": "The lively, 12th-story cocktail den at Virgin Hotels SF has big views, live DJs & New American eats.",
-		"teaserDescription": "Rooftop Bar",
+		"teaserDescription": "After-work Rooftop Bar",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -863,7 +829,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on cost of 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -899,7 +865,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 69,
 		"priceReasoning": 'Based on price per class',
 		"location": {
 			"latitude": 37.2288683,
@@ -914,7 +880,7 @@ export const venues = [
 		],
 		"name": "Jordan's Kitchen",
 		"description": "The premier place in San Francisco for hands on cooking classes.",
-		"teaserDescription": "Cooking Class",
+		"teaserDescription": "Hands on Cooking Class",
 		"hours": {
 			"Sunday": { "start": 11, "end": 24 },
 			"Monday": { "start": 16, "end": 24 },
@@ -935,7 +901,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 60,
 		"priceReasoning": 'Based on price per class',
 		"location": {
 			"latitude": 37.2288683,
@@ -971,7 +937,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 75,
 		"priceReasoning": 'Based on price per tour per person',
 		"location": {
 			"latitude": 37.2288683,
@@ -1007,8 +973,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price per race',
+		"price": 65,
+		"priceReasoning": 'Based on price for 3 races',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1043,7 +1009,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 60,
 		"priceReasoning": 'Based on price per class',
 		"location": {
 			"latitude": 37.2288683,
@@ -1115,8 +1081,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price per class',
+		"price": 180,
+		"priceReasoning": 'Based on price per class. Minimum budget is $1800.',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1151,8 +1117,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
+		"price": 25,
+		"priceReasoning": 'Based on price of one drink and one entree',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1187,7 +1153,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on 1 hour of play time',
 		"location": {
 			"latitude": 37.2288683,
@@ -1223,7 +1189,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 25,
 		"priceReasoning": 'Based on price per ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1259,8 +1225,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price per cheap ticket',
+		"price": 50,
+		"priceReasoning": 'Based on price per weekday club-level ticket',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1295,7 +1261,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on price per ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1331,7 +1297,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on price per museum ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1367,7 +1333,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 40,
 		"priceReasoning": 'Based on price for ferry and tour ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1439,7 +1405,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 28,
 		"priceReasoning": 'Based on price per museum ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1476,7 +1442,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": 'No cost',
+		"priceReasoning": '',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1511,7 +1477,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 59,
 		"priceReasoning": 'Based on price per tour ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1547,8 +1513,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price per ice cream',
+		"price": 9,
+		"priceReasoning": 'Based on price of average ice cream item',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1583,7 +1549,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 26,
 		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1619,7 +1585,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 20,
 		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
 			"latitude": 37.2288683,
@@ -1656,7 +1622,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": 'No cost',
+		"priceReasoning": '',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1691,7 +1657,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 9,
 		"priceReasoning": 'Based on price for individual entry',
 		"location": {
 			"latitude": 37.2288683,
@@ -1727,7 +1693,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 22,
 		"priceReasoning": 'Based on price for individual entry',
 		"location": {
 			"latitude": 37.2288683,
@@ -1763,7 +1729,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -1799,7 +1765,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -1835,7 +1801,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 90,
 		"priceReasoning": 'Based on price for choclate class',
 		"location": {
 			"latitude": 37.2288683,
@@ -1871,8 +1837,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price for small chocolate',
+		"price": 10,
+		"priceReasoning": 'Based on price for gift chocolate',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1907,8 +1873,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price for entertainment event',
+		"price": 70,
+		"priceReasoning": 'Based on price for tour',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1943,8 +1909,8 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price per lesson',
+		"price": 60,
+		"priceReasoning": 'Based on price per event',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -1979,7 +1945,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 50,
 		"priceReasoning": 'Based on price for 1 game and 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -2015,7 +1981,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 20,
 		"priceReasoning": 'Based on price for 1 game',
 		"location": {
 			"latitude": 37.2288683,
@@ -2051,7 +2017,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 20,
 		"priceReasoning": 'Based on price for 1 bowling game',
 		"location": {
 			"latitude": 37.2288683,
@@ -2087,7 +2053,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 34,
 		"priceReasoning": 'Based on price per game',
 		"location": {
 			"latitude": 37.2288683,
@@ -2123,7 +2089,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 60,
 		"priceReasoning": 'Based on price for 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -2160,7 +2126,7 @@ export const venues = [
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
-		"priceReasoning": 'No cost',
+		"priceReasoning": '',
 		"location": {
 			"latitude": 37.2288683,
 			"longitude": -122.2603425
@@ -2195,7 +2161,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 30,
 		"priceReasoning": 'Based on price for 2 drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -2231,43 +2197,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": 'Based on price for two drinks',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
-	},
-	{
-		"id": 62,
-		"photos": [
-			"",
-		],
-		"name": "Dogpatch WineWorks",
-		"description": "Airy, industrial-style winery with collective winemaking & classes, plus tastings on Sunday.",
-		"teaserDescription": "Winery",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 60,
 		"priceReasoning": 'Based on price for two drinks',
 		"location": {
 			"latitude": 37.2288683,
@@ -2303,7 +2233,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 25,
 		"priceReasoning": 'Based on price for 1 pizza and 1 drink',
 		"location": {
 			"latitude": 37.2288683,
@@ -2339,7 +2269,7 @@ export const venues = [
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
-		"price": 0,
+		"price": 15,
 		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
 			"latitude": 37.2288683,

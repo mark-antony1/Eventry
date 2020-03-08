@@ -188,6 +188,7 @@ const LIST_SIZE = 10;
 
 export default function Discovery() {
   const history = useHistory();
+  const [ venueRefs, setVenueRefs ] = useState({});
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);
   const [ venues, setVenues ] = useState(allVenues);
@@ -200,20 +201,22 @@ export default function Discovery() {
     place: null
   });
 
-  const venueRefs = venues.reduce((acc, venue) => {
-    acc[venue.id] = React.createRef();
-    return acc;
-  }, {});
+  useEffect(() => {
+    setVenueRefs(venues.slice(venueIndex, venueIndex + LIST_SIZE).reduce((acc, venue) => {
+      acc[venue.id] = React.createRef();
+      return acc;
+    }, {}));
+  }, [venueIndex]);
 
   useEffect(() => {
-    if (scrollToId !== null) {
-      venueRefs[scrollToId].current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-      setScrollToId(null);
+    if (scrollToId !== null && venueRefs[scrollToId] && venueRefs[scrollToId].current) {
+        venueRefs[scrollToId].current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+        setScrollToId(null);
     }
-  }, [venueIndex]);
+  }, [venueRefs[scrollToId] && venueRefs[scrollToId].current]);
 
   const updateFilterValue = (payload) => {
     setFilterValue({
@@ -229,13 +232,12 @@ export default function Discovery() {
   };
 
   const onVenueClicked = (id) => {
-    if (venueRefs[id].current) {
+    if (venueRefs[id] && venueRefs[id].current) {
       venueRefs[id].current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
     } else {
-
       let index = 0;
       venues.forEach((v, i) => {
         if (v.id === id) {
@@ -243,7 +245,7 @@ export default function Discovery() {
         }
       });
       setScrollToId(id);
-      setVenueIndex(Math.round(index / 10) * 10);
+      setVenueIndex(Math.floor(index / 10) * 10);
     }
 
   };

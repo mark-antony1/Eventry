@@ -162,7 +162,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
             <Block height="80px">
               <img width="100%" height="100%" style={{ objectFit: 'cover' }} src={pinnedVenue.photos[0]} />
             </Block>
-            <Block>
+            <Block padding="8px">
               {
                 pinnedVenue.tags.map((tag, index) => {
                   return (
@@ -181,9 +181,6 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
                   );
                 })
               }
-            </Block>
-            <Block paddingLeft="8px" paddingRight="8px" paddingBottom="8px">
-              <Label3>Budget: ${pinnedVenue.price} per person</Label3>
             </Block>
           </Block>
         }

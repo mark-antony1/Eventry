@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { StatefulTooltip } from 'baseui/tooltip';
+import CheckIcon from 'baseui/icon/check';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
   Label1,
   Label2,
-  Label3
 } from 'baseui/typography';
 import { Tag } from 'baseui/tag';
 
@@ -45,10 +45,10 @@ export default function VenueCell({ venue }) {
   };
 
   return (
-    <Block styledisplay="flex" flexDirection="column">
+    <Block display="flex" flexDirection="column" overrides={{ Block: { style: { boxShadow: '0px 2px 3px 0px rgba(85,85,85,1)' } } }}>
       <Block display="flex" backgroundColor="#0B6839" flexDirection="column" padding="12px">
         <Label1 style={{fontSize: "20px", fontWeight: 'bold'}} color="#fff">{venue.teaserDescription}</Label1>
-        <Label3 color="#fff">{venue.name}</Label3>
+        <Label2 color="#fff"><b>{venue.name}</b></Label2>
       </Block>
       <Block display="flex">
         <Block flex="1" position="relative" maxHeight="300px">
@@ -76,7 +76,7 @@ export default function VenueCell({ venue }) {
             venue.tags.map((tag, index) => {
               return (
                 <Tag key={index} closeable={false} kind="accent">
-                  {tag}
+                  <b>{tag}</b>
                 </Tag>
               );
             })
@@ -85,16 +85,16 @@ export default function VenueCell({ venue }) {
             venue.vibe.map((vibe, index) => {
               return (
                 <Tag key={index} closeable={false} kind="accent">
-                  {vibe}
+                  <b>{vibe}</b>
                 </Tag>
               );
             })
           }
           </Block>
-          <Label3 marginTop="12px">Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</Label3>
-          <Label3 marginTop="12px">People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</Label3>
-          <Label3 marginTop="12px">
-            Budget: ${venue.price} per person {` `}
+          <Label2 marginTop="12px"><b>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</b></Label2>
+          <Label2 marginTop="12px"><b>People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</b></Label2>
+          <Label2 marginTop="12px">
+            <b>Budget: ${venue.price} per person {` `}</b>
             <StatefulTooltip
               content={venue.priceReasoning}
               returnFocus
@@ -102,11 +102,11 @@ export default function VenueCell({ venue }) {
             >
               ℹ️
             </StatefulTooltip>
-          </Label3>
-          <Label3 marginTop="12px">⭐{venue.rating}</Label3>
+          </Label2>
+          <Label2 marginTop="12px"><b>⭐{venue.rating}</b></Label2>
           <Block marginTop="12px">
             <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
-              Book
+              <CheckIcon size={24} color="#fff" /><b>Book</b>
             </Button>
           </Block>
         </Block>

@@ -80,7 +80,7 @@ export const venues = [
 		],
 		"name": "Blue and Gold Fleet",
 		"description": "Ferry and Boat tour operator in San Francisco, California",
-		"teaserDescription": "Ferry Operator",
+		"teaserDescription": "Ferrys Across The San Francisco Bay",
 		"hours": {
 			"Sunday": { "start": 9, "end": 18.45 },
 			"Monday": { "start": 9, "end": 18.45 },

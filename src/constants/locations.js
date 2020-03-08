@@ -331,7 +331,8 @@ export const venues = [
 	{
 		"id": 10,
 		"photos": [
-			"",
+			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-kirby-cove-road-descent-Marin-Headlands-Golden-Gate-National-Recreation-Area-Large-1000x565.jpg",
+			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-San-Francisco-Bay-hiking-trail-at-kirby-cove-Golden-Gate-Bridge-in-Golden-Gate-NRA-Large-e1510891225673-1000x615.jpg",
 		],
 		"name": "Kirby Cove",
 		"description": "Beach front looking towards Golden Gate bridge.",
@@ -350,7 +351,7 @@ export const venues = [
 		"vibe": ["chill"],
 		"address": "Kirby Cove Road, CA 94941",
 		"parkingAvailable": true,
-		"linkToSite": "",
+		"linkToSite": "https://www.nps.gov/goga/planyourvisit/kirby.htm",
 		"tags": ["beach", "outdoor"],
 		"rating": 4.5,
 		"takesReservations": false,
@@ -396,8 +397,8 @@ export const venues = [
 		"price": 40,
 		"priceReasoning": 'Based on 2 hours of group event with coaches',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.6891902,
+			"longitude": -122.4713978
 		},
 		"symbol": "bad-axe"
 	},
@@ -1291,38 +1292,39 @@ export const venues = [
 	{
 		"id": 37,
 		"photos": [
-			"",
+			"https://images.squarespace-cdn.com/content/v1/5afe2053e17ba327a9ac06d4/1570485157224-PR667TJPCJEVBFLXH45W/ke17ZwdGBToddI8pDm48kDg7EBZ2uw8aaokGTe_BUiR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0go8RxDxvFUrfoFyq1hsRatx6bIduzw24r6NnDyfUCcoeh6405RpP1VNj6E0okK0Ug/SF-11-min.png?format=2500w",
+			"https://cdn.vox-cdn.com/thumbor/xOi5iPLnVUEhkqO5lIekZl8YOrU=/0x0:1500x996/1200x800/filters:focal(630x378:870x618)/cdn.vox-cdn.com/uploads/chorus_image/image/62723642/museum_of_ice_cream.0.jpg"
 		],
 		"name": "Museum of Ice Cream",
 		"description": "Museum of Ice Cream transforms concepts and dreams into spaces that provoke imagination and creativity.",
 		"teaserDescription": "Ice Cream Museum",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 10, "end": 20 },
+			"Monday": { "start": 11, "end": 17 },
+			"Tuesday": { "start": null, "end": null },
+			"Wednesday": { "start": null, "end": null },
+			"Thursday": { "start": 11, "end": 17 },
+			"Friday": { "start": 11, "end": 17 },
+			"Saturday": { "start": 10, "end": 21 }
 		},
 		"phoneNumber": "",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "1 Grant Ave, San Francisco, CA 94108",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://tickets.museumoficecream.com/event/museum-of-ice-cream-san-fran",
 		"tags": [""],
 		"rating": 4.5,
-		"takesReservations": false,
+		"takesReservations": true,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"recommendedGroupsize": [10, 30],
 		"price": 30,
 		"priceReasoning": 'Based on price per museum ticket',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.7870168,
+			"longitude": -122.4073746
 		},
-		"symbol": ""
+		"symbol": "museum-of-icecream"
 	},
 	{
 		"id": 38,
@@ -1364,26 +1366,27 @@ export const venues = [
 	{
 		"id": 39,
 		"photos": [
-			"",
+			"https://images.squarespace-cdn.com/content/v1/5b882e25af2096151b87553a/1536025775069-5GDVWQ1A7TWAC0J15LKQ/ke17ZwdGBToddI8pDm48kDEDYh4Y0JGhR6hzuwcJ44gUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcz6bs2FkMoqlrQIzq4g5ogDqXr_T7rMikH_TfPkEE4wwzGwe9KEhUq6A0DxOZf-75/15608608139_14fbba854b_b.jpg",
+			"https://cdn.vox-cdn.com/thumbor/_iZVtKcnG1KcaCpIJpf0sZehwis=/0x0:4332x2437/1200x800/filters:focal(1926x411:2618x1103)/cdn.vox-cdn.com/uploads/chorus_image/image/63199619/shutterstock_336824243.0.jpg"
 		],
 		"name": "Golden Gate Fortune Cookie Factory",
 		"description": "Landmark bakery prepares homemade fortune cookies in a tiny open kitchen, with free tours available.",
 		"teaserDescription": "Fortune Cookie Tours and Store",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 9, "end": 19 },
+			"Monday": { "start": 9, "end": 18 },
+			"Tuesday": { "start": 9, "end": 18 },
+			"Wednesday": { "start": 9, "end": 18 },
+			"Thursday": { "start": 9, "end": 18 },
+			"Friday": { "start": 9, "end": 18 },
+			"Saturday": { "start": 9, "end": 19 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 781-3956",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "56 Ross Alley, San Francisco, CA 94108",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://www.goldengatefortunecookies.com/visit",
 		"tags": [""],
 		"rating": 4.5,
 		"takesReservations": false,
@@ -1392,10 +1395,10 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": 'Based on price for tour',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.7870168,
+			"longitude": -122.4073746
 		},
-		"symbol": ""
+		"symbol": "fortune-cookie"
 	},
 	{
 		"id": 40,
@@ -1437,36 +1440,36 @@ export const venues = [
 	{
 		"id": 41,
 		"photos": [
-			"",
+			"https://25va3qc1hw-flywheel.netdna-ssl.com/wp-content/uploads/2017/01/dolorspark-1024x489.jpg",
 		],
 		"name": "Mission Dolores Park",
 		"description": "A city park in San Francisco, California. Known for its various social and recreational activities.",
 		"teaserDescription": "Fun City Park",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 10, "end": 17 },
+			"Monday": { "start": 10, "end": 17 },
+			"Tuesday": { "start": 10, "end": 17 },
+			"Wednesday": { "start": 10, "end": 17 },
+			"Thursday": { "start": 10, "end": 17 },
+			"Friday": { "start": 10, "end": 17 },
+			"Saturday": { "start": 10, "end": 17 }
 		},
 		"phoneNumber": "",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "Dolores St &, 19th St, San Francisco, CA 94114",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://www.tripadvisor.com/Attraction_Review-g60713-d545911-Reviews-Mission_Dolores_Park-San_Francisco_California.html",
 		"tags": [""],
-		"rating": 4.5,
+		"rating": 4.7,
 		"takesReservations": false,
 		"averageTimeSpent": 120,
 		"recommendedGroupsize": [1, 5],
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.7595903,
+			"longitude": -122.4291023
 		},
 		"symbol": ""
 	},
@@ -1510,26 +1513,27 @@ export const venues = [
 	{
 		"id": 42,
 		"photos": [
-			"",
+			"https://images.squarespace-cdn.com/content/v1/5ac63267b27e395f3f992df7/1527622411536-IYERRFUPNBDEM2FTNZGL/ke17ZwdGBToddI8pDm48kI8r3igJwAW91YSXzwHG7N97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UQV4xmhtuTDgQCTbDoQ9upXHoeeKCEKn6RnLArM6QRcn8AR2UrAfKi4lRFuXqb7ntQ/HFF_GhirardelliSquare-Hero01-min+2-min.jpg?format=2500w",
+			"https://www.ghirardelli.com/wcsstore/Ghirardelli/Attachment/StoreLocations/SanLeandro_Hero.jpg"
 		],
 		"name": "Ghiradelli Factory",
 		"description": "Ghirardelli represents a range of truly exceptional chocolate and ice cream experiences.",
 		"teaserDescription": "Ice cream and Chcocolate Factory",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 9, "end": 23 },
+			"Monday": { "start": 9, "end": 23 },
+			"Tuesday": { "start": 9, "end": 23 },
+			"Wednesday": { "start": 9, "end": 23 },
+			"Thursday": { "start": 9, "end": 23 },
+			"Friday": { "start": 9, "end": 24 },
+			"Saturday": { "start": 9, "end": 24 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 474-3938",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "900 North Point St #52, San Francisco, CA 94109",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://www.ghirardelli.com/StoreLocations-SanFrancisco-Original",
 		"tags": [""],
 		"rating": 4.5,
 		"takesReservations": false,
@@ -1538,10 +1542,10 @@ export const venues = [
 		"price": 9,
 		"priceReasoning": 'Based on price of average ice cream item',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.8058151,
+			"longitude": -122.424547
 		},
-		"symbol": ""
+		"symbol": "ghirardelli"
 	},
 	{
 		"id": 43,
@@ -1577,151 +1581,116 @@ export const venues = [
 			"latitude": 37.8561622,
 			"longitude": -122.481166
 		},
-		"symbol": ""
-	},
-	{
-		"id": 44,
-		"photos": [
-			"",
-		],
-		"name": "Blue and Gold Angel Island",
-		"description": "Boat tour agency in San Francisco, California.",
-		"teaserDescription": "Ferry Boat to Angel Island",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 20,
-		"priceReasoning": 'Based on price for round-trip ferry ticket',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
+		"symbol": "blue-gold-sausalito"
 	},
 	{
 		"id": 45,
 		"photos": [
-			"",
+			"https://www.parks.ca.gov/pages/468/images/Angel_Island-Palmer_P055680.jpg",
 		],
 		"name": "Angel Island State Park",
 		"description": "Originally the home of a military installation, the island now offers picturesque views of the San Francisco skyline.",
 		"teaserDescription": "Island",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 10, "end": 17 },
+			"Monday": { "start": 10, "end": 17 },
+			"Tuesday": { "start": 10, "end": 17 },
+			"Wednesday": { "start": 10, "end": 17 },
+			"Thursday": { "start": 10, "end": 17 },
+			"Friday": { "start": 10, "end": 17 },
+			"Saturday": { "start": 10, "end": 17 }
 		},
 		"phoneNumber": "",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "Tiburon, CA 94920",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "http://www.parks.ca.gov/?page_id=468",
 		"tags": [""],
-		"rating": 4.5,
+		"rating": 4.7,
 		"takesReservations": false,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"recommendedGroupsize": [10, 50],
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.8636126,
+			"longitude": -122.4341436
 		},
-		"symbol": ""
+		"symbol": "angel-island-state-park"
 	},
 	{
 		"id": 46,
 		"photos": [
-			"",
+			"https://25va3qc1hw-flywheel.netdna-ssl.com/wp-content/uploads/2011/03/Japanese-Tea-Garden-1280x640.jpg",
+			"https://previews.123rf.com/images/f8grapher/f8grapher1409/f8grapher140900179/31841910-the-japanese-tea-garden-in-golden-gate-park-in-san-francisco-california-united-states-of-america-a-v.jpg"
 		],
 		"name": "Japanese Tea Garden",
 		"description": "The oldest public Japanese garden in the United States located inside Golden Gate Park in San Francisco, California.",
 		"teaserDescription": "Public Garden",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 9, "end": 17 },
+			"Monday": { "start": 9, "end": 17 },
+			"Tuesday": { "start": 9, "end": 17 },
+			"Wednesday": { "start": 9, "end": 17 },
+			"Thursday": { "start": 9, "end": 17 },
+			"Friday": { "start": 9, "end": 17 },
+			"Saturday": { "start": 9, "end": 17 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 752-1171",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "75 Hagiwara Tea Garden Dr, San Francisco, CA 94118",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://www.japaneseteagardensf.com/vist",
 		"tags": [""],
 		"rating": 4.5,
 		"takesReservations": false,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"recommendedGroupsize": [5, 20],
 		"price": 9,
 		"priceReasoning": 'Based on price for individual entry',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.7702408,
+			"longitude": -122.4717399
 		},
-		"symbol": ""
+		"symbol": "japanese-tea-garden"
 	},
 	{
 		"id": 47,
 		"photos": [
-			"",
+			"https://www.exploratorium.edu/sites/default/files/styles/banner_image/public/feature_slides/sfzoo-giraffes.jpg?itok=LYTbZNdi",
 		],
 		"name": "San Francisco Zoo",
 		"description": "The San Francisco Zoo is a 100-acre zoo",
 		"teaserDescription": "City Zoo",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 10, "end": 17 },
+			"Monday": { "start": 10, "end": 17 },
+			"Tuesday": { "start": 10, "end": 17 },
+			"Wednesday": { "start": 10, "end": 17 },
+			"Thursday": { "start": 10, "end": 17 },
+			"Friday": { "start": 10, "end": 17 },
+			"Saturday": { "start": 10, "end": 17 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 753-7080",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "Sloat Blvd &, Great Hwy, San Francisco, CA 94132",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://tickets.sfzoo.org/",
 		"tags": [""],
 		"rating": 4.5,
 		"takesReservations": false,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"recommendedGroupsize": [10, 30],
 		"price": 22,
 		"priceReasoning": 'Based on price for individual entry',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.7348258,
+			"longitude": -122.505402
 		},
-		"symbol": ""
+		"symbol": "sf-zoo"
 	},
 	{
 		"id": 48,
@@ -1832,78 +1801,6 @@ export const venues = [
 			"longitude": -122.4148424
 		},
 		"symbol": "dandelion"
-	},
-	{
-		"id": 51,
-		"photos": [
-			"",
-		],
-		"name": "The San Francisco Chocolate Factory",
-		"description": "Small chocolate factory and store.",
-		"teaserDescription": "Chocolate Factory",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 10,
-		"priceReasoning": 'Based on price for gift chocolate',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
-	},
-	{
-		"id": 52,
-		"photos": [
-			"",
-		],
-		"name": "Gregangelo Museum",
-		"description": "Circus troupe and entertainment company that incorporates the arts.",
-		"teaserDescription": "Entertainment And Museum",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 70,
-		"priceReasoning": 'Based on price for tour',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
 	},
 	{
 		"id": 53,
@@ -2128,183 +2025,77 @@ export const venues = [
 		"symbol": "miritime-wine-tasting"
 	},
 	{
-		"id": 59,
-		"photos": [
-			"",
-		],
-		"name": "Treasure Island",
-		"description": "An artificial island in the San Francisco Bay.",
-		"teaserDescription": "Island",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
-	},
-	{
-		"id": 60,
-		"photos": [
-			"",
-		],
-		"name": "Vie Winery and Bocce",
-		"description": "Fun winery and bar accommadated with a bocce bit.",
-		"teaserDescription": "Winery and Bar",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 30,
-		"priceReasoning": 'Based on price for 2 drinks',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
-	},
-	{
-		"id": 61,
-		"photos": [
-			"",
-		],
-		"name": "Sol Rouge Winery",
-		"description": "Wine tasting room with roots in Napa Valley.",
-		"teaserDescription": "Wine Tasting",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": [""],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 60,
-		"priceReasoning": 'Based on price for two drinks',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
-	},
-	{
 		"id": 63,
 		"photos": [
-			"",
+			"https://www.barbocce.com/wp-content/uploads/2019/05/barboccesunset714.jpg",
+			"https://res.cloudinary.com/dostuff-media/image/upload//c_fill,g_faces,h_630,w_1200/v1485400667/venue-395319.jpg"
 		],
 		"name": "Bar Bocce",
 		"description": "Low-key fan favorite bar with pizza and drinks overlooking the bay of Sausolito.",
 		"teaserDescription": "Bar with Bocce Pit",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 11, "end": 22 },
+			"Monday": { "start": 12, "end": 22 },
+			"Tuesday": { "start": 12, "end": 22 },
+			"Wednesday": { "start": 12, "end": 22 },
+			"Thursday": { "start": 12, "end": 22 },
+			"Friday": { "start": 12, "end": 22 },
+			"Saturday": { "start": 11, "end": 22 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 331-0555",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "1250 Bridgeway, Sausalito, CA 94965",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://www.barbocce.com/groups/",
 		"tags": [""],
 		"rating": 4.5,
-		"takesReservations": false,
+		"takesReservations": true,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"recommendedGroupsize": [5, 20],
 		"price": 25,
 		"priceReasoning": 'Based on price for 1 pizza and 1 drink',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.8596136,
+			"longitude": -122.4869881
 		},
-		"symbol": ""
+		"symbol": "bar-bocce"
 	},
 	{
 		"id": 64,
 		"photos": [
-			"",
+			"https://angelisland.com/wp-content/uploads/2016/09/10090829406_3108fa23d6_z.jpg",
+			"https://media-cdn.tripadvisor.com/media/photo-s/07/5d/3a/84/angel-island-tiburon.jpg"
 		],
 		"name": "Angel Island–Tiburon Ferry",
 		"description": "Ferry to Angel Island in San Francisco, California.",
 		"teaserDescription": "Ferry Boat to Angel Island",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": 10, "end": 16 },
+			"Monday": { "start": 10, "end": 16 },
+			"Tuesday": { "start": 10, "end": 16 },
+			"Wednesday": { "start": 10, "end": 16 },
+			"Thursday": { "start": 10, "end": 16 },
+			"Friday": { "start": 10, "end": 16 },
+			"Saturday": { "start": 10, "end": 16 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 435-2131",
 		"email": "",
 		"vibe": [""],
-		"address": "",
+		"address": "21 Main St, Belvedere Tiburon, CA 94920",
 		"parkingAvailable": false,
-		"linkToSite": "",
+		"linkToSite": "https://angelislandferry.com/schools-groups/",
 		"tags": [""],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
+		"rating": 4.7,
+		"takesReservations": true,
+		"averageTimeSpent": 240,
+		"recommendedGroupsize": [25, 50],
 		"price": 15,
 		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.8731492,
+			"longitude": -122.4584496
 		},
-		"symbol": ""
+		"symbol": "angel-island-ferry"
 	},
 ]

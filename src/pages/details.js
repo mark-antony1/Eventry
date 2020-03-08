@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Tag } from 'baseui/tag';
@@ -49,7 +49,11 @@ function getHourFromMilitaryHour(hour) {
 
 export default function Details({ match: { params: {venueSymbol} } }) {
   const [ photoIndex, setPhotoIndex ] = useState(0);
+  const venue = allVenues.find((v) => v.symbol === venueSymbol);
 
+  useEffect(() => {
+    document.title = `TeamBright | ${venue ? venue.name : ''}`;
+  }, []);
   const onPrevPhoto = () => {
     if (photoIndex === 0) {
       setPhotoIndex(venue.photos.length - 1)
@@ -65,7 +69,6 @@ export default function Details({ match: { params: {venueSymbol} } }) {
       setPhotoIndex(photoIndex + 1)
     }
   };
-  const venue = allVenues.find((v) => v.symbol === venueSymbol);
 
   return (
     <Block display="flex" flexDirection="column" height="calc(100vh - 48px)">

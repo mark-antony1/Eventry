@@ -139,7 +139,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                   {
                     venue.tags.map((tag, index) => {
                       return (
-                        <Tag key={index} closeable={false} kind="accent">
+                        <Tag key={index} closeable={false} kind="accent" variant="outlined">
                           <b>{tag}</b>
                         </Tag>
                       );
@@ -148,7 +148,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                   {
                     venue.vibe.map((tag, index) => {
                       return (
-                        <Tag key={index} closeable={false} kind="accent">
+                        <Tag key={index} closeable={false} kind="accent" variant="outlined">
                           <b>{tag}</b>
                         </Tag>
                       );

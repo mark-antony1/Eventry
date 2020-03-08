@@ -166,7 +166,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
               {
                 pinnedVenue.tags.map((tag, index) => {
                   return (
-                    <Tag key={index} closeable={false} kind="accent">
+                    <Tag key={index} closeable={false} kind="accent" variant="outlined">
                       {tag}
                     </Tag>
                   );
@@ -175,7 +175,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
               {
                 pinnedVenue.vibe.map((vibe, index) => {
                   return (
-                    <Tag key={index} closeable={false} kind="accent">
+                    <Tag key={index} closeable={false} kind="accent" variant="outlined">
                       {vibe}
                     </Tag>
                   );

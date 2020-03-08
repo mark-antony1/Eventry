@@ -75,7 +75,7 @@ export default function VenueCell({ venue }) {
           {
             venue.tags.map((tag, index) => {
               return (
-                <Tag key={index} closeable={false} kind="accent">
+                <Tag key={index} closeable={false} kind="accent" variant="outlined">
                   <b>{tag}</b>
                 </Tag>
               );
@@ -84,15 +84,15 @@ export default function VenueCell({ venue }) {
           {
             venue.vibe.map((vibe, index) => {
               return (
-                <Tag key={index} closeable={false} kind="accent">
+                <Tag key={index} closeable={false} kind="accent" variant="outlined">
                   <b>{vibe}</b>
                 </Tag>
               );
             })
           }
           </Block>
-          <Label2 marginTop="12px"><b>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</b></Label2>
-          <Label2 marginTop="12px"><b>People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</b></Label2>
+          <Label2 marginTop="12px"><b>Group Size: Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</b></Label2>
+          <Label2 marginTop="12px"><b>Avg Time Spent: People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</b></Label2>
           <Label2 marginTop="12px">
             <b>Budget: ${venue.price} per person {` `}</b>
             <StatefulTooltip

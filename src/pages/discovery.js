@@ -271,7 +271,7 @@ export default function Discovery() {
         <Block flex="4">
           <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
-        <Block flex="5" display="flex" flexDirection="column" overflow="auto">
+        <Block flex="5" display="flex" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
           {
             venues.slice(venueIndex, venueIndex + LIST_SIZE).map((venue, index) => {
               return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Tag } from 'baseui/tag';
+import CheckIcon from 'baseui/icon/check';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
@@ -136,7 +137,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                     venue.tags.map((tag, index) => {
                       return (
                         <Tag key={index} closeable={false} kind="accent">
-                          {tag}
+                          <b>{tag}</b>
                         </Tag>
                       );
                     })
@@ -145,7 +146,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
                     venue.vibe.map((tag, index) => {
                       return (
                         <Tag key={index} closeable={false} kind="accent">
-                          {tag}
+                          <b>{tag}</b>
                         </Tag>
                       );
                     })
@@ -171,7 +172,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             </Block>
             <Block display="flex" flexDirection="column" width="100%" marginTop="24px">
               <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
-                Book
+                <CheckIcon size={24} color="#fff" /><b>Book</b>
               </Button>
             </Block>
           </Block>

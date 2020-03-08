@@ -989,8 +989,8 @@ export const venues = [
 		"price": 65,
 		"priceReasoning": 'Based on price for 3 races',
 		"location": {
-			"latitude": 37.6412437,
-			"longitude": -122.4376696
+			"latitude": 37.6394904,
+			"longitude": -122.4065499
 		},
 		"symbol": "k1-speed"
 	},

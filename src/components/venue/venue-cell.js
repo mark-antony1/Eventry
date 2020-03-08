@@ -47,7 +47,7 @@ export default function VenueCell({ venue }) {
   return (
     <Block display="flex" flexDirection="column">
       <Block display="flex" backgroundColor="#0B6839" flexDirection="column" padding="12px">
-        <Label1 color="#fff">{venue.teaserDescription}</Label1>
+        <Label1 style={{fontSize: "20px", fontWeight: 'bold'}} color="#fff">{venue.teaserDescription}</Label1>
         <Label3 color="#fff">{venue.name}</Label3>
       </Block>
       <Block display="flex">

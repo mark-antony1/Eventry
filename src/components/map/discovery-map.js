@@ -5,13 +5,14 @@ import { Block } from 'baseui/block';
 import { Label3 } from 'baseui/typography';
 import { Tag } from 'baseui/tag';
 import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
+import { usePrevious } from '../../utils';
 
 function MarkerIcon({ hovered }) {
   return (
     <svg viewport="0 0 32 32" width="24" height="48" aria-labelledby="title"
     aria-describedby="desc" role="img">
       <path strokeWidth="1"
-      fill={hovered ? "#FFBE2E" : "#2EFFB5"}
+      fill={hovered ? "#FFBE2E" : "#006937"}
       strokeMiterlimit="10" stroke="#202020" d="M12,10 L0,23 L12,48 L24,23 L12,10"
       data-name="layer2" strokeLinejoin="round" strokeLinecap="round"></path>
     </svg>
@@ -65,13 +66,34 @@ function venuesToLocations(venues) {
   });
 }
 
+function compareVenues(prevVenues, venues) {
+  if (!prevVenues) {
+    return true;
+  }
+  if (prevVenues.length > 50 && prevVenues.length === venues.length) {
+    return false;
+  } else if (prevVenues.length > 50 && prevVenues.length !== venues.length) {
+    return true;
+  }
+  for (let i = 0; i < prevVenues.length; i++) {
+    if (prevVenues[i].id !== venues[i].id) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom, setHoveredVenueId, onVenueClicked }) {
+  const prevVenues = usePrevious(venues);
   const history = useHistory();
   const [ viewport, setViewport ] = useState(getViewport());
   const [ pinnedVenue, setPinnedVenue ] = useState(null);
 
   useEffect(() => {
-    setViewport(getViewport());
+    if (compareVenues(prevVenues, venues)) {
+      setViewport(getViewport());
+    }
   }, [venues]);
 
   useEffect(() => {
@@ -133,7 +155,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
             onClick={() => { history.push(`/${pinnedVenue.symbol}`) }}
             overrides={{ Block: { style: { cursor: 'pointer' } } }}
           >
-            <Block backgroundColor="#000" padding="8px">
+            <Block backgroundColor="#0B6839" padding="8px">
               <Label3 color="#fff">{pinnedVenue.name}</Label3>
               <Label3 color="#fff">⭐{pinnedVenue.rating}</Label3>
             </Block>
@@ -170,6 +192,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
         {...viewport}
         width="100%"
         height="100%"
+        mapStyle='mapbox://styles/mapbox/streets-v9'
         onViewportChange={(vp) => setViewport(vp)}
         scrollZoom={disableScrollZoom ? false : true}
         mapboxApiAccessToken="pk.eyJ1IjoianVuc3VobGVlOTQiLCJhIjoiY2pzbDk3aHI5MXQycDQzazZxNXc5cG52ayJ9.bMXJRfKZO38TdR7szbu4xw"

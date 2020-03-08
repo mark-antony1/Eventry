@@ -46,12 +46,12 @@ export default function VenueCell({ venue }) {
 
   return (
     <Block display="flex" flexDirection="column">
-      <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
-        <Label3 color="#fff">{venue.name}</Label3>
+      <Block display="flex" backgroundColor="#0B6839" flexDirection="column" padding="12px">
         <Label1 color="#fff">{venue.teaserDescription}</Label1>
+        <Label3 color="#fff">{venue.name}</Label3>
       </Block>
       <Block display="flex">
-        <Block flex="1" position="relative">
+        <Block flex="1" position="relative" height="250px">
           <Block position="absolute" top="0" left="0" height="100%" display="flex" flexDirection="column" justifyContent="center">
             <Button kind="minimal" onClick={onPrevPhoto}>
               <ChevronLeft color="#fff" size={36} />
@@ -105,7 +105,9 @@ export default function VenueCell({ venue }) {
           </Label3>
           <Label3 marginTop="12px">⭐{venue.rating}</Label3>
           <Block marginTop="12px">
-            <Button $as="a" href={venue.linkToSite} target="_blank">Book</Button>
+            <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
+              Book
+            </Button>
           </Block>
         </Block>
       </Block>

@@ -67,8 +67,8 @@ export default function Details({ match: { params: {venueSymbol} } }) {
   const venue = allVenues.find((v) => v.symbol === venueSymbol);
 
   return (
-    <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
-      <Block display="flex" backgroundColor="#000" flexDirection="column" padding="12px">
+    <Block display="flex" flexDirection="column" height="calc(100vh - 48px)">
+      <Block display="flex" backgroundColor="#0B6839" flexDirection="column" padding="12px">
         <Display4 color="#fff">{venue.name}</Display4>
         <Label1 color="#fff">{venue.teaserDescription}</Label1>
       </Block>
@@ -170,7 +170,9 @@ export default function Details({ match: { params: {venueSymbol} } }) {
               </StyledTable>
             </Block>
             <Block display="flex" flexDirection="column" width="100%" marginTop="24px">
-              <Button $as="a" href={venue.linkToSite} target="_blank">Book</Button>
+              <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
+                Book
+              </Button>
             </Block>
           </Block>
         </Block>

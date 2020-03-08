@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { useHistory } from 'react-router-dom';
 import { StyledLink } from 'baseui/link';
@@ -189,6 +189,7 @@ const LIST_SIZE = 10;
 export default function Discovery() {
   const history = useHistory();
   const [ venueIndex, setVenueIndex ] = useState(0);
+  const [ scrollToId, setScrollToId ] = useState(null);
   const [ venues, setVenues ] = useState(allVenues);
   const [ hoveredVenueId , setHoveredVenueId ] = useState(null);
   const [ filterValue , setFilterValue ] = useState({
@@ -204,6 +205,16 @@ export default function Discovery() {
     return acc;
   }, {});
 
+  useEffect(() => {
+    if (scrollToId !== null) {
+      venueRefs[scrollToId].current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+      setScrollToId(null);
+    }
+  }, [venueIndex]);
+
   const updateFilterValue = (payload) => {
     setFilterValue({
       ...filterValue,
@@ -214,13 +225,27 @@ export default function Discovery() {
       ...payload
     }));
     setVenueIndex(0);
+    setScrollToId(null);
   };
 
   const onVenueClicked = (id) => {
-    venueRefs[id].current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+    if (venueRefs[id].current) {
+      venueRefs[id].current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    } else {
+
+      let index = 0;
+      venues.forEach((v, i) => {
+        if (v.id === id) {
+          index = i;
+        }
+      });
+      setScrollToId(id);
+      setVenueIndex(Math.round(index / 10) * 10);
+    }
+
   };
 
   const handlePrevPage = () => {
@@ -236,13 +261,13 @@ export default function Discovery() {
   };
 
   return (
-    <Block display="flex" flexDirection="column" height="calc(100vh - 73px)">
+    <Block display="flex" flexDirection="column" height="calc(100vh - 48px)">
       <Block>
         <Filter filterValue={filterValue} updateFilterValue={updateFilterValue} />
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4">
-          <DiscoveryMap venues={venues.slice(venueIndex, venueIndex + LIST_SIZE)} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
+          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
         <Block flex="5" display="flex" flexDirection="column" overflow="auto">
           {

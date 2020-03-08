@@ -51,7 +51,7 @@ export default function VenueCell({ venue }) {
         <Label3 color="#fff">{venue.name}</Label3>
       </Block>
       <Block display="flex">
-        <Block flex="1" position="relative" height="250px">
+        <Block flex="1" position="relative" maxHeight="300px">
           <Block position="absolute" top="0" left="0" height="100%" display="flex" flexDirection="column" justifyContent="center">
             <Button kind="minimal" onClick={onPrevPhoto}>
               <ChevronLeft color="#fff" size={36} />

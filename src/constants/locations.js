@@ -1614,8 +1614,8 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 37.8636126,
-			"longitude": -122.4341436
+			"latitude": 37.862332,
+			"longitude": -122.432548
 		},
 		"symbol": "angel-island-state-park"
 	},
@@ -1803,45 +1803,9 @@ export const venues = [
 		"symbol": "dandelion"
 	},
 	{
-		"id": 51,
-		"photos": [
-			"",
-		],
-		"name": "The San Francisco Chocolate Factory",
-		"description": "Small chocolate factory and store.",
-		"teaserDescription": "Chocolate Factory",
-		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": ["fun"],
-		"address": "",
-		"parkingAvailable": false,
-		"linkToSite": "",
-		"tags": ["indoor", "dessert"],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 10,
-		"priceReasoning": 'Based on price for gift chocolate',
-		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
-		},
-		"symbol": ""
-	},
-	{
 		"id": 52,
 		"photos": [
-			"",
+			"https://d5xydlzdo08s0.cloudfront.net/media/celebrities/4524/products/Photo_Feb_09_11_22_50_AM__L.jpg",
 		],
 		"name": "Gregangelo Museum",
 		"description": "Circus troupe and entertainment company that incorporates the arts.",
@@ -1869,8 +1833,8 @@ export const venues = [
 		"price": 70,
 		"priceReasoning": 'Based on price for tour',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.733682,
+			"longitude": -122.468504
 		},
 		"symbol": ""
 	},
@@ -2099,7 +2063,7 @@ export const venues = [
 	{
 		"id": 59,
 		"photos": [
-			"",
+			"https://assets3.thrillist.com/v1/image/1541116/size/tl-horizontal_main_2x.jpg",
 		],
 		"name": "Treasure Island",
 		"description": "An artificial island in the San Francisco Bay.",
@@ -2127,15 +2091,16 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": '',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.824589,
+			"longitude": -122.371347
 		},
 		"symbol": ""
 	},
 	{
 		"id": 60,
 		"photos": [
-			"",
+			"http://www.viewinery.com/images/vie_tasting_room2.jpg",
+			"http://www.viewinery.com/images/bocce.jpg"
 		],
 		"name": "Vie Winery and Bocce",
 		"description": "Fun winery and bar accommadated with a bocce bit.",
@@ -2163,15 +2128,16 @@ export const venues = [
 		"price": 30,
 		"priceReasoning": 'Based on price for 2 drinks',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.819415,
+			"longitude": -122.366420
 		},
 		"symbol": ""
 	},
 	{
 		"id": 61,
 		"photos": [
-			"",
+			"http://solrouge.com/images/photos/Sol-Rouge-Tasting-Room-1.jpg",
+			"http://solrouge.com/images/photos/Sol-Rouge-Tasting-Room-4.jpg"
 		],
 		"name": "Sol Rouge Winery",
 		"description": "Wine tasting room with roots in Napa Valley.",
@@ -2199,8 +2165,8 @@ export const venues = [
 		"price": 60,
 		"priceReasoning": 'Based on price for two drinks',
 		"location": {
-			"latitude": 37.2288683,
-			"longitude": -122.2603425
+			"latitude": 37.819144,
+			"longitude": -122.366960
 		},
 		"symbol": ""
 	},
@@ -2273,8 +2239,8 @@ export const venues = [
 		"price": 15,
 		"priceReasoning": 'Based on price for round-trip ferry ticket',
 		"location": {
-			"latitude": 37.8731492,
-			"longitude": -122.4584496
+			"latitude": 37.880733,
+			"longitude": -122.456084
 		},
 		"symbol": "angel-island-ferry"
 	},

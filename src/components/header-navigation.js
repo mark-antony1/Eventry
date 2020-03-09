@@ -7,6 +7,7 @@ import {
 } from "baseui/header-navigation";
 import { useStyletron } from 'baseui';
 import { Button } from "baseui/button";
+import { Block } from 'baseui/block';
 import ChevronLeft from 'baseui/icon/chevron-left';
 export default ({ match }) => {
   const [css] = useStyletron();
@@ -24,15 +25,15 @@ export default ({ match }) => {
     return buttoms;
   };
   return (
-    <HeaderNavigation overrides={{ Root: { style: {padding:'0px', border: 'none'} } }}>
+    <HeaderNavigation overrides={{ Root: { style: {padding:'0px', border: 'none', position: 'relative', height: '48px'} } }}>
       <StyledNavigationList $align={ALIGN.left}>
         {NavButtons()}
-        <StyledNavigationItem>
-          <Button kind="minimal" $as="a" href="/">
-            Teambright
-          </Button>
-        </StyledNavigationItem>
       </StyledNavigationList>
+      <Block position="absolute" left="50%" marginLeft="-80px" height="100%">
+        <a href="/">
+          <img height="48px" src={process.env.PUBLIC_URL + '/logo.png'} />
+        </a>
+      </Block>
     </HeaderNavigation>
   );
 }

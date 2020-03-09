@@ -202,6 +202,10 @@ export default function Discovery() {
   });
 
   useEffect(() => {
+    document.title = `TeamBright`;
+  }, []);
+
+  useEffect(() => {
     setVenueRefs(venues.slice(venueIndex, venueIndex + LIST_SIZE).reduce((acc, venue) => {
       acc[venue.id] = React.createRef();
       return acc;

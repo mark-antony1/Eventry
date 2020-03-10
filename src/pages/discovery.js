@@ -3,6 +3,7 @@ import { Block } from 'baseui/block';
 import { useHistory } from 'react-router-dom';
 import { StyledLink } from 'baseui/link';
 import { Button } from 'baseui/button';
+import { useStyletron } from 'styletron-react';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import DiscoveryMap from '../components/map/discovery-map';
@@ -188,6 +189,7 @@ const LIST_SIZE = 10;
 
 export default function Discovery() {
   const history = useHistory();
+  const [ css ] = useStyletron();
   const [ venueRefs, setVenueRefs ] = useState({});
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);
@@ -275,32 +277,29 @@ export default function Discovery() {
         <Block flex="4">
           <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
-        <Block flex="5" display="flex" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
+        <Block flex="5" display="flex" flexWrap="wrap" overflow="auto" backgroundColor="#F4F4F4">
           {
             venues.slice(venueIndex, venueIndex + LIST_SIZE).map((venue, index) => {
               return (
                 <Block
+                  flex="0 1 calc(50% - 24px)"
+                  margin="12px"
                   ref={venueRefs[venue.id]}
                   key={venue.id}
-                  overrides={{
-                    Block: {
-                      style: {
-                        opacity: hoveredVenueId === venue.id ? 0.8 : 1,
-                        cursor: 'pointer'
-                      }
-                    }
-                  }}
-                  marginBottom="12px"
+                  className={css({
+                    opacity: hoveredVenueId === venue.id ? 0.8 : 1,
+                    cursor: 'pointer'
+                  })}
                   onClick={() => { history.push(`/${venue.symbol}`) }}
                   onMouseLeave={() => { setHoveredVenueId(null) }}
                   onMouseEnter={() => { setHoveredVenueId(venue.id) }}
                 >
-                  <VenueCell venue={venue} />
+                  <VenueCell venue={venue} hovered={hoveredVenueId === venue.id} />
                 </Block>
               );
             })
           }
-          <Block display="flex">
+          <Block display="flex" width="100%">
             <Block flex="1" display="flex" flexDirection="column">
               <Button onClick={handlePrevPage}>
                 <ChevronLeft color="#fff" size={36} />

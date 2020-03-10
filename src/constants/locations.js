@@ -2,7 +2,9 @@ export const venues = [
 	{
 		"id": 1,
 		"photos": [
+			"https://nerdreactor.com/wp-content/uploads/2020/01/Sandbox-VR-Deadwood-Mansion.jpg",
 			"https://image.cnbcfm.com/api/v1/image/106033668-1563864541401sandbox.jpeg?v=1563864607&w=740&h=416",
+			"https://morningbrew-oslo.s3.us-west-2.amazonaws.com/1571837477.jpg",
 			"https://image.cnbcfm.com/api/v1/image/106033677-1563864964164concept1.png?v=1563865076&w=740&h=416"
 		],
 		"name": "Sandbox VR",
@@ -29,7 +31,7 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 6],
 		"price": 48,
-		"priceReasoning": "Sandbox VR's experience costs $48 per person",
+		"priceReasoning": "Based on price per game",
 		"location": {
 			"latitude": 37.786426,
 			"longitude": -122.404609
@@ -39,6 +41,8 @@ export const venues = [
 	{
 		"id": 6	,
 		"photos": [
+			"https://wearespin.com/wp-content/uploads/2018/09/SPIN-Specials-181002-3-1440x960.jpg",
+			"https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/styles/sft_700x380/public/parters/images/P00188019_3_20150828104845.JPEG?itok=e8OyGc2e&timestamp=1582974001",
 			"https://wearespin.com/wp-content/uploads/2018/08/SPIN_San_Francisco_Gray_Table_Website.jpg",
 			"https://wearespin.com/wp-content/uploads/2020/03/T1_8783.jpg"
 		],
@@ -76,6 +80,8 @@ export const venues = [
 	{
 		"id": 54,
 		"photos": [
+			"https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_465,q_50,w_698/https://assets.simpleviewinc.com/simpleview/image/upload/crm/denver/15709_LuckyStrike_b691b214-b8ff-546b-0137e3e3fccbc726.jpg",
+			"https://cdn3.gbot.me/photos/Kd/CR/1409084314/-_Lucky_Strike_Lanes__in_K-20000000008294414-500x375.jpg",
 			"https://media-cdn.tripadvisor.com/media/photo-s/14/04/83/c5/lanes.jpg",
 			"https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/styles/sft_550x300/public/parters/images/P00145920_5_20170407101648.JPG?itok=5bIvfIql&timestamp=1582974001"
 		],
@@ -113,6 +119,7 @@ export const venues = [
 	{
 		"id": 53,
 		"photos": [
+			"https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/42102898_2012495012105281_6580192181565259776_o.jpg?_nc_cat=100&_nc_sid=6e5ad9&_nc_ohc=CvWMe7EHUV8AX_JL9sz&_nc_ht=scontent-sjc3-1.xx&oh=3461a485fd457e38ed4c3225cbeabb25&oe=5E8F28C9",
 			"https://images.squarespace-cdn.com/content/v1/54acc17de4b0ab38fef7d3a8/1422743264760-0AYAPAEKPR7ROLZWEMET/ke17ZwdGBToddI8pDm48kMkJiBwTQHGDHNdKDiaHrccUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2doRj74AyrZLIEC6NtbOwxSqdUV305ssLg6_tWCZXGrUDW07ycm2Trb21kYhaLJjddA/image+1.jpg?format=2500w",
 			"https://images.squarespace-cdn.com/content/v1/54acc17de4b0ab38fef7d3a8/1422743500627-59GNAAUIQWSG378NG58X/ke17ZwdGBToddI8pDm48kKI1wTrFi58bREzlHzeJClkUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2djwkakg8n8ubkZYFb3QyRj_of7Ncgl9X9tx76OTs4oVlH3bqxw7fF48mhrq5Ulr0Hg/471565_505796992775098_889181223_o.jpg?format=1500w"
 		],
@@ -150,6 +157,7 @@ export const venues = [
 	{
 		"id": 28,
 		"photos": [
+			"https://img.grouponcdn.com/deal/2MA2Nj6DQ8zsWzWSREaNb5YYPKbJ/2M-1500x900/v1/c700x420.jpg",
 			"https://www.k1speed.com/wp-content/uploads/2018/10/arrive-and-drive.jpg",
 			"https://www.k1speed.com/wp-content/uploads/2019/04/20190411_000224.jpg"
 		],
@@ -187,6 +195,8 @@ export const venues = [
 	{
 		"id": 4	,
 		"photos": [
+			"https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/a0/ac/e8/main-bar-at-street-level.jpg",
+			"https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/b4/5c/f5/1st-karaoke-area-the.jpg",
 			"https://pandorakaraoke.com/wp-content/uploads/2019/04/home-2.jpg"
 		],
 		"name": "Pandora Karaoke",
@@ -223,6 +233,8 @@ export const venues = [
 	{
 		"id": 19,
 		"photos": [
+			"https://img.grouponcdn.com/deal/mbPWj7RQV2ccRniEPNfJ/PW-960x582/v1/sc600x600.jpg",
+			"https://www.mercurynews.com/wp-content/uploads/2017/09/ealj0831minigolf01.jpg?w=620",
 			"https://s3-media0.fl.yelpcdn.com/bphoto/GjrAN1EUKf9FIUwQmy1-Aw/l.jpg",
 			"https://media.timeout.com/images/105360103/630/472/image.jpg"
 		],
@@ -260,6 +272,8 @@ export const venues = [
 	{
 		"id": 5	,
 		"photos": [
+			"https://i.pinimg.com/originals/1d/64/e6/1d64e644c3aa079a4f1305a107cb4cc1.jpg",
+			"https://cdn.funcheap.com/wp-content/uploads/2019/12/53246879_1253731378107179_3788857266191466496_o-scaled.jpg",
 			"http://coinopsf.com/wp-content/uploads/2017/11/image-home-scroll-6@2x.jpg",
 			"http://coinopsf.com/wp-content/uploads/2018/05/KJB0159.jpg"
 		],
@@ -297,6 +311,7 @@ export const venues = [
 	{
 		"id": 23,
 		"photos": [
+			"https://worldofescapes-com.s3.amazonaws.com/uploads/quests/8696/medium/reason-crash-site-escape-1.jpg",
 			"https://www.tryreason.com/wp-content/uploads/2018/09/o.jpg",
 			"https://www.tryreason.com/wp-content/uploads/2018/01/first-person-view.jpg"
 		],
@@ -334,6 +349,7 @@ export const venues = [
 	{
 		"id": 2,
 		"photos": [
+			"https://s3-media0.fl.yelpcdn.com/bphoto/3Zf-nQ-1lngsleA_8Pz9NA/348s.jpg",
 			"https://static.urbandaddy.com/uploads/assets/image/articles/standard/47a78b7f97119391669f6fbb268b46317352f69c.jpg",
 			"https://infatuation.imgix.net/media/images/reviews/local-edition/banners/1525311442.75.jpg?auto=format&h=840&w=1336"
 		],

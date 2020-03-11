@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { StatefulTooltip } from 'baseui/tooltip';
 import { Tag } from 'baseui/tag';
+import {
+  FaQuestionCircle,
+  FaStar,
+  FaUserFriends,
+  FaMoneyBill,
+  FaClock
+} from 'react-icons/fa';
+import DeleteIcon from 'baseui/icon/delete';
 import CheckIcon from 'baseui/icon/check';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
@@ -15,8 +24,11 @@ import {
   StyledBody
 } from 'baseui/card';
 import {
+  Display2,
   Display4,
-  Label1
+  Paragraph1,
+  Label1,
+  Label2
 } from 'baseui/typography';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueCell from '../components/venue/venue-cell';
@@ -46,141 +58,210 @@ function getHourFromMilitaryHour(hour) {
   }
   return `${hour}AM`;
 }
+//
+// <StyledTable $gridTemplateColumns="minmax(max-content, max-content) max-content">
+//   {
+//     Object.keys(venue.hours).map((day) => {
+//       const hour = venue.hours[day];
+//       return [
+//         <StyledHeadCell key={day}>{day}</StyledHeadCell>,
+//         <StyledBodyCell key={`${day}1`}>
+//           {
+//             isNaN(hour.start) ?
+//             'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
+//           }
+//         </StyledBodyCell>
+//       ];
+//     })
+//   }
+// </StyledTable>
 
-export default function Details({ match: { params: {venueSymbol} } }) {
-  const [ photoIndex, setPhotoIndex ] = useState(0);
-  const venue = allVenues.find((v) => v.symbol === venueSymbol);
+const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
+  const [ photoIndex, setPhotoIndex ] = useState(initialPhotoIndex);
 
-  useEffect(() => {
-    document.title = `TeamBright | ${venue ? venue.name : ''}`;
-  }, []);
   const onPrevPhoto = () => {
     if (photoIndex === 0) {
-      setPhotoIndex(venue.photos.length - 1)
+      setPhotoIndex(photos.length - 1)
     } else {
       setPhotoIndex(photoIndex - 1)
     }
   };
 
   const onNextPhoto = () => {
-    if (photoIndex === venue.photos.length - 1) {
+    if (photoIndex === photos.length - 1) {
       setPhotoIndex(0)
     } else {
       setPhotoIndex(photoIndex + 1)
     }
   };
 
-  return (
-    <Block display="flex" flexDirection="column" height="calc(100vh - 48px)">
-      <Block display="flex" backgroundColor="#0B6839" flexDirection="column" padding="12px">
-        <Display4 color="#fff">{venue.name}</Display4>
-        <Label1 color="#fff">{venue.teaserDescription}</Label1>
-      </Block>
-      <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
-        <Block flex="4" position="relative">
-          <Block position="absolute" top="0" left="0" height="100%" display="flex" flexDirection="column" justifyContent="center">
-            <Button kind="minimal" onClick={onPrevPhoto}>
-              <ChevronLeft color="#fff" size={36} />
-            </Button>
-          </Block>
-          <img width="100%" height="100%" style={{ objectFit: 'cover' }} src={venue.photos[photoIndex]} />
-          <Block position="absolute" top="0" right="0" height="100%" display="flex" flexDirection="column" justifyContent="center">
-            <Button kind="minimal" onClick={onNextPhoto}>
-              <ChevronRight color="#fff" size={36} />
-            </Button>
-          </Block>
-        </Block>
-        <Block flex="5" display="flex" flexDirection="column" overflow="auto">
-          <Block height="200px" position="relative">
-            <Block position="absolute" top="10px" right="10px" overrides={{ Block: { style: { zIndex: 1}}}}>
-              <Button $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</Button>
-            </Block>
-            <DiscoveryMap venues={[venue]} disableScrollZoom={true} />
-          </Block>
-          <Block
-            flex="1"
-            display="flex"
-            flexDirection="column"
-            alignItems="flex-start"
-            padding="24px"
-          >
-            <Block display="flex">
-              <Block>
-                <Card>
-                  <Label1 paddingBottom="24px"><i>{venue.teaserDescription}</i></Label1>
-                  <StyledBody>
-                    {venue.description}
-                  </StyledBody>
-                </Card>
-              </Block>
-              <Block marginLeft="12px">
-                <StyledTable $gridTemplateColumns="minmax(max-content, max-content) max-content">
-                  {
-                    Object.keys(venue.hours).map((day) => {
-                      const hour = venue.hours[day];
-                      return [
-                        <StyledHeadCell key={day}>{day}</StyledHeadCell>,
-                        <StyledBodyCell key={`${day}1`}>
-                          {
-                            isNaN(hour.start) ?
-                            'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
-                          }
-                        </StyledBodyCell>
-                      ];
-                    })
-                  }
-                </StyledTable>
-              </Block>
-            </Block>
-            <Block marginTop="24px">
-              <StyledTable $gridTemplateColumns="minmax(max-content, max-content) minmax(200px, max-content)">
-                <StyledHeadCell>#</StyledHeadCell>
-                <StyledBodyCell>
-                  {
-                    venue.tags.map((tag, index) => {
-                      return (
-                        <Tag key={index} closeable={false} kind="accent" variant="outlined">
-                          <b>{tag}</b>
-                        </Tag>
-                      );
-                    })
-                  }
-                  {
-                    venue.vibe.map((tag, index) => {
-                      return (
-                        <Tag key={index} closeable={false} kind="accent" variant="outlined">
-                          <b>{tag}</b>
-                        </Tag>
-                      );
-                    })
-                  }
-                </StyledBodyCell>
-                <StyledHeadCell>Price</StyledHeadCell>
-                <StyledBodyCell>{venue.price}</StyledBodyCell>
-                <StyledHeadCell>Average Duration</StyledHeadCell>
-                <StyledBodyCell>People spend <b>{minutesToAverageTimeSpent(venue.averageTimeSpent)}</b> here</StyledBodyCell>
-                <StyledHeadCell>Rating</StyledHeadCell>
-                <StyledBodyCell>⭐{venue.rating}</StyledBodyCell>
-                <StyledHeadCell>Recommend Group Size</StyledHeadCell>
-                <StyledBodyCell>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</StyledBodyCell>
-                <StyledHeadCell>Address</StyledHeadCell>
-                <StyledBodyCell>{venue.address}</StyledBodyCell>
-                <StyledHeadCell>Phone</StyledHeadCell>
-                <StyledBodyCell>{venue.phoneNumber}</StyledBodyCell>
-                <StyledHeadCell>Email</StyledHeadCell>
-                <StyledBodyCell>{venue.email}</StyledBodyCell>
-                <StyledHeadCell>Parking Available</StyledHeadCell>
-                <StyledBodyCell>{venue.parkingAvailable ? 'Yes' : 'No'}</StyledBodyCell>
-              </StyledTable>
-            </Block>
-            <Block display="flex" flexDirection="column" width="100%" marginTop="24px">
-              <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
-                <CheckIcon size={24} color="#fff" /><b>Book</b>
-              </Button>
-            </Block>
-          </Block>
-        </Block>
+  const hidePhotoDetails = () => {
+    document.body.style.overflow = 'auto';
+    setShowPhotoDetails(false);
+  };
 
+  return (
+    <Block
+      position="fixed"
+      top="0px"
+      left="0px"
+      width="100%"
+      height="100%"
+      backgroundColor="#fff"
+      overrides={{ Block: { style: { zIndex: 10}}}}
+      display="flex"
+      flexDirection="column"
+    >
+      <Block>
+        <Button kind="minimal" onClick={hidePhotoDetails}>
+          <DeleteIcon size={36} />
+        </Button>
+      </Block>
+      <Block display="flex" flex="1">
+        <Block display="flex" alignItems="center">
+          <Button kind="minimal" onClick={onPrevPhoto}>
+            <ChevronLeft size={36} />
+          </Button>
+        </Block>
+        <Block flex="1" display="flex" height="100%" alignItems="center" justifyContent="center">
+          <Block height="80vh">
+            <img height="100%" src={photos[photoIndex]} />
+          </Block>
+        </Block>
+        <Block display="flex" alignItems="center">
+          <Button kind="minimal" onClick={onNextPhoto}>
+            <ChevronRight size={36} />
+          </Button>
+        </Block>
+      </Block>
+    </Block>
+  );
+};
+
+export default function Details({ match: { params: {venueSymbol} } }) {
+  const [ photoIndex, setPhotoIndex ] = useState(0);
+  const [ showPhotoDetails, setShowPhotoDetails ] = useState(false);
+  const [ initialPhotoIndex, setInitialPhotoIndex ] = useState(null);
+  const venue = allVenues.find((v) => v.symbol === venueSymbol);
+
+  useEffect(() => {
+    document.title = `TeamBright | ${venue ? venue.name : ''}`;
+  }, []);
+
+  const openPhotoDetails = (index) => {
+    document.body.style.overflow = 'hidden';
+    setShowPhotoDetails(true);
+    setInitialPhotoIndex(index);
+  };
+
+  return (
+    <Block display="flex" flexDirection="column">
+      {showPhotoDetails && <PhotoDetails photos={venue.photos} initialPhotoIndex={initialPhotoIndex} setShowPhotoDetails={setShowPhotoDetails} />}
+      <Block display="flex" minHeight="30vw" padding="24px">
+        {venue.photos.slice(0, 3).map((photo, index) => {
+          return (
+            <Block
+              flex="1"
+              margin="12px"
+              key={index}
+              onClick={() => { openPhotoDetails(index) }}
+              overrides={{ Block: {style: {cursor: 'pointer'}}}}
+            >
+              <img width="100%" height="100%" style={{ objectFit: 'cover' }} src={photo} />
+            </Block>
+          );
+        })}
+        <Block flex="1" margin="12px" position="relative">
+          <Block position="absolute" top="10px" right="10px" overrides={{ Block: { style: { zIndex: 1}}}}>
+            <Button $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</Button>
+          </Block>
+          <DiscoveryMap venues={[venue]} disableScrollZoom={true} />
+        </Block>
+      </Block>
+      <Block paddingLeft="24px" paddingRight="24px" paddingBottom="24px" display="flex">
+        <Block flex="1" paddingLeft="12px" paddingRight="24px">
+          <Label1><b>{venue.name}</b></Label1>
+          <Display4 marginTop="8px"><b>{venue.teaserDescription}</b></Display4>
+          <Block marginLeft="-5px" marginTop="8px">
+            {
+              venue.tags.map((tag, index) => {
+                return (
+                  <Tag key={index} closeable={false} kind="accent" variant="outlined">
+                    <b>{tag}</b>
+                  </Tag>
+                );
+              })
+            }
+            {
+              venue.vibe.map((tag, index) => {
+                return (
+                  <Tag key={index} closeable={false} kind="accent" variant="outlined">
+                    <b>{tag}</b>
+                  </Tag>
+                );
+              })
+            }
+          </Block>
+          <Label1 marginTop="8px"><b>{venue.address}</b></Label1>
+          <Label2 color="#0B6839" marginTop="8px"><b>{venue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
+        </Block>
+        <Block flex="1" display="flex" padding="24px">
+          <Block flex="1" padding="24px">
+            <FaUserFriends />
+            <Label2 color="#727272">Group Size</Label2>
+            <Label2><b>Good for {`${venue.recommendedGroupsize[0]} - ${venue.recommendedGroupsize[1]}`} people</b></Label2>
+          </Block>
+          <Block flex="1" padding="24px">
+            <FaMoneyBill />
+            <Block display="flex">
+              <Label2 color="#727272" marginRight="8px">Budget</Label2>
+              <StatefulTooltip
+                accessibilityType={'tooltip'}
+                content={venue.priceReasoning}
+              >
+                <Label2 color="#727272"><FaQuestionCircle style={{verticalAlign: 'text-top'}} /></Label2>
+              </StatefulTooltip>
+            </Block>
+            <Label2><b>From ${venue.price} / person</b></Label2>
+          </Block>
+          <Block flex="1" padding="24px">
+            <FaClock />
+            <Label2 color="#727272">Duration</Label2>
+            <Label2><b>People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</b></Label2>
+          </Block>
+        </Block>
+      </Block>
+      <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
+        <Block display="flex">
+          <Block flex="1">
+            <Display2><b>About</b></Display2>
+          </Block>
+          <Block flex="2">
+            <Label1><i>{venue.teaserDescription}</i></Label1>
+            <Paragraph1>{venue.description}</Paragraph1>
+          </Block>
+        </Block>
+      </Block>
+      <Block
+        position="fixed"
+        bottom="0px"
+        left="0px"
+        right="0px"
+        display="flex"
+        justifyContent="flex-end"
+        padding="12px"
+        backgroundColor="#fff"
+        overrides={{ Block: { style: { zIndex: 5, boxShadow: '0px 5px 20px 0px rgba(0,0,0,0.75)' }}}}
+      >
+        <Block display="flex" flex="1" alignItems="center" paddingLeft="12px">
+          <Label2 color="#727272"><b>{venue.name} | {venue.teaserDescription}</b></Label2>
+        </Block>
+        <Block display="flex" justifyContent="flex-end" alignItems="center">
+          <Label1 color="#727272" marginRight="24px"><b>From ${venue.price} / person</b></Label1>
+          <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
+            <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
+          </Button>
+        </Block>
       </Block>
     </Block>
   );

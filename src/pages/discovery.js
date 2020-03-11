@@ -13,6 +13,8 @@ import { venues as allVenues } from '../constants/locations';
 // Filter
 import { Radio, RadioGroup } from 'baseui/radio';
 import { Select } from 'baseui/select';
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-160350473-1");
 
 const typeOptions = [
   {
@@ -178,7 +180,7 @@ function filterVenues(venues, filterValue) {
     if (filterValue.type && venue.tags.indexOf(filterValue.type) === -1) {
       return false;
     }
-    if (filterValue.place && filterValue.place !== venue.place) {
+    if (filterValue.place && venue.tags.indexOf(filterValue.place) === -1) {
       return false;
     }
     return true;
@@ -186,6 +188,32 @@ function filterVenues(venues, filterValue) {
 }
 
 const LIST_SIZE = 10;
+
+const generateLabel = (action, value) => {
+  if (action === 'type' || action === 'place') {
+    return value;
+  }
+  if (action === 'recommendedGroupsize') {
+    return `${Math.floor(value / 10) * 10} - ${Math.ceil(value / 10) * 10}`;
+  }
+  if (action === 'duration') {
+    return durationOptions.find(d => d.id === value).label;
+  }
+  if (action === 'price') {
+    return budgetOptions.find(d => d.id === value).label;
+  }
+  return '';
+};
+
+const emitFilterEvent = (payload) => {
+  const action = Object.keys(payload)[0];
+  const label = generateLabel(action, payload[action]);
+  ReactGA.event({
+    category: 'Filter',
+    action,
+    label
+  });
+};
 
 export default function Discovery() {
   const history = useHistory();
@@ -225,6 +253,9 @@ export default function Discovery() {
   }, [venueRefs[scrollToId] && venueRefs[scrollToId].current]);
 
   const updateFilterValue = (payload) => {
+
+    emitFilterEvent(payload);
+
     setFilterValue({
       ...filterValue,
       ...payload
@@ -253,6 +284,10 @@ export default function Discovery() {
       setScrollToId(id);
       setVenueIndex(Math.floor(index / 10) * 10);
     }
+
+  };
+
+  const onVenueCellClicked = () => {
 
   };
 

@@ -70,13 +70,16 @@ function compareVenues(prevVenues, venues) {
   if (!prevVenues) {
     return true;
   }
+  if (!venues) {
+    return true;
+  }
   if (prevVenues.length > 50 && prevVenues.length === venues.length) {
     return false;
   } else if (prevVenues.length > 50 && prevVenues.length !== venues.length) {
     return true;
   }
   for (let i = 0; i < prevVenues.length; i++) {
-    if (prevVenues[i].id !== venues[i].id) {
+    if (venues[i] && prevVenues[i].id !== venues[i].id) {
       return true;
     }
   }

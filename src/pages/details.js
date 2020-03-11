@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { useStyletron } from 'styletron-react';
 import { StatefulTooltip } from 'baseui/tooltip';
 import { Tag } from 'baseui/tag';
 import {
@@ -123,9 +124,12 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
             <ChevronLeft size={36} />
           </Button>
         </Block>
-        <Block flex="1" display="flex" height="100%" alignItems="center" justifyContent="center">
-          <Block height="80vh">
+        <Block flex="1" display="flex" flexDirection="column" height="100%" alignItems="center" justifyContent="center">
+          <Block height="calc(80vh - 50px)">
             <img height="100%" src={photos[photoIndex]} />
+          </Block>
+          <Block height="50px" display="flex" alignItems="center" justifyContent="center">
+            <Label2>{photoIndex + 1} / {photos.length}</Label2>
           </Block>
         </Block>
         <Block display="flex" alignItems="center">
@@ -142,6 +146,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
   const [ photoIndex, setPhotoIndex ] = useState(0);
   const [ showPhotoDetails, setShowPhotoDetails ] = useState(false);
   const [ initialPhotoIndex, setInitialPhotoIndex ] = useState(null);
+  const [ css ] = useStyletron();
   const venue = allVenues.find((v) => v.symbol === venueSymbol);
 
   useEffect(() => {
@@ -202,7 +207,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
               })
             }
           </Block>
-          <Label1 marginTop="8px"><b>{venue.address}</b></Label1>
+          <a className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
           <Label2 color="#0B6839" marginTop="8px"><b>{venue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
         </Block>
         <Block flex="1" display="flex" padding="24px">

@@ -109,7 +109,7 @@ export default function VenueCell({ venue, hovered }) {
           </StatefulTooltip>
         </Block>
         <Label2 color="#484848"><b>{minutesToAverageTimeSpent(venue.averageTimeSpent)}</b></Label2>
-        <Label2 color="#0B6839"><b>{venue.rating}<FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
+        <Label2 color="#0B6839"><b>{venue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
         <Block marginTop="12px">
           <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
             <CheckIcon size={24} color="#fff" /><b>Book</b>

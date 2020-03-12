@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
 import { useStyletron } from 'baseui';
 import { Block } from 'baseui/block';
-import { Label3 } from 'baseui/typography';
+import { Label3, Label2 } from 'baseui/typography';
 import { Tag } from 'baseui/tag';
 import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
 import { usePrevious } from '../../utils';
@@ -160,7 +161,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
           >
             <Block backgroundColor="#0B6839" padding="8px">
               <Label3 color="#fff">{pinnedVenue.name}</Label3>
-              <Label3 color="#fff">⭐{pinnedVenue.rating}</Label3>
+              <Label2 color="#fff">{pinnedVenue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></Label2>
             </Block>
             <Block height="80px">
               <img width="100%" height="100%" style={{ objectFit: 'cover' }} src={pinnedVenue.photos[0]} />

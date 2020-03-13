@@ -463,6 +463,7 @@ export const venues = [
 	{
 		"id": 8,
 		"photos": [
+			"https://theknow.denverpost.com/wp-content/uploads/2019/09/TDP-L-UrbanPutt91119-cha-239.jpg",
 			"https://i.pinimg.com/originals/7b/5a/58/7b5a581f1a2853a2ca5aa533acf4dd81.jpg",
 		],
 		"name": "Urban Putt",
@@ -573,6 +574,7 @@ export const venues = [
 	{
 		"id": 11,
 		"photos": [
+			"https://www.sdentertainer.com/wp-content/uploads/Bunch-of-Bad-Axers-660x400.jpg",
 			"https://s3-media0.fl.yelpcdn.com/bphoto/8_VRoCXV-dUPEhCgnXRWVg/o.jpg",
 			"https://s3-media0.fl.yelpcdn.com/bphoto/FPsfaVnr2bB4_izn1WHTpQ/o.jpg"
 		],
@@ -796,6 +798,7 @@ export const venues = [
 	{
 		"id": 18,
 		"photos": [
+			"https://www.presidiogolf.com/wp-content/uploads/2014/02/presidio2.jpg",
 			"https://img.grouponcdn.com/deal/3d5JFo5iD6Pr7FoQ9HpdQZSVfeLs/3d-700x420/v1/c700x420.jpg",
 		],
 		"name": "Presidio Golf Course",
@@ -832,6 +835,7 @@ export const venues = [
 	{
 		"id": 20,
 		"photos": [
+			"https://s3-media4.fl.yelpcdn.com/bphoto/q49fSC57OPbZIZq6QOO24g/l.jpg",
 			"https://s3-media0.fl.yelpcdn.com/bphoto/2Z36mT87H8tS_xekbO7sPQ/o.jpg",
 			"https://s3-media0.fl.yelpcdn.com/bphoto/CLMBh719FCiFUZ7l3TnZFw/o.jpg"
 		],
@@ -869,6 +873,7 @@ export const venues = [
 	{
 		"id": 21,
 		"photos": [
+			"https://hoodwork-production.s3.amazonaws.com/uploads/story/image/19063/coin_op_sd.jpg",
 			"https://insidescoopsf.sfgate.com/files/2016/12/LBP_5456.jpg",
 			"https://insidescoopsf.sfgate.com/wp-content/blogs.dir/732/files/coin-op-sf/lbp_5354.jpg"
 		],
@@ -907,6 +912,7 @@ export const venues = [
 		"id": 22,
 		"photos": [
 			"https://emporiumsf.com/wp-content/uploads/2018/12/d1-emporiumsf.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/JhX7rMZ1w5a_LqXYt-qTfg/l.jpg",
 			"https://hoodline.imgix.net/uploads/story/image/50853/insideemporium.jpg?auto=format"
 		],
 		"name": "Emporium",
@@ -1019,6 +1025,8 @@ export const venues = [
 		"id": 26,
 		"photos": [
 			"https://jordanskitchensf.com/wp-content/uploads/2018/03/cooking-classes-4-683x1024.jpg",
+			"https://jordanskitchensf.com/wp-content/uploads/2018/03/team-building-2-1024x529.png",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/R20P59gQJTs9bdJayGfhRg/348s.jpg"
 		],
 		"name": "Jordan's Kitchen",
 		"description": "The premier place in San Francisco for hands on cooking classes.",
@@ -1043,7 +1051,7 @@ export const venues = [
 		"takesReservations": true,
 		"averageTimeSpent": 150,
 		"recommendedGroupsize": [10, 30],
-		"price": 60,
+		"price": 125,
 		"priceReasoning": 'Based on price per class',
 		"location": {
 			"latitude": 37.7714519,

@@ -125,7 +125,7 @@ function Filter({ filterValue, updateFilterValue }) {
           overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={durationOptions}
           value={filterValue.duration ? [{id: filterValue.duration}] : null}
-          placeholder="Preferred Duration"
+          placeholder="Duration"
           onChange={params => updateFilterValue({ duration: params.value[0].id })}
         />
       </Block>

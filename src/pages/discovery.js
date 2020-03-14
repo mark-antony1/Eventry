@@ -22,25 +22,33 @@ ReactGA.initialize("UA-160350473-1");
 
 const typeOptions = [
   {
-    id: 'alcohol',
-    label: 'Alcohol'
+    id: 'competitive',
+    label: 'Competitive'
   },
   {
-    id: 'game',
-    label: 'Game'
+    id: 'cooperative',
+    label: 'Cooperative'
   },
   {
-    id: 'sing',
-    label: 'Sing'
+    id: 'bar',
+    label: 'Bar'
   },
   {
-    id: 'dance',
-    label: 'Dance'
+    id: 'explore',
+    label: 'Explore'
   },
   {
-    id: 'active',
-    label: 'Active'
+    id: 'class',
+    label: 'Class'
   },
+  {
+    id: 'tour',
+    label: 'Tour'
+  },
+  {
+    id: 'food',
+    label: 'Food'
+  }
 ];
 
 const durationOptions = [
@@ -181,7 +189,7 @@ function filterVenues(venues, filterValue) {
         return false;
       }
     }
-    if (filterValue.type && venue.tags.indexOf(filterValue.type) === -1) {
+    if (filterValue.type && venue.activityType !== filterValue.type) {
       return false;
     }
     if (filterValue.place && venue.tags.indexOf(filterValue.place) === -1) {

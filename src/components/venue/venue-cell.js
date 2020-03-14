@@ -33,7 +33,7 @@ export default function VenueCell({ venue, hovered }) {
   photoIndexRef.current = photoIndex;
   useEffect(() => {
     if (hovered && intervalId === null) {
-      const id = setInterval(onNextPhoto, 1500);
+      const id = setInterval(onNextPhoto, 2250);
       setIntervalId(id);
     }
     if (!hovered && intervalId !== null) {
@@ -58,14 +58,15 @@ export default function VenueCell({ venue, hovered }) {
     <Block display="flex" flexDirection="column">
       <Block height="300px" overrides={{ Block: { style: { overflow: 'hidden', borderRadius: '10px' } } }}>
         <img alt="" className={css({
-            animationDuration: "1.5s",
+            animationDuration: "2.25s",
             animationIterationCount: "infinite",
+            animationDelay: ".25s",
             animationName: hovered ? {
               from: {
                 transform: 'scale(1.0)'
               },
               to: {
-                transform: 'scale(1.1)'
+                transform: 'scale(1.075)'
               }
             } : {}
           })}
@@ -90,10 +91,10 @@ export default function VenueCell({ venue, hovered }) {
         </Block>
         <Block marginLeft="-6px">
           {
-            venue.vibe.map((vibe, index) => {
+            venue.tags.map((tag, index) => {
               return (
                 <Tag key={index} closeable={false} kind="accent" variant="outlined">
-                  <b>{vibe}</b>
+                  <b>{tag}</b>
                 </Tag>
               );
             })

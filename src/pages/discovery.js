@@ -22,8 +22,8 @@ ReactGA.initialize("UA-160350473-1");
 
 const typeOptions = [
   {
-    id: 'athletic',
-    label: 'Athletic'
+    id: 'alcohol',
+    label: 'Alcohol'
   },
   {
     id: 'game',

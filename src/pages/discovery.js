@@ -25,7 +25,7 @@ ReactGA.initialize("UA-160350473-1");
 const typeOptions = [
   {
     id: 'none',
-    label: 'Activity Type'
+    label: 'No Activity Type'
   },
   {
     id: 'competitive',

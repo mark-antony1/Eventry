@@ -126,7 +126,7 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
   return (
     <Block display="flex" flexDirection="column" backgroundColor="#f4f4f4">
       <Block display="flex" alignItems="center" flexWrap="wrap">
-        <Block width="200px" padding="12px">
+        <Block width="180px" padding="12px">
           <Input
             value={searchTerm}
             onChange={e => {
@@ -136,7 +136,7 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
             placeholder="Search Venue"
           />
         </Block>
-        <Block width="100px" padding="12px">
+        <Block width="130px" padding="12px">
           <Select
             clearable={false}
             searchable={false}
@@ -147,7 +147,7 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
             onChange={params => updateFilterValue({ recommendedGroupsize: params.value[0].id })}
           />
         </Block>
-        <Block width="150px" padding="12px">
+        <Block width="140px" padding="12px">
           <Select
             clearable={false}
             searchable={false}
@@ -158,7 +158,7 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
             onChange={params => updateFilterValue({ type: params.value[0].id })}
           />
         </Block>
-        <Block width="200px" padding="12px">
+        <Block width="180px" padding="12px">
           <Select
             clearable={false}
             searchable={false}
@@ -330,6 +330,9 @@ function setFilterQueryUrl(history, queryUrl, payload) {
   const action = Object.keys(payload)[0];
   if (payload[action] === 'none') {
     queryUrl.delete(action);
+    if (action === 'recommendedGroupsize') {
+      queryUrl.delete('groupSize');
+    }
   } else if (action === 'indoor') {
     if (action === 'indoor' && !payload[action]) {
       queryUrl.set('indoor', 'false');

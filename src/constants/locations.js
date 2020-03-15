@@ -65,7 +65,7 @@ export const venues = [
 		"vibe": ["chill", "fun"],
 		"address": "690 Folsom St #100, San Francisco, CA 94107",
 		"parkingAvailable": false,
-		"linkToSite": "coinopsf.com",
+		"linkToSite": "https://wearespin.com/location/san-francisco/",
 		"activityType": "bar",
 		"tags": ["indoor", "active", "alcohol"],
 		"rating": 4.5,

@@ -22,6 +22,10 @@ ReactGA.initialize("UA-160350473-1");
 
 const typeOptions = [
   {
+    id: 'none',
+    label: 'Activity Type'
+  },
+  {
     id: 'competitive',
     label: 'Competitive'
   },
@@ -53,6 +57,10 @@ const typeOptions = [
 
 const durationOptions = [
   {
+    id: 'none',
+    label: 'Duration'
+  },
+  {
     id: 1,
     label: '1 hour or less'
   },
@@ -67,6 +75,10 @@ const durationOptions = [
 ];
 
 const budgetOptions = [
+  {
+    id: 'none',
+    label: 'Budget Per Person'
+  },
   {
     id: 1,
     label: '$20 or less'
@@ -87,7 +99,10 @@ const budgetOptions = [
 
 function Filter({ filterValue, updateFilterValue }) {
 
-  const groupSizeOptions = [];
+  const groupSizeOptions = [{
+    id: 'none',
+    label: 'Group Size'
+  }];
   for (let i = 2; i <= 50; i++) {
     groupSizeOptions.push({
       id: i,
@@ -163,7 +178,7 @@ function Filter({ filterValue, updateFilterValue }) {
 
 function filterVenues(venues, filterValue) {
   return venues.filter(venue => {
-    if (filterValue.price) {
+    if (filterValue.price && filterValue.price !== 'none') {
       // $20 or less
       if (filterValue.price === 1 && venue.price > 20) {
         return false;
@@ -181,10 +196,10 @@ function filterVenues(venues, filterValue) {
         return false;
       }
     }
-    if (filterValue.recommendedGroupsize && (venue.recommendedGroupsize[0] > filterValue.recommendedGroupsize || venue.recommendedGroupsize[1] < filterValue.recommendedGroupsize)) {
+    if (filterValue.recommendedGroupsize && filterValue.recommendedGroupsize !== 'none' && (venue.recommendedGroupsize[0] > filterValue.recommendedGroupsize || venue.recommendedGroupsize[1] < filterValue.recommendedGroupsize)) {
       return false;
     }
-    if (filterValue.duration) {
+    if (filterValue.duration && filterValue.duration !== 'none') {
       // 1 hour or less
       if (filterValue.duration === 1 && venue.averageTimeSpent > 60) {
         return false;
@@ -198,7 +213,7 @@ function filterVenues(venues, filterValue) {
         return false;
       }
     }
-    if (filterValue.type && venue.activityType !== filterValue.type) {
+    if (filterValue.type !== 'none' && filterValue.type && venue.activityType !== filterValue.type) {
       return false;
     }
     if (!filterValue.indoor || !filterValue.outdoor) {
@@ -274,7 +289,9 @@ function setFilterQueryUrl(history, queryUrl, payload) {
   const type = queryUrl.get('type');
   const groupSize = queryUrl.get('groupSize');
   const action = Object.keys(payload)[0];
-  if (action === 'indoor') {
+  if (payload[action] === 'none') {
+    queryUrl.delete(action);
+  } else if (action === 'indoor') {
     if (action === 'indoor' && !payload[action]) {
       queryUrl.set('indoor', 'false');
     }

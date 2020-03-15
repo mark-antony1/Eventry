@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { StyledLink } from 'baseui/link';
 import { Button } from 'baseui/button';
 import {
@@ -15,7 +15,7 @@ import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
 
 // Filter
-import { Radio, RadioGroup } from 'baseui/radio';
+import { Checkbox } from 'baseui/checkbox';
 import { Select } from 'baseui/select';
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-160350473-1");
@@ -100,6 +100,7 @@ function Filter({ filterValue, updateFilterValue }) {
       <Block width="150px" padding="12px">
         <Select
           clearable={false}
+          searchable={false}
           overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={groupSizeOptions}
           value={filterValue.recommendedGroupsize ? [{id: filterValue.recommendedGroupsize}] : null}
@@ -110,6 +111,7 @@ function Filter({ filterValue, updateFilterValue }) {
       <Block width="150px" padding="12px">
         <Select
           clearable={false}
+          searchable={false}
           overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={typeOptions}
           value={filterValue.type ? [{id: filterValue.type}] : null}
@@ -120,6 +122,7 @@ function Filter({ filterValue, updateFilterValue }) {
       <Block width="200px" padding="12px">
         <Select
           clearable={false}
+          searchable={false}
           overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={budgetOptions}
           value={filterValue.price ? [{id: filterValue.price}] : null}
@@ -130,6 +133,7 @@ function Filter({ filterValue, updateFilterValue }) {
       <Block width="200px" padding="12px">
         <Select
           clearable={false}
+          searchable={false}
           overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
           options={durationOptions}
           value={filterValue.duration ? [{id: filterValue.duration}] : null}
@@ -138,15 +142,20 @@ function Filter({ filterValue, updateFilterValue }) {
         />
       </Block>
       <Block padding="12px">
-        <RadioGroup
-          align="horizontal"
-          name="horizontal"
-          onChange={e => updateFilterValue({ place: e.target.value })}
-          value={filterValue.place}
+        <Checkbox
+          checked={filterValue.indoor}
+          onChange={e => updateFilterValue({ indoor: e.target.checked })}
         >
-          <Radio value="indoor">Indoor</Radio>
-          <Radio value="outdoor">Outdoor</Radio>
-        </RadioGroup>
+          Indoor
+        </Checkbox>
+      </Block>
+      <Block padding="12px">
+        <Checkbox
+          checked={filterValue.outdoor}
+          onChange={e => updateFilterValue({ outdoor: e.target.checked })}
+        >
+          Outdoor
+        </Checkbox>
       </Block>
     </Block>
   );
@@ -192,9 +201,15 @@ function filterVenues(venues, filterValue) {
     if (filterValue.type && venue.activityType !== filterValue.type) {
       return false;
     }
-    if (filterValue.place && venue.tags.indexOf(filterValue.place) === -1) {
-      return false;
+    if (!filterValue.indoor || !filterValue.outdoor) {
+      if (filterValue.indoor && venue.tags.indexOf('indoor') === -1) {
+        return false;
+      }
+      if (filterValue.outdoor && venue.tags.indexOf('outdoor') === -1) {
+        return false;
+      }
     }
+
     return true;
   });
 }
@@ -202,8 +217,11 @@ function filterVenues(venues, filterValue) {
 const LIST_SIZE = 10;
 
 const generateLabel = (action, value) => {
-  if (action === 'type' || action === 'place') {
+  if (action === 'type') {
     return value;
+  }
+  if ((action === 'indoor' || action === 'outdoor') && !value) {
+    return `${action} off`
   }
   if (action === 'recommendedGroupsize') {
     return `${Math.floor(value / 10) * 10} - ${Math.ceil(value / 10) * 10}`;
@@ -227,24 +245,74 @@ const emitFilterEvent = (payload) => {
   });
 };
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+function initializeFilter(queryUrl) {
+  const indoor = queryUrl.get('indoor');
+  const outdoor = queryUrl.get('outdoor');
+  const price = queryUrl.get('price');
+  const duration = queryUrl.get('duration');
+  const type = queryUrl.get('type');
+  const groupSize = queryUrl.get('groupSize');
+  return {
+    price: !isNaN(price) ? Number(price) : null,
+    recommendedGroupsize: !isNaN(groupSize) ? Number(groupSize) : null,
+    duration: !isNaN(duration) ? Number(duration) : null,
+    type: type ? type : null,
+    indoor: indoor === 'false' ? false : true,
+    outdoor: outdoor === 'false' ? false : true,
+  };
+}
+
+function setFilterQueryUrl(history, queryUrl, payload) {
+  const indoor = queryUrl.get('indoor');
+  const outdoor = queryUrl.get('outdoor');
+  const price = queryUrl.get('price');
+  const duration = queryUrl.get('duration');
+  const type = queryUrl.get('type');
+  const groupSize = queryUrl.get('groupSize');
+  const action = Object.keys(payload)[0];
+  if (action === 'indoor') {
+    if (action === 'indoor' && !payload[action]) {
+      queryUrl.set('indoor', 'false');
+    }
+    if (action === 'indoor' && payload[action]) {
+      queryUrl.delete('indoor');
+    }
+  } else if (action === 'outdoor') {
+    if (action === 'outdoor' && !payload[action]) {
+      queryUrl.set('outdoor', 'false');
+    }
+    if (action === 'outdoor' && payload[action]) {
+      queryUrl.delete('outdoor');
+    }
+  } else if (action === 'recommendedGroupsize') {
+    queryUrl.set('groupSize', payload[action]);
+  } else {
+    queryUrl.set(action, payload[action]);
+  }
+  history.push({
+    pathname: '',
+    search: queryUrl.toString()
+  });
+}
+
 export default function Discovery() {
-  const history = useHistory();
   const [ css ] = useStyletron();
+  const history = useHistory();
+  const queryUrl = useQuery();
   const [ venueRefs, setVenueRefs ] = useState({});
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);
   const [ venues, setVenues ] = useState(allVenues);
   const [ hoveredVenueId , setHoveredVenueId ] = useState(null);
-  const [ filterValue , setFilterValue ] = useState({
-    price: null,
-    recommendedGroupsize: null,
-    duration: null,
-    type: null,
-    place: null
-  });
+  const [ filterValue , setFilterValue ] = useState(initializeFilter(queryUrl));
 
   useEffect(() => {
     document.title = `TeamBright`;
+    setVenues(filterVenues(allVenues, filterValue));
   }, []);
 
   useEffect(() => {
@@ -265,9 +333,8 @@ export default function Discovery() {
   }, [venueRefs[scrollToId] && venueRefs[scrollToId].current]);
 
   const updateFilterValue = (payload) => {
-
+    setFilterQueryUrl(history, queryUrl, payload);
     emitFilterEvent(payload);
-
     setFilterValue({
       ...filterValue,
       ...payload
@@ -296,10 +363,6 @@ export default function Discovery() {
       setScrollToId(id);
       setVenueIndex(Math.floor(index / 10) * 10);
     }
-
-  };
-
-  const onVenueCellClicked = () => {
 
   };
 
@@ -341,11 +404,12 @@ export default function Discovery() {
                       opacity: hoveredVenueId === venue.id ? 0.8 : 1,
                       cursor: 'pointer'
                     })}
-                    onClick={() => { history.push(`/${venue.symbol}`) }}
                     onMouseLeave={() => { setHoveredVenueId(null) }}
                     onMouseEnter={() => { setHoveredVenueId(venue.id) }}
                   >
-                    <VenueCell venue={venue} hovered={hoveredVenueId === venue.id} />
+                    <a href={`/${venue.symbol}`} target="_blank" className={css({ textDecoration: 'none' })}>
+                      <VenueCell venue={venue} hovered={hoveredVenueId === venue.id} />
+                    </a>
                   </Block>
                 );
               })

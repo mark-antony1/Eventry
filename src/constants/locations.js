@@ -401,7 +401,9 @@ export const venues = [
 	{
 		"id": 3,
 		"photos": [
-			"https://www.blueandgoldfleet.com/wp-content/uploads/2015/04/home_Carousel_BayCruise.jpg"
+			"https://www.blueandgoldfleet.com/wp-content/uploads/2015/04/home_Carousel_BayCruise.jpg",
+			"https://www.blueandgoldfleet.com/wp-content/uploads/2018/05/Home_Carousel_Bay_Cruise_Sea_Lion-1.jpg",
+			"https://www.pier39.com/wp-content/uploads/2016/09/BAGF_Coit_1170x550.jpg"
 		],
 		"name": "Blue and Gold Fleet",
 		"description": "Ferry and Boat tour operator in San Francisco, California",
@@ -439,6 +441,8 @@ export const venues = [
 		"id": 7	,
 		"photos": [
 			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-san-francisco-northern-end.jpg",
+			"https://www.californiabeaches.com/wp-content/uploads/2014/09/20150413_155519-Large-1000x563.jpg",
+			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-cliff-house-esplanade.jpg"
 		],
 		"name": "Ocean Beach",
 		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
@@ -477,6 +481,8 @@ export const venues = [
 		"photos": [
 			"https://theknow.denverpost.com/wp-content/uploads/2019/09/TDP-L-UrbanPutt91119-cha-239.jpg",
 			"https://i.pinimg.com/originals/7b/5a/58/7b5a581f1a2853a2ca5aa533acf4dd81.jpg",
+			"https://images.303magazine.com/uploads/2019/09/091219_UrbanPutt_PhotoCredit-@BJohnsonxAR-27-of-27.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/Ma8cPMNCW9PQwOtuZB-M1w/348s.jpg"
 		],
 		"name": "Urban Putt",
 		"description": "Unique restaurant featuring American grub & drinks in an informal space housing a mini-golf course.",
@@ -514,7 +520,8 @@ export const venues = [
 		"id": 9,
 		"photos": [
 			"https://www.nps.gov/goga/planyourvisit/images/MUBE_141122_KW_033.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
-			"https://www.parksconservancy.org/sites/default/files/styles/basic/public/resource-gallery/A_MUBE_100727_MCu_1.jpg?itok=MaxtPUMX"
+			"https://www.parksconservancy.org/sites/default/files/styles/basic/public/resource-gallery/A_MUBE_100727_MCu_1.jpg?itok=MaxtPUMX",
+			"https://media2.trover.com/T/5716dc06d090011c4b04dc2a/fixedw_large_4x.jpg"
 		],
 		"name": "Muir Beach",
 		"description": "Beach located 16.5 miles northwest of San Francisco",
@@ -553,6 +560,7 @@ export const venues = [
 		"photos": [
 			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-kirby-cove-road-descent-Marin-Headlands-Golden-Gate-National-Recreation-Area-Large-1000x565.jpg",
 			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-San-Francisco-Bay-hiking-trail-at-kirby-cove-Golden-Gate-Bridge-in-Golden-Gate-NRA-Large-e1510891225673-1000x615.jpg",
+			"https://media2.trover.com/T/5716dc06d090011c4b04dc2a/fixedw_large_4x.jpg"
 		],
 		"name": "Kirby Cove",
 		"description": "Beach front looking towards Golden Gate bridge.",
@@ -591,7 +599,8 @@ export const venues = [
 		"photos": [
 			"https://www.sdentertainer.com/wp-content/uploads/Bunch-of-Bad-Axers-660x400.jpg",
 			"https://s3-media0.fl.yelpcdn.com/bphoto/8_VRoCXV-dUPEhCgnXRWVg/o.jpg",
-			"https://s3-media0.fl.yelpcdn.com/bphoto/FPsfaVnr2bB4_izn1WHTpQ/o.jpg"
+			"https://s3-media0.fl.yelpcdn.com/bphoto/FPsfaVnr2bB4_izn1WHTpQ/o.jpg",
+			"https://media-cdn.tripadvisor.com/media/photo-s/13/ca/81/22/bullseye.jpg"
 		],
 		"name": "Bad Axe",
 		"description": "Learn to throw axes with friends.",
@@ -629,7 +638,8 @@ export const venues = [
 		"id": 12,
 		"photos": [
 			"https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_789,q_75,w_954/https://assets.simpleviewinc.com/simpleview/image/upload/crm/palmsprings/PinotsPaletteNightOut0-bc42e82c5056b36_bc42eca2-5056-b365-ab389af923e8fc16.jpg",
-			"https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/palmsprings/PinotsPalette0_2d086e5b-5056-b365-abcb06088b3ef64c.jpg"
+			"https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/palmsprings/PinotsPalette0_2d086e5b-5056-b365-abcb06088b3ef64c.jpg",
+			"https://studio.pinotspalette.com/exton/images/img_7240.jpg"
 		],
 		"name": "Pinos Palette",
 		"description": "Attendees paint during evening classes at this art studio chain serving alcohol at most locations.",
@@ -667,7 +677,8 @@ export const venues = [
 		"id": 13,
 		"photos": [
 			"https://d28m5bx785ox17.cloudfront.net/v1/img/t-EeHE4TzQxEPv7Dkk0M_XWtviZMl2bGnUmcNQQoOpI=",
-			"https://d28m5bx785ox17.cloudfront.net/v1/img/Yl6LrFOZRO-Ut0pH8-nmsN6AdOkg_uqb1_ZnEqC_Ygc="
+			"https://d28m5bx785ox17.cloudfront.net/v1/img/Yl6LrFOZRO-Ut0pH8-nmsN6AdOkg_uqb1_ZnEqC_Ygc=",
+			"https://mms.businesswire.com/media/20130618005354/en/373101/5/IMG_0135.jpg"
 		],
 		"name": "Paint Nite",
 		"description": "Attendees paint during evening classes at this art studio chain serving alcohol at most locations.",
@@ -705,7 +716,8 @@ export const venues = [
 		"id": 14,
 		"photos": [
 			"https://3jsnt91p9m6y2ownxz2ljlp7-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/escape-room-tips-and-tricks.png",
-			"https://palace-games.com/wp-content/uploads/2019/06/Palace_of_Fine_Arts_SF_CA.jpg"
+			"https://palace-games.com/wp-content/uploads/2019/06/Palace_of_Fine_Arts_SF_CA.jpg",
+			"https://i1.wp.com/roomescapeartist.com/wp-content/uploads/2016/09/palace-games-the-great-houdini-escape-room.jpg?fit=384%2C1012&ssl=1"
 		],
 		"name": "Palace Games",
 		"description": "Historic escape rooms in San Francisco's Palace of Fine Arts. The Great Houdini, Roosevelt, and Edison Escape Rooms are great for team building or just fun!",
@@ -821,6 +833,7 @@ export const venues = [
 		"photos": [
 			"https://www.presidiogolf.com/wp-content/uploads/2014/02/presidio2.jpg",
 			"https://img.grouponcdn.com/deal/3d5JFo5iD6Pr7FoQ9HpdQZSVfeLs/3d-700x420/v1/c700x420.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/poH6HtEcElhW6DgC3eaX6w/l.jpg"
 		],
 		"name": "Presidio Golf Course",
 		"description": "Outdoor golf course and experience the history, invention and fun of San Francisco.",
@@ -898,7 +911,8 @@ export const venues = [
 		"photos": [
 			"https://hoodwork-production.s3.amazonaws.com/uploads/story/image/19063/coin_op_sd.jpg",
 			"https://insidescoopsf.sfgate.com/files/2016/12/LBP_5456.jpg",
-			"https://insidescoopsf.sfgate.com/wp-content/blogs.dir/732/files/coin-op-sf/lbp_5354.jpg"
+			"https://insidescoopsf.sfgate.com/wp-content/blogs.dir/732/files/coin-op-sf/lbp_5354.jpg",
+			"https://www.californiahomedesign.com/wp-content/uploads/2019/03/0_lbp_5323.jpg"
 		],
 		"name": "Coin Op",
 		"description": "New American bites, cocktails & craft beer in a spacious barcade with arcade classics & other games.",
@@ -975,7 +989,8 @@ export const venues = [
 		"id": 24,
 		"photos": [
 			"https://cdn.vox-cdn.com/thumbor/B3Prng784Xgl-mGDtvC38_s4RJE=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/16006181/Everdene_PChang_0511.jpg",
-			"https://cdn.vox-cdn.com/thumbor/ZR_E9OPXCiV9p2Ghx7YGGu2pRiU=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/16006196/Everdene_PChang_0593.jpg"
+			"https://cdn.vox-cdn.com/thumbor/ZR_E9OPXCiV9p2Ghx7YGGu2pRiU=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/16006196/Everdene_PChang_0593.jpg",
+			"https://media-cdn.tripadvisor.com/media/photo-s/18/5b/63/cd/everdene-rooftop-bar.jpg"
 		],
 		"name": "Everdene",
 		"description": "The lively, 12th-story cocktail den at Virgin Hotels SF has big views, live DJs & New American eats.",
@@ -1205,7 +1220,8 @@ export const venues = [
 		"id": 31,
 		"photos": [
 			"https://static.wixstatic.com/media/596070_363794de4e2046248aab652ec5a57ce5~mv2.jpg",
-			"https://static.wixstatic.com/media/596070_09591b27762943199d4acb240510d012~mv2.jpg"
+			"https://static.wixstatic.com/media/596070_09591b27762943199d4acb240510d012~mv2.jpg",
+			"https://static.wixstatic.com/media/596070_0813e1a9bcdb4ebbbd738fe5867d9345~mv2.jpg/v1/fill/w_632,h_842,al_c,q_85,usm_0.66_1.00_0.01/596070_0813e1a9bcdb4ebbbd738fe5867d9345~mv2.webp"
 		],
 		"name": "Breakthrough Sushi",
 		"description": "The first and only sustainable sushi making classes company, serving San Francisco Bay Area.",
@@ -1281,7 +1297,8 @@ export const venues = [
 		"id": 33,
 		"photos": [
 			"https://s3-media0.fl.yelpcdn.com/bphoto/xr65EKNSEWEUuXaPuwrliw/o.jpg",
-			"https://s3-media0.fl.yelpcdn.com/bphoto/v1Ii01gR6p8GVaLEC1yZ1A/o.jpg"
+			"https://s3-media0.fl.yelpcdn.com/bphoto/v1Ii01gR6p8GVaLEC1yZ1A/o.jpg",
+			"https://i0.wp.com/fridaywereinlove.com/wp-content/uploads/2017/03/IMG_9845.png"
 		],
 		"name": "Dave and Buster's",
 		"description": "Family-friendly chain offering a sports-bar-style setting for American food & arcade games.",
@@ -1319,7 +1336,8 @@ export const venues = [
 		"id": 34,
 		"photos": [
 			"https://s3-us-west-1.amazonaws.com/sfmoma-media-dev/www-media/2018/08/02222822/sfmoma_SnohettaStair_01_steelblue_v2.jpg",
-			"https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/styles/sft_550w/public/field/image/SFMOMA-Header.jpg?itok=xBTlSuLw&timestamp=1528822085"
+			"https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/styles/sft_550w/public/field/image/SFMOMA-Header.jpg?itok=xBTlSuLw&timestamp=1528822085",
+			"https://i.pinimg.com/originals/2c/37/14/2c3714129c242bfb5c9eafe16ac37a3c.jpg"
 		],
 		"name": "Moma",
 		"description": "MoMA contains exhibitions and collection of modern and contemporary art",
@@ -1357,6 +1375,8 @@ export const venues = [
 		"id": 35,
 		"photos": [
 			"https://www.nbcsports.com/bayarea/sites/csnbayarea/files/2019/01/09/oracleparkap.jpg",
+			"https://aviewfrommyseat.com/medium/gotcha-20160930211814.jpg",
+			"https://i.ebayimg.com/images/g/bLoAAMXQh6JRGB6P/s-l300.jpg"
 		],
 		"name": "Oracle Park",
 		"description": "Baseball park located in the South Beach",
@@ -1846,6 +1866,8 @@ export const venues = [
 		"id": 48,
 		"photos": [
 			"https://s3-media0.fl.yelpcdn.com/bphoto/xoBOMriu_R-PLeK2SLpBgw/o.jpg",
+			"https://igx.4sqi.net/img/general/width960/12746016_TCSIP0Ds03Rjx2xFup8frfZmOuBcLHlhkr3fdBfutuc.jpg",
+			"https://igx.4sqi.net/img/general/width960/15467871_CuueypsjWk1z17bNaEmB4F_Cyc9jomU-zhmOyYT42aU.jpg"
 		],
 		"name": "Encore Karaoke Lounge",
 		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
@@ -1996,7 +2018,9 @@ export const venues = [
 		"id": 55,
 		"photos": [
 			"https://missionbowlingclub.com/wp-content/uploads/2017/11/IMG_4848.jpg",
-			"https://cdn.vox-cdn.com/thumbor/fEKtF3yrJ8CRBpoppB3kL4Xwv0M=/46x0:707x496/1400x1400/filters:focal(46x0:707x496):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/39019854/Screen_20shot_202012-12-21_20at_208.20.02_20AM.0.png"
+			"https://cdn.vox-cdn.com/thumbor/fEKtF3yrJ8CRBpoppB3kL4Xwv0M=/46x0:707x496/1400x1400/filters:focal(46x0:707x496):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/39019854/Screen_20shot_202012-12-21_20at_208.20.02_20AM.0.png",
+			"https://pbs.twimg.com/media/DBf7MsKV0AA1ag7.jpg",
+			"https://s3-media1.fl.yelpcdn.com/bphoto/GQ-oxrqx0-C-x59UjtZVgg/o.jpg"
 		],
 		"name": "Mission Bowling Club",
 		"description": "Retro bowling alley with 6 lanes, a full bar & attached restaurant serving upscale comfort fare.",
@@ -2034,7 +2058,8 @@ export const venues = [
 		"id": 56,
 		"photos": [
 			"https://yerbabuenagardens.com/wp-content/uploads/2017/10/Bowl_Ice_SPLIT2_1024X768-04.jpg",
-			"https://9968c6ef49dc043599a5-e151928c3d69a5a4a2d07a8bf3efa90a.ssl.cf2.rackcdn.com/6524.jpg"
+			"https://9968c6ef49dc043599a5-e151928c3d69a5a4a2d07a8bf3efa90a.ssl.cf2.rackcdn.com/6524.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/IMXcwHY6G2ZXgIa3ETZCFw/o.jpg"
 		],
 		"name": "Yerba Buena Ice Skating and Bowling",
 		"description": "San Francisco's premier Ice Skating and Bowling Center open daily.",
@@ -2072,7 +2097,8 @@ export const venues = [
 		"id": 57,
 		"photos": [
 			"https://paniqescaperoom.com/img/paniq/rooms-promo/wild-west-phoenix.jpg",
-			"https://paniqescaperoom.com/blog/wp-content/uploads/2019/09/blogpic1.jpg"
+			"https://paniqescaperoom.com/blog/wp-content/uploads/2019/09/blogpic1.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/0xODj_2FZcPHPjhZXjZjaQ/o.jpg"
 		],
 		"name": "Paniq Escape Room",
 		"description": "",

@@ -3,6 +3,7 @@ import { Block } from 'baseui/block';
 import { useHistory, useLocation } from 'react-router-dom';
 import { StyledLink } from 'baseui/link';
 import { Button } from 'baseui/button';
+import { Input } from 'baseui/input';
 import {
   Display4,
   Label2,
@@ -13,6 +14,7 @@ import ChevronRight from 'baseui/icon/chevron-right';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
+import { useDebounce } from '../utils';
 
 // Filter
 import { Checkbox } from 'baseui/checkbox';
@@ -66,7 +68,7 @@ const durationOptions = [
   },
   {
     id: 2,
-    label: '1 hour - 3 hours'
+    label: '1 - 3 hours'
   },
   {
     id: 3,
@@ -97,8 +99,19 @@ const budgetOptions = [
   }
 ];
 
-function Filter({ filterValue, updateFilterValue }) {
+function Filter({ venueCount, filterValue, updateFilterValue }) {
+  const [ searchTerm, setSearchTerm ] = useState(filterValue.searchTerm);
 
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(
+    () => {
+      updateFilterValue({
+        searchTerm: debouncedSearchTerm
+      });
+    },
+    [debouncedSearchTerm] // Only call effect if debounced search term changes
+  );
   const groupSizeOptions = [{
     id: 'none',
     label: 'Group Size'
@@ -111,66 +124,81 @@ function Filter({ filterValue, updateFilterValue }) {
   }
 
   return (
-    <Block display="flex" alignItems="center" flexWrap="wrap" backgroundColor="#f4f4f4">
-      <Block width="150px" padding="12px">
-        <Select
-          clearable={false}
-          searchable={false}
-          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
-          options={groupSizeOptions}
-          value={filterValue.recommendedGroupsize ? [{id: filterValue.recommendedGroupsize}] : null}
-          placeholder="Group Size"
-          onChange={params => updateFilterValue({ recommendedGroupsize: params.value[0].id })}
-        />
-      </Block>
-      <Block width="150px" padding="12px">
-        <Select
-          clearable={false}
-          searchable={false}
-          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
-          options={typeOptions}
-          value={filterValue.type ? [{id: filterValue.type}] : null}
-          placeholder="Activity Type"
-          onChange={params => updateFilterValue({ type: params.value[0].id })}
-        />
-      </Block>
-      <Block width="200px" padding="12px">
-        <Select
-          clearable={false}
-          searchable={false}
-          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
-          options={budgetOptions}
-          value={filterValue.price ? [{id: filterValue.price}] : null}
-          placeholder="Budget Per Person"
-          onChange={params => updateFilterValue({ price: params.value[0].id })}
-        />
-      </Block>
-      <Block width="200px" padding="12px">
-        <Select
-          clearable={false}
-          searchable={false}
-          overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
-          options={durationOptions}
-          value={filterValue.duration ? [{id: filterValue.duration}] : null}
-          placeholder="Duration"
-          onChange={params => updateFilterValue({ duration: params.value[0].id })}
-        />
-      </Block>
-      <Block padding="12px">
-        <Checkbox
-          checked={filterValue.indoor}
-          onChange={e => updateFilterValue({ indoor: e.target.checked })}
-        >
-          Indoor
-        </Checkbox>
-      </Block>
-      <Block padding="12px">
-        <Checkbox
-          checked={filterValue.outdoor}
-          onChange={e => updateFilterValue({ outdoor: e.target.checked })}
-        >
-          Outdoor
-        </Checkbox>
+    <Block display="flex" flexDirection="column" backgroundColor="#f4f4f4">
+      <Block display="flex" alignItems="center" flexWrap="wrap">
+        <Block width="200px" padding="12px">
+          <Input
+            value={searchTerm}
+            onChange={e => {
+              setSearchTerm(e.target.value);
+            }}
+            overrides={{ Input: { style: { backgroundColor: '#fff'}} }}
+            placeholder="Search Venue"
+          />
+        </Block>
+        <Block width="100px" padding="12px">
+          <Select
+            clearable={false}
+            searchable={false}
+            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
+            options={groupSizeOptions}
+            value={filterValue.recommendedGroupsize ? [{id: filterValue.recommendedGroupsize}] : null}
+            placeholder="Group Size"
+            onChange={params => updateFilterValue({ recommendedGroupsize: params.value[0].id })}
+          />
+        </Block>
+        <Block width="150px" padding="12px">
+          <Select
+            clearable={false}
+            searchable={false}
+            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
+            options={typeOptions}
+            value={filterValue.type ? [{id: filterValue.type}] : null}
+            placeholder="Activity Type"
+            onChange={params => updateFilterValue({ type: params.value[0].id })}
+          />
+        </Block>
+        <Block width="200px" padding="12px">
+          <Select
+            clearable={false}
+            searchable={false}
+            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
+            options={budgetOptions}
+            value={filterValue.price ? [{id: filterValue.price}] : null}
+            placeholder="Budget Per Person"
+            onChange={params => updateFilterValue({ price: params.value[0].id })}
+          />
+        </Block>
+        <Block width="150px" padding="12px">
+          <Select
+            clearable={false}
+            searchable={false}
+            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
+            options={durationOptions}
+            value={filterValue.duration ? [{id: filterValue.duration}] : null}
+            placeholder="Duration"
+            onChange={params => updateFilterValue({ duration: params.value[0].id })}
+          />
+        </Block>
+        <Block padding="12px">
+          <Checkbox
+            checked={filterValue.indoor}
+            onChange={e => updateFilterValue({ indoor: e.target.checked })}
+          >
+            Indoor
+          </Checkbox>
+        </Block>
+        <Block padding="12px">
+          <Checkbox
+            checked={filterValue.outdoor}
+            onChange={e => updateFilterValue({ outdoor: e.target.checked })}
+          >
+            Outdoor
+          </Checkbox>
+        </Block>
+        <Block padding="12px">
+          <Label2 color="#484848"><b>{venueCount} results</b></Label2>
+        </Block>
       </Block>
     </Block>
   );
@@ -224,6 +252,15 @@ function filterVenues(venues, filterValue) {
         return false;
       }
     }
+    if (filterValue.searchTerm) {
+      if (
+        !venue.description.toLowerCase().includes(filterValue.searchTerm.toLowerCase()) &&
+        !venue.teaserDescription.toLowerCase().includes(filterValue.searchTerm.toLowerCase()) &&
+        !venue.name.toLowerCase().includes(filterValue.searchTerm.toLowerCase())
+      ) {
+        return false;
+      }
+    }
 
     return true;
   });
@@ -271,6 +308,7 @@ function initializeFilter(queryUrl) {
   const duration = queryUrl.get('duration');
   const type = queryUrl.get('type');
   const groupSize = queryUrl.get('groupSize');
+  const searchTerm = queryUrl.get('searchTerm');
   return {
     price: !isNaN(price) ? Number(price) : null,
     recommendedGroupsize: !isNaN(groupSize) ? Number(groupSize) : null,
@@ -278,6 +316,7 @@ function initializeFilter(queryUrl) {
     type: type ? type : null,
     indoor: indoor === 'false' ? false : true,
     outdoor: outdoor === 'false' ? false : true,
+    searchTerm: searchTerm ? searchTerm : ''
   };
 }
 
@@ -307,6 +346,12 @@ function setFilterQueryUrl(history, queryUrl, payload) {
     }
   } else if (action === 'recommendedGroupsize') {
     queryUrl.set('groupSize', payload[action]);
+  } else if (action === 'searchTerm') {
+    if (payload[action]) {
+      queryUrl.set('searchTerm', payload[action]);
+    } else {
+      queryUrl.delete('searchTerm');
+    }
   } else {
     queryUrl.set(action, payload[action]);
   }
@@ -400,15 +445,20 @@ export default function Discovery() {
   return (
     <Block display="flex" flexDirection="column" height="calc(100vh - 48px)">
       <Block>
-        <Filter filterValue={filterValue} updateFilterValue={updateFilterValue} />
+        <Filter
+          filterValue={filterValue}
+          updateFilterValue={updateFilterValue}
+          venueCount={venues.length}
+        />
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         <Block flex="4">
           <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
         {
-          slicedVenues.length ?
-          <Block flex="5" display="flex" flexWrap="wrap" overflow="auto" backgroundColor="#F4F4F4">
+          venues.length ?
+          <Block flex="5" display="flex" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
+            <Block display="flex" flexWrap="wrap">
             {
               slicedVenues.map((venue, index) => {
                 return (
@@ -431,15 +481,16 @@ export default function Discovery() {
                 );
               })
             }
+            </Block>
             <Block display="flex" width="100%">
               <Block flex="1" display="flex" flexDirection="column">
-                <Button onClick={handlePrevPage}>
-                  <ChevronLeft color="#fff" size={36} />
+                <Button kind="minimal" onClick={handlePrevPage}>
+                  <ChevronLeft size={36} />
                 </Button>
               </Block>
               <Block flex="1" display="flex" flexDirection="column">
-                <Button onClick={handleNextPage}>
-                  <ChevronRight color="#fff" size={36} />
+                <Button kind="minimal" onClick={handleNextPage}>
+                  <ChevronRight size={36} />
                 </Button>
               </Block>
             </Block>

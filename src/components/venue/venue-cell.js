@@ -55,24 +55,24 @@ export default function VenueCell({ venue, hovered }) {
   return (
     <Block display="flex" flexDirection="column">
       <Block height="300px" overrides={{ Block: { style: { overflow: 'hidden', borderRadius: '10px' } } }}>
-        <img alt="" className={css({
-            animationDuration: "2.25s",
-            animationIterationCount: "infinite",
-            animationDelay: ".25s",
-            animationName: hovered ? {
-              from: {
-                transform: 'scale(1.0)'
-              },
-              to: {
-                transform: 'scale(1.075)'
-              }
-            } : {}
-          })}
-          width="100%"
-          height="100%"
-          style={{ objectFit: 'cover' }}
-          src={venue.photos[photoIndex]}
-        />
+      <img alt="venue-cell" className={css({
+          animationDuration: "2.25s",
+          animationIterationCount: "infinite",
+          animationDelay: "0s",
+          animationName: hovered ? {
+            from: {
+              transform: 'scale(1.0)'
+            },
+            to: {
+              transform: 'scale(1.075)'
+            }
+          } : {}
+        })}
+        width="100%"
+        height="100%"
+        style={{ objectFit: 'cover' }}
+        src={venue.photos[photoIndex]}
+      />
       </Block>
       <Block
         flex="1"

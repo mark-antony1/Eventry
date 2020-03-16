@@ -202,6 +202,46 @@ export const venues = [
 		"symbol": "k1-speed"
 	},
 	{
+		"id": 67	,
+		"photos": [
+			"https://d2vgrig53oyigc.cloudfront.net/wp-content/uploads/2019/05/houseofair-michal-ligocki.webp",
+			"https://res.cloudinary.com/mommy-nearest/image/upload/c_fill,h_450,w_800/adgwpyulje4z3jmzjoyh.jpg",
+			"https://res.cloudinary.com/mommy-nearest/image/upload/c_fill,h_400,w_900/ymh39oipftakurxrjow7.png",
+			"https://houseofairsanantonio.com/wp-content/uploads/2019/05/san-antonio-tx-house-of-air-.jpg"
+		],
+		"name": "House of Air",
+		"description": "House of Air is an adrenaline-pumping indoor trampoline park that features a variety of programs & classes and offers birthday party & event hosting services.",
+		"teaserDescription": "Trampoline Park",
+		"hours": {
+			"Sunday": { "start": 10, "end": 20 },
+			"Monday": { "start": 10, "end": 20 },
+			"Tuesday": { "start": 14, "end": 21 },
+			"Wednesday": { "start": 14, "end": 21 },
+			"Thursday": { "start": 14, "end": 21 },
+			"Friday": { "start": 10, "end": 21 },
+			"Saturday": { "start": 10, "end": 21 }
+		},
+		"phoneNumber": "(415) 345-9675",
+		"email": "",
+		"vibe": ["chill", "fun"],
+		"address": "926 Mason St, San Francisco, CA 94129",
+		"parkingAvailable": false,
+		"linkToSite": "https://houseofair.com/san-francisco/",
+		"activityType": "competitive",
+		"tags": ["indoor", "active"],
+		"rating": 4,
+		"takesReservations": true,
+		"averageTimeSpent": 90,
+		"recommendedGroupsize": [4, 25],
+		"price": 25,
+		"priceReasoning": "Based on price for one hour of park access and socks.",
+		"location": {
+			"latitude": 37.805766,
+			"longitude": -122.468588
+		},
+		"symbol": "spin"
+	},
+	{
 		"id": 4	,
 		"photos": [
 			"https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/a0/ac/e8/main-bar-at-street-level.jpg",
@@ -397,6 +437,47 @@ export const venues = [
 			"longitude": -122.403161
 		},
 		"symbol": "local-edition"
+	},
+	{
+		"id": 66,
+		"photos": [
+			"http://www.farmerjohnspumpkins.com/sites/default/files/gallery/10633134_10152808685250842_6739915027658921787_o.jpg",
+			"http://www.farmerjohnspumpkins.com/sites/default/files/gallery/10543521_10152787491570842_1123186953107564394_o.jpg",
+			"http://www.farmerjohnspumpkins.com/sites/default/files/gallery/DSC04047.jpeg",
+			"http://www.farmerjohnspumpkins.com/sites/default/files/gallery/P9261375.jpg",
+			"http://www.farmerjohnspumpkins.com/sites/default/files/gallery/farmer%20john%20field%20trip%20073.jpg"
+		],
+		"name": "Farmer John's Pumpkin Farm",
+		"description": "Farmer John's Pumpkin Farm offers a fun, family atmosphere in a relaxing country setting where everyone is welcome, including your canine pals! Only open September thorugh Halloween",
+		"teaserDescription": "Pumpkin Farm and Picking",
+		"hours": {
+			"Sunday": { "start": 9, "end": 17 },
+			"Monday": { "start": 9, "end": 17 },
+			"Tuesday": { "start": 9, "end": 17 },
+			"Wednesday": { "start": 9, "end": 17 },
+			"Thursday": { "start": 9, "end": 17 },
+			"Friday": { "start": 9, "end": 17 },
+			"Saturday": { "start": 9, "end": 17 }
+		},
+		"phoneNumber": "(650) 726-4980",
+		"email": "",
+		"vibe": ["fun"],
+		"address": "850 North Cabrillo Highway ",
+		"parkingAvailable": true,
+		"linkToSite": "http://www.farmerjohnspumpkins.com/",
+		"activityType": "explorative",
+		"tags": ["outdoor", "pumpkin", "farm"],
+		"rating": 4.6,
+		"takesReservations": true,
+		"averageTimeSpent": 130,
+		"recommendedGroupsize": [3, 10],
+		"price": 25,
+		"priceReasoning": 'Based on price for 1 pumpkin and 1 hay ride.',
+		"location": {
+			"latitude": 37.474434,
+			"longitude": -122.436957
+		},
+		"symbol": "pumpkin-farm"
 	},
 	{
 		"id": 3,

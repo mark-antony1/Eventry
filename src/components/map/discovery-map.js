@@ -149,7 +149,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
   }
   return (
     <Block position="relative" width="100%" height="100%">
-      <Block position="absolute" width="50%" top="10px" left="10px" overrides={{ Block: { style: { zIndex: 1 } } }}>
+      <Block position="absolute" width="50%" top="10px" left="10px" overrides={{ Block: { style: { zIndex: 1, borderRadius: '10px', overflow: 'hidden' } } }}>
         {
           pinnedVenue &&
           <Block

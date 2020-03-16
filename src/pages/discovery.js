@@ -12,6 +12,7 @@ import { useStyletron } from 'styletron-react';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import DiscoveryMap from '../components/map/discovery-map';
+import HeaderNavigation from '../components/header-navigation';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
 import { useDebounce } from '../utils';
@@ -99,9 +100,9 @@ const budgetOptions = [
   }
 ];
 
-function Filter({ venueCount, filterValue, updateFilterValue }) {
-  const [ searchTerm, setSearchTerm ] = useState(filterValue.searchTerm);
 
+function SearchBar({ filterValue, updateFilterValue }) {
+  const [ searchTerm, setSearchTerm ] = useState(filterValue.searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(
@@ -110,8 +111,24 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
         searchTerm: debouncedSearchTerm
       });
     },
-    [debouncedSearchTerm] // Only call effect if debounced search term changes
+    [debouncedSearchTerm]
   );
+
+  return (
+    <Block width={['200px', '200px', '300px', '300px']}>
+      <Input
+        value={searchTerm}
+        onChange={e => {
+          setSearchTerm(e.target.value);
+        }}
+        overrides={{ Input: { style: { backgroundColor: '#fff'}} }}
+        placeholder="Search Venue"
+      />
+    </Block>
+  );
+}
+
+function Filter({ venueCount, filterValue, updateFilterValue }) {
   const groupSizeOptions = [{
     id: 'none',
     label: 'Group Size'
@@ -126,16 +143,6 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
   return (
     <Block display="flex" flexDirection="column" backgroundColor="#f4f4f4">
       <Block display="flex" alignItems="center" flexWrap="wrap">
-        <Block width="180px" padding="12px">
-          <Input
-            value={searchTerm}
-            onChange={e => {
-              setSearchTerm(e.target.value);
-            }}
-            overrides={{ Input: { style: { backgroundColor: '#fff'}} }}
-            placeholder="Search Venue"
-          />
-        </Block>
         <Block width="130px" padding="12px">
           <Select
             clearable={false}
@@ -446,7 +453,10 @@ export default function Discovery() {
   const slicedVenues = venues.slice(venueIndex, venueIndex + LIST_SIZE);
 
   return (
-    <Block display="flex" flexDirection="column" height="calc(100vh - 48px)">
+    <Block display="flex" flexDirection="column" height="100vh">
+      <HeaderNavigation>
+        <SearchBar filterValue={filterValue} updateFilterValue={updateFilterValue} />
+      </HeaderNavigation>
       <Block>
         <Filter
           filterValue={filterValue}

@@ -31,6 +31,7 @@ import {
   Label1,
   Label2
 } from 'baseui/typography';
+import HeaderNavigation from '../components/header-navigation';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
@@ -159,9 +160,18 @@ export default function Details({ match: { params: {venueSymbol} } }) {
     setInitialPhotoIndex(index);
   };
 
+  const BackButton = () => {
+    return (
+      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/">
+        <ChevronLeft /> Map
+      </Button>
+    );
+  };
+
   return (
     <Block display="flex" flexDirection="column">
       {showPhotoDetails && <PhotoDetails photos={venue.photos} initialPhotoIndex={initialPhotoIndex} setShowPhotoDetails={setShowPhotoDetails} />}
+      <HeaderNavigation leftButtons={[BackButton]} />
       <Block display="flex" minHeight="30vw" padding="24px">
         {venue.photos.slice(0, 3).map((photo, index) => {
           return (

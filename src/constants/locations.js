@@ -148,7 +148,7 @@ export const venues = [
 		"parkingAvailable": false,
 		"linkToSite": "http://www.pacificaarchery.com/reservations",
 		"activityType": "competitive",
-		"tags": ["outdoor", "active"],
+		"tags": ["indoor", "active"],
 		"rating": 4.6,
 		"takesReservations": true,
 		"averageTimeSpent": 120,

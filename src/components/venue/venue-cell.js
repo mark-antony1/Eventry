@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
 import { StatefulTooltip } from 'baseui/tooltip';
 import { FaQuestionCircle, FaStar } from 'react-icons/fa';
 import { useStyletron } from 'styletron-react';
-import CheckIcon from 'baseui/icon/check';
-import ChevronLeft from 'baseui/icon/chevron-left';
-import ChevronRight from 'baseui/icon/chevron-right';
 import {
   Label1,
   Label2,
@@ -31,6 +27,7 @@ export default function VenueCell({ venue, hovered }) {
   const [ photoIndex, setPhotoIndex ] = useState(0);
   const photoIndexRef = useRef(photoIndex);
   photoIndexRef.current = photoIndex;
+
   useEffect(() => {
     if (hovered && intervalId === null) {
       const id = setInterval(onNextPhoto, 2250);
@@ -44,6 +41,7 @@ export default function VenueCell({ venue, hovered }) {
     return () => {
       clearInterval(intervalId);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ hovered ]);
 
   const onNextPhoto = () => {

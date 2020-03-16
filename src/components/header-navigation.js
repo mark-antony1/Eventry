@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   HeaderNavigation,
   ALIGN,
@@ -6,14 +6,11 @@ import {
   StyledNavigationItem
 } from "baseui/header-navigation";
 import { useStyletron } from 'baseui';
-import { Button } from "baseui/button";
-import { Block } from 'baseui/block';
-import ChevronLeft from 'baseui/icon/chevron-left';
 export default ({ leftButtons, children }) => {
   const [css] = useStyletron();
 
   return (
-    <HeaderNavigation overrides={{ Root: { style: {padding:'0px', border: 'none', position: 'relative'} } }}>
+    <HeaderNavigation overrides={{ Root: { style: {border: 'none', position: 'relative'} } }}>
       <StyledNavigationList $align={ALIGN.left}>
         {leftButtons ? leftButtons.map((LB, index) => {
           return (
@@ -26,7 +23,7 @@ export default ({ leftButtons, children }) => {
       <StyledNavigationList $align={ALIGN.left}>
         <StyledNavigationItem>
             <a href="/">
-              <img height="55px" src={process.env.PUBLIC_URL + '/logo.png'} />
+              <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
             </a>
         </StyledNavigationItem>
         <StyledNavigationItem>

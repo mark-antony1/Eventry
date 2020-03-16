@@ -5,7 +5,7 @@ import { useStyletron } from 'baseui';
 import { Block } from 'baseui/block';
 import { Label3, Label2 } from 'baseui/typography';
 import { Tag } from 'baseui/tag';
-import ReactMapGL, { Marker, Layer, WebMercatorViewport } from 'react-map-gl';
+import ReactMapGL, { Marker, WebMercatorViewport } from 'react-map-gl';
 import { usePrevious } from '../../utils';
 
 function MarkerIcon({ hovered }) {
@@ -18,18 +18,6 @@ function MarkerIcon({ hovered }) {
       data-name="layer2" strokeLinejoin="round" strokeLinecap="round"></path>
     </svg>
   );
-}
-
-function minutesToAverageTimeSpent(minutes) {
-  if (minutes <= 60) {
-    return '1 hour or less';
-  }
-
-  if (minutes > 60 && minutes <= 180) {
-    return '1 - 3 hours';
-  }
-
-  return '3 hours or more';
 }
 
 function VenuePoint({ venue, hoveredVenueId, setHoveredVenueId, onVenueClicked }) {
@@ -59,12 +47,6 @@ function VenuePoint({ venue, hoveredVenueId, setHoveredVenueId, onVenueClicked }
       </Block>
     </Marker>
   );
-}
-
-function venuesToLocations(venues) {
-  return venues.map((venue) => {
-    return [venue.location.longitude, venue.location.latitude];
-  });
 }
 
 function compareVenues(prevVenues, venues) {
@@ -98,6 +80,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
     if (compareVenues(prevVenues, venues)) {
       setViewport(getViewport());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [venues]);
 
   useEffect(() => {
@@ -106,6 +89,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
     } else {
       setPinnedVenue(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoveredVenueId]);
 
   function getViewport() {
@@ -164,7 +148,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
               <Label2 color="#fff">{pinnedVenue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></Label2>
             </Block>
             <Block height="80px">
-              <img width="100%" height="100%" style={{ objectFit: 'cover' }} src={pinnedVenue.photos[0]} />
+              <img alt={`preview-venue`} width="100%" height="100%" style={{ objectFit: 'cover' }} src={pinnedVenue.photos[0]} />
             </Block>
             <Block padding="8px">
               {

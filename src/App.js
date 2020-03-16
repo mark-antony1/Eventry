@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import HeaderNavigation from './components/header-navigation';
 import Discovery from './pages/discovery';
 import Details from './pages/details';
 import { withTracker } from './utils';

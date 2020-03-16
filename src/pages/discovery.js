@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { useHistory, useLocation } from 'react-router-dom';
-import { StyledLink } from 'baseui/link';
 import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import {
@@ -111,6 +110,7 @@ function SearchBar({ filterValue, updateFilterValue }) {
         searchTerm: debouncedSearchTerm
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [debouncedSearchTerm]
   );
 
@@ -328,12 +328,6 @@ function initializeFilter(queryUrl) {
 }
 
 function setFilterQueryUrl(history, queryUrl, payload) {
-  const indoor = queryUrl.get('indoor');
-  const outdoor = queryUrl.get('outdoor');
-  const price = queryUrl.get('price');
-  const duration = queryUrl.get('duration');
-  const type = queryUrl.get('type');
-  const groupSize = queryUrl.get('groupSize');
   const action = Object.keys(payload)[0];
   if (payload[action] === 'none') {
     queryUrl.delete(action);
@@ -385,6 +379,7 @@ export default function Discovery() {
   useEffect(() => {
     document.title = `TeamBright`;
     setVenues(filterVenues(allVenues, filterValue));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -392,6 +387,7 @@ export default function Discovery() {
       acc[venue.id] = React.createRef();
       return acc;
     }, {}));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [venueIndex]);
 
   useEffect(() => {
@@ -402,6 +398,7 @@ export default function Discovery() {
         });
         setScrollToId(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [venueRefs[scrollToId] && venueRefs[scrollToId].current]);
 
   const updateFilterValue = (payload) => {
@@ -487,7 +484,7 @@ export default function Discovery() {
                     onMouseLeave={() => { setHoveredVenueId(null) }}
                     onMouseEnter={() => { setHoveredVenueId(venue.id) }}
                   >
-                    <a href={`/${venue.symbol}`} target="_blank" className={css({ textDecoration: 'none' })}>
+                    <a href={`/${venue.symbol}`} rel="noopener noreferrer" target="_blank" className={css({ textDecoration: 'none' })}>
                       <VenueCell venue={venue} hovered={hoveredVenueId === venue.id} />
                     </a>
                   </Block>

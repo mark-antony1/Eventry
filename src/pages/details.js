@@ -16,15 +16,6 @@ import CheckIcon from 'baseui/icon/check';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
-  StyledTable,
-  StyledHeadCell,
-  StyledBodyCell,
-} from 'baseui/table-grid';
-import {
-  Card,
-  StyledBody
-} from 'baseui/card';
-import {
   Display2,
   Display4,
   Paragraph1,
@@ -33,7 +24,6 @@ import {
 } from 'baseui/typography';
 import HeaderNavigation from '../components/header-navigation';
 import DiscoveryMap from '../components/map/discovery-map';
-import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
 
 function minutesToAverageTimeSpent(minutes) {
@@ -47,36 +37,6 @@ function minutesToAverageTimeSpent(minutes) {
 
   return '3 hours or more';
 }
-
-function getHourFromMilitaryHour(hour) {
-  if (hour === 12) {
-    return '12PM';
-  }
-  if (hour === 24) {
-    return '12AM';
-  }
-  if (hour > 12) {
-    return `${hour - 12}PM`;
-  }
-  return `${hour}AM`;
-}
-//
-// <StyledTable $gridTemplateColumns="minmax(max-content, max-content) max-content">
-//   {
-//     Object.keys(venue.hours).map((day) => {
-//       const hour = venue.hours[day];
-//       return [
-//         <StyledHeadCell key={day}>{day}</StyledHeadCell>,
-//         <StyledBodyCell key={`${day}1`}>
-//           {
-//             isNaN(hour.start) ?
-//             'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
-//           }
-//         </StyledBodyCell>
-//       ];
-//     })
-//   }
-// </StyledTable>
 
 const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
   const [ photoIndex, setPhotoIndex ] = useState(initialPhotoIndex);
@@ -127,7 +87,7 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
         </Block>
         <Block flex="1" display="flex" flexDirection="column" height="100%" alignItems="center" justifyContent="center">
           <Block height="calc(80vh - 50px)">
-            <img height="100%" src={photos[photoIndex]} />
+            <img alt="details-venue" height="100%" src={photos[photoIndex]} />
           </Block>
           <Block height="50px" display="flex" alignItems="center" justifyContent="center">
             <Label2>{photoIndex + 1} / {photos.length}</Label2>
@@ -144,7 +104,6 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
 };
 
 export default function Details({ match: { params: {venueSymbol} } }) {
-  const [ photoIndex, setPhotoIndex ] = useState(0);
   const [ showPhotoDetails, setShowPhotoDetails ] = useState(false);
   const [ initialPhotoIndex, setInitialPhotoIndex ] = useState(null);
   const [ css ] = useStyletron();
@@ -152,6 +111,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
 
   useEffect(() => {
     document.title = `TeamBright | ${venue ? venue.name : ''}`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const openPhotoDetails = (index) => {
@@ -182,7 +142,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
               onClick={() => { openPhotoDetails(index) }}
               overrides={{ Block: {style: {cursor: 'pointer'}}}}
             >
-              <img width="100%" height="100%" style={{ objectFit: 'cover' }} src={photo} />
+              <img alt={`venue-${index}`} width="100%" height="100%" style={{ objectFit: 'cover' }} src={photo} />
             </Block>
           );
         })}
@@ -217,7 +177,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
               })
             }
           </Block>
-          <a className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
+          <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
           <Label2 color="#0B6839" marginTop="8px"><b>{venue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
         </Block>
         <Block flex="1" display="flex" padding="24px">

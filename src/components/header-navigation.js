@@ -5,6 +5,8 @@ import {
   StyledNavigationList,
   StyledNavigationItem
 } from "baseui/header-navigation";
+import { Block } from "baseui/block";
+import { Button } from "baseui/button";
 import { useStyletron } from 'baseui';
 export default ({ leftButtons, children }) => {
   const [css] = useStyletron();
@@ -28,6 +30,17 @@ export default ({ leftButtons, children }) => {
         </StyledNavigationItem>
         <StyledNavigationItem>
           {children}
+        </StyledNavigationItem>
+      </StyledNavigationList>
+      <StyledNavigationList $align={ALIGN.center}>
+      </StyledNavigationList>
+      <StyledNavigationList $align={ALIGN.right}>
+        <StyledNavigationItem>
+          <Block marginRight="24px">
+            <Button $as="a" href="/about" kind="minimal">
+              About
+            </Button>
+          </Block>
         </StyledNavigationItem>
       </StyledNavigationList>
     </HeaderNavigation>

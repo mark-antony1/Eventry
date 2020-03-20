@@ -229,13 +229,13 @@ export default function Details({ match: { params: {venueSymbol} } }) {
         overrides={{ Block: { style: { zIndex: 5, boxShadow: '0px 5px 20px 0px rgba(0,0,0,0.75)' }}}}
       >
         <Block display="flex" flex="1" alignItems="center" paddingLeft="12px">
-          <Label2 color="#727272"><b>{venue.name} | {venue.teaserDescription}</b></Label2>
-        </Block>
-        <Block display="flex" justifyContent="flex-end" alignItems="center">
-          <Label1 color="#727272" marginRight="24px"><b>From ${venue.price} / person</b></Label1>
           <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
             <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
           </Button>
+          <Label2 color="#727272" marginLeft="24px"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
+        </Block>
+        <Block display="flex" justifyContent="flex-end" alignItems="center">
+
         </Block>
       </Block>
     </Block>

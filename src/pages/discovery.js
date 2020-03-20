@@ -22,10 +22,33 @@ import { Select } from 'baseui/select';
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-160350473-1");
 
+const groupSizeOptions = [
+  {
+    id: 'none',
+    label: 'Group Size'
+  },
+  {
+    id: 1,
+    label: '2 - 10'
+  },
+  {
+    id: 2,
+    label: '10 - 20'
+  },
+  {
+    id: 3,
+    label: '20 - 50'
+  },
+  {
+    id: 4,
+    label: '50+'
+  }
+];
+
 const typeOptions = [
   {
     id: 'none',
-    label: 'No Activity Type'
+    label: 'Activity Type'
   },
   {
     id: 'competitive',
@@ -129,17 +152,6 @@ function SearchBar({ filterValue, updateFilterValue }) {
 }
 
 function Filter({ venueCount, filterValue, updateFilterValue }) {
-  const groupSizeOptions = [{
-    id: 'none',
-    label: 'Group Size'
-  }];
-  for (let i = 2; i <= 50; i++) {
-    groupSizeOptions.push({
-      id: i,
-      label: i
-    });
-  }
-
   return (
     <Block display="flex" flexDirection="column" backgroundColor="#f4f4f4">
       <Block display="flex" alignItems="center" flexWrap="wrap">
@@ -165,7 +177,7 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
             onChange={params => updateFilterValue({ type: params.value[0].id })}
           />
         </Block>
-        <Block width="180px" padding="12px">
+        <Block width="200px" padding="12px">
           <Select
             clearable={false}
             searchable={false}
@@ -231,9 +243,19 @@ function filterVenues(venues, filterValue) {
         return false;
       }
     }
-    if (filterValue.recommendedGroupsize && filterValue.recommendedGroupsize !== 'none' && (venue.recommendedGroupsize[0] > filterValue.recommendedGroupsize || venue.recommendedGroupsize[1] < filterValue.recommendedGroupsize)) {
-      return false;
+
+    if (filterValue.recommendedGroupsize && filterValue.recommendedGroupsize !== 'none') {
+      if (filterValue.recommendedGroupsize === 1 && venue.recommendedGroupsize[0] > 10) {
+        return false;
+      } else if (filterValue.recommendedGroupsize === 2 && (venue.recommendedGroupsize[1] < 10 && venue.recommendedGroupsize[0] > 20)) {
+        return false;
+      } else if (filterValue.recommendedGroupsize === 3 && (venue.recommendedGroupsize[1] < 20 && venue.recommendedGroupsize[0] > 50)) {
+        return false;
+      } else if (filterValue.recommendedGroupsize === 4 && venue.recommendedGroupsize[1] < 50) {
+        return false;
+      }
     }
+
     if (filterValue.duration && filterValue.duration !== 'none') {
       // 1 hour or less
       if (filterValue.duration === 1 && venue.averageTimeSpent > 60) {
@@ -275,7 +297,7 @@ function filterVenues(venues, filterValue) {
 
 const LIST_SIZE = 10;
 
-const generateLabel = (action, value) => {
+const generateGALabel = (action, value) => {
   if (action === 'type') {
     return value;
   }
@@ -283,7 +305,7 @@ const generateLabel = (action, value) => {
     return `${action} off`
   }
   if (action === 'recommendedGroupsize') {
-    return `${Math.floor(value / 10) * 10} - ${Math.ceil(value / 10) * 10}`;
+    return groupSizeOptions.find(d => d.id === value).label;
   }
   if (action === 'duration') {
     return durationOptions.find(d => d.id === value).label;
@@ -296,7 +318,7 @@ const generateLabel = (action, value) => {
 
 const emitFilterEvent = (payload) => {
   const action = Object.keys(payload)[0];
-  const label = generateLabel(action, payload[action]);
+  const label = generateGALabel(action, payload[action]);
   ReactGA.event({
     category: 'Filter',
     action,

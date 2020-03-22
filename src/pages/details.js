@@ -24,6 +24,7 @@ import {
 } from 'baseui/typography';
 import HeaderNavigation from '../components/header-navigation';
 import DiscoveryMap from '../components/map/discovery-map';
+import VenueReviews from '../components/venue/venue-reviews';
 import { venues as allVenues } from '../constants/locations';
 
 function minutesToAverageTimeSpent(minutes) {
@@ -216,6 +217,9 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             <Paragraph1>{venue.description}</Paragraph1>
           </Block>
         </Block>
+        <Block display="flex">
+          <VenueReviews symbol={venueSymbol} />
+        </Block>
       </Block>
       <Block
         position="fixed"
@@ -233,9 +237,6 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
           </Button>
           <Label2 color="#727272" marginLeft="24px"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
-        </Block>
-        <Block display="flex" justifyContent="flex-end" alignItems="center">
-
         </Block>
       </Block>
     </Block>

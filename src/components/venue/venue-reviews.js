@@ -53,7 +53,7 @@ export default function VenueReviews({ symbol }) {
   }
 
   return (
-    <Block display="flex" marginTop="68px" flexDirection={['column', 'column', 'row', 'row']}>
+    <Block display="flex" marginTop="68px" width="100%" flexDirection={['column', 'column', 'row', 'row']}>
       <Block flex="1">
         <Display2><b>Reviews</b></Display2>
       </Block>

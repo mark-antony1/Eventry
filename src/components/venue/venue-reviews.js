@@ -20,11 +20,11 @@ const Review = ({ review }) => {
       </Block>
       <Block marginTop="12px">
         <Paragraph1>
-          <b>{review.content}</b>
+          {review.content}
         </Paragraph1>
       </Block>
       <Block marginTop="12px">
-        <Label1>{`${review.user.firstName}, ${review.team.name} at ${review.company.name}`}</Label1>
+        <Label1><b>{`${review.user.firstName}, ${review.team.name} at ${review.company.name}`}</b></Label1>
       </Block>
     </Block>
   );

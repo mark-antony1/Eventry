@@ -14,7 +14,7 @@ import { LOAD_VENUE_REVIEWS } from '../../constants/query';
 
 const Review = ({ review }) => {
   return (
-    <Block display="flex" flexDirection="column">
+    <Block display="flex" flexDirection="column" paddingBottom="24px">
       <Block height="50px">
         <img alt="review-logo" height="100%" src={review.company.logo} />
       </Block>
@@ -60,7 +60,7 @@ export default function VenueReviews({ symbol }) {
       <Block flex="2" display="flex" flexWrap="wrap">
         {reviews.map((review, index) => {
           return (
-            <Block key={index} flex="0 1 45%">
+            <Block key={index} flex="0 1 calc(45% - 24px)" margin="12px" overrides={{ Block: { style: {borderBottom: "1px solid #777"}}}}>
               <Review review={review} />
             </Block>
           );

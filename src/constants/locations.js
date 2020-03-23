@@ -239,7 +239,7 @@ export const venues = [
 			"latitude": 37.805766,
 			"longitude": -122.468588
 		},
-		"symbol": "spin"
+		"symbol": "house-of-air"
 	},
 	{
 		"id": 4	,

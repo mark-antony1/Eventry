@@ -39,6 +39,52 @@ function minutesToAverageTimeSpent(minutes) {
   return '3 hours or more';
 }
 
+function getHourFromMilitaryHour(hour) {
+  if (hour === 12) {
+    return '12PM';
+  }
+  if (hour === 24) {
+    return '12AM';
+  }
+  if (hour > 12) {
+    return `${hour - 12}PM`;
+  }
+  return `${hour}AM`;
+}
+
+const Hours = ({ hours }) => {
+  return (
+    <Block display="flex">
+      <Block display="flex" flexDirection="column">
+      {
+        Object.keys(hours).map((day) => {
+          return (
+            <Block key={day} padding="12px"><Label1><b>{day}</b></Label1></Block>
+          );
+        })
+      }
+      </Block>
+      <Block display="flex" flexDirection="column" marginLeft="12px">
+      {
+        Object.keys(hours).map((day) => {
+          const hour = hours[day];
+          return (
+            <Block key={`${day}1`} padding="12px">
+              <Label1><b>
+              {
+                isNaN(hour.start) ?
+                'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
+              }
+              </b></Label1>
+            </Block>
+          );
+        })
+      }
+      </Block>
+    </Block>
+  );
+};
+
 const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
   const [ photoIndex, setPhotoIndex ] = useState(initialPhotoIndex);
 
@@ -154,7 +200,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
           <DiscoveryMap venues={[venue]} disableScrollZoom={true} />
         </Block>
       </Block>
-      <Block paddingLeft="24px" paddingRight="24px" paddingBottom="24px" display="flex">
+      <Block paddingLeft="24px" paddingRight="24px" paddingBottom="24px" display="flex" flexDirection={['column', 'column', 'row', 'row']}>
         <Block flex="1" paddingLeft="12px" paddingRight="24px">
           <Label1><b>{venue.name}</b></Label1>
           <Display4 marginTop="8px"><b>{venue.teaserDescription}</b></Display4>
@@ -208,7 +254,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
         </Block>
       </Block>
       <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
-        <Block display="flex">
+        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
           <Block flex="1">
             <Display2><b>About</b></Display2>
           </Block>
@@ -219,6 +265,16 @@ export default function Details({ match: { params: {venueSymbol} } }) {
         </Block>
         <Block display="flex">
           <VenueReviews symbol={venueSymbol} />
+        </Block>
+        <Block display="flex" marginTop="68px" flexDirection={['column', 'column', 'row', 'row']}>
+          <Block flex="1">
+            <Display2><b>Hours</b></Display2>
+          </Block>
+          <Block flex="2">
+            <Block width="fit-content">
+              <Hours hours={venue.hours} />
+            </Block>
+          </Block>
         </Block>
       </Block>
       <Block

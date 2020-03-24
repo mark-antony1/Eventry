@@ -1450,7 +1450,7 @@ export const venues = [
 			"latitude": 37.7857182,
 			"longitude": -122.4032449
 		},
-		"symbol": ""
+		"symbol": "moma-sf"
 	},
 	{
 		"id": 35,

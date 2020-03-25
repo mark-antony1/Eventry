@@ -321,44 +321,43 @@ export const venues = [
 		"symbol": "sub-par-greens"
 	},
 	{
-		"id": 5	,
+		"id": 22,
 		"photos": [
-			"https://i.pinimg.com/originals/1d/64/e6/1d64e644c3aa079a4f1305a107cb4cc1.jpg",
-			"https://cdn.funcheap.com/wp-content/uploads/2019/12/53246879_1253731378107179_3788857266191466496_o-scaled.jpg",
-			"http://coinopsf.com/wp-content/uploads/2017/11/image-home-scroll-6@2x.jpg",
-			"http://coinopsf.com/wp-content/uploads/2018/05/KJB0159.jpg"
+			"https://emporiumsf.com/wp-content/uploads/2018/12/d1-emporiumsf.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/JhX7rMZ1w5a_LqXYt-qTfg/l.jpg",
+			"https://hoodline.imgix.net/uploads/story/image/50853/insideemporium.jpg?auto=format"
 		],
-		"name": "The Grid",
-		"description": "Coin-operated arcade games with a bar.",
-		"teaserDescription": "Coin Operated Game Bar",
+		"name": "Emporium",
+		"description": "Pinball, pool & old-school arcade games, plus music, cocktails & craft beers, in hip, historic digs.",
+		"teaserDescription": "Laid Back Coin Operated Game Bar",
 		"hours": {
-			"Sunday": { "start": 14, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 18, "end": 26 },
-			"Saturday": { "start": 18, "end": 26 }
+			"Sunday": { "start": 14, "end": 2 },
+			"Monday": { "start": 16, "end": 2 },
+			"Tuesday": { "start": 16, "end": 2 },
+			"Wednesday": { "start": 16, "end": 2 },
+			"Thursday": { "start": 16, "end": 2 },
+			"Friday": { "start": 16, "end": 2 },
+			"Saturday": { "start": 14, "end": 2 }
 		},
-		"phoneNumber": "628-444-3277",
-		"email": "info@coinopsf.com",
-		"vibe": ["chill", "fun"],
-		"address": "508 4th St Ste. 1, San Francisco, CA 94107",
+		"phoneNumber": "(773) 697-7922",
+		"email": "",
+		"vibe": ["fun", "silly"],
+		"address": "616 Divisadero St, San Francisco, CA 94117",
 		"parkingAvailable": false,
-		"linkToSite": "coinopsf.com",
+		"linkToSite": "https://emporiumsf.com/groups/",
 		"activityType": "bar",
-		"tags": ["indoor", "sing", "dance", "alcohol"],
+		"tags": ["game", "alcohol", "indoor"],
 		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 60,
-		"recommendedGroupsize": [4, 25],
-		"price": 30,
-		"priceReasoning": "Based on price for two drinks",
+		"takesReservations": true,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [8, 50],
+		"price": 20,
+		"priceReasoning": 'Based upon price for 1 drink and 5 games..',
 		"location": {
-			"latitude": 37.779493,
-			"longitude": -122.398096
+			"latitude": 37.7753364,
+			"longitude": -122.4551658
 		},
-		"symbol": "the-grid"
+		"symbol": "emporium"
 	},
 	{
 		"id": 23,
@@ -1028,45 +1027,6 @@ export const venues = [
 		"symbol": "coin-op"
 	},
 	{
-		"id": 22,
-		"photos": [
-			"https://emporiumsf.com/wp-content/uploads/2018/12/d1-emporiumsf.jpg",
-			"https://s3-media0.fl.yelpcdn.com/bphoto/JhX7rMZ1w5a_LqXYt-qTfg/l.jpg",
-			"https://hoodline.imgix.net/uploads/story/image/50853/insideemporium.jpg?auto=format"
-		],
-		"name": "Emporium",
-		"description": "Pinball, pool & old-school arcade games, plus music, cocktails & craft beers, in hip, historic digs.",
-		"teaserDescription": "Laid Back Coin Operated Game Bar",
-		"hours": {
-			"Sunday": { "start": 14, "end": 2 },
-			"Monday": { "start": 16, "end": 2 },
-			"Tuesday": { "start": 16, "end": 2 },
-			"Wednesday": { "start": 16, "end": 2 },
-			"Thursday": { "start": 16, "end": 2 },
-			"Friday": { "start": 16, "end": 2 },
-			"Saturday": { "start": 14, "end": 2 }
-		},
-		"phoneNumber": "(773) 697-7922",
-		"email": "",
-		"vibe": ["fun", "silly"],
-		"address": "616 Divisadero St, San Francisco, CA 94117",
-		"parkingAvailable": false,
-		"linkToSite": "https://emporiumsf.com/groups/",
-		"activityType": "bar",
-		"tags": ["game", "alcohol", "indoor"],
-		"rating": 4.5,
-		"takesReservations": true,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [8, 50],
-		"price": 20,
-		"priceReasoning": 'Based upon price for 1 drink and 5 games..',
-		"location": {
-			"latitude": 37.7753364,
-			"longitude": -122.4551658
-		},
-		"symbol": "emporium"
-	},
-	{
 		"id": 24,
 		"photos": [
 			"https://cdn.vox-cdn.com/thumbor/B3Prng784Xgl-mGDtvC38_s4RJE=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/16006181/Everdene_PChang_0511.jpg",
@@ -1143,6 +1103,46 @@ export const venues = [
 			"longitude": -122.4242539
 		},
 		"symbol": "clay-bays"
+	},
+	{
+		"id": 5	,
+		"photos": [
+			"https://i.pinimg.com/originals/1d/64/e6/1d64e644c3aa079a4f1305a107cb4cc1.jpg",
+			"https://cdn.funcheap.com/wp-content/uploads/2019/12/53246879_1253731378107179_3788857266191466496_o-scaled.jpg",
+			"http://coinopsf.com/wp-content/uploads/2017/11/image-home-scroll-6@2x.jpg",
+			"http://coinopsf.com/wp-content/uploads/2018/05/KJB0159.jpg"
+		],
+		"name": "The Grid",
+		"description": "Coin-operated arcade games with a bar.",
+		"teaserDescription": "Coin Operated Game Bar",
+		"hours": {
+			"Sunday": { "start": 14, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 18, "end": 26 },
+			"Saturday": { "start": 18, "end": 26 }
+		},
+		"phoneNumber": "628-444-3277",
+		"email": "info@coinopsf.com",
+		"vibe": ["chill", "fun"],
+		"address": "508 4th St Ste. 1, San Francisco, CA 94107",
+		"parkingAvailable": false,
+		"linkToSite": "coinopsf.com",
+		"activityType": "bar",
+		"tags": ["indoor", "sing", "dance", "alcohol"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [4, 25],
+		"price": 30,
+		"priceReasoning": "Based on price for two drinks",
+		"location": {
+			"latitude": 37.779493,
+			"longitude": -122.398096
+		},
+		"symbol": "the-grid"
 	},
 	{
 		"id": 26,
@@ -1450,7 +1450,7 @@ export const venues = [
 			"latitude": 37.7857182,
 			"longitude": -122.4032449
 		},
-		"symbol": ""
+		"symbol": "moma-sf"
 	},
 	{
 		"id": 35,

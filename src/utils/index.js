@@ -77,3 +77,10 @@ export function getCookie(cname) {
   }
   return "";
 }
+
+export function getErrorCode(error) {
+  if (error.graphQLErrors.length) {
+    return error.graphQLErrors[0].message;
+  }
+  return null;
+}

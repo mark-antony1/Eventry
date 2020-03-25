@@ -8,7 +8,16 @@ import {
 import { Block } from "baseui/block";
 import { Button } from "baseui/button";
 import { useStyletron } from 'baseui';
+import {
+  useQuery
+} from '@apollo/react-hooks';
+
+import {
+  GET_USER_BY_AUTH
+} from '../constants/query';
+
 export default ({ leftButtons, children }) => {
+  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
   const [css] = useStyletron();
 
   return (
@@ -36,10 +45,26 @@ export default ({ leftButtons, children }) => {
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.right}>
         <StyledNavigationItem>
-          <Block marginRight="24px">
+          <Block>
             <Button $as="a" href="/about" kind="minimal">
               About
             </Button>
+          </Block>
+        </StyledNavigationItem>
+        <StyledNavigationItem>
+          <Block marginRight="24px">
+            {
+              (!loading && !data.getUserByAuth) &&
+              <Button $as="a" href="/user" kind="minimal">
+                Sign up
+              </Button>
+            }
+            {
+              (!loading && data.getUserByAuth) &&
+              <Button $as="a" href="/user" kind="minimal">
+                {data.getUserByAuth.user.firstName}
+              </Button>
+            }
           </Block>
         </StyledNavigationItem>
       </StyledNavigationList>

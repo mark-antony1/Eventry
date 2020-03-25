@@ -16,7 +16,7 @@ import CheckIcon from 'baseui/icon/check';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
-  Display2,
+  Display3,
   Display4,
   Paragraph1,
   Label1,
@@ -256,7 +256,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
       <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
         <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
           <Block flex="1">
-            <Display2><b>About</b></Display2>
+            <Display3><b>About</b></Display3>
           </Block>
           <Block flex="2">
             <Label1><i>{venue.teaserDescription}</i></Label1>
@@ -268,7 +268,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
         </Block>
         <Block display="flex" marginTop="68px" flexDirection={['column', 'column', 'row', 'row']}>
           <Block flex="1">
-            <Display2><b>Hours</b></Display2>
+            <Display3><b>Hours</b></Display3>
           </Block>
           <Block flex="2">
             <Block width="fit-content">

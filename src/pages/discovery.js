@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import {
@@ -14,7 +14,7 @@ import DiscoveryMap from '../components/map/discovery-map';
 import HeaderNavigation from '../components/header-navigation';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
-import { useDebounce } from '../utils';
+import { useDebounce, useQueryUrl } from '../utils';
 
 // Filter
 import { Checkbox } from 'baseui/checkbox';
@@ -326,10 +326,6 @@ const emitFilterEvent = (payload) => {
   });
 };
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-
 function initializeFilter(queryUrl) {
   const indoor = queryUrl.get('indoor');
   const outdoor = queryUrl.get('outdoor');
@@ -390,7 +386,7 @@ function setFilterQueryUrl(history, queryUrl, payload) {
 export default function Discovery() {
   const [ css ] = useStyletron();
   const history = useHistory();
-  const queryUrl = useQuery();
+  const queryUrl = useQueryUrl();
   const [ venueRefs, setVenueRefs ] = useState({});
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);

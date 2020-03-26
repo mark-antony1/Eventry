@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
@@ -94,6 +95,7 @@ const WriteEndorsement = ({ symbol, setWritingEndorsement }) => {
 };
 
 export default function VenueReviews({ symbol }) {
+  const history = useHistory();
   const { data, loading, error } = useQuery(
     LOAD_VENUE_REVIEWS,
     {
@@ -110,9 +112,7 @@ export default function VenueReviews({ symbol }) {
 
   const {
     getReviewsBySymbol: reviews,
-    getUserByAuth: {
-      user
-    }
+    getUserByAuth: authData
   } = data;
 
   return (
@@ -136,10 +136,10 @@ export default function VenueReviews({ symbol }) {
             <WriteEndorsement symbol={symbol} setWritingEndorsement={setWritingEndorsement} /> :
             <Button
               onClick={() => {
-                if (user) {
+                if (authData) {
                   setWritingEndorsement(true);
                 } else {
-
+                  history.push(`/user/?from=${symbol}`);
                 }
               }}
             >

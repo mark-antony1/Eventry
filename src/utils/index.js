@@ -1,7 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactGA from "react-ga";
+import { useLocation } from 'react-router-dom';
 
 ReactGA.initialize("UA-160350473-1");
+export function useQueryUrl() {
+  return new URLSearchParams(useLocation().search);
+}
 
 export const usePrevious = value => {
   const ref = useRef();

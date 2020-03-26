@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
 import { Select } from 'baseui/select';
 import { FaAngleRight } from 'react-icons/fa';
-import { useDebounce, setCookie, getErrorCode } from '../utils';
+import { useDebounce, setCookie, getErrorCode, useQueryUrl } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 import {
-  Display2,
   Display4,
-  Paragraph1,
-  Label1,
-  Label2
+  Label1
 } from 'baseui/typography';
 import {
   useQuery,
@@ -22,7 +20,6 @@ import {
 } from '@apollo/react-hooks';
 
 import {
-  GET_USER_BY_AUTH,
   GET_TEAMS_BY_EMAIL,
   LOAD_USER_PROFILE
 } from '../constants/query';
@@ -33,8 +30,10 @@ import {
 } from '../constants/mutation';
 
 function SignUpForm({ handleSigninMode }) {
+  const queryUrl = useQueryUrl();
+  const history = useHistory();
   const [ createUser ] = useMutation(CREATE_USER);
-  const [ getTeamsByEmail, { data: teamData, loading: teamDataLoading } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
+  const [ getTeamsByEmail, { data: teamData } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
   const [ submittingForm, setSubmittingForm ] = useState(false);
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -91,7 +90,7 @@ function SignUpForm({ handleSigninMode }) {
       return null;
     }
     setSubmittingForm(true);
-    const createUserResponse = await createUser({
+    createUser({
       variables: {
         email,
         firstName,
@@ -101,6 +100,9 @@ function SignUpForm({ handleSigninMode }) {
       },
       refetchQueries: ({ data: { createUser: {token} } }) => {
         setCookie('userToken', token, 7);
+        if (queryUrl.get('from')) {
+          history.push(`/${queryUrl.get('from')}`);
+        }
         return ['LoadUserProfile'];
       }
     }).catch(error => {
@@ -247,6 +249,8 @@ function SignUpForm({ handleSigninMode }) {
 }
 
 function SignInForm({ handleSignupMode }) {
+  const queryUrl = useQueryUrl();
+  const history = useHistory();
   const [ signin ] = useMutation(SIGN_IN);
   const [ submittingForm, setSubmittingForm ] = useState(false);
   const [ email, setEmail ] = useState('');
@@ -271,13 +275,16 @@ function SignInForm({ handleSignupMode }) {
       return null;
     }
     setSubmittingForm(true);
-    const signinResponse = await signin({
+    signin({
       variables: {
         email,
         password
       },
       refetchQueries: ({ data: { signin: {token} } }) => {
         setCookie('userToken', token, 7);
+        if (queryUrl.get('from')) {
+          history.push(`/${queryUrl.get('from')}`);
+        }
         return ['LoadUserProfile'];
       }
     }).catch(error => {
@@ -455,8 +462,7 @@ function User() {
     getUserByAuth: {
       user: {
         firstName,
-        email,
-        team
+        email
       }
     },
     getUserProfileByAuth: {

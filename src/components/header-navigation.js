@@ -17,7 +17,7 @@ import {
 } from '../constants/query';
 
 export default ({ leftButtons, children }) => {
-  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+  const { data, loading } = useQuery(GET_USER_BY_AUTH);
   const [css] = useStyletron();
 
   return (

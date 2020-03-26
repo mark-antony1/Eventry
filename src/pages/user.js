@@ -103,7 +103,7 @@ function SignUpForm({ handleSigninMode }) {
         if (queryUrl.get('from')) {
           history.push(`/${queryUrl.get('from')}`);
         }
-        return ['LoadUserProfile'];
+        return ['LoadUserProfile', 'GetUserByAuth'];
       }
     }).catch(error => {
       setSignupError(getErrorCode(error));
@@ -285,7 +285,7 @@ function SignInForm({ handleSignupMode }) {
         if (queryUrl.get('from')) {
           history.push(`/${queryUrl.get('from')}`);
         }
-        return ['LoadUserProfile'];
+        return ['LoadUserProfile', 'GetUserByAuth'];
       }
     }).catch(error => {
       setSigninError(getErrorCode(error));

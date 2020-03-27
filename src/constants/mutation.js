@@ -28,3 +28,8 @@ export const CREATE_ENDORSEMENT = gql`
 mutation CreateReview($content: String!, $symbol: String!){
   createReview(content: $content, symbol: $symbol)
 }`;
+
+export const DELETE_ENDORSEMENT = gql`
+mutation DeleteReivew($reviewId: String!){
+  deleteReview(reviewId: $reviewId)
+}`;

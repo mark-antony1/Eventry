@@ -13,3 +13,12 @@ export const User = `{
   lastName
   email
 }`;
+
+export const Review = `{
+  id
+  content
+  symbol
+  company${Company}
+  team${Team}
+  user${User}
+}`;

@@ -2,21 +2,22 @@ import gql from 'graphql-tag';
 import {
   Company,
   Team,
-  User
+  User,
+  Review
 } from './fragment';
 
 export const LOAD_VENUE_REVIEWS = gql`
 query LoadVenueReviews($symbol: String!){
-  getReviewsBySymbol(symbol: $symbol){
-    content
-    company${Company}
-    team${Team}
-    user${User}
-  }
+  getReviewsBySymbol(symbol: $symbol)${Review}
   getUserByAuth{
     user${User}
   }
   checkUserHasWrittenReview(symbol: $symbol)
+}`;
+
+export const GET_REVIEWS_BY_AUTH = gql`
+query GetReviewsByAuth{
+  getReviewsByAuth${Review}
 }`;
 
 export const GET_USER_BY_AUTH = gql`

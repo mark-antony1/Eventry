@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useApolloClient } from '@apollo/react-hooks';
+import { FaTrashAlt } from 'react-icons/fa';
 import { Block } from 'baseui/block';
+import { Card } from 'baseui/card';
 import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
@@ -18,6 +20,7 @@ import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 import {
   Display4,
+  Paragraph1,
   Label1
 } from 'baseui/typography';
 import {
@@ -28,13 +31,81 @@ import {
 
 import {
   GET_TEAMS_BY_EMAIL,
-  LOAD_USER_PROFILE
+  LOAD_USER_PROFILE,
+  GET_REVIEWS_BY_AUTH
 } from '../constants/query';
 import {
   CREATE_USER,
   SIGN_IN,
-  CHANGE_PASSWORD
+  CHANGE_PASSWORD,
+  DELETE_ENDORSEMENT
 } from '../constants/mutation';
+
+function MyReview({ review }) {
+  const client = useApolloClient();
+  const [ confirmingDelete, setConfirmingDelete ] = useState(false);
+  const [ deleteEndorsement, { loading: deletingEndorsement } ] = useMutation(DELETE_ENDORSEMENT);
+
+  const handleDeleteEndorsement = async () => {
+    const deleteEndorsementResponse = await deleteEndorsement({
+      variables: {
+        reviewId: review.id
+      },
+      refetchQueries: ['GetReviewsByAuth']
+    }).catch(() => {});
+
+    if (deleteEndorsementResponse) {
+      showAlert(client, 'Successfully deleted the endorsement');
+      setConfirmingDelete(false);
+    }
+  };
+
+  return (
+    <Block marginTop="12px" position="relative">
+      {deletingEndorsement && <Loading compact={true} />}
+      <Card>
+        <Paragraph1>
+          {review.content}
+        </Paragraph1>
+        <Label1><b>For <a href={`/${review.symbol}`} target="_blank" rel="noopener noreferrer">{review.symbol}</a></b></Label1>
+        <Block display="flex" justifyContent="flex-end" marginTop="8px">
+          {
+            confirmingDelete ?
+            <Button onClick={handleDeleteEndorsement}>Delete Endorsement</Button>
+            :
+            <Button kind="minimal" onClick={() => setConfirmingDelete(true)}><FaTrashAlt /></Button>
+          }
+
+        </Block>
+      </Card>
+    </Block>
+  );
+}
+
+function MyReviews() {
+  const { data, loading, error } = useQuery(GET_REVIEWS_BY_AUTH);
+
+  if (loading || error) {
+    return <Loading />;
+  }
+
+  const {
+    getReviewsByAuth: reviews
+  } = data;
+
+  return (
+    <Block>
+      <Display4><b>My Endorsements</b></Display4>
+      <Block>
+        {
+          reviews.map((review, index) => {
+            return <MyReview key={index} review={review} />;
+          })
+        }
+      </Block>
+    </Block>
+  );
+}
 
 function SignUpForm({ handleSigninMode }) {
   const client = useApolloClient();
@@ -496,12 +567,11 @@ function User() {
   return (
     <Block
       display="flex"
-      flexDirection="column"
-      alignItems="center"
-      paddingTop="24px"
-      paddingBottom="46px"
+      flexDirection={["column", "column", "row", "row"]}
+      justifyContent="center"
+      padding="24px"
     >
-      <Block width={['95%', '95%', '300px', '400px']}>
+      <Block width={['95%', '95%', '300px', '400px']} padding="12px">
         <Display4><b>Hello {firstName}!</b></Display4>
         <Display4 marginTop="12px"><b>{email}</b></Display4>
         <Display4 marginTop="12px"><b>{teamName} at {companyName}</b></Display4>
@@ -566,6 +636,11 @@ function User() {
           >
             Sign out
           </Button>
+        </Block>
+      </Block>
+      <Block width={['95%', '95%', '300px', '400px']} padding="12px">
+        <Block maxHeight="400px" overflow="auto">
+          <MyReviews />
         </Block>
       </Block>
     </Block>

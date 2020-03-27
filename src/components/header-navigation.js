@@ -59,8 +59,6 @@ export default ({ leftButtons, children }) => {
             </StyledNavigationItem>
           );
         }) : null}
-      </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.left}>
         <StyledNavigationItem>
             <a href="/">
               <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />

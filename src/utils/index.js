@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import ReactGA from "react-ga";
 import { useLocation } from 'react-router-dom';
 
-ReactGA.initialize("UA-160350473-1");
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
 export function useQueryUrl() {
   return new URLSearchParams(useLocation().search);
 }

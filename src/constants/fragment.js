@@ -8,6 +8,7 @@ export const Team = `{
 }`;
 
 export const User = `{
+  id
   firstName
   lastName
   email

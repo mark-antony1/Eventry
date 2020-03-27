@@ -20,7 +20,7 @@ import { useDebounce, useQueryUrl } from '../utils';
 import { Checkbox } from 'baseui/checkbox';
 import { Select } from 'baseui/select';
 import ReactGA from "react-ga";
-ReactGA.initialize("UA-160350473-1");
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
 
 const groupSizeOptions = [
   {

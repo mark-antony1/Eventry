@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useApolloClient } from '@apollo/react-hooks';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
@@ -14,7 +15,7 @@ import {
   useMutation
 } from '@apollo/react-hooks';
 
-import { getErrorCode } from '../../utils';
+import { getErrorCode, showAlert } from '../../utils';
 import { LOAD_VENUE_REVIEWS } from '../../constants/query';
 import { CREATE_ENDORSEMENT } from '../../constants/mutation';
 
@@ -22,8 +23,7 @@ const Review = ({ review }) => {
   return (
     <Block display="flex" flexDirection="column" paddingBottom="24px">
       <Block height="50px" display="flex" alignItems="flex-end">
-        <img alt="review-logo" height="100%" src={review.company.logo} />
-        <Label1 marginLeft="12px"><b>{review.company.name}</b></Label1>
+        {review.company.logo && <img alt="review-logo" height="100%" src={review.company.logo} />}
       </Block>
       <Block marginTop="12px">
         <Paragraph1>
@@ -38,6 +38,7 @@ const Review = ({ review }) => {
 };
 
 const WriteEndorsement = ({ symbol, setWritingEndorsement }) => {
+  const client = useApolloClient();
   const [ content, setContent ] = useState('');
   const [ createEndorsementError, setCreateEndorsementError ] = useState(null);
   const [ createEndorsement ] = useMutation(CREATE_ENDORSEMENT);
@@ -66,6 +67,7 @@ const WriteEndorsement = ({ symbol, setWritingEndorsement }) => {
 
     if (createEndorsementResponse) {
       setWritingEndorsement(false);
+      showAlert(client, 'Successfully wrote an endorsement. Thank you!');
     }
   };
 
@@ -112,7 +114,8 @@ export default function VenueReviews({ symbol }) {
 
   const {
     getReviewsBySymbol: reviews,
-    getUserByAuth: authData
+    getUserByAuth: authData,
+    checkUserHasWrittenReview
   } = data;
 
   return (
@@ -132,8 +135,11 @@ export default function VenueReviews({ symbol }) {
         </Block>
         <Block display="flex">
           {
-            writingEndorsement ?
-            <WriteEndorsement symbol={symbol} setWritingEndorsement={setWritingEndorsement} /> :
+            writingEndorsement &&
+            <WriteEndorsement symbol={symbol} setWritingEndorsement={setWritingEndorsement} />
+          }
+          {
+            (!checkUserHasWrittenReview && !writingEndorsement) &&
             <Button
               onClick={() => {
                 if (authData) {

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useApolloClient } from '@apollo/react-hooks';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
 import { Select } from 'baseui/select';
 import { FaAngleRight } from 'react-icons/fa';
-import { useDebounce, setCookie, getErrorCode, useQueryUrl } from '../utils';
+import {
+  useDebounce,
+  setCookie,
+  getErrorCode,
+  useQueryUrl,
+  showAlert
+} from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 import {
@@ -30,6 +37,7 @@ import {
 } from '../constants/mutation';
 
 function SignUpForm({ handleSigninMode }) {
+  const client = useApolloClient();
   const queryUrl = useQueryUrl();
   const history = useHistory();
   const [ createUser ] = useMutation(CREATE_USER);
@@ -90,7 +98,7 @@ function SignUpForm({ handleSigninMode }) {
       return null;
     }
     setSubmittingForm(true);
-    createUser({
+    const createUserSuccess = await createUser({
       variables: {
         email,
         firstName,
@@ -109,6 +117,10 @@ function SignUpForm({ handleSigninMode }) {
       setSignupError(getErrorCode(error));
       setSubmittingForm(false);
     });
+
+    if (createUserSuccess) {
+      showAlert(client, 'Welcome to TeamBright!')
+    }
   };
 
   return (
@@ -249,6 +261,7 @@ function SignUpForm({ handleSigninMode }) {
 }
 
 function SignInForm({ handleSignupMode }) {
+  const client = useApolloClient();
   const queryUrl = useQueryUrl();
   const history = useHistory();
   const [ signin ] = useMutation(SIGN_IN);
@@ -275,7 +288,7 @@ function SignInForm({ handleSignupMode }) {
       return null;
     }
     setSubmittingForm(true);
-    signin({
+    const signinSuccess = await signin({
       variables: {
         email,
         password
@@ -291,6 +304,10 @@ function SignInForm({ handleSignupMode }) {
       setSigninError(getErrorCode(error));
       setSubmittingForm(false);
     });
+
+    if (signinSuccess) {
+      showAlert(client, 'Welcome to TeamBright!')
+    }
   };
 
   return (
@@ -419,6 +436,7 @@ function WithLogin({ children }) {
 }
 
 function User() {
+  const client = useApolloClient();
   const { data, loading, error, refetch } = useQuery(LOAD_USER_PROFILE);
   const [ changePassword ] = useMutation(CHANGE_PASSWORD);
   const [ changingPassword, setChangingPassword ] = useState(false);
@@ -452,6 +470,7 @@ function User() {
 
     if (changePasswordResponse) {
       setChangingPassword(false);
+      showAlert(client, 'Successfully changed the password');
     }
   };
 
@@ -541,6 +560,7 @@ function User() {
             onClick={() => {
               setCookie('userToken', '', 7);
               refetch();
+              showAlert(client, 'See you later!');
             }}
             kind="minimal"
           >

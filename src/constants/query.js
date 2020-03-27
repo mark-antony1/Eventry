@@ -16,6 +16,7 @@ query LoadVenueReviews($symbol: String!){
   getUserByAuth{
     user${User}
   }
+  checkUserHasWrittenReview(symbol: $symbol)
 }`;
 
 export const GET_USER_BY_AUTH = gql`
@@ -43,4 +44,9 @@ query GetTeamsByEmail($email: String!){
   getTeamsByEmail(email: $email){
     name
   }
+}`;
+
+export const GET_ALERT_MESSAGE = gql`
+query GetAlertMessage{
+  successAlert @client
 }`;

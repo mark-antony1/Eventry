@@ -88,3 +88,12 @@ export function getErrorCode(error) {
   }
   return null;
 }
+
+
+export function showAlert(client, content) {
+  client.writeData({
+    data: {
+      successAlert: content
+    }
+  });
+}

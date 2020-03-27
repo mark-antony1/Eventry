@@ -53,6 +53,12 @@ const client = new ApolloClient({
   cache
 });
 
+cache.writeData({
+  data: {
+    successAlert: ''
+  },
+});
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <StyletronProvider value={engine}>

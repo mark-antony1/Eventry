@@ -5,8 +5,10 @@ import {
   StyledNavigationList,
   StyledNavigationItem
 } from 'baseui/header-navigation';
+import DownIcon from 'baseui/icon/chevron-down';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { Drawer } from 'baseui/drawer';
 import { Label1 } from 'baseui/typography';
 import { useStyletron } from 'baseui';
 import ReactGA from "react-ga";
@@ -18,6 +20,7 @@ import {
   GET_USER_BY_AUTH,
   GET_ALERT_MESSAGE
 } from '../constants/query';
+import { useWindowSize } from '../utils';
 
 ReactGA.initialize(process.env.REACT_APP_GA_ID);
 const Alert = () => {
@@ -46,7 +49,11 @@ const Alert = () => {
     </Block>
   )
 }
+
+const COLLAPSE_MODE_LIMIT = 800;
 export default ({ leftButtons, children }) => {
+  const windowSize = useWindowSize();
+  const [ showDrawer, setShowDrawer ] = useState(false);
   const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
   const [css] = useStyletron();
 
@@ -56,30 +63,64 @@ export default ({ leftButtons, children }) => {
       ReactGA.set({ userId: data.getUserByAuth.user.id });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [data && data.getUserByAuth && data.getUserByAuth.user && data.getUserByAuth.user.id]);
+  }, [data && data.getUserByAuth && data.getUserByAuth.user && data.getUserByAuth.user.id]);
 
-  return (
-    <HeaderNavigation overrides={{ Root: { style: {border: 'none', position: 'relative'} } }}>
-      <Alert />
-      <StyledNavigationList $align={ALIGN.left}>
-        {leftButtons ? leftButtons.map((LB, index) => {
-          return (
-            <StyledNavigationItem key={index} className={css({paddingLeft: '0px !important'})}>
-              <LB />
-            </StyledNavigationItem>
-          );
-        }) : null}
+  const renderDrawer = () => {
+    return (
+      <Drawer
+        onClose={() => { setShowDrawer(false) }}
+        isOpen={showDrawer}
+        anchor="top"
+      >
+        <Block display="flex" flexDirection="column" height="100%">
+          <Button $as="a" href="/" kind="minimal">
+            Home
+          </Button>
+          {
+            (!loading && !error && data && !data.getUserByAuth) &&
+            <Button $as="a" href="/user" kind="minimal">
+              Sign up
+            </Button>
+          }
+          {
+            (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
+            <Button $as="a" href="/user" kind="minimal">
+              {data.getUserByAuth.user.firstName}
+            </Button>
+          }
+          <Button $as="a" href="/about" kind="minimal">
+            About
+          </Button>
+        </Block>
+      </Drawer>
+    );
+  };
+  const renderLogo = () => {
+    if (windowSize.width < COLLAPSE_MODE_LIMIT) {
+      return (
         <StyledNavigationItem>
-            <a href="/">
-              <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
-            </a>
+          <a href="#" onClick={() => { setShowDrawer(true) }}>
+            <Block display="flex" flexDirection="column" alignItems="center">
+              <img height="30px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
+              <DownIcon size={18} />
+            </Block>
+          </a>
         </StyledNavigationItem>
-        <StyledNavigationItem>
-          {children}
-        </StyledNavigationItem>
-      </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.center}>
-      </StyledNavigationList>
+      );
+    }
+    return (
+      <StyledNavigationItem>
+        <a href="/">
+          <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
+        </a>
+      </StyledNavigationItem>
+    );
+  };
+  const renderNavRightButton = () => {
+    if (windowSize.width < COLLAPSE_MODE_LIMIT) {
+      return null;
+    }
+    return (
       <StyledNavigationList $align={ALIGN.right}>
         <StyledNavigationItem>
           <Block>
@@ -105,6 +146,29 @@ export default ({ leftButtons, children }) => {
           </Block>
         </StyledNavigationItem>
       </StyledNavigationList>
+    );
+  };
+  return (
+    <HeaderNavigation overrides={{ Root: { style: {border: 'none', position: 'relative'} } }}>
+      <Alert />
+      <StyledNavigationList $align={ALIGN.left}>
+        {leftButtons ? leftButtons.map((LB, index) => {
+          return (
+            <StyledNavigationItem key={index} className={css({paddingLeft: '0px !important'})}>
+              <LB />
+            </StyledNavigationItem>
+          );
+        }) : null}
+        {renderLogo()}
+
+        <StyledNavigationItem>
+          {children}
+        </StyledNavigationItem>
+      </StyledNavigationList>
+      <StyledNavigationList $align={ALIGN.center}>
+      </StyledNavigationList>
+      {renderNavRightButton()}
+      {renderDrawer()}
     </HeaderNavigation>
   );
 }

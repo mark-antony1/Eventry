@@ -138,7 +138,7 @@ function SearchBar({ filterValue, updateFilterValue }) {
   );
 
   return (
-    <Block width={['200px', '200px', '300px', '300px']}>
+    <Block width={['100%', '100%', '300px', '300px']}>
       <Input
         value={searchTerm}
         onChange={e => {
@@ -480,7 +480,7 @@ export default function Discovery() {
         />
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
-        <Block flex="4">
+        <Block flex="4" display={["none", "none", "initial", "initial"]}>
           <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
         {

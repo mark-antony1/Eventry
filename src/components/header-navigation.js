@@ -11,7 +11,6 @@ import { Button } from 'baseui/button';
 import { Drawer } from 'baseui/drawer';
 import { Label1 } from 'baseui/typography';
 import { useStyletron } from 'baseui';
-import ReactGA from "react-ga";
 import {
   useQuery
 } from '@apollo/react-hooks';
@@ -22,7 +21,6 @@ import {
 } from '../constants/query';
 import { useWindowSize } from '../utils';
 
-ReactGA.initialize(process.env.REACT_APP_GA_ID);
 const Alert = () => {
   const { data } = useQuery(GET_ALERT_MESSAGE);
   const [ showAlert, setShowAlert ] = useState(false);
@@ -56,14 +54,6 @@ export default ({ leftButtons, children }) => {
   const [ showDrawer, setShowDrawer ] = useState(false);
   const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
   const [css] = useStyletron();
-
-  useEffect(() => {
-    if (data && data.getUserByAuth && data.getUserByAuth.user && data.getUserByAuth.user.id) {
-      console.log(data.getUserByAuth.user.id, process.env.REACT_APP_GA_ID)
-      ReactGA.set({ userId: data.getUserByAuth.user.id });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data && data.getUserByAuth && data.getUserByAuth.user && data.getUserByAuth.user.id]);
 
   const renderDrawer = () => {
     return (

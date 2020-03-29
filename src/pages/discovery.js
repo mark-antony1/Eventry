@@ -14,13 +14,11 @@ import DiscoveryMap from '../components/map/discovery-map';
 import HeaderNavigation from '../components/header-navigation';
 import VenueCell from '../components/venue/venue-cell';
 import { venues as allVenues } from '../constants/locations';
-import { useDebounce, useQueryUrl } from '../utils';
+import { useDebounce, useQueryUrl, useGA } from '../utils';
 
 // Filter
 import { Checkbox } from 'baseui/checkbox';
 import { Select } from 'baseui/select';
-import ReactGA from "react-ga";
-ReactGA.initialize(process.env.REACT_APP_GA_ID);
 
 const groupSizeOptions = [
   {
@@ -316,10 +314,10 @@ const generateGALabel = (action, value) => {
   return '';
 };
 
-const emitFilterEvent = (payload) => {
+const emitFilterEvent = (payload, ga) => {
   const action = Object.keys(payload)[0];
   const label = generateGALabel(action, payload[action]);
-  ReactGA.event({
+  ga.event({
     category: 'Filter',
     action,
     label
@@ -384,6 +382,7 @@ function setFilterQueryUrl(history, queryUrl, payload) {
 }
 
 export default function Discovery() {
+  const ga = useGA();
   const [ css ] = useStyletron();
   const history = useHistory();
   const queryUrl = useQueryUrl();
@@ -421,7 +420,7 @@ export default function Discovery() {
 
   const updateFilterValue = (payload) => {
     setFilterQueryUrl(history, queryUrl, payload);
-    emitFilterEvent(payload);
+    emitFilterEvent(payload, ga);
     setFilterValue({
       ...filterValue,
       ...payload

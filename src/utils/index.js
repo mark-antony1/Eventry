@@ -1,8 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactGA from "react-ga";
 import { useLocation } from 'react-router-dom';
+import {
+  useQuery
+} from '@apollo/react-hooks';
+import {
+  GET_USER_BY_AUTH
+} from '../constants/query';
 
-ReactGA.initialize(process.env.REACT_APP_GA_ID);
 export function useQueryUrl() {
   return new URLSearchParams(useLocation().search);
 }
@@ -16,15 +21,15 @@ export const usePrevious = value => {
 };
 
 export const withTracker = (WrappedComponent, options = {}) => {
-  const trackPage = page => {
-    ReactGA.set({
-      page,
-      ...options
-    });
-    ReactGA.pageview(page);
-  };
-
   const HOC = props => {
+    const ga = useGA();
+    const trackPage = page => {
+      ga.set({
+        page,
+        ...options
+      });
+      ga.pageview(page);
+    };
     useEffect(() => trackPage(props.location.pathname), [
       props.location.pathname
     ]);
@@ -124,4 +129,33 @@ export function useWindowSize() {
   }, []); // Empty array ensures that effect is only run on mount and unmount
 
   return windowSize;
+}
+
+export function useGA() {
+  const { data, loading } = useQuery(GET_USER_BY_AUTH);
+
+  if (loading) {
+    ReactGA.initialize(process.env.REACT_APP_GA_ID);
+    return ReactGA;
+  }
+
+  const {
+    getUserByAuth
+  } = data;
+
+  if (!getUserByAuth) {
+    ReactGA.initialize(process.env.REACT_APP_GA_ID);
+    return ReactGA;
+  }
+
+  ReactGA.initialize(
+    process.env.REACT_APP_GA_ID,
+    {
+      gaOptions: {
+        userId: getUserByAuth.user.id
+      }
+    }
+  );
+
+  return ReactGA;
 }

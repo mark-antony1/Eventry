@@ -159,3 +159,16 @@ export function useGA() {
 
   return ReactGA;
 }
+
+export function getHourFromMilitaryHour(hour) {
+  if (hour === 12) {
+    return '12PM';
+  }
+  if (hour === 24) {
+    return '12AM';
+  }
+  if (hour > 12) {
+    return `${hour - 12}PM`;
+  }
+  return `${hour}AM`;
+}

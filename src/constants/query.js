@@ -51,3 +51,13 @@ export const GET_ALERT_MESSAGE = gql`
 query GetAlertMessage{
   successAlert @client
 }`;
+
+export const LOAD_BOOKING_FORM = gql`
+query LoadBookingForm($symbol: String!){
+  getBusinessHours(symbol: $symbol){
+    id
+    day
+    open
+    close
+  }
+}`;

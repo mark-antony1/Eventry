@@ -25,6 +25,7 @@ import {
 import HeaderNavigation from '../components/header-navigation';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueReviews from '../components/venue/venue-reviews';
+import { getHourFromMilitaryHour } from '../utils';
 import { venues as allVenues } from '../constants/locations';
 
 function minutesToAverageTimeSpent(minutes) {
@@ -37,19 +38,6 @@ function minutesToAverageTimeSpent(minutes) {
   }
 
   return '3 hours or more';
-}
-
-function getHourFromMilitaryHour(hour) {
-  if (hour === 12) {
-    return '12PM';
-  }
-  if (hour === 24) {
-    return '12AM';
-  }
-  if (hour > 12) {
-    return `${hour - 12}PM`;
-  }
-  return `${hour}AM`;
 }
 
 const Hours = ({ hours }) => {

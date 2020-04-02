@@ -89,12 +89,22 @@ export default ({ leftButtons, children }) => {
     if (windowSize.width < COLLAPSE_MODE_LIMIT) {
       return (
         <StyledNavigationItem>
-          <a href="#" onClick={() => { setShowDrawer(true) }}>
-            <Block display="flex" flexDirection="column" alignItems="center">
-              <img height="30px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
-              <DownIcon size={18} />
-            </Block>
-          </a>
+          <Block
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            onClick={() => { setShowDrawer(true) }}
+            overrides={{
+              Block: {
+                style: {
+                  cursor: 'pointer'
+                }
+              }
+            }}
+          >
+            <img height="30px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
+            <DownIcon size={18} />
+          </Block>
         </StyledNavigationItem>
       );
     }

@@ -33,3 +33,8 @@ export const DELETE_ENDORSEMENT = gql`
 mutation DeleteReivew($reviewId: String!){
   deleteReview(reviewId: $reviewId)
 }`;
+
+export const BOOK_EVENT = gql`
+mutation BookEvent($groupSize: Int!, $note: String, $masterPhoneNumber: String!, $time: DateTime!){
+  bookEvent(groupSize: $groupSize, note: $note, masterPhoneNumber: $masterPhoneNumber, time: $time)
+}`;

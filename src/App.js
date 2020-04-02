@@ -8,6 +8,7 @@ import Discovery from './pages/discovery';
 import Details from './pages/details';
 import User from './pages/user';
 import About from './pages/about';
+import Booking from './pages/booking';
 import { withTracker } from './utils';
 import './App.css';
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact component={withTracker(About)} path="/about" />
           <Route exact component={withTracker(User)} path="/user" />
           <Route exact component={withTracker(Details)} path="/:venueSymbol" />
+          <Route exact component={withTracker(Booking)} path="/:venueSymbol/booking" />
         </Switch>
       </div>
     </Router>

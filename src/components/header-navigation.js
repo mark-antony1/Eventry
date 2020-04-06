@@ -19,6 +19,7 @@ import {
   GET_USER_BY_AUTH,
   GET_ALERT_MESSAGE
 } from '../constants/query';
+import { venues } from '../constants/locations';
 import { useWindowSize } from '../utils';
 
 const Alert = () => {
@@ -47,6 +48,78 @@ const Alert = () => {
     </Block>
   )
 }
+
+const ToVenueDashboard = () => {
+  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+  if (loading || error) {
+    return null;
+  }
+
+  const {
+    getUserByAuth: auth
+  } = data;
+
+  if (!auth) {
+    return null;
+  }
+
+  const {
+    user: {
+      venue
+    }
+  } = auth;
+
+  if (!venue) {
+    return null;
+  }
+
+  const { symbol } = venue;
+  const userVenue = venues.find((v) => v.symbol === symbol) || {};
+
+  return (
+    <StyledNavigationItem>
+      <Block>
+        <Button $as="a" href={`/${symbol}/dashboard`} kind="minimal">
+          {userVenue.name}
+        </Button>
+      </Block>
+    </StyledNavigationItem>
+  );
+};
+
+const ToVenueDashboardReduced = () => {
+  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+  if (loading || error) {
+    return null;
+  }
+
+  const {
+    getUserByAuth: auth
+  } = data;
+
+  if (!auth) {
+    return null;
+  }
+
+  const {
+    user: {
+      venue
+    }
+  } = auth;
+
+  if (!venue) {
+    return null;
+  }
+
+  const { symbol } = venue;
+  const userVenue = venues.find((v) => v.symbol === symbol) || {};
+
+  return (
+    <Button $as="a" href={`/${symbol}/dashboard`} kind="minimal">
+      {userVenue.name}
+    </Button>
+  );
+};
 
 const COLLAPSE_MODE_LIMIT = 800;
 export default ({ leftButtons, children }) => {
@@ -78,6 +151,7 @@ export default ({ leftButtons, children }) => {
               {data.getUserByAuth.user.firstName}
             </Button>
           }
+          <ToVenueDashboardReduced />
           <Button $as="a" href="/about" kind="minimal">
             About
           </Button>
@@ -121,7 +195,7 @@ export default ({ leftButtons, children }) => {
       return null;
     }
     return (
-      <StyledNavigationList $align={ALIGN.right}>
+      <StyledNavigationList $align={ALIGN.right} className={css({paddingRight: '12px !important'})}>
         <StyledNavigationItem>
           <Block>
             <Button $as="a" href="/about" kind="minimal">
@@ -130,7 +204,7 @@ export default ({ leftButtons, children }) => {
           </Block>
         </StyledNavigationItem>
         <StyledNavigationItem>
-          <Block marginRight="24px">
+          <Block>
             {
               (!loading && !error && data && !data.getUserByAuth) &&
               <Button $as="a" href="/user" kind="minimal">
@@ -145,6 +219,7 @@ export default ({ leftButtons, children }) => {
             }
           </Block>
         </StyledNavigationItem>
+        <ToVenueDashboard />
       </StyledNavigationList>
     );
   };

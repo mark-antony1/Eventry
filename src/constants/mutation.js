@@ -35,6 +35,26 @@ mutation DeleteReivew($reviewId: String!){
 }`;
 
 export const BOOK_EVENT = gql`
-mutation BookEvent($groupSize: Int!, $note: String, $masterPhoneNumber: String!, $time: DateTime!){
-  bookEvent(groupSize: $groupSize, note: $note, masterPhoneNumber: $masterPhoneNumber, time: $time)
+mutation BookEvent($groupSize: Int!, $note: String, $masterPhoneNumber: String!, $time: DateTime!, $symbol: String!){
+  bookEvent(groupSize: $groupSize, note: $note, masterPhoneNumber: $masterPhoneNumber, time: $time, symbol: $symbol)
+}`;
+
+export const CLOSE_EVENT = gql`
+mutation CloseEvent($eventId: String!){
+  closeEvent(eventId: $eventId)
+}`;
+
+export const CANCEL_EVENT = gql`
+mutation CancelEvent($eventId: String!){
+  cancelEvent(eventId: $eventId)
+}`;
+
+export const DELETE_BUSINESS_HOUR = gql`
+mutation DeleteBusinessHour($businessHourId: String!, $symbol: String!){
+  deleteBusinessHour(businessHourId: $businessHourId, symbol: $symbol)
+}`;
+
+export const CREATE_BUSINESS_HOUR = gql`
+mutation CreateBusinessHour($symbol: String!, $day: Int!, $open: Int!, $close: Int!){
+  createBusinessHour(symbol: $symbol, day: $day, open: $open, close: $close)
 }`;

@@ -165,7 +165,7 @@ export function getHourFromMilitaryHour(hour) {
     return '12PM';
   }
   if (hour === 24) {
-    return '12AM';
+    return '0AM';
   }
   if (hour > 12) {
     return `${hour - 12}PM`;

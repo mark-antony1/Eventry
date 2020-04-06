@@ -3,7 +3,9 @@ import {
   Company,
   Team,
   User,
-  Review
+  Review,
+  EventListItem,
+  EventDetails
 } from './fragment';
 
 export const LOAD_VENUE_REVIEWS = gql`
@@ -60,4 +62,39 @@ query LoadBookingForm($symbol: String!){
     open
     close
   }
+}`;
+
+export const GET_BUSINESS_HOURS = gql`
+query GetBusinessHours($symbol: String!){
+  getBusinessHours(symbol: $symbol){
+    id
+    day
+    open
+    close
+  }
+}`;
+
+export const GET_NEW_EVENTS_BY_SYMBOL = gql`
+query GetNewEventsBySymbol($symbol: String!){
+  getNewEventsBySymbol(symbol: $symbol)${EventListItem}
+}`;
+
+export const GET_UPCOMING_EVENTS_BY_SYMBOL = gql`
+query GetUpcomingEventsBySymbol($symbol: String!){
+  getUpcomingEventsBySymbol(symbol: $symbol)${EventListItem}
+}`;
+
+export const GET_PAST_EVENTS_BY_SYMBOL = gql`
+query GetPastEventsBySymbol($symbol: String!, $skip: Int!){
+  getPastEventsBySymbol(symbol: $symbol, skip: $skip)${EventListItem}
+}`;
+
+export const AUTHORIZE_EVENT_PAGE = gql`
+query AuthorizeEventPage($eventId: String!){
+  authorizeEventPage(eventId: $eventId)
+}`;
+
+export const GET_EVENT = gql`
+query GetEvent($eventId: String!){
+  getEvent(eventId: $eventId)${EventDetails}
 }`;

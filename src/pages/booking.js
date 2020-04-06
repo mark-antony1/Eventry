@@ -15,7 +15,8 @@ import {
 } from 'baseui/typography';
 import {
   useQuery,
-  useMutation
+  useMutation,
+  useApolloClient
 } from '@apollo/react-hooks';
 import {
   LOAD_BOOKING_FORM,
@@ -27,6 +28,7 @@ import {
 import {
   venues
 } from '../constants/locations';
+import { showAlert, getErrorCode } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
@@ -101,8 +103,8 @@ function DateForm({ setCurrentStep, form, updateForm }) {
   };
 
   return (
-    <Block padding="48px" display="flex" justifyContent="center">
-      <Block display="flex" flexDirection="column" justifyContent="center">
+    <Block paddingTop="48px" display="flex" justifyContent={['flex-start', 'flex-start', 'center', 'center']} flexDirection={['column', 'column', 'row', 'row']}>
+      <Block display="flex" flexDirection="column" justifyContent="center" marginRight="48px">
         <Display4 marginBottom="12px"><b>Select Date</b></Display4>
         <StatefulCalendar
           initialState={{value: form.date}}
@@ -127,7 +129,7 @@ function DateForm({ setCurrentStep, form, updateForm }) {
         <Block
           display="flex"
           flexDirection="column"
-          marginLeft="24px"
+          marginRight="48px"
         >
           <Display4 marginBottom="12px"><b>Select Time</b></Display4>
           <Block
@@ -150,7 +152,7 @@ function DateForm({ setCurrentStep, form, updateForm }) {
         :
         null
       }
-      <Block display="flex" alignItems="center" margin="48px">
+      <Block display="flex" alignItems="center">
         <Button
           disabled={form.day === -1 || form.hour === -1}
           onClick={() => setCurrentStep(STEPS.DETAILS)}
@@ -162,7 +164,7 @@ function DateForm({ setCurrentStep, form, updateForm }) {
   );
 }
 
-function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent }) {
+function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent, bookingFormError }) {
   const {
     data: {
       getUserByAuth: {
@@ -171,75 +173,66 @@ function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent }) {
     }
   } = useQuery(GET_USER_BY_AUTH);
 
-  const validateForm = () => {
-    if (isNaN(form.groupSize) || !Number.isInteger(Number(form.groupSize))) {
-      return false;
-    }
-    if (!form.masterPhoneNumber) {
-      return false;
-    }
-    return true;
-  };
-
   return (
-    <Block padding="48px" display="flex" justifyContent="center">
-      <Block display="flex" alignItems="center" margin="48px">
+    <Block paddingTop="48px" display="flex" justifyContent={['flex-start', 'flex-start', 'center', 'center']} flexDirection={['column', 'column', 'row', 'row']}>
+      <Block display="flex" alignItems="center" marginRight="48px">
         <Button
           onClick={() => setCurrentStep(STEPS.DATE)}
         >
           <ChevronLeft /> Prev
         </Button>
       </Block>
-      <Block display="flex" flexDirection="column">
+      <Block display="flex" flexDirection="column" marginRight="48px">
         <Display4 marginBottom="12px"><b>Details</b></Display4>
-        <FormControl label="Booker" error={null} positive="">
-          <Label1>{user.firstName} {user.lastName}</Label1>
-        </FormControl>
-        <FormControl label="Group Size" error={null} positive="">
-          <Input
-            value={form.groupSize}
-            type="number"
-            placeholder="group size"
-            onChange={e => {
-              updateForm({
-                groupSize: e.currentTarget.value
-              });
-            }}
-          />
-        </FormControl>
-        <FormControl label="Note" error={null} positive="">
-          <Textarea
-            value={form.note}
-            type="text"
-            placeholder="note..."
-            onChange={e => {
-              updateForm({
-                note: e.currentTarget.value
-              });
-            }}
-          />
-        </FormControl>
-        <FormControl label="Contact Email" error={null} positive="">
-          <Label1>{user.email}</Label1>
-        </FormControl>
-        <FormControl label="Contact Phone" error={null} positive="">
-          <Input
-            value={form.masterPhoneNumber}
-            type="text"
-            placeholder="phone number"
-            onChange={e => {
-              updateForm({
-                masterPhoneNumber: e.currentTarget.value
-              });
-            }}
-          />
+        <FormControl error={bookingFormError} positive="">
+          <Block display="flex" flexDirection="column">
+            <FormControl label="Booker" error={null} positive="">
+              <Label1>{user.firstName} {user.lastName}</Label1>
+            </FormControl>
+            <FormControl label="Group Size" error={null} positive="">
+              <Input
+                value={form.groupSize}
+                type="number"
+                placeholder="group size"
+                onChange={e => {
+                  updateForm({
+                    groupSize: e.currentTarget.value
+                  });
+                }}
+              />
+            </FormControl>
+            <FormControl label="Note" error={null} positive="">
+              <Textarea
+                value={form.note}
+                type="text"
+                placeholder="note..."
+                onChange={e => {
+                  updateForm({
+                    note: e.currentTarget.value
+                  });
+                }}
+              />
+            </FormControl>
+            <FormControl label="Contact Email" error={null} positive="">
+              <Label1>{user.email}</Label1>
+            </FormControl>
+            <FormControl label="Contact Phone" error={null} positive="">
+              <Input
+                value={form.masterPhoneNumber}
+                type="text"
+                placeholder="phone number"
+                onChange={e => {
+                  updateForm({
+                    masterPhoneNumber: e.currentTarget.value
+                  });
+                }}
+              />
+            </FormControl>
+          </Block>
         </FormControl>
       </Block>
-      <Block display="flex" alignItems="center" margin="48px">
-        <Button
-          disabled={!validateForm()}
-          onClick={handleBookEvent}
-        >
+      <Block display="flex" alignItems="center">
+        <Button onClick={handleBookEvent}>
           Book <ChevronRight />
         </Button>
       </Block>
@@ -250,6 +243,7 @@ function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent }) {
 function BookingForm() {
   const history = useHistory();
   const params = useParams();
+  const client = useApolloClient();
   const { venueSymbol: symbol } = params;
   const [ currentStep, setCurrentStep ] = useState(STEPS.DATE);
   const [ form, setForm ] = useState({
@@ -261,14 +255,14 @@ function BookingForm() {
     note: '',
     masterPhoneNumber: ''
   });
-  const [ bookEvent ] = useMutation(BOOK_EVENT);
+  const [ bookEvent, { loading: booking } ] = useMutation(BOOK_EVENT);
   const { data, loading, error } = useQuery(LOAD_BOOKING_FORM, {
     variables: {
       symbol: symbol
     }
   });
   const { data: authData, loading: authLoading } = useQuery(GET_USER_BY_AUTH);
-
+  const [ bookingFormError, setBookingFormError ] = useState(null);
 
   const updateForm = (field) => {
     setForm({
@@ -277,7 +271,22 @@ function BookingForm() {
     });
   };
 
+  const validateForm = () => {
+    if (isNaN(form.groupSize) || !Number.isInteger(Number(form.groupSize)) || Number(form.groupSize) <= 0) {
+      setBookingFormError('Please enter valid group size');
+      return false;
+    }
+    if (!form.masterPhoneNumber) {
+      setBookingFormError('Contact phone number is required');
+      return false;
+    }
+    return true;
+  };
+
   const handleBookEvent = async () => {
+    if (!validateForm()) {
+      return;
+    }
     const time = moment(form.date);
     time.set({hour:form.hour,minute:form.minute,second:0,millisecond:0});
     const bookEventResponse = await bookEvent({
@@ -285,12 +294,20 @@ function BookingForm() {
         time: time.toISOString(),
         groupSize: Number(form.groupSize),
         note: form.note,
-        masterPhoneNumber: form.masterPhoneNumber
+        masterPhoneNumber: form.masterPhoneNumber,
+        symbol
       }
-    })
+    }).catch((e) => {
+      setBookingFormError(getErrorCode(e));
+    });
+
+    if (bookEventResponse && bookEventResponse.data && bookEventResponse.data.bookEvent) {
+      showAlert(client, 'Successfully booked the event!');
+      history.push(`/event/${bookEventResponse.data.bookEvent}`);
+    }
   };
 
-  if (loading || authLoading || error) {
+  if (loading || authLoading || error || booking) {
     return <Loading />;
   }
 
@@ -313,10 +330,10 @@ function BookingForm() {
   }
 
   return (
-    <Block display="flex" flexDirection="column" paddingLeft="48px" paddingRight="48px" paddingTop="24px" paddingBottom="24px">
-      <Block marginLeft="12px" marginRight="12px">
-        <Label1><b>{venue.teaserDescription}</b></Label1>
+    <Block display="flex" flexDirection="column" paddingLeft={["24px", "24px", "60px", "60px"]} paddingRight={["24px", "24px", "60px", "60px"]} paddingTop="24px" paddingBottom="24px">
+      <Block>
         <Display4><b>{venue.name}</b></Display4>
+        <Label1><b>{venue.teaserDescription}</b></Label1>
       </Block>
       {
         !auth &&
@@ -349,13 +366,14 @@ function BookingForm() {
               form={form}
               updateForm={updateForm}
               handleBookEvent={handleBookEvent}
+              bookingFormError={bookingFormError}
             />
           }
         </Block>
       }
       {
         auth &&
-        <Block display="flex" justifyContent="center">
+        <Block display="flex" justifyContent="center" marginTop="48px">
           <Button
             kind="minimal"
             onClick={() => setCurrentStep(STEPS.DATE)}

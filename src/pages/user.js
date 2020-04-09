@@ -29,6 +29,7 @@ import {
   useLazyQuery
 } from '@apollo/react-hooks';
 
+import { venues } from '../constants/locations';
 import {
   GET_TEAMS_BY_EMAIL,
   LOAD_USER_PROFILE,
@@ -60,6 +61,8 @@ function MyReview({ review }) {
     }
   };
 
+  const venue = venues.find(v => v.symbol === review.symbol) || {};
+
   return (
     <Block marginTop="12px" position="relative">
       {deletingEndorsement && <Loading compact={true} />}
@@ -67,7 +70,7 @@ function MyReview({ review }) {
         <Paragraph1>
           {review.content}
         </Paragraph1>
-        <Label1><b>For <a href={`/${review.symbol}`} target="_blank" rel="noopener noreferrer">{review.symbol}</a></b></Label1>
+        <Label1><b>At <a href={`/${review.symbol}`} target="_blank" rel="noopener noreferrer">{venue.name}</a></b></Label1>
         <Block display="flex" justifyContent="flex-end" marginTop="8px">
           {
             confirmingDelete ?
@@ -630,7 +633,7 @@ function User() {
             onClick={() => {
               setCookie('userToken', '', 7);
               refetch();
-              showAlert(client, 'See you later!');
+              showAlert(client, 'See you next time!');
             }}
             kind="minimal"
           >

@@ -84,9 +84,19 @@ query GetUpcomingEventsBySymbol($symbol: String!){
   getUpcomingEventsBySymbol(symbol: $symbol)${EventListItem}
 }`;
 
+export const GET_UPCOMING_EVENTS_BY_TEAM = gql`
+query GetUpcomingEventsByTeam($teamId: String!){
+  getUpcomingEventsByTeam(teamId: $teamId)${EventListItem}
+}`;
+
 export const GET_PAST_EVENTS_BY_SYMBOL = gql`
 query GetPastEventsBySymbol($symbol: String!, $skip: Int!){
   getPastEventsBySymbol(symbol: $symbol, skip: $skip)${EventListItem}
+}`;
+
+export const GET_PAST_EVENTS_BY_TEAM = gql`
+query GetPastEventsByTeam($teamId: String!, $skip: Int!){
+  getPastEventsByTeam(teamId: $teamId, skip: $skip)${EventListItem}
 }`;
 
 export const AUTHORIZE_EVENT_PAGE = gql`

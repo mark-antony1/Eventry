@@ -11,10 +11,12 @@ import {
 } from '@apollo/react-hooks';
 import {
   AUTHORIZE_EVENT_PAGE,
+  GET_USER_BY_AUTH,
   GET_EVENT
 } from '../constants/query';
 
 import VenueEventDetails from './venue-event-details';
+import GuestEventDetails from './guest-event-details';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
@@ -25,29 +27,31 @@ function EventRouter() {
       eventId
     }
   });
-  if (loading || error) {
+  if (loading) {
     return <Loading />;
   }
+
+  if (error) {
+    return (
+      <Block display="flex" justifyContent="center">
+        <Label1>You don't have access</Label1>
+      </Block>
+    );
+  };
 
   const {
     authorizeEventPage: auth
   } = data;
 
   if (auth === 'GUEST') {
-    return (
-      <Block display="flex" justifyContent="center" />
-    );
+    return <GuestEventDetails />;
   }
 
   if (auth === 'VENUE') {
     return <VenueEventDetails />;
   }
 
-  return (
-    <Block display="flex" justifyContent="center">
-      <Label1>You don't have access</Label1>
-    </Block>
-  );
+  return null;
 }
 
 const BackButton = () => {
@@ -62,8 +66,9 @@ const BackButton = () => {
       eventId
     }
   });
+  const { data: userData, loading: userDataLoading } = useQuery(GET_USER_BY_AUTH);
 
-  if (loading || error || eventDataLoading || eventDataError) {
+  if (loading || error || eventDataLoading || eventDataError || userDataLoading) {
     return null;
   }
 
@@ -76,6 +81,18 @@ const BackButton = () => {
   const {
     authorizeEventPage: auth
   } = data;
+
+  const {
+    getUserByAuth: {
+      user: {
+        team: {
+          id: teamId,
+          name: teamName
+        }
+      }
+    }
+  } = userData;
+
   if (auth === 'VENUE') {
     return (
       <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={`/${venue.symbol}/dashboard`}>
@@ -83,7 +100,18 @@ const BackButton = () => {
       </Button>
     );
   }
+
+  if (auth === 'GUEST') {
+    return (
+      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={`/team/${teamId}`}>
+        <ChevronLeft /> {teamName}
+      </Button>
+    );
+  }
+
+  return null;
 };
+
 export default () => {
   return (
     <Block display="flex" flexDirection="column">

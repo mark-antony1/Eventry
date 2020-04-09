@@ -121,6 +121,72 @@ const ToVenueDashboardReduced = () => {
   );
 };
 
+const ToTeam = () => {
+  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+  if (loading || error) {
+    return null;
+  }
+
+  const {
+    getUserByAuth: auth
+  } = data;
+
+  if (!auth) {
+    return null;
+  }
+
+  const {
+    user: {
+      team
+    }
+  } = auth;
+
+  if (!team) {
+    return null;
+  }
+
+  return (
+    <StyledNavigationItem>
+      <Block>
+        <Button $as="a" href={`/team/${team.id}`} kind="minimal">
+          {team.name}
+        </Button>
+      </Block>
+    </StyledNavigationItem>
+  );
+};
+
+const ToTeamReduced = () => {
+  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+  if (loading || error) {
+    return null;
+  }
+
+  const {
+    getUserByAuth: auth
+  } = data;
+
+  if (!auth) {
+    return null;
+  }
+
+  const {
+    user: {
+      team
+    }
+  } = auth;
+
+  if (!team) {
+    return null;
+  }
+
+  return (
+    <Button $as="a" href={`/team/${team.id}`} kind="minimal">
+      {team.name}
+    </Button>
+  );
+};
+
 const COLLAPSE_MODE_LIMIT = 800;
 export default ({ leftButtons, children }) => {
   const windowSize = useWindowSize();
@@ -152,6 +218,7 @@ export default ({ leftButtons, children }) => {
             </Button>
           }
           <ToVenueDashboardReduced />
+          <ToTeamReduced />
           <Button $as="a" href="/about" kind="minimal">
             About
           </Button>
@@ -220,6 +287,7 @@ export default ({ leftButtons, children }) => {
           </Block>
         </StyledNavigationItem>
         <ToVenueDashboard />
+        <ToTeam />
       </StyledNavigationList>
     );
   };

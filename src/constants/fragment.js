@@ -4,6 +4,7 @@ export const Company = `{
 }`;
 
 export const Team = `{
+  id
   name
 }`;
 
@@ -18,6 +19,7 @@ export const User = `{
   email
   company${Company}
   venue${Venue}
+  team${Team}
 }`;
 
 export const Review = `{

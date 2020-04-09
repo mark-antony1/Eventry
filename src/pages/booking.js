@@ -280,6 +280,10 @@ function BookingForm() {
       setBookingFormError('Contact phone number is required');
       return false;
     }
+    if (form.masterPhoneNumber.length < 9) {
+      setBookingFormError('Please enter valid phone number');
+      return false;
+    }
     return true;
   };
 

@@ -281,6 +281,46 @@ export const venues = [
 		"symbol": "pandora-karaoke"
 	},
 	{
+		"id": 80,
+		"photos": [
+			"https://s3-media0.fl.yelpcdn.com/bphoto/pMsiXbuQHRUh-01Mz8exHw/o.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/a9h7Xsdew7_O44DS9kMa3g/o.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/GaXNVDgEJFT5Ja2Y7NyfuQ/o.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/UnkWcxV0FE7q1NCpSBM0Eg/o.jpg"
+		],
+		"name": "The Mint",
+		"description": "The Mint is a hotspt for singing, great cocktails, and a unique experience known worldwide.",
+		"teaserDescription": "Karaoke Lounge",
+		"hours": {
+			"Sunday": { "start": 18, "end": 26 },
+			"Monday": { "start": 18, "end": 26 },
+			"Tuesday": { "start": 18, "end": 26 },
+			"Wednesday": { "start": 18, "end": 26 },
+			"Thursday": { "start": 18, "end": 26 },
+			"Friday": { "start": 18, "end": 26 },
+			"Saturday": { "start": 18, "end": 26 }
+		},
+		"phoneNumber": "(415) 626-4726",
+		"email": "",
+		"vibe": ["chill", "fun"],
+		"address": "1942 Market St, San Francisco, CA, 94102",
+		"parkingAvailable": false,
+		"linkToSite": "https://themint.net/",
+		"activityType": "bar",
+		"tags": ["indoor", "sing", "dance", "alcohol"],
+		"rating": 4.3,
+		"takesReservations": true,
+		"averageTimeSpent": 80,
+		"recommendedGroupsize": [4, 25],
+		"price": 35,
+		"priceReasoning": "Based on cost of two drinks",
+		"location": {
+			"latitude": 37.770623,
+			"longitude": -122.425834
+		},
+		"symbol": "mint-karaoke"
+	},
+	{
 		"id": 19,
 		"photos": [
 			"https://img.grouponcdn.com/deal/mbPWj7RQV2ccRniEPNfJ/PW-960x582/v1/sc600x600.jpg",

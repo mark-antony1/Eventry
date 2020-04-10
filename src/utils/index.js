@@ -133,15 +133,12 @@ export function useWindowSize() {
 
 export function useGA() {
   const { data, loading } = useQuery(GET_USER_BY_AUTH);
-
   if (loading) {
     ReactGA.initialize(process.env.REACT_APP_GA_ID);
     return ReactGA;
   }
 
-  const {
-    getUserByAuth
-  } = data;
+  let getUserByAuth = !data ?  null : data.getUserByAuth
 
   if (!getUserByAuth) {
     ReactGA.initialize(process.env.REACT_APP_GA_ID);

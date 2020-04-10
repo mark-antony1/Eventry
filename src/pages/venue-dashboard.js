@@ -601,7 +601,7 @@ function VenueDashboard() {
     return <Loading />;
   }
 
-  if (error && getErrorCode(error) === 'NOT_AUTHORIZED') {
+  if (error && (getErrorCode(error) === 'NOT_AUTHORIZED' || getErrorCode(error) === 'NOT_AUTHENTICATED')) {
     return (
       <Block display="flex" justifyContent="center">
         <Label1>You don't have access</Label1>

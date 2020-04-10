@@ -108,3 +108,21 @@ export const GET_EVENT = gql`
 query GetEvent($eventId: String!){
   getEvent(eventId: $eventId)${EventDetails}
 }`;
+
+export const GET_TEAM_MEMBERS = gql`
+query GetTeamMembers($teamId: String!){
+  getTeamMembers(teamId: $teamId)${User}
+}`;
+
+export const GET_COMPANY_EMAILS_AND_VALIDATE_TEAM = gql`
+query GetCompanyEmailsAndValidateTeam($teamName: String!, $companyId: String!){
+  getCompanyEmailsAndValidateTeam(teamName: $teamName, companyId: $companyId){
+    emails
+    teamFound
+  }
+}`;
+
+export const GET_COMPANY_EMAILS = gql`
+query GetCompanyEmails($teamId: String!){
+  getCompanyEmails(teamId: $teamId)
+}`;

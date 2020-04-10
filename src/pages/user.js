@@ -7,6 +7,7 @@ import { Card } from 'baseui/card';
 import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
+import { Tag } from 'baseui/tag';
 import { Select } from 'baseui/select';
 import { FaAngleRight } from 'react-icons/fa';
 import {
@@ -33,7 +34,8 @@ import { venues } from '../constants/locations';
 import {
   GET_TEAMS_BY_EMAIL,
   LOAD_USER_PROFILE,
-  GET_REVIEWS_BY_AUTH
+  GET_REVIEWS_BY_AUTH,
+  GET_COMPANY_EMAILS_AND_VALIDATE_TEAM
 } from '../constants/query';
 import {
   CREATE_USER,
@@ -115,8 +117,10 @@ function SignUpForm({ handleSigninMode }) {
   const queryUrl = useQueryUrl();
   const history = useHistory();
   const [ createUser ] = useMutation(CREATE_USER);
+  const [ getCompanyEmailsAndValidateTeam, { data: teamInviteValidationData, loading: teamInviteValidating } ] = useLazyQuery(GET_COMPANY_EMAILS_AND_VALIDATE_TEAM);
   const [ getTeamsByEmail, { data: teamData } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
   const [ submittingForm, setSubmittingForm ] = useState(false);
+  const [ emailVerified, setEmailVerified ] = useState(false);
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ firstName, setFirstName ] = useState('');
@@ -124,6 +128,12 @@ function SignUpForm({ handleSigninMode }) {
   const [ team, setTeam ] = useState(null);
   const [ signupError, setSignupError ] = useState(null);
   const debouncedEmail = useDebounce(email, 1500);
+
+  // team invite
+  const invitedEmail = queryUrl.get('invitedEmail');
+  const invitedTeam = queryUrl.get('invitedTeam');
+  const invitedCompanyId = queryUrl.get('invitedCompanyId');
+  const isTeamInvitedMode = invitedTeam && invitedCompanyId && invitedEmail;
 
   useEffect(
     () => {
@@ -140,6 +150,51 @@ function SignUpForm({ handleSigninMode }) {
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [debouncedEmail]
+  );
+
+  useEffect(
+    () => {
+      // if team invite validated
+      if (teamInviteValidationData) {
+        const {
+          getCompanyEmailsAndValidateTeam: {
+            teamFound,
+            emails
+          }
+        } = teamInviteValidationData;
+        if (teamFound) {
+          const correctEmail = emails.reduce((res, email) => {
+            if (String(invitedEmail.split('@')[1]).toLowerCase() === email.toLowerCase()) {
+              return true;
+            }
+            return res;
+          }, false);
+          if (correctEmail) {
+            setEmailVerified(true);
+            setTeam(invitedTeam);
+            setEmail(invitedEmail);
+          }
+        }
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [teamInviteValidationData]
+  );
+
+  useEffect(
+    () => {
+      // if team invite mode
+      if (isTeamInvitedMode) {
+        getCompanyEmailsAndValidateTeam({
+          variables: {
+            teamName: invitedTeam,
+            companyId: invitedCompanyId
+          }
+        });
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isTeamInvitedMode]
   );
 
   const validateForm = () => {
@@ -197,6 +252,110 @@ function SignUpForm({ handleSigninMode }) {
     }
   };
 
+  const renderEmailInput = () => {
+    if (teamInviteValidating) {
+      return <Loading compact={true} />;
+    }
+
+    if (teamInviteValidationData) {
+      const {
+        getCompanyEmailsAndValidateTeam: {
+          teamFound
+        }
+      } = teamInviteValidationData;
+      if (teamFound && emailVerified) {
+        return (
+          <Block>
+            <Label1><b>{invitedEmail}</b> <Tag closeable={false} variant="outlined" kind="positive">Email verified</Tag></Label1>
+          </Block>
+        );
+      }
+    }
+    return (
+      <Block>
+        <Input
+          value={email}
+          placeholder="company email"
+          type="text"
+          onChange={e => {
+            setSignupError(null);
+            setEmail(e.currentTarget.value);
+          }}
+        />
+      </Block>
+    );
+  };
+
+  const renderTeamInput = () => {
+    if (teamInviteValidating) {
+      return <Loading compact={true} />;
+    }
+
+    if (teamInviteValidationData) {
+      const {
+        getCompanyEmailsAndValidateTeam: {
+          teamFound
+        }
+      } = teamInviteValidationData;
+      if (teamFound && emailVerified) {
+        return (
+          <Block>
+            <Label1><b>{invitedTeam}</b></Label1>
+          </Block>
+        );
+      }
+    }
+    if (teamData && teamData.getTeamsByEmail && !submittingForm) {
+      return (
+        <Block>
+          <Select
+            options={
+              teamData.getTeamsByEmail.map((team, index) => {
+                return {
+                  id: index,
+                  label: team.name
+                };
+              })
+            }
+            value={team ? [{
+              id: team,
+              label: team
+            }] : null}
+            placeholder="select or enter team name"
+            getValueLabel={({option}) => option.label}
+            onInputChange={e => {
+              setSignupError(null);
+              setTeam(e.currentTarget.value)
+            }}
+            onChange={params =>{
+              setSignupError(null);
+              if (params.value[0]) {
+                setTeam(params.value[0].label);
+              } else {
+                setTeam(null);
+              }
+
+            }}
+          />
+        </Block>
+      );
+    }
+
+    return (
+      <Block>
+        <Input
+          value={team ? team : ''}
+          type="text"
+          placeholder="enter team name"
+          onChange={e => {
+            setSignupError(null);
+            setTeam(e.currentTarget.value);
+          }}
+        />
+      </Block>
+    );
+  };
+
   return (
     <Block
       display="flex"
@@ -227,17 +386,7 @@ function SignUpForm({ handleSigninMode }) {
       >
         <Block>
           <FormControl label="Company Email" error={null} positive="">
-            <Block>
-              <Input
-                value={email}
-                placeholder="company email"
-                type="text"
-                onChange={e => {
-                  setSignupError(null);
-                  setEmail(e.currentTarget.value);
-                }}
-              />
-            </Block>
+            {renderEmailInput()}
           </FormControl>
           <FormControl label="Name" error={null} positive="">
             <Block display="flex">
@@ -267,51 +416,7 @@ function SignUpForm({ handleSigninMode }) {
           </FormControl>
           <FormControl label="Team" error={null} positive="">
             <Block>
-            {
-              (teamData && teamData.getTeamsByEmail && !submittingForm) ?
-              <Block>
-                <Select
-                  options={
-                    teamData.getTeamsByEmail.map((team, index) => {
-                      return {
-                        id: index,
-                        label: team.name
-                      };
-                    })
-                  }
-                  value={team ? [{
-                    id: team,
-                    label: team
-                  }] : null}
-                  placeholder="select or enter team name"
-                  getValueLabel={({option}) => option.label}
-                  onInputChange={e => {
-                    setSignupError(null);
-                    setTeam(e.currentTarget.value)
-                  }}
-                  onChange={params =>{
-                    setSignupError(null);
-                    if (params.value[0]) {
-                      setTeam(params.value[0].label);
-                    } else {
-                      setTeam(null);
-                    }
-
-                  }}
-                />
-              </Block> :
-              <Block>
-                <Input
-                  value={team ? team : ''}
-                  type="text"
-                  placeholder="enter team name"
-                  onChange={e => {
-                    setSignupError(null);
-                    setTeam(e.currentTarget.value);
-                  }}
-                />
-              </Block>
-            }
+              {renderTeamInput()}
             </Block>
           </FormControl>
           <FormControl label="Password" error={null} positive="">

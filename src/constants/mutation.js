@@ -58,3 +58,8 @@ export const CREATE_BUSINESS_HOUR = gql`
 mutation CreateBusinessHour($symbol: String!, $day: Int!, $open: Int!, $close: Int!){
   createBusinessHour(symbol: $symbol, day: $day, open: $open, close: $close)
 }`;
+
+export const SEND_TEAM_INVITATION = gql`
+mutation SendTeamInvitation($email: String!){
+  sendTeamInvitation(email: $email)
+}`;

@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { useParams, useHistory, useLocation, Switch, Route } from 'react-router-dom';
+import { useParams, useHistory, Switch, Route } from 'react-router-dom';
 import { useStyletron } from 'styletron-react';
 import moment from 'moment-timezone';
-import { FaTrashAlt } from 'react-icons/fa';
-import Plus from 'baseui/icon/plus';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Tabs, Tab } from 'baseui/tabs';
-import { FormControl } from 'baseui/form-control';
 import { Tag } from 'baseui/tag';
-import { Select } from 'baseui/select';
-import { Navigation } from 'baseui/side-navigation';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
@@ -19,25 +14,20 @@ import {
   Label3,
 } from 'baseui/typography';
 import {
-  useQuery,
-  useMutation
+  useQuery
 } from '@apollo/react-hooks';
 
 import {
-  DELETE_BUSINESS_HOUR,
-  CREATE_BUSINESS_HOUR
-} from '../constants/mutation';
-import {
   GET_UPCOMING_EVENTS_BY_TEAM,
   GET_PAST_EVENTS_BY_TEAM,
-  GET_BUSINESS_HOURS,
   GET_USER_BY_AUTH
 } from '../constants/query';
 
-import { venues } from '../constants/locations';
-import { getErrorCode, getHourFromMilitaryHour } from '../utils';
+import { getErrorCode } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
+
+import Members from '../components/team/members';
 
 function EventCell({ event }) {
   const [ css ] = useStyletron();
@@ -188,7 +178,7 @@ function Home() {
 
 const TABS = [
   'home',
-  'business-hours'
+  'members'
 ];
 
 
@@ -200,15 +190,19 @@ function TeamDashboardRouter() {
     <Block marginTop="12px">
       <Tabs
         onChange={({ activeKey }) => {
-          history.push(`/team/${teamId}/dashboard/${TABS[activeKey]}`);
+          history.push(`/team/${teamId}/${TABS[activeKey]}`);
         }}
         activeKey={TABS.indexOf(tab) === -1 ? String(0) : String(TABS.indexOf(tab))}
       >
         <Tab title="Home" />
+        <Tab title="Members" />
       </Tabs>
       <Block>
         {
           (!tab || tab === 'home') && <Home />
+        }
+        {
+          tab === 'members' && <Members />
         }
       </Block>
     </Block>
@@ -258,7 +252,7 @@ function TeamDashboard() {
     return <Loading />;
   }
 
-  if (error && getErrorCode(error) === 'NOT_AUTHORIZED') {
+  if (error && (getErrorCode(error) === 'NOT_AUTHORIZED' || getErrorCode(error) === 'NOT_AUTHENTICATED')) {
     return (
       <Block display="flex" justifyContent="center">
         <Label1>You don't have access</Label1>

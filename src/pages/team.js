@@ -210,6 +210,7 @@ function TeamDashboardRouter() {
 }
 
 function TeamInfo() {
+  const { teamId } = useParams();
   const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
 
   if (loading || error) {
@@ -227,9 +228,11 @@ function TeamInfo() {
   }
 
   const {
-    team,
+    teams,
     company
   } = user;
+
+  const team = teams.find(t => t.id === teamId) || {};
   return (
     <Block>
       <Display4><b>{team.name}</b></Display4>

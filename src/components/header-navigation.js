@@ -6,6 +6,7 @@ import {
   StyledNavigationItem
 } from 'baseui/header-navigation';
 import DownIcon from 'baseui/icon/chevron-down';
+import { StatefulPopover } from 'baseui/popover';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Drawer } from 'baseui/drawer';
@@ -137,20 +138,40 @@ const ToTeam = () => {
 
   const {
     user: {
-      team
+      teams
     }
   } = auth;
 
-  if (!team) {
+  if (!teams || !teams.length) {
     return null;
   }
 
   return (
     <StyledNavigationItem>
       <Block>
-        <Button $as="a" href={`/team/${team.id}`} kind="minimal">
-          {team.name}
-        </Button>
+        <StatefulPopover
+          dismissOnEsc={false}
+          content={() => {
+            return (
+              <Block display="flex" flexDirection="column">
+                {
+                  teams.map((team) => {
+                    return (
+                      <Button key={team.id} $as="a" href={`/team/${team.id}`}>
+                        {team.name}
+                      </Button>
+                    );
+                  })
+                }
+              </Block>
+            );
+          }}
+          placement="bottomRight"
+        >
+          <Button kind="minimal">
+            My Team <DownIcon />
+          </Button>
+        </StatefulPopover>
       </Block>
     </StyledNavigationItem>
   );
@@ -172,18 +193,38 @@ const ToTeamReduced = () => {
 
   const {
     user: {
-      team
+      teams
     }
   } = auth;
 
-  if (!team) {
+  if (!teams || !teams.length) {
     return null;
   }
 
   return (
-    <Button $as="a" href={`/team/${team.id}`} kind="minimal">
-      {team.name}
-    </Button>
+    <StatefulPopover
+      dismissOnEsc={false}
+      content={() => {
+        return (
+          <Block display="flex" flexDirection="column">
+            {
+              teams.map((team) => {
+                return (
+                  <Button key={team.id} $as="a" href={`/team/${team.id}`}>
+                    {team.name}
+                  </Button>
+                );
+              })
+            }
+          </Block>
+        );
+      }}
+      placement="bottomRight"
+    >
+      <Button kind="minimal">
+        My Team <DownIcon />
+      </Button>
+    </StatefulPopover>
   );
 };
 

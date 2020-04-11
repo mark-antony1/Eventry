@@ -1,7 +1,5 @@
 import gql from 'graphql-tag';
 import {
-  Company,
-  Team,
   User,
   Review,
   EventListItem,
@@ -36,10 +34,7 @@ query LoadUserProfile{
     token
     user${User}
   }
-  getUserProfileByAuth{
-    company${Company}
-    team${Team}
-  }
+  getUserProfileByAuth${User}
 }`;
 
 export const GET_TEAMS_BY_EMAIL = gql`

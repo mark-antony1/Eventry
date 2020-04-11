@@ -19,7 +19,7 @@ export const User = `{
   email
   company${Company}
   venue${Venue}
-  team${Team}
+  teams${Team}
 }`;
 
 export const Review = `{

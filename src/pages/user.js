@@ -102,6 +102,7 @@ function MyReviews() {
     <Block>
       <Display4><b>My Endorsements</b></Display4>
       <Block>
+        {!reviews.length && <Label1><b>You haven't endorsed any venue yet</b></Label1>}
         {
           reviews.map((review, index) => {
             return <MyReview key={index} review={review} />;
@@ -667,9 +668,7 @@ function User() {
       company: {
         name: companyName
       },
-      team: {
-        name: teamName
-      }
+      teams
     }
   } = data;
   return (
@@ -681,8 +680,13 @@ function User() {
     >
       <Block width={['95%', '95%', '300px', '400px']} padding="12px">
         <Display4><b>Hello {firstName}!</b></Display4>
-        <Display4 marginTop="12px"><b>{email}</b></Display4>
-        <Display4 marginTop="12px"><b>{teamName} at {companyName}</b></Display4>
+        <Display4 marginTop="12px"><b>{companyName}</b></Display4>
+        {
+          teams.map((team) => {
+            return <Label1 key={team.id}><b>{team.name}</b></Label1>
+          })
+        }
+        <Label1><b>{email}</b></Label1>
         {
           changingPassword &&
           <Block display="flex" marginTop="12px">

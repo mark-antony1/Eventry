@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { Select } from 'baseui/select';
 import { StatefulCalendar } from 'baseui/datepicker';
 import { Input } from 'baseui/input';
 import { FormControl } from 'baseui/form-control';
@@ -189,6 +190,16 @@ function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent, bookin
             <FormControl label="Booker" error={null} positive="">
               <Label1>{user.firstName} {user.lastName}</Label1>
             </FormControl>
+            <FormControl label="Team" error={null} positive="">
+              <Select
+                clearable={false}
+                searchable={false}
+                options={user.teams.map((team => ({ id: team.id, label: team.name })))}
+                value={form.teamId ? [{id: form.teamId}] : null}
+                placeholder="team"
+                onChange={params => updateForm({ teamId: params.value[0].id })}
+              />
+            </FormControl>
             <FormControl label="Group Size" error={null} positive="">
               <Input
                 value={form.groupSize}
@@ -246,6 +257,7 @@ function BookingForm() {
   const client = useApolloClient();
   const { venueSymbol: symbol } = params;
   const [ currentStep, setCurrentStep ] = useState(STEPS.DATE);
+  const { data: authData, loading: authLoading } = useQuery(GET_USER_BY_AUTH);
   const [ form, setForm ] = useState({
     date: null,
     day: -1,
@@ -253,7 +265,8 @@ function BookingForm() {
     minute: -1,
     groupSize: '',
     note: '',
-    masterPhoneNumber: ''
+    masterPhoneNumber: '',
+    teamId: null
   });
   const [ bookEvent, { loading: booking } ] = useMutation(BOOK_EVENT);
   const { data, loading, error } = useQuery(LOAD_BOOKING_FORM, {
@@ -261,9 +274,16 @@ function BookingForm() {
       symbol: symbol
     }
   });
-  const { data: authData, loading: authLoading } = useQuery(GET_USER_BY_AUTH);
   const [ bookingFormError, setBookingFormError ] = useState(null);
 
+  useEffect(() => {
+    if (authData && authData.getUserByAuth && authData.getUserByAuth.user) {
+      setForm({
+        ...form,
+        teamId: authData.getUserByAuth.user.teams[0].id
+      });
+    }
+  }, [ authData, setForm ])
   const updateForm = (field) => {
     setForm({
       ...form,
@@ -284,6 +304,11 @@ function BookingForm() {
       setBookingFormError('Please enter valid phone number');
       return false;
     }
+
+    if (!form.teamId) {
+      setBookingFormError('Please select the team');
+      return false;
+    }
     return true;
   };
 
@@ -299,7 +324,8 @@ function BookingForm() {
         groupSize: Number(form.groupSize),
         note: form.note,
         masterPhoneNumber: form.masterPhoneNumber,
-        symbol
+        symbol,
+        teamId: form.teamId
       }
     }).catch((e) => {
       setBookingFormError(getErrorCode(e));

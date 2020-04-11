@@ -69,7 +69,8 @@ function InviteNewMember() {
     }
     const response = await sendTeamInvitation({
       variables: {
-        email
+        email,
+        teamId
       }
     }).catch(() => {
       setError('Failed to send the invitation');

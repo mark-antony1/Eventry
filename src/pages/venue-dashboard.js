@@ -6,7 +6,6 @@ import { FaTrashAlt } from 'react-icons/fa';
 import Plus from 'baseui/icon/plus';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
-import { Tabs, Tab } from 'baseui/tabs';
 import { FormControl } from 'baseui/form-control';
 import { Tag } from 'baseui/tag';
 import { Select } from 'baseui/select';
@@ -543,14 +542,14 @@ function BusinessHours() {
 
 function Events() {
   return (
-    <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
-      <Block flex="1">
+    <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} flexWrap="wrap">
+      <Block flex="1 0 50%">
         <NewEvents />
       </Block>
-      <Block flex="1">
+      <Block flex="1 0 50%">
         <UpcomingEvents />
       </Block>
-      <Block flex="1">
+      <Block flex="1 0 50%">
         <PastEvents />
       </Block>
     </Block>
@@ -568,17 +567,27 @@ function VenueDashboardRouter() {
   const history = useHistory();
 
   return (
-    <Block marginTop="12px">
-      <Tabs
-        onChange={({ activeKey }) => {
-          history.push(`/${symbol}/dashboard/${TABS[activeKey]}`);
-        }}
-        activeKey={TABS.indexOf(tab) === -1 ? String(0) : String(TABS.indexOf(tab))}
-      >
-        <Tab title="Events" />
-        <Tab title="Business Hours" />
-      </Tabs>
-      <Block>
+    <Block marginTop="12px" display="flex" flexDirection={['column', 'column', 'row', 'row']}>
+      <Block flex="1" marginRight="24px">
+        <Navigation
+          items={[
+            {
+              title: "Events",
+              itemId: "events"
+            },
+            {
+              title: "Business Hours",
+              itemId: "business-hours"
+            }
+          ]}
+          activeItemId={TABS.indexOf(tab) === -1 ? 'events' : tab}
+          onChange={({ event, item }) => {
+            event.preventDefault();
+            history.push(`/${symbol}/dashboard/${item.itemId}`);
+          }}
+        />
+      </Block>
+      <Block flex="4">
         {
           (!tab || tab === 'events') && <Events />
         }

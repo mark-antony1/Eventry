@@ -5,6 +5,7 @@ import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Tabs, Tab } from 'baseui/tabs';
+import { Navigation } from 'baseui/side-navigation';
 import { Tag } from 'baseui/tag';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
@@ -181,23 +182,32 @@ const TABS = [
   'members'
 ];
 
-
 function TeamDashboardRouter() {
   const { teamId, tab } = useParams();
   const history = useHistory();
 
   return (
-    <Block marginTop="12px">
-      <Tabs
-        onChange={({ activeKey }) => {
-          history.push(`/team/${teamId}/${TABS[activeKey]}`);
-        }}
-        activeKey={TABS.indexOf(tab) === -1 ? String(0) : String(TABS.indexOf(tab))}
-      >
-        <Tab title="Home" />
-        <Tab title="Members" />
-      </Tabs>
-      <Block>
+    <Block marginTop="12px" display="flex" flexDirection={['column', 'column', 'row', 'row']}>
+      <Block flex="1">
+        <Navigation
+          items={[
+            {
+              title: "Home",
+              itemId: "home"
+            },
+            {
+              title: "Members",
+              itemId: "members"
+            }
+          ]}
+          activeItemId={TABS.indexOf(tab) === -1 ? 'home' : tab}
+          onChange={({ event, item }) => {
+            event.preventDefault();
+            history.push(`/team/${teamId}/${item.itemId}`);
+          }}
+        />
+      </Block>
+      <Block flex="4" paddingLeft="24px">
         {
           (!tab || tab === 'home') && <Home />
         }
@@ -268,7 +278,14 @@ function TeamDashboard() {
   }
 
   return (
-    <Block display="flex" flexDirection="column" paddingLeft={["24px", "24px", "60px", "60px"]} paddingRight={["24px", "24px", "60px", "60px"]} paddingTop="24px" paddingBottom="24px">
+    <Block
+      display="flex"
+      flexDirection="column"
+      paddingTop="24px"
+      paddingBottom="24px"
+      paddingLeft={["24px", "24px", "60px", "60px"]}
+      paddingRight={["24px", "24px", "60px", "60px"]}
+    >
       <TeamInfo />
       <Switch>
         <Route exact path="/team/:teamId/:tab" component={TeamDashboardRouter} />

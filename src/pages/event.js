@@ -74,7 +74,8 @@ const BackButton = () => {
 
   const {
     getEvent: {
-      venue
+      venue,
+      teams: eventTeams
     }
   } = eventData;
 
@@ -85,13 +86,14 @@ const BackButton = () => {
   const {
     getUserByAuth: {
       user: {
-        team: {
-          id: teamId,
-          name: teamName
-        }
+        teams
       }
     }
   } = userData;
+
+  const team = teams.find((team) => {
+    return eventTeams.find(et => team.id === et.id);
+  }) || {};
 
   if (auth === 'VENUE') {
     return (
@@ -103,8 +105,8 @@ const BackButton = () => {
 
   if (auth === 'GUEST') {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={`/team/${teamId}`}>
-        <ChevronLeft /> {teamName}
+      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={`/team/${team.id}`}>
+        <ChevronLeft /> {team.name}
       </Button>
     );
   }

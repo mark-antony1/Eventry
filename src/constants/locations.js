@@ -519,83 +519,44 @@ export const venues = [
 		"symbol": "pumpkin-farm"
 	},
 	{
-		"id": 3,
+		"id": 50,
 		"photos": [
-			"https://www.blueandgoldfleet.com/wp-content/uploads/2015/04/home_Carousel_BayCruise.jpg",
-			"https://www.blueandgoldfleet.com/wp-content/uploads/2018/05/Home_Carousel_Bay_Cruise_Sea_Lion-1.jpg",
-			"https://www.pier39.com/wp-content/uploads/2016/09/BAGF_Coit_1170x550.jpg"
+			"https://cdn.shopify.com/s/files/1/2434/0841/products/dandelion-chocolate-experience-16th-street-factory-tour-6923675631704_1080x.jpg?v=1552942410",
+			"https://cdn.shopify.com/s/files/1/2434/0841/products/dandelion-chocolate-experience-team-building-experience-make-your-own-chocolate-bar-12171515887704_1080x.jpg?v=1565204493"
 		],
-		"name": "Blue and Gold Fleet",
-		"description": "Ferry and Boat tour operator in San Francisco, California",
-		"teaserDescription": "Ferry Across The San Francisco Bay",
+		"name": "Dandelion Chocolate Factory",
+		"description": "Dandelion Chocolate is a small-batch bean-to-bar craft chocolate maker offering classes, factory tours, cafès and retail shops from San Francisco.",
+		"teaserDescription": "Chocolate Classes and Tours",
 		"hours": {
-			"Sunday": { "start": 9, "end": 18.45 },
-			"Monday": { "start": 9, "end": 18.45 },
-			"Tuesday": { "start": 9, "end": 18.45 },
-			"Wednesday": { "start": 9, "end": 18.45 },
-			"Thursday": { "start": 9, "end": 18.45 },
-			"Friday": { "start": 9, "end": 18.45 },
-			"Saturday": { "start": 9, "end": 18.45 }
+			"Sunday": { "start": 11, "end": 21 },
+			"Monday": { "start": 11, "end": 21 },
+			"Tuesday": { "start": 11, "end": 21 },
+			"Wednesday": { "start": 11, "end": 21 },
+			"Thursday": { "start": 11, "end": 21 },
+			"Friday": { "start": 11, "end": 21 },
+			"Saturday": { "start": 11, "end": 21 }
 		},
-		"phoneNumber": "(415) 705-8200",
+		"phoneNumber": "(415) 349-0942",
 		"email": "",
-		"vibe": ["chill", "adventurous"],
-		"address": "Pier 41, San Francisco, CA 94133",
+		"vibe": ["fun"],
+		"address": "2600 16th St, San Francisco, CA 94103",
 		"parkingAvailable": false,
-		"linkToSite": "http://www.blueandgoldfleet.com/",
-		"activityType": "explorative",
-		"tags": ["outdoor", "water", "boat"],
-		"rating": 4.5,
-		"takesReservations": true,
-		"averageTimeSpent": 35,
-		"recommendedGroupsize": [0, 100],
-		"price": 40,
-		"priceReasoning": "Based on core cruise experience round trip",
-		"location": {
-			"latitude": 37.809205,
-			"longitude": -122.411324
-		},
-		"symbol": "awesome-ferry"
-	},
-	{
-		"id": 7	,
-		"photos": [
-			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-san-francisco-northern-end.jpg",
-			"https://www.californiabeaches.com/wp-content/uploads/2014/09/20150413_155519-Large-1000x563.jpg",
-			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-cliff-house-esplanade.jpg"
-		],
-		"name": "Ocean Beach",
-		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
-		"teaserDescription": "Secluded Beach on the West",
-		"hours": {
-			"Sunday": { "start": 6, "end": 18 },
-			"Monday": { "start": 6, "end": 18 },
-			"Tuesday": { "start": 6, "end": 18 },
-			"Wednesday": { "start": 6, "end": 18 },
-			"Thursday": { "start": 6, "end": 18 },
-			"Friday": { "start": 6, "end": 18 },
-			"Saturday": { "start": 6, "end": 18 }
-		},
-		"phoneNumber": "",
-		"email": "",
-		"vibe": ["chill", "fun"],
-		"address": "Point Lobos Ave, Great Hwy San Francisco, CA 94121",
-		"parkingAvailable": true,
-		"linkToSite": "https://www.parksconservancy.org/parks/ocean-beach",
-		"activityType": "explorative",
-		"tags": ["outdoor", "active", "fire"],
-		"rating": 4.6,
+		"linkToSite": "https://store.dandelionchocolate.com/collections/private-experiences/products/make-your-own-chocolate-bar",
+		"activityType": "tour",
+		"tags": ["indoor", "dessert", "tour", "class"],
+		"rating": 4.7,
 		"takesReservations": false,
-		"averageTimeSpent": 60,
-		"recommendedGroupsize": [4, 25],
-		"price": 0,
-		"priceReasoning": "",
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [10, 24],
+		"price": 90,
+		"priceReasoning": 'Based on price for choclate class',
 		"location": {
-			"latitude": 37.777037,
-			"longitude": -122.511938
+			"latitude": 37.7656443,
+			"longitude": -122.4148424
 		},
-		"symbol": "ocean-beach"
+		"symbol": "dandelion"
 	},
+
 	{
 		"id": 8,
 		"photos": [
@@ -637,82 +598,81 @@ export const venues = [
 		"symbol": "urban-putt"
 	},
 	{
-		"id": 9,
+		"id": 58,
 		"photos": [
-			"https://www.nps.gov/goga/planyourvisit/images/MUBE_141122_KW_033.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
-			"https://www.parksconservancy.org/sites/default/files/styles/basic/public/resource-gallery/A_MUBE_100727_MCu_1.jpg?itok=MaxtPUMX",
-			"https://media2.trover.com/T/5716dc06d090011c4b04dc2a/fixedw_large_4x.jpg"
+			"https://www.maritimetasting.com/assets/client/Image/Visit-Us/OurTastingStudio.jpg",
+			"https://s.hdnux.com/photos/42/13/10/8958491/7/rawImage.jpg"
 		],
-		"name": "Muir Beach",
-		"description": "Beach located 16.5 miles northwest of San Francisco",
-		"teaserDescription": "Far-Out Isolated Coastal Beach",
+		"name": "Maritime Wine Tasting Studio",
+		"description": "Urban winetasting, bar, and restaurant.",
+		"teaserDescription": "Winetasting",
 		"hours": {
-			"Sunday": { "start": 6, "end": 18 },
-			"Monday": { "start": 6, "end": 18 },
-			"Tuesday": { "start": 6, "end": 18 },
-			"Wednesday": { "start": 6, "end": 18 },
-			"Thursday": { "start": 6, "end": 18 },
-			"Friday": { "start": 6, "end": 18 },
-			"Saturday": { "start": 6, "end": 18 }
+			"Sunday": { "start": null, "end": null },
+			"Monday": { "start": null, "end": null },
+			"Tuesday": { "start": 13, "end": 22 },
+			"Wednesday": { "start": 13, "end": 22 },
+			"Thursday": { "start": 13, "end": 22 },
+			"Friday": { "start": 13, "end": 22 },
+			"Saturday": { "start": 13, "end": 22 }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 861-1139",
 		"email": "",
-		"vibe": ["chill"],
-		"address": "Muir Beach, CA",
-		"parkingAvailable": true,
-		"linkToSite": "https://www.nps.gov/goga/planyourvisit/muirbeach.htm",
-		"activityType": "explorative",
-		"tags": ["beach", "outdoor"],
+		"vibe": ["chill", "sophisticated"],
+		"address": "222 Columbus Ave, San Francisco, CA 94133",
+		"parkingAvailable": false,
+		"linkToSite": "https://www.maritimetasting.com/Reservations",
+		"activityType": "bar",
+		"tags": ["indoor", "wine"],
 		"rating": 4.5,
-		"takesReservations": false,
+		"takesReservations": true,
 		"averageTimeSpent": 120,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
+		"recommendedGroupsize": [6, 30],
+		"price": 60,
+		"priceReasoning": 'Based on price for 2 drinks',
 		"location": {
-			"latitude": 37.8664252,
-			"longitude": -122.6036196
+			"latitude": 37.7974521,
+			"longitude": -122.4078484
 		},
-		"symbol": "muir-beach"
+		"symbol": "miritime-wine-tasting"
 	},
 	{
-		"id": 10,
+		"id": 31,
 		"photos": [
-			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-kirby-cove-road-descent-Marin-Headlands-Golden-Gate-National-Recreation-Area-Large-1000x565.jpg",
-			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-San-Francisco-Bay-hiking-trail-at-kirby-cove-Golden-Gate-Bridge-in-Golden-Gate-NRA-Large-e1510891225673-1000x615.jpg",
-			"https://media2.trover.com/T/5716dc06d090011c4b04dc2a/fixedw_large_4x.jpg"
+			"https://static.wixstatic.com/media/596070_363794de4e2046248aab652ec5a57ce5~mv2.jpg",
+			"https://static.wixstatic.com/media/596070_09591b27762943199d4acb240510d012~mv2.jpg",
+			"https://static.wixstatic.com/media/596070_0813e1a9bcdb4ebbbd738fe5867d9345~mv2.jpg/v1/fill/w_632,h_842,al_c,q_85,usm_0.66_1.00_0.01/596070_0813e1a9bcdb4ebbbd738fe5867d9345~mv2.webp"
 		],
-		"name": "Kirby Cove",
-		"description": "Beach front looking towards Golden Gate bridge.",
-		"teaserDescription": "Beach Front overlooking Golden Gate bridge.",
+		"name": "Breakthrough Sushi",
+		"description": "The first and only sustainable sushi making classes company, serving San Francisco Bay Area.",
+		"teaserDescription": "Sushi Classes",
 		"hours": {
-			"Sunday": { "start": 11, "end": 24 },
-			"Monday": { "start": 16, "end": 24 },
-			"Tuesday": { "start": 16, "end": 24 },
-			"Wednesday": { "start": 16, "end": 24 },
-			"Thursday": { "start": 16, "end": 24 },
-			"Friday": { "start": 16, "end": 1 },
-			"Saturday": { "start": 11, "end": 1 }
+			"Sunday": { "start": null, "end": null },
+			"Monday": { "start": 11, "end": 16 },
+			"Tuesday": { "start": 11, "end": 16 },
+			"Wednesday": { "start": 11, "end": 16 },
+			"Thursday": { "start": 11, "end": 16 },
+			"Friday": { "start": 11, "end": 16 },
+			"Saturday": { "start": null, "end": null }
 		},
-		"phoneNumber": "",
+		"phoneNumber": "(415) 373-1023",
 		"email": "",
-		"vibe": ["chill"],
-		"address": "Kirby Cove Road, CA 94941",
-		"parkingAvailable": true,
-		"linkToSite": "https://www.nps.gov/goga/planyourvisit/kirby.htm",
-		"activityType": "explorative",
-		"tags": ["beach", "outdoor"],
-		"rating": 4.5,
-		"takesReservations": false,
-		"averageTimeSpent": 60,
-		"recommendedGroupsize": [1, 5],
-		"price": 0,
-		"priceReasoning": '',
+		"vibe": ["fun", "creative"],
+		"address": "100 Pine St, San Francisco, CA 94111",
+		"parkingAvailable": false,
+		"linkToSite": "https://www.breakthroughsushi.com/sushi-classes",
+		"activityType": "class",
+		"tags": ["indoor", "class", "food"],
+		"rating": 4.8,
+		"takesReservations": true,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [5, 100],
+		"price": 180,
+		"priceReasoning": 'Based on price per class. Minimum budget is $1800.',
 		"location": {
-			"latitude": 37.8260793,
-			"longitude": -122.5073465
+			"latitude": 37.7925824,
+			"longitude": -122.4011749
 		},
-		"symbol": "kirby-cove"
+		"symbol": "break-sushi"
 	},
 	{
 		"id": 11,
@@ -755,6 +715,46 @@ export const venues = [
 		"symbol": "bad-axe"
 	},
 	{
+		"id": 55,
+		"photos": [
+			"https://missionbowlingclub.com/wp-content/uploads/2017/11/IMG_4848.jpg",
+			"https://cdn.vox-cdn.com/thumbor/fEKtF3yrJ8CRBpoppB3kL4Xwv0M=/46x0:707x496/1400x1400/filters:focal(46x0:707x496):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/39019854/Screen_20shot_202012-12-21_20at_208.20.02_20AM.0.png",
+			"https://pbs.twimg.com/media/DBf7MsKV0AA1ag7.jpg",
+			"https://s3-media1.fl.yelpcdn.com/bphoto/GQ-oxrqx0-C-x59UjtZVgg/o.jpg"
+		],
+		"name": "Mission Bowling Club",
+		"description": "Retro bowling alley with 6 lanes, a full bar & attached restaurant serving upscale comfort fare.",
+		"teaserDescription": "Community Bowling Club",
+		"hours": {
+			"Sunday": { "start": 11, "end": 23 },
+			"Monday": { "start": 15, "end": 22 },
+			"Tuesday": { "start": 15, "end": 23 },
+			"Wednesday": { "start": 15, "end": 23 },
+			"Thursday": { "start": 15, "end": 24 },
+			"Friday": { "start": 15, "end": 24 },
+			"Saturday": { "start": 11, "end": 24 }
+		},
+		"phoneNumber": "(415) 863-2695",
+		"email": "",
+		"vibe": ["fun"],
+		"address": "3176 17th St, San Francisco, CA 94110",
+		"parkingAvailable": false,
+		"linkToSite": "https://missionbowlingclub.com/",
+		"activityType": "competitive",
+		"tags": ["competitive", "active"],
+		"rating": 4.6,
+		"takesReservations": true,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [8, 50],
+		"price": 20,
+		"priceReasoning": 'Based on price for 1 game',
+		"location": {
+			"latitude": 37.7639312,
+			"longitude": -122.4189047
+		},
+		"symbol": "mission-bowling"
+	},
+	{
 		"id": 12,
 		"photos": [
 			"https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_789,q_75,w_954/https://assets.simpleviewinc.com/simpleview/image/upload/crm/palmsprings/PinotsPaletteNightOut0-bc42e82c5056b36_bc42eca2-5056-b365-ab389af923e8fc16.jpg",
@@ -792,6 +792,46 @@ export const venues = [
 			"longitude": -122.4350784
 		},
 		"symbol": "pinos-palette"
+	},
+	{
+		"id": 71,
+		"photos": [
+			"https://img.grouponcdn.com/deal/36amDHmPoLHwZXqmWVW5M2yphKUh/36-1175x782/v1/c700x420.jpg",
+			"https://www.eagleclubig.com/wp-content/uploads/2018/10/Group-Event-Eagle-Club-indoor-Golf-1024x683-1024x683.jpg",
+			"https://www.eagleclubig.com/wp-content/uploads/2018/11/eagle-club-indoor-golf-og-logo.jpg",
+			"https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/parters/images/P0014100000oCJxdAAG_20190704102633.jpg"
+		],
+		"name": "Eagle Club",
+		"description": "Indoor golf club with a driving range, virtual world courses, and a equipment shop.",
+		"teaserDescription": "Indoor golf club",
+		"hours": {
+			"Sunday": { "start": 7, "end": 19 },
+			"Monday": { "start": 7, "end": 19 },
+			"Tuesday": { "start": 7, "end": 19 },
+			"Wednesday": { "start": 7, "end": 19 },
+			"Thursday": { "start": 7, "end": 19 },
+			"Friday": { "start": 7, "end": 19 },
+			"Saturday": { "start": 7, "end": 19 }
+		},
+		"phoneNumber": "(415) 795-4145",
+		"email": "",
+		"vibe": ["fun"],
+		"address": "840 Folsom St, San Francisco, CA 94107",
+		"parkingAvailable": true,
+		"linkToSite": "https://www.eagleclubig.com/",
+		"activityType": "competitive",
+		"tags": ["indoor", "golf"],
+		"rating": 4.9,
+		"takesReservations": false,
+		"averageTimeSpent": 240,
+		"recommendedGroupsize": [4, 10],
+		"price": 50,
+		"priceReasoning": 'Based upon price per hour per person',
+		"location": {
+			"latitude": 37.782253,
+			"longitude": -122.402385
+		},
+		"symbol": "eagle-golf-course"
 	},
 	{
 		"id": 13,
@@ -988,6 +1028,45 @@ export const venues = [
 		"symbol": "presidio-golf-course"
 	},
 	{
+		"id": 48,
+		"photos": [
+			"https://s3-media0.fl.yelpcdn.com/bphoto/xoBOMriu_R-PLeK2SLpBgw/o.jpg",
+			"https://igx.4sqi.net/img/general/width960/12746016_TCSIP0Ds03Rjx2xFup8frfZmOuBcLHlhkr3fdBfutuc.jpg",
+			"https://igx.4sqi.net/img/general/width960/15467871_CuueypsjWk1z17bNaEmB4F_Cyc9jomU-zhmOyYT42aU.jpg"
+		],
+		"name": "Encore Karaoke Lounge",
+		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
+		"teaserDescription": "Low-Key Karaoke Bar",
+		"hours": {
+			"Sunday": { "start": 15, "end": 2 },
+			"Monday": { "start": 15, "end": 2 },
+			"Tuesday": { "start": 15, "end": 2 },
+			"Wednesday": { "start": 15, "end": 2 },
+			"Thursday": { "start": 15, "end": 2 },
+			"Friday": { "start": 15, "end": 2 },
+			"Saturday": { "start": 15, "end": 2 }
+		},
+		"phoneNumber": "(415) 775 - 0442",
+		"email": "",
+		"vibe": ["fun", "social"],
+		"address": "1550 California St # 2, San Francisco, CA 94109",
+		"parkingAvailable": false,
+		"linkToSite": "https://encorekaraokesf.com/calendar",
+		"activityType": "bar",
+		"tags": ["sing", "dance", "indoor"],
+		"rating": 4.5,
+		"takesReservations": true,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [5, 30],
+		"price": 30,
+		"priceReasoning": 'Based on price for two drinks',
+		"location": {
+			"latitude": 37.7908292,
+			"longitude": -122.4222469
+		},
+		"symbol": "encore-karaoke"
+	},
+	{
 		"id": 20,
 		"photos": [
 			"https://s3-media4.fl.yelpcdn.com/bphoto/q49fSC57OPbZIZq6QOO24g/l.jpg",
@@ -1104,6 +1183,44 @@ export const venues = [
 			"longitude": -122.4042911
 		},
 		"symbol": "everdenes"
+	},
+	{
+		"id": 49,
+		"photos": [
+			"https://s3-media0.fl.yelpcdn.com/bphoto/JcchOL5tTYBYvxxX_6L4kg/o.jpg",
+			"https://s3-media0.fl.yelpcdn.com/bphoto/CHDDUJ7vagWwFe1g0uZvwQ/o.jpg"
+		],
+		"name": "Fillmore Karaoke",
+		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
+		"teaserDescription": "Low-key Karaoke Bar",
+		"hours": {
+			"Sunday": { "start": 11, "end": 21 },
+			"Monday": { "start": 11, "end": 21 },
+			"Tuesday": { "start": 11, "end": 21 },
+			"Wednesday": { "start": 11, "end": 21 },
+			"Thursday": { "start": 11, "end": 21 },
+			"Friday": { "start": 11, "end": 21 },
+			"Saturday": { "start": 11, "end": 21 }
+		},
+		"phoneNumber": "(415) 673-5708",
+		"email": "",
+		"vibe": ["fun", "social"],
+		"address": "1410 Fillmore St, San Francisco, CA 94115",
+		"parkingAvailable": false,
+		"linkToSite": "https://www.yelp.com/biz/fillmore-karaoke-corporation-san-francisco",
+		"activityType": "bar",
+		"tags": ["sing", "dance", "indoor"],
+		"rating": 4.7,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [3, 6],
+		"price": 30,
+		"priceReasoning": 'Based on price for two drinks',
+		"location": {
+			"latitude": 37.782629,
+			"longitude": -122.4346039
+		},
+		"symbol": "fillmore-karaoke"
 	},
 	{
 		"id": 25,
@@ -1336,45 +1453,6 @@ export const venues = [
 			"longitude": -122.3959967
 		},
 		"symbol": "sf-food-bank"
-	},
-	{
-		"id": 31,
-		"photos": [
-			"https://static.wixstatic.com/media/596070_363794de4e2046248aab652ec5a57ce5~mv2.jpg",
-			"https://static.wixstatic.com/media/596070_09591b27762943199d4acb240510d012~mv2.jpg",
-			"https://static.wixstatic.com/media/596070_0813e1a9bcdb4ebbbd738fe5867d9345~mv2.jpg/v1/fill/w_632,h_842,al_c,q_85,usm_0.66_1.00_0.01/596070_0813e1a9bcdb4ebbbd738fe5867d9345~mv2.webp"
-		],
-		"name": "Breakthrough Sushi",
-		"description": "The first and only sustainable sushi making classes company, serving San Francisco Bay Area.",
-		"teaserDescription": "Sushi Classes",
-		"hours": {
-			"Sunday": { "start": null, "end": null },
-			"Monday": { "start": 11, "end": 16 },
-			"Tuesday": { "start": 11, "end": 16 },
-			"Wednesday": { "start": 11, "end": 16 },
-			"Thursday": { "start": 11, "end": 16 },
-			"Friday": { "start": 11, "end": 16 },
-			"Saturday": { "start": null, "end": null }
-		},
-		"phoneNumber": "(415) 373-1023",
-		"email": "",
-		"vibe": ["fun", "creative"],
-		"address": "100 Pine St, San Francisco, CA 94111",
-		"parkingAvailable": false,
-		"linkToSite": "https://www.breakthroughsushi.com/sushi-classes",
-		"activityType": "class",
-		"tags": ["indoor", "class", "food"],
-		"rating": 4.8,
-		"takesReservations": true,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [5, 100],
-		"price": 180,
-		"priceReasoning": 'Based on price per class. Minimum budget is $1800.',
-		"location": {
-			"latitude": 37.7925824,
-			"longitude": -122.4011749
-		},
-		"symbol": "break-sushi"
 	},
 	{
 		"id": 32,
@@ -1646,6 +1724,45 @@ export const venues = [
 		"symbol": ""
 	},
 	{
+		"id": 7	,
+		"photos": [
+			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-san-francisco-northern-end.jpg",
+			"https://www.californiabeaches.com/wp-content/uploads/2014/09/20150413_155519-Large-1000x563.jpg",
+			"https://www.inside-guide-to-san-francisco-tourism.com/image-files/ocean-beach-cliff-house-esplanade.jpg"
+		],
+		"name": "Ocean Beach",
+		"description": "Ocean Beach is a beach on the west coast of San Francisco, California, United States, bordering the Pacific Ocean. It is adjacent to Golden Gate Park, the Richmond District, and the Sunset District.",
+		"teaserDescription": "Secluded Beach on the West",
+		"hours": {
+			"Sunday": { "start": 6, "end": 18 },
+			"Monday": { "start": 6, "end": 18 },
+			"Tuesday": { "start": 6, "end": 18 },
+			"Wednesday": { "start": 6, "end": 18 },
+			"Thursday": { "start": 6, "end": 18 },
+			"Friday": { "start": 6, "end": 18 },
+			"Saturday": { "start": 6, "end": 18 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["chill", "fun"],
+		"address": "Point Lobos Ave, Great Hwy San Francisco, CA 94121",
+		"parkingAvailable": true,
+		"linkToSite": "https://www.parksconservancy.org/parks/ocean-beach",
+		"activityType": "explorative",
+		"tags": ["outdoor", "active", "fire"],
+		"rating": 4.6,
+		"takesReservations": false,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [4, 25],
+		"price": 0,
+		"priceReasoning": "",
+		"location": {
+			"latitude": 37.777037,
+			"longitude": -122.511938
+		},
+		"symbol": "ocean-beach"
+	},
+	{
 		"id": 39,
 		"photos": [
 			"https://images.squarespace-cdn.com/content/v1/5b882e25af2096151b87553a/1536025775069-5GDVWQ1A7TWAC0J15LKQ/ke17ZwdGBToddI8pDm48kDEDYh4Y0JGhR6hzuwcJ44gUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcz6bs2FkMoqlrQIzq4g5ogDqXr_T7rMikH_TfPkEE4wwzGwe9KEhUq6A0DxOZf-75/15608608139_14fbba854b_b.jpg",
@@ -1682,6 +1799,45 @@ export const venues = [
 			"longitude": -122.4073746
 		},
 		"symbol": "fortune-cookie"
+	},
+	{
+		"id": 3,
+		"photos": [
+			"https://www.blueandgoldfleet.com/wp-content/uploads/2015/04/home_Carousel_BayCruise.jpg",
+			"https://www.blueandgoldfleet.com/wp-content/uploads/2018/05/Home_Carousel_Bay_Cruise_Sea_Lion-1.jpg",
+			"https://www.pier39.com/wp-content/uploads/2016/09/BAGF_Coit_1170x550.jpg"
+		],
+		"name": "Blue and Gold Fleet",
+		"description": "Ferry and Boat tour operator in San Francisco, California",
+		"teaserDescription": "Ferry Across The San Francisco Bay",
+		"hours": {
+			"Sunday": { "start": 9, "end": 18.45 },
+			"Monday": { "start": 9, "end": 18.45 },
+			"Tuesday": { "start": 9, "end": 18.45 },
+			"Wednesday": { "start": 9, "end": 18.45 },
+			"Thursday": { "start": 9, "end": 18.45 },
+			"Friday": { "start": 9, "end": 18.45 },
+			"Saturday": { "start": 9, "end": 18.45 }
+		},
+		"phoneNumber": "(415) 705-8200",
+		"email": "",
+		"vibe": ["chill", "adventurous"],
+		"address": "Pier 41, San Francisco, CA 94133",
+		"parkingAvailable": false,
+		"linkToSite": "http://www.blueandgoldfleet.com/",
+		"activityType": "explorative",
+		"tags": ["outdoor", "water", "boat"],
+		"rating": 4.5,
+		"takesReservations": true,
+		"averageTimeSpent": 35,
+		"recommendedGroupsize": [0, 100],
+		"price": 40,
+		"priceReasoning": "Based on core cruise experience round trip",
+		"location": {
+			"latitude": 37.809205,
+			"longitude": -122.411324
+		},
+		"symbol": "awesome-ferry"
 	},
 	{
 		"id": 40,
@@ -1757,6 +1913,45 @@ export const venues = [
 			"longitude": -122.4291023
 		},
 		"symbol": ""
+	},
+	{
+		"id": 9,
+		"photos": [
+			"https://www.nps.gov/goga/planyourvisit/images/MUBE_141122_KW_033.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+			"https://www.parksconservancy.org/sites/default/files/styles/basic/public/resource-gallery/A_MUBE_100727_MCu_1.jpg?itok=MaxtPUMX",
+			"https://media2.trover.com/T/5716dc06d090011c4b04dc2a/fixedw_large_4x.jpg"
+		],
+		"name": "Muir Beach",
+		"description": "Beach located 16.5 miles northwest of San Francisco",
+		"teaserDescription": "Far-Out Isolated Coastal Beach",
+		"hours": {
+			"Sunday": { "start": 6, "end": 18 },
+			"Monday": { "start": 6, "end": 18 },
+			"Tuesday": { "start": 6, "end": 18 },
+			"Wednesday": { "start": 6, "end": 18 },
+			"Thursday": { "start": 6, "end": 18 },
+			"Friday": { "start": 6, "end": 18 },
+			"Saturday": { "start": 6, "end": 18 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["chill"],
+		"address": "Muir Beach, CA",
+		"parkingAvailable": true,
+		"linkToSite": "https://www.nps.gov/goga/planyourvisit/muirbeach.htm",
+		"activityType": "explorative",
+		"tags": ["beach", "outdoor"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 120,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 37.8664252,
+			"longitude": -122.6036196
+		},
+		"symbol": "muir-beach"
 	},
 	{
 		"id": 71,
@@ -1872,6 +2067,45 @@ export const venues = [
 		"symbol": "blue-gold-sausalito"
 	},
 	{
+		"id": 10,
+		"photos": [
+			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-kirby-cove-road-descent-Marin-Headlands-Golden-Gate-National-Recreation-Area-Large-1000x565.jpg",
+			"https://www.californiabeaches.com/wp-content/uploads/2014/09/bigs-San-Francisco-Bay-hiking-trail-at-kirby-cove-Golden-Gate-Bridge-in-Golden-Gate-NRA-Large-e1510891225673-1000x615.jpg",
+			"https://media2.trover.com/T/5716dc06d090011c4b04dc2a/fixedw_large_4x.jpg"
+		],
+		"name": "Kirby Cove",
+		"description": "Beach front looking towards Golden Gate bridge.",
+		"teaserDescription": "Beach Front overlooking Golden Gate bridge.",
+		"hours": {
+			"Sunday": { "start": 11, "end": 24 },
+			"Monday": { "start": 16, "end": 24 },
+			"Tuesday": { "start": 16, "end": 24 },
+			"Wednesday": { "start": 16, "end": 24 },
+			"Thursday": { "start": 16, "end": 24 },
+			"Friday": { "start": 16, "end": 1 },
+			"Saturday": { "start": 11, "end": 1 }
+		},
+		"phoneNumber": "",
+		"email": "",
+		"vibe": ["chill"],
+		"address": "Kirby Cove Road, CA 94941",
+		"parkingAvailable": true,
+		"linkToSite": "https://www.nps.gov/goga/planyourvisit/kirby.htm",
+		"activityType": "explorative",
+		"tags": ["beach", "outdoor"],
+		"rating": 4.5,
+		"takesReservations": false,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [1, 5],
+		"price": 0,
+		"priceReasoning": '',
+		"location": {
+			"latitude": 37.8260793,
+			"longitude": -122.5073465
+		},
+		"symbol": "kirby-cove"
+	},
+	{
 		"id": 45,
 		"photos": [
 			"https://www.parks.ca.gov/pages/468/images/Angel_Island-Palmer_P055680.jpg",
@@ -1984,121 +2218,6 @@ export const venues = [
 		"symbol": "sf-zoo"
 	},
 	{
-		"id": 48,
-		"photos": [
-			"https://s3-media0.fl.yelpcdn.com/bphoto/xoBOMriu_R-PLeK2SLpBgw/o.jpg",
-			"https://igx.4sqi.net/img/general/width960/12746016_TCSIP0Ds03Rjx2xFup8frfZmOuBcLHlhkr3fdBfutuc.jpg",
-			"https://igx.4sqi.net/img/general/width960/15467871_CuueypsjWk1z17bNaEmB4F_Cyc9jomU-zhmOyYT42aU.jpg"
-		],
-		"name": "Encore Karaoke Lounge",
-		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
-		"teaserDescription": "Low-Key Karaoke Bar",
-		"hours": {
-			"Sunday": { "start": 15, "end": 2 },
-			"Monday": { "start": 15, "end": 2 },
-			"Tuesday": { "start": 15, "end": 2 },
-			"Wednesday": { "start": 15, "end": 2 },
-			"Thursday": { "start": 15, "end": 2 },
-			"Friday": { "start": 15, "end": 2 },
-			"Saturday": { "start": 15, "end": 2 }
-		},
-		"phoneNumber": "(415) 775 - 0442",
-		"email": "",
-		"vibe": ["fun", "social"],
-		"address": "1550 California St # 2, San Francisco, CA 94109",
-		"parkingAvailable": false,
-		"linkToSite": "https://encorekaraokesf.com/calendar",
-		"activityType": "bar",
-		"tags": ["sing", "dance", "indoor"],
-		"rating": 4.5,
-		"takesReservations": true,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [5, 30],
-		"price": 30,
-		"priceReasoning": 'Based on price for two drinks',
-		"location": {
-			"latitude": 37.7908292,
-			"longitude": -122.4222469
-		},
-		"symbol": "encore-karaoke"
-	},
-	{
-		"id": 49,
-		"photos": [
-			"https://s3-media0.fl.yelpcdn.com/bphoto/JcchOL5tTYBYvxxX_6L4kg/o.jpg",
-			"https://s3-media0.fl.yelpcdn.com/bphoto/CHDDUJ7vagWwFe1g0uZvwQ/o.jpg"
-		],
-		"name": "Fillmore Karaoke",
-		"description": "Low-key karaoke lounge serving up a large selection of music plus happy hour 7 days a week.",
-		"teaserDescription": "Low-key Karaoke Bar",
-		"hours": {
-			"Sunday": { "start": 11, "end": 21 },
-			"Monday": { "start": 11, "end": 21 },
-			"Tuesday": { "start": 11, "end": 21 },
-			"Wednesday": { "start": 11, "end": 21 },
-			"Thursday": { "start": 11, "end": 21 },
-			"Friday": { "start": 11, "end": 21 },
-			"Saturday": { "start": 11, "end": 21 }
-		},
-		"phoneNumber": "(415) 673-5708",
-		"email": "",
-		"vibe": ["fun", "social"],
-		"address": "1410 Fillmore St, San Francisco, CA 94115",
-		"parkingAvailable": false,
-		"linkToSite": "https://www.yelp.com/biz/fillmore-karaoke-corporation-san-francisco",
-		"activityType": "bar",
-		"tags": ["sing", "dance", "indoor"],
-		"rating": 4.7,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [3, 6],
-		"price": 30,
-		"priceReasoning": 'Based on price for two drinks',
-		"location": {
-			"latitude": 37.782629,
-			"longitude": -122.4346039
-		},
-		"symbol": "fillmore-karaoke"
-	},
-	{
-		"id": 50,
-		"photos": [
-			"https://cdn.shopify.com/s/files/1/2434/0841/products/dandelion-chocolate-experience-16th-street-factory-tour-6923675631704_1080x.jpg?v=1552942410",
-			"https://cdn.shopify.com/s/files/1/2434/0841/products/dandelion-chocolate-experience-team-building-experience-make-your-own-chocolate-bar-12171515887704_1080x.jpg?v=1565204493"
-		],
-		"name": "Dandelion Chocolate Factory",
-		"description": "Dandelion Chocolate is a small-batch bean-to-bar craft chocolate maker offering classes, factory tours, cafès and retail shops from San Francisco.",
-		"teaserDescription": "Chocolate Classes and Tours",
-		"hours": {
-			"Sunday": { "start": 11, "end": 21 },
-			"Monday": { "start": 11, "end": 21 },
-			"Tuesday": { "start": 11, "end": 21 },
-			"Wednesday": { "start": 11, "end": 21 },
-			"Thursday": { "start": 11, "end": 21 },
-			"Friday": { "start": 11, "end": 21 },
-			"Saturday": { "start": 11, "end": 21 }
-		},
-		"phoneNumber": "(415) 349-0942",
-		"email": "",
-		"vibe": ["fun"],
-		"address": "2600 16th St, San Francisco, CA 94103",
-		"parkingAvailable": false,
-		"linkToSite": "https://store.dandelionchocolate.com/collections/private-experiences/products/make-your-own-chocolate-bar",
-		"activityType": "tour",
-		"tags": ["indoor", "dessert", "tour", "class"],
-		"rating": 4.7,
-		"takesReservations": false,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [10, 24],
-		"price": 90,
-		"priceReasoning": 'Based on price for choclate class',
-		"location": {
-			"latitude": 37.7656443,
-			"longitude": -122.4148424
-		},
-		"symbol": "dandelion"
-	},
-	{
 		"id": 52,
 		"photos": [
 			"https://d5xydlzdo08s0.cloudfront.net/media/celebrities/4524/products/Photo_Feb_09_11_22_50_AM__L.jpg",
@@ -2134,46 +2253,6 @@ export const venues = [
 			"longitude": -122.468504
 		},
 		"symbol": ""
-	},
-	{
-		"id": 55,
-		"photos": [
-			"https://missionbowlingclub.com/wp-content/uploads/2017/11/IMG_4848.jpg",
-			"https://cdn.vox-cdn.com/thumbor/fEKtF3yrJ8CRBpoppB3kL4Xwv0M=/46x0:707x496/1400x1400/filters:focal(46x0:707x496):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/39019854/Screen_20shot_202012-12-21_20at_208.20.02_20AM.0.png",
-			"https://pbs.twimg.com/media/DBf7MsKV0AA1ag7.jpg",
-			"https://s3-media1.fl.yelpcdn.com/bphoto/GQ-oxrqx0-C-x59UjtZVgg/o.jpg"
-		],
-		"name": "Mission Bowling Club",
-		"description": "Retro bowling alley with 6 lanes, a full bar & attached restaurant serving upscale comfort fare.",
-		"teaserDescription": "Community Bowling Club",
-		"hours": {
-			"Sunday": { "start": 11, "end": 23 },
-			"Monday": { "start": 15, "end": 22 },
-			"Tuesday": { "start": 15, "end": 23 },
-			"Wednesday": { "start": 15, "end": 23 },
-			"Thursday": { "start": 15, "end": 24 },
-			"Friday": { "start": 15, "end": 24 },
-			"Saturday": { "start": 11, "end": 24 }
-		},
-		"phoneNumber": "(415) 863-2695",
-		"email": "",
-		"vibe": ["fun"],
-		"address": "3176 17th St, San Francisco, CA 94110",
-		"parkingAvailable": false,
-		"linkToSite": "https://missionbowlingclub.com/",
-		"activityType": "competitive",
-		"tags": ["competitive", "active"],
-		"rating": 4.6,
-		"takesReservations": true,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [8, 50],
-		"price": 20,
-		"priceReasoning": 'Based on price for 1 game',
-		"location": {
-			"latitude": 37.7639312,
-			"longitude": -122.4189047
-		},
-		"symbol": "mission-bowling"
 	},
 	{
 		"id": 56,
@@ -2252,44 +2331,6 @@ export const venues = [
 			"longitude": -122.4219489
 		},
 		"symbol": ""
-	},
-	{
-		"id": 58,
-		"photos": [
-			"https://www.maritimetasting.com/assets/client/Image/Visit-Us/OurTastingStudio.jpg",
-			"https://s.hdnux.com/photos/42/13/10/8958491/7/rawImage.jpg"
-		],
-		"name": "Maritime Wine Tasting Studio",
-		"description": "Urban winetasting, bar, and restaurant.",
-		"teaserDescription": "Winetasting",
-		"hours": {
-			"Sunday": { "start": null, "end": null },
-			"Monday": { "start": null, "end": null },
-			"Tuesday": { "start": 13, "end": 22 },
-			"Wednesday": { "start": 13, "end": 22 },
-			"Thursday": { "start": 13, "end": 22 },
-			"Friday": { "start": 13, "end": 22 },
-			"Saturday": { "start": 13, "end": 22 }
-		},
-		"phoneNumber": "(415) 861-1139",
-		"email": "",
-		"vibe": ["chill", "sophisticated"],
-		"address": "222 Columbus Ave, San Francisco, CA 94133",
-		"parkingAvailable": false,
-		"linkToSite": "https://www.maritimetasting.com/Reservations",
-		"activityType": "bar",
-		"tags": ["indoor", "wine"],
-		"rating": 4.5,
-		"takesReservations": true,
-		"averageTimeSpent": 120,
-		"recommendedGroupsize": [6, 30],
-		"price": 60,
-		"priceReasoning": 'Based on price for 2 drinks',
-		"location": {
-			"latitude": 37.7974521,
-			"longitude": -122.4078484
-		},
-		"symbol": "miritime-wine-tasting"
 	},
 	{
 		"id": 59,

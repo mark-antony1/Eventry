@@ -681,10 +681,12 @@ function User() {
     <Block
       display="flex"
       flexDirection="column"
-      alignItems="center"
-      padding="24px"
+      paddingLeft={["24px", "24px", "60px", "60px"]}
+      paddingRight={["24px", "24px", "60px", "60px"]}
+      paddingTop="60px"
+      paddingBottom="60px"
     >
-      <Block padding="12px">
+      <Block>
         <Block display="flex">
           <Display4><b>Hello {firstName}!</b></Display4>
           <Block flex="1" display="flex" alignItems="center" justifyContent="flex-end">

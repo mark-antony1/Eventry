@@ -49,8 +49,8 @@ function InviteNewMember() {
       return false;
     }
     if (companyEmailsData && companyEmailsData.getCompanyEmails) {
-      const correctEmail = companyEmailsData.getCompanyEmails.reduce((res, email) => {
-        if (String(email.split('@')[1]).toLowerCase() === email.toLowerCase()) {
+      const correctEmail = companyEmailsData.getCompanyEmails.reduce((res, e) => {
+        if (String(email.split('@')[1]).toLowerCase() === e.toLowerCase()) {
           return true;
         }
         return res;

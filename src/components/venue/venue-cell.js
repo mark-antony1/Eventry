@@ -54,7 +54,7 @@ export default function VenueCell({ venue, hovered }) {
 
   return (
     <Block display="flex" flexDirection="column">
-      <Block height="300px" overrides={{ Block: { style: { overflow: 'hidden', borderRadius: '10px' } } }}>
+      <Block height="200px" overrides={{ Block: { style: { overflow: 'hidden', borderRadius: '10px' } } }}>
       <img alt="venue-cell" className={css({
           animationDuration: "2.25s",
           animationIterationCount: "infinite",

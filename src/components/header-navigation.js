@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom';
 import {
   HeaderNavigation,
   ALIGN,
@@ -230,6 +231,7 @@ const ToTeamReduced = () => {
 
 const COLLAPSE_MODE_LIMIT = 800;
 export default ({ leftButtons, children }) => {
+  const location = useLocation();
   const windowSize = useWindowSize();
   const [ showDrawer, setShowDrawer ] = useState(false);
   const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
@@ -241,6 +243,13 @@ export default ({ leftButtons, children }) => {
         onClose={() => { setShowDrawer(false) }}
         isOpen={showDrawer}
         anchor="top"
+        overrides={{
+          Root: {
+            style: {
+              zIndex: 2
+            }
+          }
+        }}
       >
         <Block display="flex" flexDirection="column" height="100%">
           <Button $as="a" href="/" kind="minimal">
@@ -248,8 +257,14 @@ export default ({ leftButtons, children }) => {
           </Button>
           {
             (!loading && !error && data && !data.getUserByAuth) &&
-            <Button $as="a" href="/user" kind="minimal">
+            <Button $as="a" href="/user?p=signup" kind="minimal">
               Sign up
+            </Button>
+          }
+          {
+            (!loading && !error && data && !data.getUserByAuth) &&
+            <Button $as="a" href="/user" kind="minimal">
+              Sign in
             </Button>
           }
           {
@@ -268,6 +283,7 @@ export default ({ leftButtons, children }) => {
     );
   };
   const renderLogo = () => {
+    const homePath = location.pathname === '/' ? '/' : '/s';
     if (windowSize.width < COLLAPSE_MODE_LIMIT) {
       return (
         <StyledNavigationItem>
@@ -292,7 +308,7 @@ export default ({ leftButtons, children }) => {
     }
     return (
       <StyledNavigationItem>
-        <a href="/">
+        <a href={homePath}>
           <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
         </a>
       </StyledNavigationItem>
@@ -311,22 +327,30 @@ export default ({ leftButtons, children }) => {
             </Button>
           </Block>
         </StyledNavigationItem>
-        <StyledNavigationItem>
-          <Block>
-            {
-              (!loading && !error && data && !data.getUserByAuth) &&
-              <Button $as="a" href="/user" kind="minimal">
-                Sign up
-              </Button>
-            }
-            {
-              (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
-              <Button $as="a" href="/user" kind="minimal">
-                {data.getUserByAuth.user.firstName}
-              </Button>
-            }
-          </Block>
-        </StyledNavigationItem>
+        {
+          (!loading && !error && data && !data.getUserByAuth) &&
+          <StyledNavigationItem>
+            <Button $as="a" href="/user?p=signup" kind="minimal">
+              Sign up
+            </Button>
+          </StyledNavigationItem>
+        }
+        {
+          (!loading && !error && data && !data.getUserByAuth) &&
+          <StyledNavigationItem>
+            <Button $as="a" href="/user" kind="minimal">
+              Sign in
+            </Button>
+          </StyledNavigationItem>
+        }
+        {
+          (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
+          <StyledNavigationItem>
+            <Button $as="a" href="/user" kind="minimal">
+              {data.getUserByAuth.user.firstName}
+            </Button>
+          </StyledNavigationItem>
+        }
         <ToVenueDashboard />
         <ToTeam />
       </StyledNavigationList>

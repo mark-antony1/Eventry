@@ -47,7 +47,7 @@ const Hours = ({ hours }) => {
       {
         Object.keys(hours).map((day) => {
           return (
-            <Block key={day} padding="12px"><Label1><b>{day}</b></Label1></Block>
+            <Block key={day} paddingRight="12px" paddingTop="12px" paddingBottom="12px"><Label1><b>{day}</b></Label1></Block>
           );
         })
       }
@@ -57,13 +57,13 @@ const Hours = ({ hours }) => {
         Object.keys(hours).map((day) => {
           const hour = hours[day];
           return (
-            <Block key={`${day}1`} padding="12px">
-              <Label1><b>
-              {
-                isNaN(hour.start) ?
-                'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
-              }
-              </b></Label1>
+            <Block key={`${day}1`} paddingLeft="12px" paddingTop="12px" paddingBottom="12px">
+              <Label1>
+                {
+                  isNaN(hour.start) ?
+                  'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
+                }
+              </Label1>
             </Block>
           );
         })
@@ -157,7 +157,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
 
   const BackButton = () => {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/">
+      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/s">
         <ChevronLeft /> Map
       </Button>
     );
@@ -167,12 +167,12 @@ export default function Details({ match: { params: {venueSymbol} } }) {
     <Block display="flex" flexDirection="column">
       {showPhotoDetails && <PhotoDetails photos={venue.photos} initialPhotoIndex={initialPhotoIndex} setShowPhotoDetails={setShowPhotoDetails} />}
       <HeaderNavigation leftButtons={[BackButton]} />
-      <Block display="flex" minHeight="30vw" padding="24px">
-        {venue.photos.slice(0, 3).map((photo, index) => {
+      <Block display="flex" minHeight="20vw" padding="6px">
+        {venue.photos.slice(0, 4).map((photo, index) => {
           return (
             <Block
               flex="1"
-              margin="12px"
+              margin="4px"
               key={index}
               onClick={() => { openPhotoDetails(index) }}
               overrides={{ Block: {style: {cursor: 'pointer'}}}}
@@ -181,14 +181,8 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             </Block>
           );
         })}
-        <Block flex="1" margin="12px" position="relative">
-          <Block position="absolute" top="10px" right="10px" overrides={{ Block: { style: { zIndex: 1}}}}>
-            <Button $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</Button>
-          </Block>
-          <DiscoveryMap venues={[venue]} disableScrollZoom={true} />
-        </Block>
       </Block>
-      <Block paddingLeft="24px" paddingRight="24px" paddingBottom="24px" display="flex" flexDirection={['column', 'column', 'row', 'row']}>
+      <Block padding="24px" display="flex" flexDirection={['column', 'column', 'row', 'row']}>
         <Block flex="1" paddingLeft="12px" paddingRight="24px">
           <Label1><b>{venue.name}</b></Label1>
           <Display4 marginTop="8px"><b>{venue.teaserDescription}</b></Display4>
@@ -242,23 +236,27 @@ export default function Details({ match: { params: {venueSymbol} } }) {
         </Block>
       </Block>
       <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
-        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
-          <Block flex="1">
-            <Display3><b>About</b></Display3>
-          </Block>
-          <Block flex="2">
-            <Label1><i>{venue.teaserDescription}</i></Label1>
-            <Paragraph1>{venue.description}</Paragraph1>
-          </Block>
+        <Block display="flex" flexDirection="column">
+          <Label1 marginBottom="24px"><b>About the venue</b></Label1>
+          <Block>{venue.description}</Block>
         </Block>
-        <Block display="flex">
+        <Block display="flex" marginTop="68px">
           <VenueReviews symbol={venueSymbol} />
         </Block>
         <Block display="flex" marginTop="68px" flexDirection={['column', 'column', 'row', 'row']}>
-          <Block flex="1">
-            <Display3><b>Hours</b></Display3>
+          <Block flex="1" marginRight="24px">
+            <Label1 marginBottom="24px"><b>Location & Hours</b></Label1>
+            <Block height="200px" position="relative">
+              <DiscoveryMap venues={[venue]} disableScrollZoom={true} />
+            </Block>
+            <Block display="flex" marginTop="12px">
+              <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
+              <Block marginLeft="12px">
+                <Button $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</Button>
+              </Block>
+            </Block>
           </Block>
-          <Block flex="2">
+          <Block flex="1">
             <Block width="fit-content">
               <Hours hours={venue.hours} />
             </Block>

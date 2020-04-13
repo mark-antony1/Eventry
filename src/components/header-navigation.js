@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom';
 import {
   HeaderNavigation,
   ALIGN,
@@ -230,6 +231,7 @@ const ToTeamReduced = () => {
 
 const COLLAPSE_MODE_LIMIT = 800;
 export default ({ leftButtons, children }) => {
+  const location = useLocation();
   const windowSize = useWindowSize();
   const [ showDrawer, setShowDrawer ] = useState(false);
   const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
@@ -281,6 +283,7 @@ export default ({ leftButtons, children }) => {
     );
   };
   const renderLogo = () => {
+    const homePath = location.pathname === '/' ? '/' : '/s';
     if (windowSize.width < COLLAPSE_MODE_LIMIT) {
       return (
         <StyledNavigationItem>
@@ -305,7 +308,7 @@ export default ({ leftButtons, children }) => {
     }
     return (
       <StyledNavigationItem>
-        <a href="/">
+        <a href={homePath}>
           <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
         </a>
       </StyledNavigationItem>

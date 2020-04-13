@@ -157,7 +157,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
 
   const BackButton = () => {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/">
+      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/s">
         <ChevronLeft /> Map
       </Button>
     );

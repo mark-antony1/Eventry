@@ -50,32 +50,20 @@ const typeOptions = [
     label: 'Activity Type'
   },
   {
-    id: 'competitive',
-    label: 'Competitive'
+    id: 'game',
+    label: 'Game'
   },
   {
-    id: 'cooperative',
-    label: 'Cooperative'
+    id: 'hangout',
+    label: 'Hangout'
   },
   {
-    id: 'bar',
-    label: 'Bar'
+    id: 'vr',
+    label: 'VR'
   },
   {
-    id: 'explore',
-    label: 'Explore'
-  },
-  {
-    id: 'class',
-    label: 'Class'
-  },
-  {
-    id: 'tour',
-    label: 'Tour'
-  },
-  {
-    id: 'food',
-    label: 'Food'
+    id: 'event',
+    label: 'Event'
   }
 ];
 

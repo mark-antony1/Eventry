@@ -193,6 +193,21 @@ export default function Details() {
           <Label1 marginBottom="24px"><b>About this virtual event</b></Label1>
           <Block>{venue.description}</Block>
         </Block>
+        {
+          venue.relevantLinks && venue.relevantLinks.length ?
+          <Block display="flex" marginTop="68px" flexDirection="column">
+            <Label1 marginBottom="24px"><b>Relevant links</b></Label1>
+            {
+              venue.relevantLinks.map(link => {
+                return (
+                  <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} key={link} href={link} target="_blank">
+                    <Label1><b>{link}</b></Label1>
+                  </a>
+                );
+              })
+            }
+          </Block> : null
+        }
         <Block display="flex" marginTop="68px">
           <VenueReviews symbol={venueSymbol} />
         </Block>

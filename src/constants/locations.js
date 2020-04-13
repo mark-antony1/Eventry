@@ -84,7 +84,6 @@ export const venues = [
 		"id": 54,
 		"photos": [
 			"https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_465,q_50,w_698/https://assets.simpleviewinc.com/simpleview/image/upload/crm/denver/15709_LuckyStrike_b691b214-b8ff-546b-0137e3e3fccbc726.jpg",
-			"https://cdn3.gbot.me/photos/Kd/CR/1409084314/-_Lucky_Strike_Lanes__in_K-20000000008294414-500x375.jpg",
 			"https://media-cdn.tripadvisor.com/media/photo-s/14/04/83/c5/lanes.jpg",
 			"https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/styles/sft_550x300/public/parters/images/P00145920_5_20170407101648.JPG?itok=5bIvfIql&timestamp=1582974001"
 		],
@@ -124,7 +123,6 @@ export const venues = [
 		"id": 53,
 		"photos": [
 			"https://cdn.thecrazytourist.com/wp-content/uploads/2016/08/Pacifica-Archery.jpg",
-			"https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/42102898_2012495012105281_6580192181565259776_o.jpg?_nc_cat=100&_nc_sid=6e5ad9&_nc_ohc=CvWMe7EHUV8AX_JL9sz&_nc_ht=scontent-sjc3-1.xx&oh=3461a485fd457e38ed4c3225cbeabb25&oe=5E8F28C9",
 			"https://images.squarespace-cdn.com/content/v1/54acc17de4b0ab38fef7d3a8/1422743264760-0AYAPAEKPR7ROLZWEMET/ke17ZwdGBToddI8pDm48kMkJiBwTQHGDHNdKDiaHrccUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2doRj74AyrZLIEC6NtbOwxSqdUV305ssLg6_tWCZXGrUDW07ycm2Trb21kYhaLJjddA/image+1.jpg?format=2500w",
 			"https://img.grouponcdn.com/deal/969ea9427a3c4fc0b43ea93cf071a5b0/b0/v1/c700x420.jpg",
 			"https://images.squarespace-cdn.com/content/v1/54acc17de4b0ab38fef7d3a8/1422743500627-59GNAAUIQWSG378NG58X/ke17ZwdGBToddI8pDm48kKI1wTrFi58bREzlHzeJClkUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2djwkakg8n8ubkZYFb3QyRj_of7Ncgl9X9tx76OTs4oVlH3bqxw7fF48mhrq5Ulr0Hg/471565_505796992775098_889181223_o.jpg?format=1500w"

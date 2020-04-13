@@ -5,7 +5,6 @@ import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import {
   Display4,
-  Display2,
   Label2,
   Label1,
 } from 'baseui/typography';
@@ -215,7 +214,7 @@ function filterVenues(venues, filterValue) {
   });
 }
 
-const LIST_SIZE = 10;
+const LIST_SIZE = 9;
 
 const generateGALabel = (action, value) => {
   if (action === 'type') {
@@ -343,7 +342,7 @@ export default function Discovery() {
         }
       });
       setScrollToId(id);
-      setVenueIndex(Math.floor(index / 10) * 10);
+      setVenueIndex(Math.floor(index / LIST_SIZE) * LIST_SIZE);
     }
 
   };
@@ -377,13 +376,13 @@ export default function Discovery() {
       <Block display="flex" flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         {
           venues.length ?
-          <Block display="flex" flex="2" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
+          <Block display="flex" flex="3" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
             <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} flexWrap="wrap">
             {
               slicedVenues.map((venue, index) => {
                 return (
                   <Block
-                    flex={"0 1 calc(50% - 24px)"}
+                    flex={"0 1 calc(33% - 24px)"}
                     margin="12px"
                     ref={venueRefs[venue.id]}
                     key={venue.id}
@@ -405,26 +404,26 @@ export default function Discovery() {
             <Block display="flex" width="100%" alignItems="center">
               <Block flex="1" display="flex" flexDirection="column">
                 <Button kind="minimal" onClick={handlePrevPage}>
-                  <ChevronLeft size={36} /> <b>{Math.floor(venueIndex / 10) ? Math.floor(venueIndex / 10) : null}</b>
+                  <ChevronLeft size={36} /> <b>{Math.floor(venueIndex / LIST_SIZE) ? Math.floor(venueIndex / LIST_SIZE) : null}</b>
                 </Button>
               </Block>
               <Block>
-                <b>{Math.floor(venueIndex / 10) + 1}</b>
+                <b>{Math.floor(venueIndex / LIST_SIZE) + 1}</b>
               </Block>
               <Block flex="1" display="flex" flexDirection="column">
                 <Button kind="minimal" onClick={handleNextPage}>
-                  <b>{Math.floor(venueIndex / 10) + 2}</b> <ChevronRight size={36} />
+                  <b>{Math.floor(venueIndex / LIST_SIZE) + 2}</b> <ChevronRight size={36} />
                 </Button>
               </Block>
             </Block>
           </Block> :
-          <Block flex="2" display="flex" backgroundColor="#F4F4F4" alignItems="center" justifyContent="center">
+          <Block flex="3" display="flex" backgroundColor="#F4F4F4" alignItems="center" justifyContent="center">
             <Display4><b>No Result</b></Display4>
           </Block>
         }
         <Block flex="1" flexDirection="column" display={['none', 'none', 'flex', 'flex']} justifyContent="center" padding="24px">
           <img src="./logo.png" width="100px" />
-          <Display2 color="#02A84E"><b>Share virtual events you like</b></Display2>
+          <Display4 color="#02A84E"><b>Share virtual events you like</b></Display4>
           <Label1 color="#777"><b>Is it not listed here? Send us a message!</b></Label1>
           <Block display="flex" justifyContent="flex-end" paddingRight="100px">
             <img src="./arrow.png" width="100px" />

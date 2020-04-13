@@ -448,5 +448,51 @@ export const venues = [
 		"price": 20,
 		"priceReasoning": "Based on price per game",
 		"symbol": "werewolf"
+	},
+	{
+		"id": 20,
+		"photos": [
+			"https://cf.geekdo-images.com/opengraph/img/KvWkw6TGLr4arA4E1lwnJocdy8E=/fit-in/1200x630/pic2582929.jpg",
+			"https://www.jbowens.org/static/images/codenames-spymaster-view.png"
+		],
+		"name": "Codenames",
+		"description": "Two teams compete by each having a 'spymaster' give one-word clues that can point to multiple words on the board. The other players on the team attempt to guess their team's words while avoiding the words of the other team. In a variant with 2–3 players, one spymaster gives clues to the other player or players.",
+		"teaserDescription": "Game using Secret Words",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.horsepaste.com/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["easy", "fun"],
+		"rating": 4.7,
+		"takesReservations": false,
+		"averageTimeSpent": 30,
+		"recommendedGroupsize": [2, 6],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "horsepaste"
+	},
+	{
+		"id": 20,
+		"photos": [
+			"https://media-assets-03.thedrum.com/cache/images/thedrum-prod/s3-houseparty3--default--1280.png",
+			"https://cdn.comparitech.com/wp-content/uploads/2018/09/houseparty3-1024x495.jpg"
+		],
+		"name": "House Party",
+		"description": "Houseparty is a social networking service that enables group video chatting through mobile and desktop apps. Users receive a notification when friends are online and available to group video chat. On average, users spend approximately 51 minutes a day on the app in group or one-on-one chats.",
+		"teaserDescription": "Face to Face Social Network",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://houseparty.com/",
+		"relevantLinks": [],
+		"activityType": "hangout",
+		"tags": ["chill", "fun"],
+		"rating": 4.7,
+		"takesReservations": false,
+		"averageTimeSpent": 51,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "App is free",
+		"symbol": "horsepaste"
 	}
 ]

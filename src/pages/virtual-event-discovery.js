@@ -422,11 +422,11 @@ export default function Discovery() {
           </Block>
         }
         <Block flex="1" flexDirection="column" display={['none', 'none', 'flex', 'flex']} justifyContent="center" padding="24px">
-          <img src="./logo.png" width="100px" />
+          <img src={process.env.PUBLIC_URL +  '/logo.png'} width="100px" />
           <Display4 color="#02A84E"><b>Share virtual events you like</b></Display4>
           <Label1 color="#777"><b>Is it not listed here? Send us a message!</b></Label1>
           <Block display="flex" justifyContent="flex-end" paddingRight="100px">
-            <img src="./arrow.png" width="100px" />
+            <img src={process.env.PUBLIC_URL +  '/arrow.png'} width="100px" />
           </Block>
         </Block>
       </Block>

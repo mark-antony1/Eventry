@@ -405,8 +405,7 @@ export const venues = [
 	{
 		"id": 15,
 		"photos": [
-			"https://netflixparty.s3.amazonaws.com/img/land/chat-display.svg",	
-			"https://netflixparty.s3.amazonaws.com/img/land/compressed-land-display.mp4"
+			"https://netflixparty.s3.amazonaws.com/img/land/chat-display.svg"
 		],
 		"name": "Netflix Party",
 		"description": "Netflix Party is a new way to watch Netflix with your friends online. Netflix Party synchronizes video playback and adds group chat to your favorite Netflix shows. Join over 1,000,000 people and use Netflix Party to link up with friends and host long distance movie nights and TV watch parties today!",

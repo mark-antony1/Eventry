@@ -13,6 +13,7 @@ import VenueDashboard from './pages/venue-dashboard';
 import Event from './pages/event';
 import Team from './pages/team';
 import Home from './pages/home';
+import VirtualEventDiscovery from './pages/virtual-event-discovery';
 import { withTracker } from './utils';
 import './App.css';
 
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route exact component={withTracker(Home)} path="/" />
           <Route exact component={withTracker(Discovery)} path="/s" />
+          <Route exact component={withTracker(VirtualEventDiscovery)} path="/v" />
           <Route exact component={withTracker(About)} path="/about" />
           <Route exact component={withTracker(User)} path="/user" />
           <Route component={withTracker(Event)} path="/event/:eventId" />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { useStyletron } from 'styletron-react';
@@ -23,10 +24,7 @@ import {
   Label2
 } from 'baseui/typography';
 import HeaderNavigation from '../components/header-navigation';
-import DiscoveryMap from '../components/map/discovery-map';
 import VenueReviews from '../components/venue/venue-reviews';
-import VirtualEventDetails from './virtual-event-details';
-import { getHourFromMilitaryHour } from '../utils';
 import { venues as allVenues } from '../constants/locations';
 import { venues as allVirtualLocations } from '../constants/virtual-locations';
 
@@ -41,39 +39,6 @@ function minutesToAverageTimeSpent(minutes) {
 
   return '3 hours or more';
 }
-
-const Hours = ({ hours }) => {
-  return (
-    <Block display="flex">
-      <Block display="flex" flexDirection="column">
-      {
-        Object.keys(hours).map((day) => {
-          return (
-            <Block key={day} paddingRight="12px" paddingTop="12px" paddingBottom="12px"><Label1><b>{day}</b></Label1></Block>
-          );
-        })
-      }
-      </Block>
-      <Block display="flex" flexDirection="column" marginLeft="12px">
-      {
-        Object.keys(hours).map((day) => {
-          const hour = hours[day];
-          return (
-            <Block key={`${day}1`} paddingLeft="12px" paddingTop="12px" paddingBottom="12px">
-              <Label1>
-                {
-                  isNaN(hour.start) ?
-                  'Closed' : `${getHourFromMilitaryHour(hour.start)} - ${getHourFromMilitaryHour(hour.end)}`
-                }
-              </Label1>
-            </Block>
-          );
-        })
-      }
-      </Block>
-    </Block>
-  );
-};
 
 const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
   const [ photoIndex, setPhotoIndex ] = useState(initialPhotoIndex);
@@ -140,12 +105,12 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
   );
 };
 
-export default function Details({ match: { params: {venueSymbol} } }) {
+export default function Details() {
+  const { venueSymbol } = useParams();
   const [ showPhotoDetails, setShowPhotoDetails ] = useState(false);
   const [ initialPhotoIndex, setInitialPhotoIndex ] = useState(null);
   const [ css ] = useStyletron();
-  const venue = allVenues.find((v) => v.symbol === venueSymbol);
-  const virtualLocation = allVirtualLocations.find((v) => v.symbol === venueSymbol);
+  const venue = allVirtualLocations.find((v) => v.symbol === venueSymbol);
   useEffect(() => {
     document.title = `TeamBright | ${venue ? venue.name : ''}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -159,29 +124,17 @@ export default function Details({ match: { params: {venueSymbol} } }) {
 
   const BackButton = () => {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/s">
-        <ChevronLeft /> Map
+      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/v">
+        <ChevronLeft /> Search
       </Button>
     );
   };
-
-  if (!venue && !virtualLocation) {
-    return (
-      <Block display="flex" alignItems="center" justifyContent="center" height="100vh">
-        <Label1><b>Venue doesn't exist</b></Label1>
-      </Block>
-    );
-  }
-
-  if (virtualLocation) {
-    return <VirtualEventDetails />;
-  }
 
   return (
     <Block display="flex" flexDirection="column">
       {showPhotoDetails && <PhotoDetails photos={venue.photos} initialPhotoIndex={initialPhotoIndex} setShowPhotoDetails={setShowPhotoDetails} />}
       <HeaderNavigation leftButtons={[BackButton]} />
-      <Block display="flex" minHeight="20vw" padding="6px">
+      <Block display="flex" height="20vw" padding="6px">
         {venue.photos.slice(0, 4).map((photo, index) => {
           return (
             <Block
@@ -203,15 +156,6 @@ export default function Details({ match: { params: {venueSymbol} } }) {
           <Block marginLeft="-5px" marginTop="8px">
             {
               venue.tags.map((tag, index) => {
-                return (
-                  <Tag key={index} closeable={false} kind="accent" variant="outlined">
-                    <b>{tag}</b>
-                  </Tag>
-                );
-              })
-            }
-            {
-              venue.vibe.map((tag, index) => {
                 return (
                   <Tag key={index} closeable={false} kind="accent" variant="outlined">
                     <b>{tag}</b>
@@ -242,39 +186,15 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             </Block>
             <Label2><b>From ${venue.price} / person</b></Label2>
           </Block>
-          <Block flex="1" padding="24px">
-            <FaClock />
-            <Label2 color="#727272">Duration</Label2>
-            <Label2><b>People spend {minutesToAverageTimeSpent(venue.averageTimeSpent)} here</b></Label2>
-          </Block>
         </Block>
       </Block>
       <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
         <Block display="flex" flexDirection="column">
-          <Label1 marginBottom="24px"><b>About the venue</b></Label1>
+          <Label1 marginBottom="24px"><b>About this virtual event</b></Label1>
           <Block>{venue.description}</Block>
         </Block>
         <Block display="flex" marginTop="68px">
           <VenueReviews symbol={venueSymbol} />
-        </Block>
-        <Block display="flex" marginTop="68px" flexDirection={['column', 'column', 'row', 'row']}>
-          <Block flex="1" marginRight="24px">
-            <Label1 marginBottom="24px"><b>Location & Hours</b></Label1>
-            <Block height="200px" position="relative">
-              <DiscoveryMap venues={[venue]} disableScrollZoom={true} />
-            </Block>
-            <Block display="flex" marginTop="12px">
-              <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
-              <Block marginLeft="12px">
-                <Button $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</Button>
-              </Block>
-            </Block>
-          </Block>
-          <Block flex="1">
-            <Block width="fit-content">
-              <Hours hours={venue.hours} />
-            </Block>
-          </Block>
         </Block>
       </Block>
       <Block

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStyletron } from 'styletron-react';
+import { Tag } from 'baseui/tag';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import HeaderNavigation from '../components/header-navigation';
@@ -30,8 +31,17 @@ export default function Home() {
         >
           <Display2 color="#fff"><b>Find your next team event</b></Display2>
           <Label1 color="#fff"><b>50+ venues in San Francisco</b></Label1>
-          <Block marginTop="12px">
-            <Button overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/s">Search venue in San Francisco</Button>
+          <Block display="flex">
+            <Block margin="12px">
+              <Button kind="secondary" $as="a" href="/v">
+                <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Search virtual events
+              </Button>
+            </Block>
+            <Block margin="12px">
+              <Button overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900', height: '34px'}}}} $as="a" href="/s">
+                Search venues in San Francisco
+              </Button>
+            </Block>
           </Block>
         </Block>
       </Block>

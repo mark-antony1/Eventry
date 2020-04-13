@@ -283,7 +283,7 @@ export default ({ leftButtons, children }) => {
     );
   };
   const renderLogo = () => {
-    const homePath = location.pathname === '/' ? '/' : '/s';
+    const homePath = location.pathname === '/s' ? '/s' : '/';
     if (windowSize.width < COLLAPSE_MODE_LIMIT) {
       return (
         <StyledNavigationItem>

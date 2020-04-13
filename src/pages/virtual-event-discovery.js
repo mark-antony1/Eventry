@@ -5,15 +5,16 @@ import { Button } from 'baseui/button';
 import { Input } from 'baseui/input';
 import {
   Display4,
+  Display2,
   Label2,
+  Label1,
 } from 'baseui/typography';
 import { useStyletron } from 'styletron-react';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
-import DiscoveryMap from '../components/map/discovery-map';
 import HeaderNavigation from '../components/header-navigation';
 import VenueCell from '../components/venue/venue-cell';
-import { venues as allVenues } from '../constants/locations';
+import { venues as allVenues } from '../constants/virtual-locations';
 import { useDebounce, useQueryUrl, useGA } from '../utils';
 
 // Filter
@@ -75,25 +76,6 @@ const typeOptions = [
   {
     id: 'food',
     label: 'Food'
-  }
-];
-
-const durationOptions = [
-  {
-    id: 'none',
-    label: 'Duration'
-  },
-  {
-    id: 1,
-    label: '1 hour or less'
-  },
-  {
-    id: 2,
-    label: '1 - 3 hours'
-  },
-  {
-    id: 3,
-    label: '3+ hours'
   }
 ];
 
@@ -186,33 +168,6 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
             onChange={params => updateFilterValue({ price: params.value[0].id })}
           />
         </Block>
-        <Block width="150px" padding="12px">
-          <Select
-            clearable={false}
-            searchable={false}
-            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
-            options={durationOptions}
-            value={filterValue.duration ? [{id: filterValue.duration}] : null}
-            placeholder="Duration"
-            onChange={params => updateFilterValue({ duration: params.value[0].id })}
-          />
-        </Block>
-        <Block padding="12px">
-          <Checkbox
-            checked={filterValue.indoor}
-            onChange={e => updateFilterValue({ indoor: e.target.checked })}
-          >
-            Indoor
-          </Checkbox>
-        </Block>
-        <Block padding="12px">
-          <Checkbox
-            checked={filterValue.outdoor}
-            onChange={e => updateFilterValue({ outdoor: e.target.checked })}
-          >
-            Outdoor
-          </Checkbox>
-        </Block>
         <Block padding="12px">
           <Label2 color="#484848"><b>{venueCount} results</b></Label2>
         </Block>
@@ -254,31 +209,10 @@ function filterVenues(venues, filterValue) {
       }
     }
 
-    if (filterValue.duration && filterValue.duration !== 'none') {
-      // 1 hour or less
-      if (filterValue.duration === 1 && venue.averageTimeSpent > 60) {
-        return false;
-      }
-      // 1 - 3
-      if (filterValue.duration === 2 && (venue.averageTimeSpent < 60 || venue.averageTimeSpent > 180)) {
-        return false;
-      }
-      // 3+
-      if (filterValue.duration === 3 && venue.averageTimeSpent < 180) {
-        return false;
-      }
-    }
     if (filterValue.type !== 'none' && filterValue.type && venue.activityType !== filterValue.type) {
       return false;
     }
-    if (!filterValue.indoor || !filterValue.outdoor) {
-      if (filterValue.indoor && venue.tags.indexOf('indoor') === -1) {
-        return false;
-      }
-      if (filterValue.outdoor && venue.tags.indexOf('outdoor') === -1) {
-        return false;
-      }
-    }
+
     if (filterValue.searchTerm) {
       if (
         !venue.description.toLowerCase().includes(filterValue.searchTerm.toLowerCase()) &&
@@ -299,14 +233,8 @@ const generateGALabel = (action, value) => {
   if (action === 'type') {
     return value;
   }
-  if ((action === 'indoor' || action === 'outdoor') && !value) {
-    return `${action} off`
-  }
   if (action === 'recommendedGroupsize') {
     return groupSizeOptions.find(d => d.id === value).label;
-  }
-  if (action === 'duration') {
-    return durationOptions.find(d => d.id === value).label;
   }
   if (action === 'price') {
     return budgetOptions.find(d => d.id === value).label;
@@ -325,20 +253,14 @@ const emitFilterEvent = (payload, ga) => {
 };
 
 function initializeFilter(queryUrl) {
-  const indoor = queryUrl.get('indoor');
-  const outdoor = queryUrl.get('outdoor');
   const price = queryUrl.get('price');
-  const duration = queryUrl.get('duration');
   const type = queryUrl.get('type');
   const groupSize = queryUrl.get('groupSize');
   const searchTerm = queryUrl.get('searchTerm');
   return {
     price: !isNaN(price) ? Number(price) : null,
     recommendedGroupsize: !isNaN(groupSize) ? Number(groupSize) : null,
-    duration: !isNaN(duration) ? Number(duration) : null,
     type: type ? type : null,
-    indoor: indoor === 'false' ? false : true,
-    outdoor: outdoor === 'false' ? false : true,
     searchTerm: searchTerm ? searchTerm : ''
   };
 }
@@ -349,20 +271,6 @@ function setFilterQueryUrl(history, queryUrl, payload) {
     queryUrl.delete(action);
     if (action === 'recommendedGroupsize') {
       queryUrl.delete('groupSize');
-    }
-  } else if (action === 'indoor') {
-    if (action === 'indoor' && !payload[action]) {
-      queryUrl.set('indoor', 'false');
-    }
-    if (action === 'indoor' && payload[action]) {
-      queryUrl.delete('indoor');
-    }
-  } else if (action === 'outdoor') {
-    if (action === 'outdoor' && !payload[action]) {
-      queryUrl.set('outdoor', 'false');
-    }
-    if (action === 'outdoor' && payload[action]) {
-      queryUrl.delete('outdoor');
     }
   } else if (action === 'recommendedGroupsize') {
     queryUrl.set('groupSize', payload[action]);
@@ -387,7 +295,6 @@ export default function Discovery() {
   const history = useHistory();
   const queryUrl = useQueryUrl();
   const [ venueRefs, setVenueRefs ] = useState({});
-  const [ largeMap, setLargeMap ] = useState(true);
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);
   const [ venues, setVenues ] = useState(allVenues);
@@ -479,30 +386,16 @@ export default function Discovery() {
           venueCount={venues.length}
         />
       </Block>
-      <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
-        <Block position="relative" flex={largeMap ? "2" : "1"} display={["none", "none", "initial", "initial"]}>
-          <Block
-            className={css({
-              position: 'absolute',
-              right: '12px',
-              top: '12px',
-              zIndex: 1
-            })}
-          >
-            {largeMap && <Button size="compact" kind="secondary" onClick={() => setLargeMap(false)}><ChevronLeft /> Reduce Map</Button>}
-            {!largeMap && <Button size="compact" kind="secondary" onClick={() => setLargeMap(true)}>Large Map <ChevronRight /></Button>}
-          </Block>
-          <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
-        </Block>
+      <Block display="flex" flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         {
           venues.length ?
-          <Block flex={!largeMap ? "2" : "1"} display="flex" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
-            <Block display="flex" flexWrap="wrap">
+          <Block display="flex" flex="2" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
+            <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} flexWrap="wrap">
             {
               slicedVenues.map((venue, index) => {
                 return (
                   <Block
-                    flex={largeMap ? "0 1 100%" : "0 1 calc(50% - 24px)"}
+                    flex={"0 1 calc(50% - 24px)"}
                     margin="12px"
                     ref={venueRefs[venue.id]}
                     key={venue.id}
@@ -537,10 +430,18 @@ export default function Discovery() {
               </Block>
             </Block>
           </Block> :
-          <Block flex={!largeMap ? "2" : "1"} display="flex" backgroundColor="#F4F4F4" alignItems="center" justifyContent="center">
+          <Block flex="2" display="flex" backgroundColor="#F4F4F4" alignItems="center" justifyContent="center">
             <Display4><b>No Result</b></Display4>
           </Block>
         }
+        <Block flex="1" flexDirection="column" display={['none', 'none', 'flex', 'flex']} justifyContent="center" padding="24px">
+          <img src="./logo.png" width="100px" />
+          <Display2 color="#02A84E"><b>Share virtual events you like</b></Display2>
+          <Label1 color="#777"><b>Is it not listed here? Send us a message!</b></Label1>
+          <Block display="flex" justifyContent="flex-end" paddingRight="100px">
+            <img src="./arrow.png" width="100px" />
+          </Block>
+        </Block>
       </Block>
     </Block>
   );

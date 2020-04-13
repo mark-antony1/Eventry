@@ -387,7 +387,7 @@ export default function Discovery() {
   const history = useHistory();
   const queryUrl = useQueryUrl();
   const [ venueRefs, setVenueRefs ] = useState({});
-  const [ largeMap, setLargeMap ] = useState(true);
+  const [ largeMap, setLargeMap ] = useState(false);
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);
   const [ venues, setVenues ] = useState(allVenues);

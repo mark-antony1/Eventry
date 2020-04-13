@@ -245,9 +245,9 @@ function filterVenues(venues, filterValue) {
     if (filterValue.recommendedGroupsize && filterValue.recommendedGroupsize !== 'none') {
       if (filterValue.recommendedGroupsize === 1 && venue.recommendedGroupsize[0] > 10) {
         return false;
-      } else if (filterValue.recommendedGroupsize === 2 && (venue.recommendedGroupsize[1] < 10 && venue.recommendedGroupsize[0] > 20)) {
+      } else if (filterValue.recommendedGroupsize === 2 && (venue.recommendedGroupsize[1] < 10 || venue.recommendedGroupsize[0] > 20)) {
         return false;
-      } else if (filterValue.recommendedGroupsize === 3 && (venue.recommendedGroupsize[1] < 20 && venue.recommendedGroupsize[0] > 50)) {
+      } else if (filterValue.recommendedGroupsize === 3 && (venue.recommendedGroupsize[1] < 20 || venue.recommendedGroupsize[0] > 50)) {
         return false;
       } else if (filterValue.recommendedGroupsize === 4 && venue.recommendedGroupsize[1] < 50) {
         return false;
@@ -387,6 +387,7 @@ export default function Discovery() {
   const history = useHistory();
   const queryUrl = useQueryUrl();
   const [ venueRefs, setVenueRefs ] = useState({});
+  const [ largeMap, setLargeMap ] = useState(true);
   const [ venueIndex, setVenueIndex ] = useState(0);
   const [ scrollToId, setScrollToId ] = useState(null);
   const [ venues, setVenues ] = useState(allVenues);
@@ -479,18 +480,29 @@ export default function Discovery() {
         />
       </Block>
       <Block display="flex" flexDirection={["column", "column", "row", "row"]} flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
-        <Block flex="4" display={["none", "none", "initial", "initial"]}>
+        <Block position="relative" flex={largeMap ? "2" : "1"} display={["none", "none", "initial", "initial"]}>
+          <Block
+            className={css({
+              position: 'absolute',
+              right: '12px',
+              top: '12px',
+              zIndex: 1
+            })}
+          >
+            {largeMap && <Button size="compact" kind="secondary" onClick={() => setLargeMap(false)}><ChevronLeft /> Reduce Map</Button>}
+            {!largeMap && <Button size="compact" kind="secondary" onClick={() => setLargeMap(true)}>Large Map <ChevronRight /></Button>}
+          </Block>
           <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>
         {
           venues.length ?
-          <Block flex="5" display="flex" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
+          <Block flex={!largeMap ? "2" : "1"} display="flex" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
             <Block display="flex" flexWrap="wrap">
             {
               slicedVenues.map((venue, index) => {
                 return (
                   <Block
-                    flex="0 1 calc(50% - 24px)"
+                    flex={largeMap ? "0 1 100%" : "0 1 calc(50% - 24px)"}
                     margin="12px"
                     ref={venueRefs[venue.id]}
                     key={venue.id}
@@ -509,15 +521,18 @@ export default function Discovery() {
               })
             }
             </Block>
-            <Block display="flex" width="100%">
+            <Block display="flex" width="100%" alignItems="center">
               <Block flex="1" display="flex" flexDirection="column">
                 <Button kind="minimal" onClick={handlePrevPage}>
-                  <ChevronLeft size={36} />
+                  <ChevronLeft size={36} /> <b>{Math.floor(venueIndex / 10) ? Math.floor(venueIndex / 10) : null}</b>
                 </Button>
+              </Block>
+              <Block>
+                <b>{Math.floor(venueIndex / 10) + 1}</b>
               </Block>
               <Block flex="1" display="flex" flexDirection="column">
                 <Button kind="minimal" onClick={handleNextPage}>
-                  <ChevronRight size={36} />
+                  <b>{Math.floor(venueIndex / 10) + 2}</b> <ChevronRight size={36} />
                 </Button>
               </Block>
             </Block>

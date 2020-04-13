@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useApolloClient } from '@apollo/react-hooks';
-import { FaTrashAlt } from 'react-icons/fa';
+import {
+  FaTrashAlt,
+  FaHome,
+  FaUserFriends
+} from 'react-icons/fa';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
 import { Button } from 'baseui/button';
@@ -364,7 +368,7 @@ function SignUpForm({ handleSigninMode }) {
       flexDirection="column"
       position="relative"
     >
-      {submittingForm && <Loading compact={true} />}
+      {submittingForm && <Loading compact={true} message="Signing You Up" />}
       <Block display="flex" paddingBottom="24px" alignItems="flex-end">
         <Display4>Sign up</Display4>
         <Block
@@ -497,7 +501,7 @@ function SignInForm({ handleSignupMode }) {
       flexDirection="column"
       position="relative"
     >
-      {submittingForm && <Loading compact={true} />}
+      {submittingForm && <Loading compact={true} message="Logging You In" />}
       <Block display="flex" paddingBottom="24px" alignItems="flex-end">
         <Display4>Sign in</Display4>
         <Block
@@ -554,8 +558,9 @@ function SignInForm({ handleSignupMode }) {
 
 
 function Sign() {
-  const [ showSignin, setShowSignin ] = useState(false);
-  const [ showSignUp, setShowSignUp ] = useState(true);
+  const queryUrl = useQueryUrl();
+  const [ showSignin, setShowSignin ] = useState(queryUrl.get('p') !== 'signup');
+  const [ showSignUp, setShowSignUp ] = useState(queryUrl.get('p') === 'signup');
 
   const handleSigninMode = () => {
     setShowSignin(true);
@@ -666,7 +671,8 @@ function User() {
     },
     getUserProfileByAuth: {
       company: {
-        name: companyName
+        name: companyName,
+        logo: companyLogo
       },
       teams
     }
@@ -674,22 +680,37 @@ function User() {
   return (
     <Block
       display="flex"
-      flexDirection={["column", "column", "row", "row"]}
-      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
       padding="24px"
     >
-      <Block width={['95%', '95%', '300px', '400px']} padding="12px">
-        <Display4><b>Hello {firstName}!</b></Display4>
-        <Display4 marginTop="12px"><b>{companyName}</b></Display4>
-        {
-          teams.map((team) => {
-            return <Label1 key={team.id}><b>{team.name}</b></Label1>
-          })
-        }
-        <Label1><b>{email}</b></Label1>
+      <Block padding="12px">
+        <Block display="flex">
+          <Display4><b>Hello {firstName}!</b></Display4>
+          <Block flex="1" display="flex" alignItems="center" justifyContent="flex-end">
+            {companyLogo && <img alt="review-logo" height="50px" src={companyLogo} />}
+          </Block>
+        </Block>
+        <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center">
+          <Label1><b>{email}</b></Label1>
+          <Block marginLeft="12px">
+            <Button size="compact" kind="minimal" onClick={() => setChangingPassword(!changingPassword)}>
+              Change password
+            </Button>
+          </Block>
+          <Block marginLeft="12px">
+            <Button size="compact" kind="secondary" onClick={() => {
+              setCookie('userToken', '', 7);
+              refetch();
+              showAlert(client, 'See you next time!');
+            }}>
+              Sign out
+            </Button>
+          </Block>
+        </Block>
         {
           changingPassword &&
-          <Block display="flex" marginTop="12px">
+          <Block display="flex" flexDirection="column" marginTop="12px" marginBottom="12px" backgroundColor="#f7f7f7" padding="12px">
             <FormControl
               error={changePasswordError}
               positive=""
@@ -723,35 +744,29 @@ function User() {
                 </FormControl>
               </Block>
             </FormControl>
+            <Button onClick={handleChangePassword}>
+              Confirm
+            </Button>
           </Block>
-
         }
-        <Block marginTop="12px">
-          <Button onClick={() => {
-            if (!changingPassword) {
-              setChangingPassword(true);
-            } else {
-              handleChangePassword();
+        <Block display="flex">
+          <Block flex="1">
+            <FaHome />
+            <Label1><b>Company</b></Label1>
+            <Label1>{companyName}</Label1>
+          </Block>
+          <Block flex="1">
+            <FaUserFriends />
+            <Label1><b>Teams</b></Label1>
+            {
+              teams.map((team) => {
+                return <Label1 key={team.id}>{team.name}</Label1>
+              })
             }
-          }}>
-            Change password
-          </Button>
+          </Block>
         </Block>
-        <Block marginTop="12px">
-          <Button
-            onClick={() => {
-              setCookie('userToken', '', 7);
-              refetch();
-              showAlert(client, 'See you next time!');
-            }}
-            kind="minimal"
-          >
-            Sign out
-          </Button>
-        </Block>
-      </Block>
-      <Block width={['95%', '95%', '300px', '400px']} padding="12px">
-        <Block maxHeight="400px" overflow="auto">
+        <Block backgroundColor="#777" height="1px" width="100%" marginTop="24px" marginBottom="24px" />
+        <Block>
           <MyReviews />
         </Block>
       </Block>

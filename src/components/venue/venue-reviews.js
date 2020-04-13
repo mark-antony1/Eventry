@@ -21,17 +21,18 @@ import { CREATE_ENDORSEMENT } from '../../constants/mutation';
 
 const Review = ({ review }) => {
   return (
-    <Block display="flex" flexDirection="column" paddingBottom="24px">
-      <Block height="50px" display="flex" alignItems="flex-end">
-        {review.company.logo && <img alt="review-logo" height="100%" src={review.company.logo} />}
+    <Block display="flex" paddingBottom="24px" flexDirection={['column', 'column', 'row', 'row']}>
+      <Block display="flex" marginRight="24px" marginBottom="24px" alignItems="flex-start">
+        <Block width="80px" display="flex" marginRight="12px">
+          {review.company.logo && <img alt="review-logo" width="100%" style={{ objectFit: 'contain' }} src={review.company.logo} />}
+        </Block>
+        <Block width="200px">
+          <Label1><b>{`${review.user.firstName}`}</b></Label1>
+          {`${review.team.name} at ${review.company.name}`}
+        </Block>
       </Block>
-      <Block marginTop="12px">
-        <Paragraph1>
-          {review.content}
-        </Paragraph1>
-      </Block>
-      <Block marginTop="12px">
-        <Label1><b>{`${review.user.firstName}, ${review.team.name} at ${review.company.name}`}</b></Label1>
+      <Block flex="1">
+        {review.content}
       </Block>
     </Block>
   );
@@ -119,42 +120,35 @@ export default function VenueReviews({ symbol }) {
   } = data;
 
   return (
-    <Block display="flex" marginTop="68px" width="100%" flexDirection={['column', 'column', 'row', 'row']}>
-      <Block flex="1">
-        <Display3><b>Endorsements</b></Display3>
-      </Block>
-      <Block flex="2" display="flex" flexDirection="column">
-        <Block display="flex" flexWrap="wrap">
-          {reviews.map((review, index) => {
-            return (
-              <Block key={index} flex="0 1 calc(50% - 24px)" marginRight="24px" marginBottom="24px" overrides={{ Block: { style: {borderBottom: "1px solid #777"}}}}>
-                <Review review={review} />
-              </Block>
-            );
-          })}
-        </Block>
-        <Block display="flex">
-          {
-            writingEndorsement &&
-            <WriteEndorsement symbol={symbol} setWritingEndorsement={setWritingEndorsement} />
-          }
-          {
-            (!checkUserHasWrittenReview && !writingEndorsement) &&
-            <Button
-              onClick={() => {
-                if (authData) {
-                  setWritingEndorsement(true);
-                } else {
-                  history.push(`/user/?from=${symbol}`);
-                }
-              }}
-            >
-              Write an endorsement!
-            </Button>
-          }
-        </Block>
+    <Block display="flex" width="100%" flexDirection="column">
+      <Label1 marginBottom="24px"><b>Endorsements</b></Label1>
+      {reviews.map((review, index) => {
+        return (
+          <Block key={index} marginRight="24px" marginBottom="24px" overrides={{ Block: { style: {borderBottom: "1px solid #777"}}}}>
+            <Review review={review} />
+          </Block>
+        );
+      })}
+      <Block display="flex">
+        {
+          writingEndorsement &&
+          <WriteEndorsement symbol={symbol} setWritingEndorsement={setWritingEndorsement} />
+        }
+        {
+          (!checkUserHasWrittenReview && !writingEndorsement) &&
+          <Button
+            onClick={() => {
+              if (authData) {
+                setWritingEndorsement(true);
+              } else {
+                history.push(`/user/?from=${symbol}`);
+              }
+            }}
+          >
+            Write an endorsement!
+          </Button>
+        }
       </Block>
     </Block>
-
   );
 }

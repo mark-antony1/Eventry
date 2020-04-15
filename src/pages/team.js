@@ -135,7 +135,14 @@ function NewEvents() {
 
   return (
     <Block>
-      <Display4><b>New</b></Display4>
+      <Block display="flex" alignItems="center">
+        <Display4><b>New</b></Display4>
+        <Block marginLeft="12px">
+          <Button size="compact" $as="a" href={`/team/${teamId}/create-poll`}>
+            Create new poll
+          </Button>
+        </Block>
+      </Block>
       {!events.length && <Label1><b>No new events</b></Label1>}
       {events.map((event, index) => <EventCell event={event} key={index} />)}
     </Block>
@@ -219,9 +226,6 @@ function Home() {
   return (
     <Block display="flex" flexDirection="column">
       <Block marginBottom="24px">
-        <Polls />
-      </Block>
-      <Block marginBottom="24px">
         <NewEvents />
       </Block>
       <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
@@ -274,46 +278,6 @@ function TeamDashboardRouter() {
           tab === 'members' && <Members />
         }
       </Block>
-    </Block>
-  );
-}
-
-function Polls() {
-  const { teamId } = useParams();
-  const { data, loading, error } = useQuery(GET_TEAM_POLLS, {
-    variables:{
-      teamId
-    }
-  });
-
-  if (loading || error) {
-    return null;
-  }
-
-  const {
-    getTeamPolls: polls
-  } = data;
-  return (
-    <Block display="flex" flexDirection="column">
-      <Block display="flex" alignItems="center">
-        <Display4 marginRight="24px"><b>Polls</b></Display4>
-        <Button size="compact" $as="a" href={`/team/${teamId}/create-poll`}>
-          Create new poll
-        </Button>
-      </Block>
-      {
-        polls.map((poll) => {
-          return (
-            <Block key={poll.id} marginBottom="12px" marginTop="24px">
-              <Poll poll={poll} />
-            </Block>
-          );
-        })
-      }
-      {
-        !polls.length ?
-        <Label1><b>No polls at the moment</b></Label1> : null
-      }
     </Block>
   );
 }

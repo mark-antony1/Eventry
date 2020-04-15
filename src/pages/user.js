@@ -559,6 +559,7 @@ function SignInForm({ handleSignupMode }) {
       handleSignin();
     }
   }, [googleTokenId]);
+
   const validateForm = () => {
     if (!email) {
       setSigninError('Please enter company email');
@@ -700,19 +701,23 @@ function SignInForm({ handleSignupMode }) {
           <Label1 color="#777">I want to sign up <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
         </Block>
       </Block>
-      <GoogleLogin
-        clientId={process.env.REACT_APP_G_AUTH_ID}
-        onSuccess={successGoogle}
-        onFailure={() => {}}
-        render={({ onClick }) => {
-          return (
-            <Button onClick={onClick} kind="minimal"><FaGoogle /><span style={{marginLeft: '8px'}} /> Sign in with Google</Button>
-          );
-        }}
-        cookiePolicy={'single_host_origin'}
-      />
-      <Block margin="8px" />
-      <Button onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
+      <FormControl label="" error={signinError} positive="">
+        <Block display="flex" flexDirection="column">
+          <GoogleLogin
+            clientId={process.env.REACT_APP_G_AUTH_ID}
+            onSuccess={successGoogle}
+            onFailure={() => {}}
+            render={({ onClick }) => {
+              return (
+                <Button onClick={onClick} kind="minimal"><FaGoogle /><span style={{marginLeft: '8px'}} /> Sign in with Google</Button>
+              );
+            }}
+            cookiePolicy={'single_host_origin'}
+          />
+          <Block margin="8px" />
+          <Button onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
+        </Block>
+      </FormControl>
     </Block>
   );
 }

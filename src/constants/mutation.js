@@ -98,3 +98,8 @@ export const UPDATE_EVENT_TIME = gql`
 mutation UpdateEventTime($eventId: String!, $time: DateTime!){
   updateEventTime(eventId: $eventId, time: $time)
 }`;
+
+export const REMOVE_POLL_LINEITEM = gql`
+mutation RemovePollLineItem($pollLineItemId: String!){
+  removePollLineItem(pollLineItemId: $pollLineItemId)
+}`;

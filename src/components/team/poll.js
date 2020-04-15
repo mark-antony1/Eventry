@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   FaUser,
-  FaPen
+  FaPen,
+  FaTrashAlt
 } from 'react-icons/fa';
 import moment from 'moment-timezone';
 import Plus from 'baseui/icon/plus';
@@ -39,6 +40,7 @@ import {
 } from '../../constants/query';
 import {
   VOTE_POLL_LINEITEM,
+  REMOVE_POLL_LINEITEM,
   UNDO_VOTE_POLL_LINEITEM,
   ADD_POLL_LINEITEM,
   UPDATE_POLL
@@ -91,6 +93,40 @@ function VenueNameSearchBar({ updateForm, form }) {
   );
 }
 
+function RemovePollLineItemForm({ name, pollLineItemId, showForm, close }) {
+  const client = useApolloClient();
+  const [ formError, setFormError ] = useState(null);
+  const [ removePollLineItem, { loading: removingPollLineItem } ] = useMutation(REMOVE_POLL_LINEITEM);
+
+  const handleRemovePollLineItem = async () => {
+    const res = await removePollLineItem({
+      variables: {
+        pollLineItemId
+      },
+      refetchQueries: ['GetEvent']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+
+    if (res) {
+      showAlert(client, 'Successfully removed item!');
+      close();
+    }
+  };
+  return (
+    <Modal onClose={close} isOpen={showForm}>
+      {removingPollLineItem && <Loading compact={true} message="Removing item..." />}
+      <ModalHeader>Remove Poll Item</ModalHeader>
+      <ModalBody>
+        <Label1>Remove {name}?</Label1>
+      </ModalBody>
+      <ModalFooter>
+        <ModalButton onClick={handleRemovePollLineItem}>Remove</ModalButton>
+      </ModalFooter>
+    </Modal>
+  );
+}
+
 function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
   const { data: {
     getUserByAuth: {
@@ -100,51 +136,59 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
     }
   } } = useQuery(GET_USER_BY_AUTH);
   const [ css ] = useStyletron();
+  const [ removingPollLineItem, setRemovingPollLineItem ] = useState(false);
   const [ showVoters, setShowVoters ] = useState(false);
 
   const userVoted = item.voters.find(v => v.id === userId);
   return (
-    <Block
-      backgroundColor={(userVoted || selectedPollLineItemId === item.id) ? "#77BA01" : "#ddd"}
-      padding="12px"
-      marginTop="4px"
-      display="flex"
-      alignItems="center"
-      className={css({
-        cursor: 'pointer',
-        ':hover': {
-          backgroundColor: "#77BA01"
-        }
-      })}
-      onClick={() => handleSelectLineItem(item.id)}
-    >
-      <Label1><b>{item.name}</b> {item.symbol && <Label3 $as="a" href={`/${item.symbol}`} target="_blank">Details</Label3>}</Label1>
-      <Block display="flex" flex="1" justifyContent="flex-end" alignItems="center">
-        <StatefulTooltip
-          content={() => {
-            if (!item.voters.length) {
-              return null;
-            }
-            return (
-              <Block padding={"20px"}>
-                {
-                  item.voters.map((v) => {
-                    return (
-                      <Block key={v.id}>
-                        <Label1 color="#fff">{v.firstName}</Label1>
-                      </Block>
-                    );
-                  })
-                }
-              </Block>
-            );
-          }}
-        >
-          <Block display="flex" alignItems="center">
-            <FaUser size={12} /> <Label1 marginLeft="12px"><b>{item.voters.length}</b></Label1>
-          </Block>
-        </StatefulTooltip>
+    <Block display="flex" alignItems="center">
+      <Block
+        flex="1"
+        backgroundColor={(userVoted || selectedPollLineItemId === item.id) ? "#77BA01" : "#ddd"}
+        padding="12px"
+        marginTop="4px"
+        display="flex"
+        alignItems="center"
+        className={css({
+          cursor: 'pointer',
+          ':hover': {
+            backgroundColor: "#77BA01"
+          }
+        })}
+        onClick={() => handleSelectLineItem(item.id)}
+      >
+        <Label1><b>{item.name}</b> {item.symbol && <Label3 $as="a" href={`/${item.symbol}`} target="_blank">Details</Label3>}</Label1>
+        <Block display="flex" flex="1" justifyContent="flex-end" alignItems="center">
+          <StatefulTooltip
+            content={() => {
+              if (!item.voters.length) {
+                return null;
+              }
+              return (
+                <Block padding={"20px"}>
+                  {
+                    item.voters.map((v) => {
+                      return (
+                        <Block key={v.id}>
+                          <Label1 color="#fff">{v.firstName}</Label1>
+                        </Block>
+                      );
+                    })
+                  }
+                </Block>
+              );
+            }}
+          >
+            <Block display="flex" alignItems="center">
+              <FaUser size={12} /> <Label1 marginLeft="12px"><b>{item.voters.length}</b></Label1>
+            </Block>
+          </StatefulTooltip>
+        </Block>
       </Block>
+      <Block marginLeft="8px">
+        <Button onClick={() => setRemovingPollLineItem(true)} size="compact" kind="minimal"><FaTrashAlt /></Button>
+      </Block>
+      <RemovePollLineItemForm name={item.name} pollLineItemId={item.id} close={() => setRemovingPollLineItem(false)} showForm={removingPollLineItem} />
     </Block>
   );
 }
@@ -278,6 +322,10 @@ function PollLineItemForm({ pollId, showForm, close }) {
     });
     if (res) {
       showAlert(client, `Successfully added ${form.name}`);
+      setForm({
+        name: '',
+        venue: null
+      });
       close();
     }
   };

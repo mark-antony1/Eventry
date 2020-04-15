@@ -3,6 +3,22 @@ export const Company = `{
   logo
 }`;
 
+export const Poll = `{
+  id
+  name
+  expiration
+  pollLineItems{
+    id
+    name
+    symbol
+    voters {
+      id
+      firstName
+    }
+  }
+  createdAt
+}`;
+
 export const Team = `{
   id
   name
@@ -55,4 +71,5 @@ export const EventDetails= `{
   teams${Team}
   individuals${User}
   master${User}
+  polls${Poll}
 }`;

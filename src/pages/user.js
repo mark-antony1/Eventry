@@ -4,7 +4,8 @@ import { useApolloClient } from '@apollo/react-hooks';
 import {
   FaTrashAlt,
   FaHome,
-  FaUserFriends
+  FaUserFriends,
+  FaGoogle
 } from 'react-icons/fa';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
@@ -14,6 +15,7 @@ import { Input } from 'baseui/input';
 import { Tag } from 'baseui/tag';
 import { Select } from 'baseui/select';
 import { FaAngleRight } from 'react-icons/fa';
+import { GoogleLogin } from 'react-google-login';
 import {
   useDebounce,
   setCookie,
@@ -26,7 +28,8 @@ import HeaderNavigation from '../components/header-navigation';
 import {
   Display4,
   Paragraph1,
-  Label1
+  Label1,
+  Label3
 } from 'baseui/typography';
 import {
   useQuery,
@@ -117,7 +120,7 @@ function MyReviews() {
   );
 }
 
-function SignUpForm({ handleSigninMode }) {
+function SignUpForm({ handleSigninMode, googleEmailInfo }) {
   const client = useApolloClient();
   const queryUrl = useQueryUrl();
   const history = useHistory();
@@ -126,10 +129,10 @@ function SignUpForm({ handleSigninMode }) {
   const [ getTeamsByEmail, { data: teamData } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
   const [ submittingForm, setSubmittingForm ] = useState(false);
   const [ emailVerified, setEmailVerified ] = useState(false);
-  const [ email, setEmail ] = useState('');
+  const [ email, setEmail ] = useState((googleEmailInfo && googleEmailInfo.email) ? googleEmailInfo.email : '');
   const [ password, setPassword ] = useState('');
-  const [ firstName, setFirstName ] = useState('');
-  const [ lastName, setLastName ] = useState('');
+  const [ firstName, setFirstName ] = useState((googleEmailInfo && googleEmailInfo.firstName) ? googleEmailInfo.firstName : '');
+  const [ lastName, setLastName ] = useState((googleEmailInfo && googleEmailInfo.lastName) ? googleEmailInfo.lastName : '');
   const [ team, setTeam ] = useState(null);
   const [ signupError, setSignupError ] = useState(null);
   const debouncedEmail = useDebounce(email, 1500);
@@ -211,7 +214,7 @@ function SignUpForm({ handleSigninMode }) {
       setSignupError('Team is required');
       return false;
     }
-    if (!password) {
+    if (!password && (!googleEmailInfo || !googleEmailInfo.googleTokenId)) {
       setSignupError('Password is required');
       return false;
     }
@@ -238,7 +241,8 @@ function SignUpForm({ handleSigninMode }) {
         firstName,
         lastName,
         password,
-        team
+        team,
+        googleTokenId: googleEmailInfo ? googleEmailInfo.googleTokenId : null
       },
       refetchQueries: ({ data: { createUser: {token} } }) => {
         setCookie('userToken', token, 7);
@@ -262,6 +266,15 @@ function SignUpForm({ handleSigninMode }) {
       return <Loading compact={true} />;
     }
 
+    // signup via google
+    if (googleEmailInfo && googleEmailInfo.email) {
+      return (
+        <Block>
+          <Label1><b>{email}</b> <Tag closeable={false} variant="outlined" kind="positive">Email verified</Tag></Label1>
+        </Block>
+      );
+    }
+
     if (teamInviteValidationData) {
       const {
         getCompanyEmailsAndValidateTeam: {
@@ -276,6 +289,7 @@ function SignUpForm({ handleSigninMode }) {
         );
       }
     }
+
     return (
       <Block>
         <Input
@@ -287,6 +301,35 @@ function SignUpForm({ handleSigninMode }) {
             setEmail(e.currentTarget.value);
           }}
         />
+      </Block>
+    );
+  };
+
+  const renderNameInput = () => {
+    return (
+      <Block display="flex">
+        <Block flex="1">
+          <Input
+            value={firstName}
+            type="text"
+            placeholder="first name"
+            onChange={e => {
+              setSignupError(null);
+              setFirstName(e.currentTarget.value);
+            }}
+          />
+        </Block>
+        <Block flex="1">
+          <Input
+            value={lastName}
+            type="text"
+            placeholder="last name"
+            onChange={e => {
+              setSignupError(null);
+              setLastName(e.currentTarget.value);
+            }}
+          />
+        </Block>
       </Block>
     );
   };
@@ -361,6 +404,27 @@ function SignUpForm({ handleSigninMode }) {
     );
   };
 
+  const renderPasswordInput = () => {
+    if (googleEmailInfo) {
+      return null;
+    }
+    return (
+      <FormControl label="Password" error={null} positive="">
+        <Block>
+          <Input
+            value={password}
+            type="password"
+            placeholder="password"
+            onChange={e => {
+              setSignupError(null);
+              setPassword(e.currentTarget.value);
+            }}
+          />
+        </Block>
+      </FormControl>
+    );
+  };
+
   return (
     <Block
       display="flex"
@@ -394,52 +458,86 @@ function SignUpForm({ handleSigninMode }) {
             {renderEmailInput()}
           </FormControl>
           <FormControl label="Name" error={null} positive="">
-            <Block display="flex">
-              <Block flex="1">
-                <Input
-                  value={firstName}
-                  type="text"
-                  placeholder="first name"
-                  onChange={e => {
-                    setSignupError(null);
-                    setFirstName(e.currentTarget.value);
-                  }}
-                />
-              </Block>
-              <Block flex="1">
-                <Input
-                  value={lastName}
-                  type="text"
-                  placeholder="last name"
-                  onChange={e => {
-                    setSignupError(null);
-                    setLastName(e.currentTarget.value);
-                  }}
-                />
-              </Block>
-            </Block>
+            {renderNameInput()}
           </FormControl>
           <FormControl label="Team" error={null} positive="">
             <Block>
               {renderTeamInput()}
             </Block>
           </FormControl>
-          <FormControl label="Password" error={null} positive="">
-            <Block>
-              <Input
-                value={password}
-                type="password"
-                placeholder="password"
-                onChange={e => {
-                  setSignupError(null);
-                  setPassword(e.currentTarget.value);
-                }}
-              />
-            </Block>
-          </FormControl>
+          {renderPasswordInput()}
         </Block>
       </FormControl>
       <Button onClick={handleSignup}>Sign up</Button>
+    </Block>
+  );
+}
+
+function SignUpMethod({ handleSigninMode }) {
+  const [ showSignUpForm, setShowSignUpForm ] = useState(false);
+  const [ googleEmailInfo, setGoogleEmailInfo ] = useState(null);
+
+  const successGoogle = (response) => {
+    if (response && response.profileObj) {
+      const {
+        email,
+        givenName,
+        familyName
+      } = response.profileObj;
+      const {
+        tokenId
+      } = response;
+      setGoogleEmailInfo({
+        email,
+        firstName: givenName,
+        lastName: familyName,
+        googleTokenId: tokenId
+      });
+      setShowSignUpForm(true);
+    }
+  }
+
+  if (showSignUpForm) {
+    return (
+      <SignUpForm handleSigninMode={handleSigninMode} googleEmailInfo={googleEmailInfo} />
+    );
+  }
+
+  return (
+    <Block
+      display="flex"
+      flexDirection="column"
+      position="relative"
+    >
+      <Block display="flex" paddingBottom="24px" alignItems="flex-end">
+        <Display4>Sign up</Display4>
+        <Block
+          overrides={{
+            Block: {
+              style: {
+                cursor: 'pointer'
+              }
+            }
+          }}
+          marginLeft="12px"
+          onClick={handleSigninMode}
+        >
+          <Label1 color="#777">I have an account <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
+        </Block>
+      </Block>
+      <GoogleLogin
+        clientId={process.env.REACT_APP_G_AUTH_ID}
+        onSuccess={successGoogle}
+        render={({ onClick }) => {
+          return (
+            <Button onClick={onClick} kind="minimal"><FaGoogle /><span style={{marginLeft: '8px'}} /> Sign up with Google</Button>
+          );
+        }}
+        onFailure={() => {}}
+        cookiePolicy={'single_host_origin'}
+      />
+      <Block margin="8px" />
+      <Button onClick={() => setShowSignUpForm(true)}>Sign up with Company Email</Button>
     </Block>
   );
 }
@@ -449,17 +547,24 @@ function SignInForm({ handleSignupMode }) {
   const queryUrl = useQueryUrl();
   const history = useHistory();
   const [ signin ] = useMutation(SIGN_IN);
+  const [ showSigninWithCompanyEmail, setShowSigninWithCompanyEmail ] = useState(false);
   const [ submittingForm, setSubmittingForm ] = useState(false);
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ googleTokenId, setGoogleTokenId ] = useState(null);
   const [ signinError, setSigninError ] = useState(null);
 
+  useEffect(() => {
+    if (googleTokenId) {
+      handleSignin();
+    }
+  }, [googleTokenId]);
   const validateForm = () => {
     if (!email) {
       setSigninError('Please enter company email');
       return false;
     }
-    if (!password) {
+    if (!password && !googleTokenId) {
       setSigninError('Please enter password');
       return false;
     }
@@ -475,7 +580,8 @@ function SignInForm({ handleSignupMode }) {
     const signinSuccess = await signin({
       variables: {
         email,
-        password
+        password,
+        googleTokenId
       },
       refetchQueries: ({ data: { signin: {token} } }) => {
         setCookie('userToken', token, 7);
@@ -493,6 +599,82 @@ function SignInForm({ handleSignupMode }) {
       showAlert(client, 'Welcome to TeamBright!')
     }
   };
+
+  const successGoogle = (response) => {
+    if (response && response.profileObj) {
+      const {
+        email,
+      } = response.profileObj;
+      const {
+        tokenId
+      } = response;
+      setEmail(email);
+      setGoogleTokenId(tokenId);
+    }
+  }
+
+  if (showSigninWithCompanyEmail) {
+    return (
+      <Block
+        display="flex"
+        justifyContent="center"
+        flexDirection="column"
+        position="relative"
+      >
+        {submittingForm && <Loading compact={true} message="Logging You In" />}
+        <Block display="flex" paddingBottom="24px" alignItems="flex-end">
+          <Display4>Sign in</Display4>
+          <Block
+            overrides={{
+              Block: {
+                style: {
+                  cursor: 'pointer'
+                }
+              }
+            }}
+            marginLeft="12px"
+            onClick={handleSignupMode}
+          >
+            <Label1 color="#777">I want to sign up <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
+          </Block>
+        </Block>
+        <FormControl
+          error={signinError}
+          positive=""
+        >
+          <Block>
+            <FormControl label="Company Email" error={null} positive="">
+              <Block>
+                <Input
+                  value={email}
+                  placeholder="company email"
+                  type="text"
+                  onChange={e => {
+                    setSigninError(null);
+                    setEmail(e.currentTarget.value);
+                  }}
+                />
+              </Block>
+            </FormControl>
+            <FormControl label="Password" error={null} positive="">
+              <Block>
+                <Input
+                  value={password}
+                  type="password"
+                  placeholder="password"
+                  onChange={e => {
+                    setSigninError(null);
+                    setPassword(e.currentTarget.value);
+                  }}
+                />
+              </Block>
+            </FormControl>
+          </Block>
+        </FormControl>
+        <Button onClick={handleSignin}>Sign in</Button>
+      </Block>
+    );
+  }
 
   return (
     <Block
@@ -518,40 +700,19 @@ function SignInForm({ handleSignupMode }) {
           <Label1 color="#777">I want to sign up <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
         </Block>
       </Block>
-      <FormControl
-        error={signinError}
-        positive=""
-      >
-        <Block>
-          <FormControl label="Company Email" error={null} positive="">
-            <Block>
-              <Input
-                value={email}
-                placeholder="company email"
-                type="text"
-                onChange={e => {
-                  setSigninError(null);
-                  setEmail(e.currentTarget.value);
-                }}
-              />
-            </Block>
-          </FormControl>
-          <FormControl label="Password" error={null} positive="">
-            <Block>
-              <Input
-                value={password}
-                type="password"
-                placeholder="password"
-                onChange={e => {
-                  setSigninError(null);
-                  setPassword(e.currentTarget.value);
-                }}
-              />
-            </Block>
-          </FormControl>
-        </Block>
-      </FormControl>
-      <Button onClick={handleSignin}>Sign in</Button>
+      <GoogleLogin
+        clientId={process.env.REACT_APP_G_AUTH_ID}
+        onSuccess={successGoogle}
+        onFailure={() => {}}
+        render={({ onClick }) => {
+          return (
+            <Button onClick={onClick} kind="minimal"><FaGoogle /><span style={{marginLeft: '8px'}} /> Sign in with Google</Button>
+          );
+        }}
+        cookiePolicy={'single_host_origin'}
+      />
+      <Block margin="8px" />
+      <Button onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
     </Block>
   );
 }
@@ -561,7 +722,7 @@ function Sign() {
   const queryUrl = useQueryUrl();
   const [ showSignin, setShowSignin ] = useState(queryUrl.get('p') !== 'signup');
   const [ showSignUp, setShowSignUp ] = useState(queryUrl.get('p') === 'signup');
-
+  const hasRedirect = Boolean(queryUrl.get('from'));
   const handleSigninMode = () => {
     setShowSignin(true);
     setShowSignUp(false);
@@ -575,16 +736,25 @@ function Sign() {
   return (
     <Block
       display="flex"
-      justifyContent="center"
-      flexDirection={["column", "column", "row", "row"]}
+      alignItems="center"
+      flexDirection="column"
       paddingTop="24px"
       paddingBottom="24px"
     >
-      <Block width={['95%', '95%', '300px', '400px']} marginRight="24px">
+      {
+        hasRedirect &&
+        <Block width={['95%', '95%', '500px', '400px']} display="flex" flexDirection="column" alignItems="center" backgroundColor="#f7f7f7" padding="12px" marginBottom="24px">
+          <Tag closeable={false} variant="outlined" kind="positive">Sign In Required!</Tag>
+          <Label3>
+            Sign in to unlock full TeamBright experience
+          </Label3>
+        </Block>
+      }
+      <Block width={['95%', '95%', '500px', '400px']}>
         {
           showSignUp &&
           <Block display="flex" flexDirection="column">
-            <SignUpForm handleSigninMode={handleSigninMode} />
+            <SignUpMethod handleSigninMode={handleSigninMode} />
           </Block>
         }
         {

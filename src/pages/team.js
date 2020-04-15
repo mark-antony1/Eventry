@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory, Switch, Route } from 'react-router-dom';
 import { useStyletron } from 'styletron-react';
 import moment from 'moment-timezone';
@@ -19,9 +19,11 @@ import {
 } from '@apollo/react-hooks';
 
 import {
+  GET_CREATED_EVENTS_BY_TEAM,
   GET_UPCOMING_EVENTS_BY_TEAM,
   GET_PAST_EVENTS_BY_TEAM,
-  GET_USER_BY_AUTH
+  GET_USER_BY_AUTH,
+  GET_TEAM_POLLS
 } from '../constants/query';
 
 import { getErrorCode } from '../utils';
@@ -29,9 +31,15 @@ import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
 import Members from '../components/team/members';
+import Poll from '../components/team/poll';
 
 function EventCell({ event }) {
   const [ css ] = useStyletron();
+
+  const {
+    name
+  } = event;
+  const timeSet = Boolean(event.time);
   const time = moment(event.time);
   const createdAt = moment(event.createdAt);
   const now = moment();
@@ -41,6 +49,9 @@ function EventCell({ event }) {
   const isPast = time.isBefore(now);
 
   const renderStatus = () => {
+    if (status === 'CREATED') {
+      return <Tag closeable={false} variant="outlined" kind="accent"><b>New</b></Tag>;
+    }
     if (status === 'CANCELLED') {
       return <Tag closeable={false} variant="outlined" kind="negative"><b>Cancelled</b></Tag>;
     }
@@ -76,9 +87,24 @@ function EventCell({ event }) {
       })}
     >
       <a href={`/event/${event.id}`} rel="noopener noreferrer" target="_blank" className={css({ textDecoration: 'none' })}>
-        <Label1><b>{time.calendar()}</b></Label1>
-        <Label3><b>{time.format('h:mm A')} {time.fromNow()}</b></Label3>
-        <Label3><b>{event.groupSize} people</b></Label3>
+        {
+          name ?
+          <Label1><b>{name}</b></Label1> : null
+        }
+        {
+          (!timeSet && !name) ?
+          <Label1><b>Event!</b></Label1> : null
+        }
+        {
+          timeSet ?
+          <Block>
+            <Label1><b>{time.calendar()}</b></Label1>
+          </Block> : null
+        }
+        {
+          event.groupSize &&
+          <Label3><b>{event.groupSize} people</b></Label3>
+        }
         <Block marginLeft="-6px">
           {renderStatus()}
         </Block>
@@ -87,6 +113,31 @@ function EventCell({ event }) {
           <Label3><b>Created {createdAt.fromNow()}</b></Label3> : null
         }
       </a>
+    </Block>
+  );
+}
+
+function NewEvents() {
+  const { teamId } = useParams();
+  const { data, loading, error } = useQuery(GET_CREATED_EVENTS_BY_TEAM, {
+    variables: {
+      teamId
+    }
+  });
+
+  if (loading || error) {
+    return <Loading />
+  }
+
+  const {
+    getCreatedEventsByTeam: events
+  } = data;
+
+  return (
+    <Block>
+      <Display4><b>New</b></Display4>
+      {!events.length && <Label1><b>No new events</b></Label1>}
+      {events.map((event, index) => <EventCell event={event} key={index} />)}
     </Block>
   );
 }
@@ -108,7 +159,7 @@ function UpcomingEvents() {
   } = data;
 
   return (
-    <Block padding="8px">
+    <Block>
       <Display4><b>Upcoming</b></Display4>
       {!events.length && <Label1><b>No upcoming events</b></Label1>}
       {events.sort((a, b) => moment(a.time).isBefore(b.time) ? -1 : 1).map((event, index) => <EventCell event={event} key={index} />)}
@@ -144,7 +195,7 @@ function PastEvents() {
   };
 
   return (
-    <Block padding="8px">
+    <Block>
       <Display4><b>Past</b></Display4>
       {!events.length && <Label1><b>No past events</b></Label1>}
       {events.sort((a, b) => moment(a.time).isBefore(b.time) ? -1 : 1).map((event, index) => <EventCell event={event} key={index} />)}
@@ -166,12 +217,20 @@ function PastEvents() {
 
 function Home() {
   return (
-    <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
-      <Block flex="1">
-        <UpcomingEvents />
+    <Block display="flex" flexDirection="column">
+      <Block marginBottom="24px">
+        <Polls />
       </Block>
-      <Block flex="1">
-        <PastEvents />
+      <Block marginBottom="24px">
+        <NewEvents />
+      </Block>
+      <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
+        <Block flex="1" marginRight="12px">
+          <UpcomingEvents />
+        </Block>
+        <Block flex="1">
+          <PastEvents />
+        </Block>
       </Block>
     </Block>
   );
@@ -188,7 +247,7 @@ function TeamDashboardRouter() {
 
   return (
     <Block marginTop="12px" display="flex" flexDirection={['column', 'column', 'row', 'row']}>
-      <Block flex="1">
+      <Block flex="1" marginRight="24px">
         <Navigation
           items={[
             {
@@ -207,7 +266,7 @@ function TeamDashboardRouter() {
           }}
         />
       </Block>
-      <Block flex="4" paddingLeft="24px">
+      <Block flex="4">
         {
           (!tab || tab === 'home') && <Home />
         }
@@ -215,6 +274,46 @@ function TeamDashboardRouter() {
           tab === 'members' && <Members />
         }
       </Block>
+    </Block>
+  );
+}
+
+function Polls() {
+  const { teamId } = useParams();
+  const { data, loading, error } = useQuery(GET_TEAM_POLLS, {
+    variables:{
+      teamId
+    }
+  });
+
+  if (loading || error) {
+    return null;
+  }
+
+  const {
+    getTeamPolls: polls
+  } = data;
+  return (
+    <Block display="flex" flexDirection="column">
+      <Block display="flex" alignItems="center">
+        <Display4 marginRight="24px"><b>Polls</b></Display4>
+        <Button size="compact" $as="a" href={`/team/${teamId}/create-poll`}>
+          Create new poll
+        </Button>
+      </Block>
+      {
+        polls.map((poll) => {
+          return (
+            <Block key={poll.id} marginBottom="12px" marginTop="24px">
+              <Poll poll={poll} />
+            </Block>
+          );
+        })
+      }
+      {
+        !polls.length ?
+        <Label1><b>No polls at the moment</b></Label1> : null
+      }
     </Block>
   );
 }
@@ -255,12 +354,19 @@ function TeamInfo() {
 }
 
 function TeamDashboard() {
+  const history = useHistory();
   const { teamId } = useParams();
   const { loading, error } = useQuery(GET_UPCOMING_EVENTS_BY_TEAM, {
     variables: {
       teamId
     }
   });
+  useEffect(() => {
+    if (error && getErrorCode(error) === 'NOT_AUTHENTICATED') {
+      history.push(`/user?p=signup&from=team/${teamId}`);
+    }
+  }, [error]);
+
   if (loading) {
     return <Loading />;
   }

@@ -28,7 +28,8 @@ import {
 } from '../../constants/query';
 
 import {
-  showAlert
+  showAlert,
+  getErrorCode
 } from '../../utils';
 
 import Loading from '../loading';
@@ -72,8 +73,8 @@ function InviteNewMember() {
         email,
         teamId
       }
-    }).catch(() => {
-      setError('Failed to send the invitation');
+    }).catch((e) => {
+      setError(getErrorCode(e));
     });
 
     if (response) {

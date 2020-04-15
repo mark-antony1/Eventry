@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import ChevronLeft from 'baseui/icon/chevron-left';
@@ -27,6 +27,7 @@ function EventRouter() {
       eventId
     }
   });
+
   if (loading) {
     return <Loading />;
   }
@@ -56,6 +57,7 @@ function EventRouter() {
 
 const BackButton = () => {
   const { eventId } = useParams();
+  const history = useHistory();
   const { data, loading, error } = useQuery(AUTHORIZE_EVENT_PAGE, {
     variables: {
       eventId
@@ -68,6 +70,11 @@ const BackButton = () => {
   });
   const { data: userData, loading: userDataLoading } = useQuery(GET_USER_BY_AUTH);
 
+  useEffect(() => {
+    if (userData && !userData.getUserByAuth) {
+      history.push(`/user?p=signup&from=event/${eventId}`);
+    }
+  }, [userData]);
   if (loading || error || eventDataLoading || eventDataError || userDataLoading) {
     return null;
   }

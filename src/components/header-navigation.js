@@ -25,6 +25,7 @@ import { venues } from '../constants/locations';
 import { useWindowSize } from '../utils';
 
 const Alert = () => {
+  const [ css ] = useStyletron();
   const { data } = useQuery(GET_ALERT_MESSAGE);
   const [ showAlert, setShowAlert ] = useState(false);
 
@@ -39,7 +40,7 @@ const Alert = () => {
   }, [ data && data.successAlert ]);
 
   return (
-    <Block position="fixed" top="15px" left="15px">
+    <Block position="fixed" top="15px" left="15px" className={css({ zIndex: 5 })}>
       {
         showAlert ?
         <Block padding="12px" backgroundColor="rgb(119, 185, 0)">
@@ -368,7 +369,6 @@ export default ({ leftButtons, children }) => {
           );
         }) : null}
         {renderLogo()}
-
         <StyledNavigationItem>
           {children}
         </StyledNavigationItem>

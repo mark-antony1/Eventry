@@ -4,8 +4,8 @@ import {
 } from './fragment';
 
 export const CREATE_USER = gql`
-mutation CreateUser($email: String!, $password: String!, $firstName: String!, $lastName: String!, $team: String!){
-  createUser(email: $email, password: $password, firstName: $firstName, lastName: $lastName, team: $team){
+mutation CreateUser($email: String!, $password: String!, $firstName: String!, $lastName: String!, $team: String!, $googleTokenId: String){
+  createUser(email: $email, password: $password, firstName: $firstName, lastName: $lastName, team: $team, googleTokenId: $googleTokenId){
     token
     user${User}
   }
@@ -17,8 +17,8 @@ mutation ChangePassword($currentPassword: String!, $newPassword: String!){
 }`;
 
 export const SIGN_IN = gql`
-mutation Signin($email: String!, $password: String!){
-  signin(email: $email, password: $password){
+mutation Signin($email: String!, $password: String!, $googleTokenId: String){
+  signin(email: $email, password: $password, googleTokenId: $googleTokenId){
     token
     user${User}
   }
@@ -62,4 +62,39 @@ mutation CreateBusinessHour($symbol: String!, $day: Int!, $open: Int!, $close: I
 export const SEND_TEAM_INVITATION = gql`
 mutation SendTeamInvitation($email: String!, $teamId: String!){
   sendTeamInvitation(email: $email, teamId: $teamId)
+}`;
+
+export const UNDO_VOTE_POLL_LINEITEM = gql`
+mutation UnvotePollLineItem($pollId: String!){
+  unvotePollLineItem(pollId: $pollId)
+}`;
+
+export const VOTE_POLL_LINEITEM = gql`
+mutation VotePollLineItem($pollLineItemId: String!){
+  votePollLineItem(pollLineItemId: $pollLineItemId)
+}`;
+
+export const CREATE_POLL = gql`
+mutation CreatePoll($name: String, $expiration: DateTime!, $teamId: String!){
+  createPoll(name: $name, expiration: $expiration, teamId: $teamId)
+}`;
+
+export const ADD_POLL_LINEITEM = gql`
+mutation AddPollLineItem($pollId: String!, $symbol: String, $name: String!){
+  addPollLineItem(pollId: $pollId, symbol: $symbol, name: $name)
+}`;
+
+export const UPDATE_EVENT_NAME = gql`
+mutation UpdateEventName($eventId: String!, $name: String!){
+  updateEventName(eventId: $eventId, name: $name)
+}`;
+
+export const UPDATE_POLL = gql`
+mutation UpdatePoll($pollId: String!, $expiration: DateTime!, $name: String){
+  updatePoll(pollId: $pollId, expiration: $expiration, name: $name)
+}`;
+
+export const UPDATE_EVENT_TIME = gql`
+mutation UpdateEventTime($eventId: String!, $time: DateTime!){
+  updateEventTime(eventId: $eventId, time: $time)
 }`;

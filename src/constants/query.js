@@ -3,7 +3,8 @@ import {
   User,
   Review,
   EventListItem,
-  EventDetails
+  EventDetails,
+  Poll
 } from './fragment';
 
 export const LOAD_VENUE_REVIEWS = gql`
@@ -84,6 +85,11 @@ query GetUpcomingEventsByTeam($teamId: String!){
   getUpcomingEventsByTeam(teamId: $teamId)${EventListItem}
 }`;
 
+export const GET_CREATED_EVENTS_BY_TEAM = gql`
+query GetCreatedEventsByTeam($teamId: String!){
+  getCreatedEventsByTeam(teamId: $teamId)${EventListItem}
+}`;
+
 export const GET_PAST_EVENTS_BY_SYMBOL = gql`
 query GetPastEventsBySymbol($symbol: String!, $skip: Int!){
   getPastEventsBySymbol(symbol: $symbol, skip: $skip)${EventListItem}
@@ -120,4 +126,9 @@ query GetCompanyEmailsAndValidateTeam($teamName: String!, $companyId: String!){
 export const GET_COMPANY_EMAILS = gql`
 query GetCompanyEmails($teamId: String!){
   getCompanyEmails(teamId: $teamId)
+}`;
+
+export const GET_TEAM_POLLS = gql`
+query GetTeamPolls($teamId: String!){
+  getTeamPolls(teamId: $teamId)${Poll}
 }`;

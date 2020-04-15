@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment-timezone';
+import { Datepicker } from 'baseui/datepicker';
+import { TimePicker } from 'baseui/timepicker';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
+import { FormControl } from 'baseui/form-control';
+import { Input } from 'baseui/input';
 import { Tag } from 'baseui/tag';
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalButton,
+} from 'baseui/modal';
 import {
   FaUserFriends,
   FaStickyNote,
   FaUserAlt,
-  FaClock
+  FaClock,
+  FaPen
 } from 'react-icons/fa';
 import {
   Label1,
@@ -25,9 +37,12 @@ import {
 } from '../constants/query';
 import {
   CLOSE_EVENT,
-  CANCEL_EVENT
+  CANCEL_EVENT,
+  UPDATE_EVENT_NAME,
+  UPDATE_EVENT_TIME
 } from '../constants/mutation';
-import { showAlert } from '../utils';
+import { showAlert, getErrorCode } from '../utils';
+import Poll from '../components/team/poll';
 import Loading from '../components/loading';
 
 function SuggestClose() {
@@ -131,6 +146,117 @@ function CancelEvent() {
   );
 }
 
+function NameForm({ name, close }) {
+  const client = useApolloClient();
+  const { eventId } = useParams();
+  const [ nameValue, setNameValue ] = useState(name || '');
+  const [ updateEventName ] = useMutation(UPDATE_EVENT_NAME);
+
+  const handleUpdateEventName = async () => {
+    const res = await updateEventName({
+      variables: {
+        name: nameValue,
+        eventId
+      },
+      refetchQueries: ['GetEvent']
+    });
+    if (res) {
+      showAlert(client, "Successfully updated event name");
+      close();
+    }
+  };
+
+  return (
+    <Block display="flex">
+      <Input
+        value={nameValue}
+        onChange={(e) => setNameValue(e.target.value)}
+        placeholder="event name"
+      />
+      <Button onClick={handleUpdateEventName}>Save</Button>
+      <Button kind="minimal" onClick={close}>Cancel</Button>
+    </Block>
+  );
+}
+
+function TimeForm({ time, showForm, close }) {
+  const client = useApolloClient();
+  const [ form, setForm ] = useState({
+    time: time ? new Date(time) : null
+  });
+  const { eventId } = useParams();
+  const [ formError, setFormError ] = useState(null);
+  const [ updateEventTime, { loading: updating } ] = useMutation(UPDATE_EVENT_TIME);
+  const validateForm = () => {
+    if (!form.time) {
+      setFormError('Time is required');
+      return false;
+    }
+
+    return true;
+  };
+  const updateForm = (payload) => {
+    setForm({
+      ...form,
+      ...payload
+    });
+  };
+  const handleUpdateEventTime = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    const res = await updateEventTime({
+      variables: {
+        eventId,
+        time: form.time
+      },
+      refetchQueries: ['GetEvent']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+
+    if (res) {
+      showAlert(client, "Successfully updated event time");
+      close();
+    }
+  };
+  return (
+    <Modal onClose={close} isOpen={showForm}>
+      {updating && <Loading compact={true} message="Save time..." />}
+      <ModalHeader>Event Time</ModalHeader>
+      <ModalBody>
+        {
+          !updating &&
+          <FormControl label="Time" caption="YYYY/MM/DD HH:MM" positive="" error={formError}>
+            <Block display="flex">
+              <Datepicker
+                value={form.time ? [form.time] : null}
+                onChange={({date}) => updateForm({ time: date })}
+                filterDate={(date) => {
+                  if (moment(date).isAfter(moment())) {
+                    return true;
+                  }
+                  return false;
+                }}
+              />
+              {
+                form.time &&
+                <Block marginLeft="24px">
+                  <TimePicker value={form.time} onChange={(date) => updateForm({ time: date })} />
+                </Block>
+              }
+            </Block>
+          </FormControl>
+        }
+      </ModalBody>
+      <ModalFooter>
+        <ModalButton onClick={handleUpdateEventTime}>Save</ModalButton>
+      </ModalFooter>
+    </Modal>
+  );
+}
+
 export default () => {
   const { eventId } = useParams();
   const { data, loading, error } = useQuery(GET_EVENT, {
@@ -138,6 +264,8 @@ export default () => {
       eventId
     }
   });
+  const [ editingTime, setEditingTime ] = useState(false);
+  const [ editingName, setEditingName ] = useState(false);
 
   if (loading || error) {
     return <Loading />;
@@ -161,6 +289,7 @@ export default () => {
           logo: companyLogo
         }
       },
+      polls
     }
   } = data;
 
@@ -185,10 +314,42 @@ export default () => {
   return (
     <Block display="flex" flexDirection="column" paddingLeft={["24px", "24px", "60px", "60px"]} paddingRight={["24px", "24px", "60px", "60px"]} paddingTop="24px" paddingBottom="24px">
       <Block>
-        <Display4><b>{name ? name : `Event on ${moment(time).calendar()}`}</b></Display4>
+        {
+          !editingName &&
+          <Block display="flex">
+            <Display4>
+              <b>
+                {
+                  name ? name :
+                    (
+                      time ?
+                      `Event on ${moment(time).calendar()}` :
+                      'Upcoming event...'
+                    )
+                }
+              </b>
+            </Display4>
+            <Block marginLeft="8px">
+              <Button kind="minimal" onClick={() => setEditingName(true)}><FaPen /></Button>
+            </Block>
+          </Block>
+        }
+        {
+          editingName && <NameForm name={name} close={() => setEditingName(false)} />
+        }
         <Block marginLeft="-6px">
           {renderStatus()}
         </Block>
+        {
+          polls.length ?
+          <Block paddingTop="24px" paddingBottom="24px">
+            {
+              polls.map((poll) => {
+                return <Poll key={poll.id} poll={poll} />;
+              })
+            }
+          </Block> : null
+        }
         <Block>
           {isPast && status !== 'CLOSED' && <SuggestClose />}
         </Block>
@@ -196,14 +357,34 @@ export default () => {
       <Block marginTop="24px" display="flex">
         <Block flex="1">
           <FaClock color="#727272" />
-          <Label1 color="#727272"><b>When</b></Label1>
-          <Label1><b>{moment(time).calendar()}</b></Label1>
-          <Label1><b>{moment(time).format('h:mm A')} {moment(time).fromNow()}</b></Label1>
+          <Block display="flex" alignItems="center">
+            <Label1 color="#727272"><b>When</b></Label1>
+            {
+              status === 'CREATED' &&
+              <Block marginLeft="4px">
+                <Button size="compact" kind="minimal" onClick={() => setEditingTime(true)}><FaPen /></Button>
+              </Block>
+            }
+          </Block>
+          {
+            time ?
+              <Block>
+                <Label1><b>{moment(time).calendar()}</b></Label1>
+                <Label1><b>{moment(time).format('h:mm A')} {moment(time).fromNow()}</b></Label1>
+              </Block> :
+              <Block display="flex" alignItems="center">
+                <Label1><b>Please select time</b></Label1>
+              </Block>
+          }
         </Block>
         <Block flex="1">
           <FaUserFriends color="#727272" />
           <Label1 color="#727272"><b>Group Size</b></Label1>
-          <Label1><b>{groupSize} people</b></Label1>
+          {
+            groupSize ?
+            <Label1><b>{groupSize} people</b></Label1> :
+            <Label1><b>Undecided</b></Label1>
+          }
         </Block>
         <Block flex="1">
           <FaUserAlt color="#727272" />
@@ -236,6 +417,7 @@ export default () => {
       <Block>
         {!isPast && status !== 'CLOSED' && status !== 'CANCELLED' && <CancelEvent />}
       </Block>
+      <TimeForm showForm={editingTime} close={() => setEditingTime(false)} time={time} />
     </Block>
   );
 }

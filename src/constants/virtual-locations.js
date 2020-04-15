@@ -94,6 +94,30 @@ export const venues = [
 		"symbol": "jackbox"
 	},
 	{
+		"id": 25,
+		"photos": [
+			"https://mattle.online/assets/images/games/online-go.png",
+			"https://mattle.online/assets/images/games/online-azul.png",
+			"https://mattle.online/assets/images/games/online-seven-wonders-duel.png"
+		],
+		"name": "Mattle Games",
+		"description": "Digital hosting of a variety of boardgames and cardgames including Go and Azee.",
+		"teaserDescription": "Games of Many Varities",
+		"phoneNumber": "s",
+		"email": "",
+		"linkToSite": "https://mattle.online/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["variety", "board game", "card game"],
+		"rating": 4.8,
+		"takesReservations": false,
+		"averageTimeSpent": 30,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "mattle"
+	},
+	{
 		"id": 2,
 		"photos": [
 			"http://playingcards.io/img/header.svg"
@@ -307,6 +331,28 @@ export const venues = [
 		"price": "varies",
 		"priceReasoning": "Based on price per game",
 		"symbol": "teambuilding"
+	},
+	{
+		"id": 26,
+		"photos": [
+			"https://colonist.io/dist/images/logo.png"
+		],
+		"name": "Colonist",
+		"description": "Board game where players take on the roles of settlers, each attempting to build and develop holdings while trading and acquiring resources. Players gain points as their settlements grow; the first to reach a set number of points, typically 10, wins.",
+		"teaserDescription": "Settlers of Catan",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://colonist.io/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["board game", "strategy"],
+		"rating": 4.6,
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [2, 6],
+		"price": "0",
+		"priceReasoning": "Based on price per game depending on platform",
+		"symbol": "colonist"
 	},
 	{
 		"id": 10,

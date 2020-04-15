@@ -539,7 +539,7 @@ export const venues = [
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
 		"priceReasoning": "App is free",
-		"symbol": "horsepaste"
+		"symbol": "hous-party"
 	},
 	{
 		"id": 27,
@@ -563,6 +563,6 @@ export const venues = [
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
 		"priceReasoning": "App is free",
-		"symbol": "horsepaste"
+		"symbol": "jqbx"
 	}
 ]

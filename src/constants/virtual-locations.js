@@ -540,5 +540,29 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": "App is free",
 		"symbol": "horsepaste"
+	},
+	{
+		"id": 27,
+		"photos": [
+			"http://jqbx.fm/images/jqbx.png",
+			"http://jqbx.fm/images/intro-new.png",
+			"http://jqbx.fm/images/chat.jpg"
+		],
+		"name": "JQBX FM",
+		"description": "JQBX lets you be a DJ, join a party, or just kick back and listen to music with friends or strangers from all over the world in real time. JQBX hooks into your Spotify account and is 100% free to use. Give it a try and start listening. Together.",
+		"teaserDescription": "Listen To Music With Friends",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "http://jqbx.fm/",
+		"relevantLinks": [],
+		"activityType": "hangout",
+		"tags": ["chill", "fun", "music"],
+		"rating": 4.6,
+		"takesReservations": false,
+		"averageTimeSpent": 15,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "App is free",
+		"symbol": "horsepaste"
 	}
 ]

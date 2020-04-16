@@ -41,6 +41,15 @@ query LoadUserProfile{
 export const GET_TEAMS_BY_EMAIL = gql`
 query GetTeamsByEmail($email: String!){
   getTeamsByEmail(email: $email){
+    id
+    name
+  }
+}`;
+
+export const GET_TEAMS_BY_COMPANY = gql`
+query GetTeamsByEmail($companyId: String!){
+  getTeamsByCompany(companyId: $companyId){
+    id
     name
   }
 }`;

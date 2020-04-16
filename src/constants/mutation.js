@@ -89,6 +89,21 @@ mutation UpdateEventName($eventId: String!, $name: String!){
   updateEventName(eventId: $eventId, name: $name)
 }`;
 
+export const UPDATE_TEAM_NAME = gql`
+mutation UpdateTeamName($teamId: String!, $name: String!){
+  updateTeamName(teamId: $teamId, name: $name)
+}`;
+
+export const JOIN_TEAM = gql`
+mutation JoinTeam($teamId: String!){
+  joinTeam(teamId: $teamId)
+}`;
+
+export const QUIT_TEAM = gql`
+mutation QuitTeam($teamId: String!){
+  quitTeam(teamId: $teamId)
+}`;
+
 export const UPDATE_POLL = gql`
 mutation UpdatePoll($pollId: String!, $expiration: DateTime!, $name: String){
   updatePoll(pollId: $pollId, expiration: $expiration, name: $name)

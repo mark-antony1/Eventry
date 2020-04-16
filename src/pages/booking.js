@@ -277,7 +277,7 @@ function BookingForm() {
   const [ bookingFormError, setBookingFormError ] = useState(null);
 
   useEffect(() => {
-    if (authData && authData.getUserByAuth && authData.getUserByAuth.user) {
+    if (authData && authData.getUserByAuth && authData.getUserByAuth.user && authData.getUserByAuth.user.teams.length) {
       setForm({
         ...form,
         teamId: authData.getUserByAuth.user.teams[0].id
@@ -355,6 +355,14 @@ function BookingForm() {
     return (
       <Block>
         Booking is not available for this venue yet
+      </Block>
+    );
+  }
+
+  if (auth && !auth.user.teams.length) {
+    return (
+      <Block>
+        You need to be in a team
       </Block>
     );
   }

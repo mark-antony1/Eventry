@@ -81,7 +81,7 @@ function CreatePollForm() {
     });
 
     if (res && res.data && res.data.createPoll) {
-      showAlert(client, 'Successfully created poll!');
+      showAlert(client, 'Poll successfully created!');
       history.push(`/event/${res.data.createPoll}`);
     }
   };
@@ -121,7 +121,7 @@ function CreatePollForm() {
         <Display4><b>Create Poll</b></Display4>
         <FormControl label="" positive="" error={formError}>
           <Block>
-            <FormControl label="Poll Name" error={null} caption="Where you want to go on the product launch">
+            <FormControl label="Poll Name (optional)" error={null} caption="ex: Where you want to go on the product launch?">
               <Input
                 value={form.name}
                 type="text"

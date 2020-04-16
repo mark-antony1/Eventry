@@ -5,8 +5,14 @@ import {
   FaTrashAlt,
   FaHome,
   FaUserFriends,
-  FaGoogle
+  FaGoogle,
+  FaPen
 } from 'react-icons/fa';
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from 'baseui/modal';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
 import { Button } from 'baseui/button';
@@ -48,7 +54,9 @@ import {
   CREATE_USER,
   SIGN_IN,
   CHANGE_PASSWORD,
-  DELETE_ENDORSEMENT
+  DELETE_ENDORSEMENT,
+  JOIN_TEAM,
+  QUIT_TEAM
 } from '../constants/mutation';
 
 function MyReview({ review }) {
@@ -795,6 +803,117 @@ function WithLogin({ children }) {
   );
 }
 
+function TeamLineItem({ team }) {
+  const [ confirming, setConfirming ] = useState(false);
+  const [ quitTeam, { loading } ] = useMutation(QUIT_TEAM);
+  const handleQuitTeam = async () => {
+    await quitTeam({
+      variables: {
+        teamId: team.id
+      },
+      refetchQueries: ['LoadUserProfile']
+    }).catch(e => {});
+  };
+
+  return (
+    <Block display="flex" alignItems="center" position="relative">
+      {loading && <Loading compact={true} />}
+      <Block flex="1" backgroundColor="#f7f7f7" padding="8px">
+        <Label1>{team.name}</Label1>
+      </Block>
+      {
+        !confirming && <Button size="compact" kind="minimal" onClick={() => setConfirming(true)}>Quit</Button>
+      }
+      {
+        confirming && <Button size="compact" onClick={handleQuitTeam}>Quit Confirm</Button>
+      }
+    </Block>
+  );
+}
+
+function TeamsForm({ close, showForm }) {
+  const client = useApolloClient();
+  const { data: userData, loading, error } = useQuery(LOAD_USER_PROFILE);
+  const [ formError, setFormError ] = useState(null);
+  const [ team, setTeam ] = useState(null);
+  const [ joinTeam ] = useMutation(JOIN_TEAM);
+  const [ getTeamsByEmail, { data: teamsData } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
+
+  useEffect(() => {
+    if (userData && userData.getUserByAuth) {
+      getTeamsByEmail({ variables: { email: userData.getUserByAuth.user.email.split('@')[1] } });
+    }
+  }, [userData]);
+
+  if (loading || error) {
+    return null;
+  }
+
+  const {
+    getUserByAuth: {
+      user: {
+        teams
+      }
+    }
+  } = userData;
+
+  const handleJoinTeam = async () => {
+    const res = await joinTeam({
+      variables: {
+        teamId: team.id
+      },
+      refetchQueries: ['LoadUserProfile']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+
+    if (res) {
+      showAlert(client, "Team successfully added");
+    }
+  };
+  return (
+    <Modal onClose={close} isOpen={showForm}>
+      <ModalHeader>My Teams</ModalHeader>
+      <ModalBody>
+        {
+          teams.map((team) => {
+            return <TeamLineItem key={team.id} team={team} />;
+          })
+        }
+        {
+          teamsData &&
+          <FormControl label="Join new team" error={formError} positive="">
+            <Block display="flex">
+              <Select
+                options={
+                  teamsData.getTeamsByEmail.map((team, index) => {
+                    return {
+                      id: team.id,
+                      label: team.name
+                    };
+                  })
+                }
+                value={team ? [team] : null}
+                placeholder="select team"
+                searchable={true}
+                getValueLabel={({option}) => option.label}
+                onChange={params =>{
+                  if (params.value[0]) {
+                    setTeam(params.value[0]);
+                  } else {
+                    setTeam(null);
+                  }
+                }}
+              />
+              <Button disabled={!team} onClick={handleJoinTeam}>Join</Button>
+            </Block>
+          </FormControl>
+        }
+      </ModalBody>
+    </Modal>
+  );
+};
+
 function User() {
   const client = useApolloClient();
   const { data, loading, error, refetch } = useQuery(LOAD_USER_PROFILE);
@@ -803,6 +922,7 @@ function User() {
   const [ changePasswordError, setChangePasswordError ] = useState(null);
   const [ currentPassword, setCurrentPassword ] = useState('');
   const [ newPassword, setNewPassword ] = useState('');
+  const [ editingTeams, setEditingTeams ] = useState(false);
 
   const validateForm = () => {
     if (!currentPassword) {
@@ -934,7 +1054,12 @@ function User() {
           </Block>
           <Block flex="1">
             <FaUserFriends />
-            <Label1><b>Teams</b></Label1>
+            <Block display="flex" alignItems="center">
+              <Label1><b>Teams</b></Label1>
+              <Block marginLeft="4px">
+                <Button size="compact" kind="minimal" onClick={() => setEditingTeams(true)}><FaPen /></Button>
+              </Block>
+            </Block>
             {
               teams.map((team) => {
                 return <Label1 key={team.id}>{team.name}</Label1>
@@ -947,6 +1072,7 @@ function User() {
           <MyReviews />
         </Block>
       </Block>
+      <TeamsForm showForm={editingTeams} close={() => setEditingTeams(false)} />
     </Block>
   );
 }

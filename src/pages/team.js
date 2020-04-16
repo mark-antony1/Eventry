@@ -5,8 +5,11 @@ import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Tabs, Tab } from 'baseui/tabs';
+import { Input } from 'baseui/input';
+import { FormControl } from 'baseui/form-control';
 import { Navigation } from 'baseui/side-navigation';
 import { Tag } from 'baseui/tag';
+import { FaPen } from 'react-icons/fa';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
@@ -15,9 +18,14 @@ import {
   Label3,
 } from 'baseui/typography';
 import {
-  useQuery
+  useQuery,
+  useMutation,
+  useApolloClient
 } from '@apollo/react-hooks';
 
+import {
+  UPDATE_TEAM_NAME
+} from '../constants/mutation';
 import {
   GET_CREATED_EVENTS_BY_TEAM,
   GET_UPCOMING_EVENTS_BY_TEAM,
@@ -26,7 +34,7 @@ import {
   GET_TEAM_POLLS
 } from '../constants/query';
 
-import { getErrorCode } from '../utils';
+import { getErrorCode, showAlert } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
@@ -282,8 +290,47 @@ function TeamDashboardRouter() {
   );
 }
 
+function TeamNameForm({ name, close }) {
+  const client = useApolloClient();
+  const { teamId } = useParams();
+  const [ formError, setFormError ] = useState(null);
+  const [ nameValue, setNameValue ] = useState(name || '');
+  const [ updateTeamName ] = useMutation(UPDATE_TEAM_NAME);
+
+  const handleUpdateTeamName = async () => {
+    const res = await updateTeamName({
+      variables: {
+        name: nameValue,
+        teamId
+      },
+      refetchQueries: ['GetUserByAuth']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+    if (res) {
+      showAlert(client, "Team name successfully updated");
+      close();
+    }
+  };
+
+  return (
+    <FormControl positive="" error={formError}>
+      <Block display="flex">
+        <Input
+          value={nameValue}
+          onChange={(e) => setNameValue(e.target.value)}
+          placeholder="team name"
+        />
+        <Button onClick={handleUpdateTeamName}>Save</Button>
+        <Button kind="minimal" onClick={close}>Cancel</Button>
+      </Block>
+    </FormControl>
+  );
+}
+
 function TeamInfo() {
   const { teamId } = useParams();
+  const [ editingName, setEditingName ] = useState(false);
   const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
 
   if (loading || error) {
@@ -308,7 +355,18 @@ function TeamInfo() {
   const team = teams.find(t => t.id === teamId) || {};
   return (
     <Block>
-      <Display4><b>{team.name}</b></Display4>
+      {
+        !editingName &&
+        <Block display="flex" alignItems="center">
+          <Display4><b>{team.name}</b></Display4>
+          <Block marginLeft="8px">
+            <Button kind="minimal" onClick={() => setEditingName(true)}><FaPen /></Button>
+          </Block>
+        </Block>
+      }
+      {
+        editingName && <TeamNameForm name={team.name} close={() => setEditingName(false)} />
+      }
       <Block display="flex">
         {company.logo && <Block marginRight="12px"><img alt="review-logo" height="24px" src={company.logo} /></Block>}
         <Label1><b>{company.name}</b></Label1>

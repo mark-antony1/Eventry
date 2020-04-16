@@ -8,6 +8,7 @@ import Discovery from './pages/discovery';
 import Details from './pages/details';
 import User from './pages/user';
 import About from './pages/about';
+import Privacy from './pages/privacy';
 import Booking from './pages/booking';
 import VenueDashboard from './pages/venue-dashboard';
 import Event from './pages/event';
@@ -26,6 +27,7 @@ function App() {
           <Route exact component={withTracker(Home)} path="/" />
           <Route exact component={withTracker(Discovery)} path="/s" />
           <Route exact component={withTracker(VirtualEventDiscovery)} path="/v" />
+          <Route exact component={withTracker(Privacy)} path="/privacy" />
           <Route exact component={withTracker(About)} path="/about" />
           <Route exact component={withTracker(User)} path="/user" />
           <Route component={withTracker(Event)} path="/event/:eventId" />

@@ -92,8 +92,9 @@ export default function Home() {
           </Block>
         </Block>
       </Block>
-      <Block backgroundColor="#f7f7f7" padding="48px" display="flex" alignItems="center" justifyContent="center">
+      <Block backgroundColor="#f7f7f7" padding="48px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         <Label1 color="#77B900"><b>team@teambright.co</b></Label1>
+        <Label1 color="#77B900" $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
       </Block>
     </Block>
   );

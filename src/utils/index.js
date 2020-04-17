@@ -7,6 +7,9 @@ import {
 import {
   GET_USER_BY_AUTH
 } from '../constants/query';
+import { venues as allPhysicalVenues } from '../constants/locations';
+import { venues as allVirtualVenues } from '../constants/virtual-locations';
+const allVenues = [ ...allPhysicalVenues, ...allVirtualVenues ];
 
 export function useQueryUrl() {
   return new URLSearchParams(useLocation().search);
@@ -168,4 +171,9 @@ export function getHourFromMilitaryHour(hour) {
     return `${hour - 12}PM`;
   }
   return `${hour}AM`;
+}
+
+export function getVenueBySymbol(symbol) {
+  const venue = allVenues.find(v => v.symbol === symbol);
+  return venue;
 }

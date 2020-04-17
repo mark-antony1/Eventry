@@ -408,8 +408,8 @@ function VenueForm() {
   return (
     <Block display="flex" flexDirection="column" backgroundColor="#f7f7f7" padding="24px">
       <Block display="flex" alignItems="center">
-        <Tag closeable={false} variant="outlined" kind="warning"><b>To do</b></Tag>
-        <Display4 marginLeft="12px"><b>Have you decided the venue?</b></Display4>
+        <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag>
+        <Display4 marginLeft="12px"><b>Have You Decided The Venue?</b></Display4>
       </Block>
       {
         topPollItems.length ?

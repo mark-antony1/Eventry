@@ -46,7 +46,7 @@ import {
   UPDATE_POLL
 } from '../../constants/mutation';
 
-import { showAlert, getErrorCode } from '../../utils';
+import { showAlert, getErrorCode, getVenueBySymbol } from '../../utils';
 import VenueNameSearchBar from '../venue/venue-name-search-bar';
 import Loading from '../../components/loading';
 
@@ -59,7 +59,7 @@ function getHasUserVoted(userId, pollLineItems) {
   }, false);
 }
 
-function RemovePollLineItemForm({ name, pollLineItemId, showForm, close }) {
+function RemovePollLineItemForm({ item, pollLineItemId, showForm, close }) {
   const client = useApolloClient();
   const [ formError, setFormError ] = useState(null);
   const [ removePollLineItem, { loading: removingPollLineItem } ] = useMutation(REMOVE_POLL_LINEITEM);
@@ -79,6 +79,8 @@ function RemovePollLineItemForm({ name, pollLineItemId, showForm, close }) {
       close();
     }
   };
+
+  const name = item.symbol ? (getVenueBySymbol(item.symbol) || {}).name : item.name;
   return (
     <Modal onClose={close} isOpen={showForm}>
       {removingPollLineItem && <Loading compact={true} message="Removing item..." />}
@@ -104,8 +106,17 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
   const [ css ] = useStyletron();
   const [ removingPollLineItem, setRemovingPollLineItem ] = useState(false);
   const [ showVoters, setShowVoters ] = useState(false);
-
+  const { name, symbol } = item;
   const userVoted = item.voters.find(v => v.id === userId);
+
+  const renderName = () => {
+    const venue = getVenueBySymbol(symbol);
+    if (venue) {
+      return venue.name;
+    }
+    return null;
+  };
+
   return (
     <Block display="flex" alignItems="center">
       <Block
@@ -123,7 +134,7 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
         })}
         onClick={() => handleSelectLineItem(item.id)}
       >
-        <Label1><b>{item.name}</b> {item.symbol && <Label3 $as="a" href={`/${item.symbol}`} target="_blank">Details</Label3>}</Label1>
+        <Label1><b>{symbol ? renderName() : name}</b> {symbol && <Label3 $as="a" href={`/${item.symbol}`} target="_blank">Details</Label3>}</Label1>
         <Block display="flex" flex="1" justifyContent="flex-end" alignItems="center">
           <StatefulTooltip
             content={() => {
@@ -154,7 +165,7 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
       <Block marginLeft="8px">
         <Button onClick={() => setRemovingPollLineItem(true)} size="compact" kind="minimal"><FaTrashAlt /></Button>
       </Block>
-      <RemovePollLineItemForm name={item.name} pollLineItemId={item.id} close={() => setRemovingPollLineItem(false)} showForm={removingPollLineItem} />
+      <RemovePollLineItemForm item={item} pollLineItemId={item.id} close={() => setRemovingPollLineItem(false)} showForm={removingPollLineItem} />
     </Block>
   );
 }
@@ -251,6 +262,7 @@ function PollForm({ poll, showForm, close }) {
 
 function PollLineItemForm({ pollId, showForm, close }) {
   const client = useApolloClient();
+  const [ showManualName, setShowManualName ] = useState(false);
   const [ form, setForm ] = useState({
     name: '',
     venue: null
@@ -258,8 +270,7 @@ function PollLineItemForm({ pollId, showForm, close }) {
     const [ formError, setFormError ] = useState(null);
   const [ addPollLineItem, { loading: creatingPollLineItem } ] = useMutation(ADD_POLL_LINEITEM);
   const validateForm = () => {
-    if (!form.name) {
-      setFormError('Item name is required');
+    if (!form.name && !form.venue) {
       return false;
     }
 
@@ -272,10 +283,6 @@ function PollLineItemForm({ pollId, showForm, close }) {
     });
   };
   const handleAddPollLineItem = async () => {
-    if (!validateForm()) {
-      return;
-    }
-
     const res = await addPollLineItem({
       variables: {
         pollId,
@@ -299,39 +306,54 @@ function PollLineItemForm({ pollId, showForm, close }) {
   return (
     <Modal onClose={close} isOpen={showForm}>
       {creatingPollLineItem && <Loading compact={true} message="Adding poll item..." />}
-      <ModalHeader>Add Poll Item</ModalHeader>
+      <ModalHeader>Add Venue to Poll</ModalHeader>
       <ModalBody>
-        <FormControl error={null} label="Name" positive="" caption="ex) 4th Street Bar">
-          <Input
-            value={form.name}
-            onChange={e => {
-              updateForm({
-                name: e.currentTarget.value
-              });
-            }}
-          />
-        </FormControl>
         <Block>
           {!creatingPollLineItem &&
-            <FormControl error={null} label="Link to a venue (optional)" positive="" caption="Discover venue below!">
+            <FormControl error={null} label="Search and Select Venue by Name" positive="">
               <VenueNameSearchBar updateForm={updateForm} form={form} />
             </FormControl>
           }
         </Block>
-        <FormControl error={formError} label="Discover venues" positive="">
-          <Block display="flex" flexDirection="column" justifyContent="center">
-            <Button kind="secondary" $as="a" target="_blank" href="/v">
-              <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Discover virtual events
-            </Button>
+        <FormControl error={formError} label="Discover Venues" positive="">
+          <Block display="flex">
+            <Block display="flex" flex="1" flexDirection="column">
+              <Button kind="secondary" $as="a" target="_blank" href="/v">
+                <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Virtual venues
+              </Button>
+            </Block>
             <Block margin="4px" />
-            <Button target="_blank" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900', height: '34px'}}}} $as="a" href="/s">
-              Discover venues in San Francisco
-            </Button>
+            <Block display="flex" flex="1" flexDirection="column">
+              <Button target="_blank" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900', height: '34px'}}}} $as="a" href="/s">
+                Venues in San Francisco
+              </Button>
+            </Block>
           </Block>
         </FormControl>
+        <Block height="1px" backgroundColor="#ddd" width="100%" />
+        <Block display="flex" marginTop="8px" flex="1" flexDirection="column">
+          <Button kind="minimal" size="compact" onClick={() => setShowManualName(!showManualName)}>
+            I Want to Manually Enter Name
+          </Button>
+        </Block>
+        {
+          showManualName &&
+          <FormControl error={null} label="Manually Enter Name" positive="" caption="ex) 4th Street Bar">
+            <Input
+              value={form.name}
+              placeholder="enter name"
+              onChange={e => {
+                updateForm({
+                  name: e.currentTarget.value
+                });
+              }}
+            />
+          </FormControl>
+        }
+
       </ModalBody>
       <ModalFooter>
-        <ModalButton onClick={handleAddPollLineItem}>Add</ModalButton>
+        <ModalButton disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</ModalButton>
       </ModalFooter>
     </Modal>
   );
@@ -405,21 +427,21 @@ export default ({ poll }) => {
       {unvoting && <Loading compact={true} message="Undo voting..." />}
       <Block display="flex" alignItems="center">
         <Label1><b>{poll.name}</b></Label1>
-        <Block marginLeft="12px">
-          <Button size="compact" kind="minimal" onClick={() => setEditingPoll(true)}><FaPen /></Button>
-        </Block>
         {
           (!hasPollExpired && pollLineItems.length && pollLineItems.length < 10) ?
           <Block marginLeft="12px">
-            <Button size="compact" kind="secondary" onClick={() => setAddingPollLineItem(true)}><Plus /> Add Poll Item</Button>
+            <Button size="compact" kind="secondary" onClick={() => setAddingPollLineItem(true)}><Plus /> Add Item</Button>
           </Block> : null
         }
-        <Block flex="1" display="flex" justifyContent="flex-end">
+        <Block flex="1" display="flex" justifyContent="flex-end" alignItems="center">
           {
             hasPollExpired ?
             <Label3>Poll expired</Label3> :
             <Label3>Expires {moment(poll.expiration).calendar()}</Label3>
           }
+          <Block marginLeft="12px">
+            <Button size="compact" kind="minimal" onClick={() => setEditingPoll(true)}><FaPen /></Button>
+          </Block>
         </Block>
       </Block>
       <Block marginTop="12px">
@@ -430,8 +452,8 @@ export default ({ poll }) => {
         }
         {
           !pollLineItems.length &&
-          <Block display="flex" justifyContent="center" marginTop="12px">
-            <Label1><b>There is no poll item yet. Add first poll item</b></Label1>
+          <Block display="flex" alignItems="center" justifyContent="center" marginTop="12px">
+            <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag> There is no poll item yet. Add first poll item
           </Block>
         }
       </Block>
@@ -459,7 +481,7 @@ export default ({ poll }) => {
           <Button
             onClick={() => setAddingPollLineItem(true)}
           >
-            <Plus /> Add Poll Item
+            <Plus /> Add Item
           </Button> : null
         }
       </Block>

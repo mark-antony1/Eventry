@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment-timezone';
 import { useStyletron } from 'styletron-react';
@@ -360,17 +360,13 @@ function VenueForm() {
     });
   };
 
-  const renderTopPollItems = () => {
-    const topPollItems = polls.reduce((list, poll) => {
+  const topPollItems = polls.reduce((list, poll) => {
       return [ ...list, ...poll.pollLineItems ];
     }, [])
     .sort((a, b) => {
       return b.voters.length - a.voters.length;
     }).slice(0, 3);
-
-    if (!topPollItems.length) {
-      return null;
-    }
+  const renderTopPollItems = () => {
 
     return (
       <Block display="flex" flexDirection="column">
@@ -415,20 +411,20 @@ function VenueForm() {
         <Tag closeable={false} variant="outlined" kind="warning"><b>To do</b></Tag>
         <Display4 marginLeft="12px"><b>Have you decided the venue?</b></Display4>
       </Block>
-      <FormControl error={null} label="Choose the venue for the event" positive="">
-        <Block display="flex" flexDirection="column">
-          {
-            polls.length ? renderTopPollItems() : null
-          }
-          <Block margin="2px" />
-          <FormControl error={null} label="Or search venues by name" positive="">
-            <VenueNameSearchBar updateForm={handleSelectVenue} form={form} />
-          </FormControl>
-          <Block display="flex" justifyContent="center">
-            <Button disabled={!selectedVenueSymbol} onClick={handleSubmitForm}>Select</Button>
+      {
+        topPollItems.length ?
+        <FormControl error={null} label="Choose the venue for the event" positive="">
+          <Block display="flex" flexDirection="column">
+            {renderTopPollItems()}
           </Block>
-        </Block>
+        </FormControl> : null
+      }
+      <FormControl error={null} label="Search venues by name" positive="">
+        <VenueNameSearchBar updateForm={handleSelectVenue} form={form} />
       </FormControl>
+      <Block display="flex" justifyContent="center">
+        <Button disabled={!selectedVenueSymbol} onClick={handleSubmitForm}>Select</Button>
+      </Block>
     </Block>
   );
 }
@@ -498,10 +494,25 @@ export default () => {
       eventId
     }
   });
+  const [ hidePoll, setHidePoll ] = useState(false);
   const [ editingVenue, setEditingVenue ] = useState(false);
   const [ editingTime, setEditingTime ] = useState(false);
   const [ editingName, setEditingName ] = useState(false);
 
+  useEffect(() => {
+    if (data && data.getEvent) {
+      const { polls } = data.getEvent;
+      const areAllPastPolls = polls.reduce((agg, poll) => {
+        if (!moment(poll.expiration).isBefore(moment())) {
+          return false;
+        }
+        return agg;
+      }, true);
+      if (areAllPastPolls) {
+        setHidePoll(true);
+      }
+    }
+  }, [loading]);
   if (loading || error) {
     return <Loading />;
   }
@@ -579,11 +590,26 @@ export default () => {
         </Block>
         {
           polls.length ?
-          <Block paddingTop="24px" paddingBottom="24px">
+          <Block marginTop="24px" padding="24px" marginBottom="24px" display="flex" flexDirection="column" backgroundColor="#f7f7f7">
+            <Block display="flex" alignItems="center" paddingBottom="12px">
+              <Tag closeable={false} variant="outlined" kind="accent"><b>Choose what to do</b></Tag>
+              <Display4 marginLeft="12px"><b>Poll</b></Display4>
+            </Block>
             {
-              polls.map((poll) => {
-                return <Poll key={poll.id} poll={poll} />;
-              })
+              !hidePoll ?
+              <Block>
+                {
+                  polls.map((poll) => {
+                    return <Poll key={poll.id} poll={poll} />;
+                  })
+                }
+              </Block> :
+              <Block display="flex" alignItems="center">
+                Poll is expired
+                <Block marginLeft="8px">
+                  <Button kind="secondary" onClick={() => setHidePoll(false)}>See Past Poll</Button>
+                </Block>
+              </Block>
             }
           </Block> : null
         }

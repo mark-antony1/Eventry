@@ -40,11 +40,11 @@ const Alert = () => {
   }, [ data && data.successAlert ]);
 
   return (
-    <Block position="fixed" top="15px" left="15px" className={css({ zIndex: 5 })}>
+    <Block position="fixed" bottom="15px" left="15px" className={css({ zIndex: 5 })}>
       {
         showAlert ?
         <Block padding="12px" backgroundColor="rgb(119, 185, 0)">
-          <Label1 color="#fff"><b>{data && data.successAlert}</b></Label1>
+          <span style={{ color: '#fff'}}>{data && data.successAlert}</span>
         </Block> :
         null
       }

@@ -1050,7 +1050,7 @@ function User() {
           <Block flex="1">
             <FaUserFriends />
             <Block display="flex" alignItems="center">
-              <Label1><b>Teams</b></Label1>
+              <Label1><b>My Teams</b></Label1>
               <Block marginLeft="4px">
                 <Button size="compact" kind="minimal" onClick={() => setEditingTeams(true)}><FaPen /></Button>
               </Block>

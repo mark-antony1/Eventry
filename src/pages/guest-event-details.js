@@ -9,6 +9,7 @@ import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
 import { Tag } from 'baseui/tag';
+import { ProgressBar } from 'baseui/progress-bar';
 import {
   Modal,
   ModalHeader,
@@ -494,6 +495,7 @@ export default () => {
       eventId
     }
   });
+  const [ validPollExist, setValidPollExist ] = useState(false);
   const [ hidePoll, setHidePoll ] = useState(false);
   const [ editingVenue, setEditingVenue ] = useState(false);
   const [ editingTime, setEditingTime ] = useState(false);
@@ -510,6 +512,8 @@ export default () => {
       }, true);
       if (areAllPastPolls) {
         setHidePoll(true);
+      } else {
+        setValidPollExist(true);
       }
     }
   }, [loading]);
@@ -544,19 +548,102 @@ export default () => {
   const isPast = moment(time).isBefore(moment());
 
   const renderStatus = () => {
+    let progress = 0;
+    let label = '';
     if (status === 'CANCELLED') {
-      return <Tag closeable={false} variant="outlined" kind="negative"><b>Cancelled</b></Tag>;
+      // cancelled
+      progress = 0;
+      label = 'Event is cancelled';
+    } else if (isPast) {
+      // past event
+      progress = 100;
+      label = 'Past event';
+    } else if (status === 'READY') {
+      // event is booked
+      progress = 90;
+      label = 'You are all set! Event is upcoming';
+    } else if (status === 'CREATED' && symbol && time) {
+      // symbol selected, time selected
+      progress = 90;
+      label = 'You are all set! Event is upcoming';
+    } else if (status === 'CREATED' && time) {
+      // symbol selected, time selected
+      progress = 70;
+      label = 'Please finalize the venue';
+    } else if (status === 'CREATED' && symbol) {
+      // symbol selected
+      progress = 70;
+      label = 'Please finalize the schedule';
+    } else if (status === 'CREATED' && polls.length && validPollExist) {
+      // poll is actively being conducted
+      progress = 30;
+      label = 'Poll is actively being conducted';
+    } else if (status === 'CREATED' && polls.length && !validPollExist) {
+      // all poll is expired
+      progress = 30;
+      label = 'Poll is over, select the venue';
+    } else if (status === 'CREATED') {
+      // created, no polls
+      label = 'Conduct the poll or select the venue';
+      progress = 20;
     }
-    if (isPast && status !== 'CLOSED') {
-      return <Tag closeable={false} variant="outlined" kind="accent"><b>Past Event</b></Tag>;
+
+    const renderLabel = () => {
+      if (progress < 50) {
+        return (
+          <Block
+            position="absolute"
+            left={`calc(${progress}%)`}
+            backgroundColor="#000"
+            padding="8px"
+            overrides={{
+              Block: {
+                style: {
+                  borderRadius: '20px'
+                }
+              }
+            }}
+          >
+            <Label3 color="#fff">{label}</Label3>
+          </Block>
+        );
+      }
+      return (
+        <Block
+          position="absolute"
+          right={`calc(${100 - progress}%)`}
+          backgroundColor="#000"
+          padding="8px"
+          overrides={{
+            Block: {
+              style: {
+                borderRadius: '20px'
+              }
+            }
+          }}
+        >
+          <Label3 color="#fff">{label}</Label3>
+        </Block>
+      );
     }
-    if (isPast && status === 'CLOSED') {
-      return <Tag closeable={false} variant="outlined" kind="positive"><b>Closed</b></Tag>;
-    }
-    if (status === 'READY') {
-      return <Tag closeable={false} variant="outlined" kind="positive"><b>Upcoming...</b></Tag>;
-    }
-    return null;
+    return (
+      <Block width="100%" display="flex" flexDirection="column">
+        <ProgressBar
+          value={progress}
+          successValue={100}
+          overrides={{
+            BarProgress: {
+              style: {
+                backgroundColor: '#77BA01'
+              }
+            }
+          }}
+        />
+        <Block width="100%" position="relative" marginBottom="24px">
+          {renderLabel()}
+        </Block>
+      </Block>
+    );
   };
 
   return (

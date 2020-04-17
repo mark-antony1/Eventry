@@ -171,7 +171,7 @@ const ToTeam = () => {
           placement="bottomRight"
         >
           <Button kind="minimal">
-            My Team <DownIcon />
+            My Teams <DownIcon />
           </Button>
         </StatefulPopover>
       </Block>
@@ -224,7 +224,7 @@ const ToTeamReduced = () => {
       placement="bottomRight"
     >
       <Button kind="minimal">
-        My Team <DownIcon />
+        My Teams <DownIcon />
       </Button>
     </StatefulPopover>
   );

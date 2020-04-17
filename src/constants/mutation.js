@@ -114,6 +114,11 @@ mutation UpdateEventTime($eventId: String!, $time: DateTime!){
   updateEventTime(eventId: $eventId, time: $time)
 }`;
 
+export const UPDATE_EVENT_SYMBOL = gql`
+mutation UpdateEventSymbol($eventId: String!, $symbol: String!){
+  updateEventSymbol(eventId: $eventId, symbol: $symbol)
+}`;
+
 export const REMOVE_POLL_LINEITEM = gql`
 mutation RemovePollLineItem($pollLineItemId: String!){
   removePollLineItem(pollLineItemId: $pollLineItemId)

@@ -47,8 +47,7 @@ import {
 } from '../../constants/mutation';
 
 import { showAlert, getErrorCode } from '../../utils';
-import { venues as allVenues } from '../../constants/locations';
-import { venues as allVirtualVenues } from '../../constants/virtual-locations';
+import VenueNameSearchBar from '../venue/venue-name-search-bar';
 import Loading from '../../components/loading';
 
 function getHasUserVoted(userId, pollLineItems) {
@@ -58,39 +57,6 @@ function getHasUserVoted(userId, pollLineItems) {
     }
     return agg;
   }, false);
-}
-
-const allLocations = [ ...allVenues, ...allVirtualVenues ];
-
-const getLabel = ({option}) => {
-  return (
-    <Block>
-      <Label2>{option.label}</Label2>
-      <Label3>{option.teaserDescription}</Label3>
-    </Block>
-  );
-};
-
-function VenueNameSearchBar({ updateForm, form }) {
-  const [ searchKey, setSearchKey ] = useState('');
-  const searchResults = allLocations.filter((loc) => {
-    return loc.name.toLowerCase().includes(searchKey.toLowerCase());
-  }).slice(0, 3);
-
-  return (
-    <Select
-      options={searchResults.map(result => ({
-        label: result.name,
-        id: result.symbol,
-        teaserDescription: result.teaserDescription
-      }))}
-      placeholder="Search venue by name"
-      onInputChange={(event) => setSearchKey(event.target.value)}
-      value={form.venue ? [form.venue] : null}
-      onChange={params => updateForm({ venue: params.value[0] })}
-      getOptionLabel={getLabel}
-    />
-  );
 }
 
 function RemovePollLineItemForm({ name, pollLineItemId, showForm, close }) {
@@ -454,7 +420,6 @@ export default ({ poll }) => {
             <Label3>Poll expired</Label3> :
             <Label3>Expires {moment(poll.expiration).calendar()}</Label3>
           }
-
         </Block>
       </Block>
       <Block marginTop="12px">

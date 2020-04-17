@@ -72,4 +72,5 @@ export const EventDetails= `{
   individuals${User}
   master${User}
   polls${Poll}
+  symbol
 }`;

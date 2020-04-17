@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useStyletron } from 'styletron-react';
 import { useApolloClient } from '@apollo/react-hooks';
 import {
   FaTrashAlt,
@@ -482,6 +483,7 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
 }
 
 function SignUpMethod({ handleSigninMode }) {
+  const [ css ] = useStyletron();
   const [ showSignUpForm, setShowSignUpForm ] = useState(false);
   const [ googleEmailInfo, setGoogleEmailInfo ] = useState(null);
 
@@ -536,16 +538,12 @@ function SignUpMethod({ handleSigninMode }) {
       <GoogleLogin
         clientId={process.env.REACT_APP_G_AUTH_ID}
         onSuccess={successGoogle}
-        render={({ onClick }) => {
-          return (
-            <Button onClick={onClick} kind="minimal"><FaGoogle /><span style={{marginLeft: '8px'}} /> Sign up with Google</Button>
-          );
-        }}
+        buttonText="Sign up with Google"
         onFailure={() => {}}
         cookiePolicy={'single_host_origin'}
       />
       <Block margin="8px" />
-      <Button onClick={() => setShowSignUpForm(true)}>Sign up with Company Email</Button>
+      <Button className={css({ justifyContent: 'left' })} kind="secondary" onClick={() => setShowSignUpForm(true)}>Sign up with Company Email</Button>
     </Block>
   );
 }
@@ -554,6 +552,7 @@ function SignInForm({ handleSignupMode }) {
   const client = useApolloClient();
   const queryUrl = useQueryUrl();
   const history = useHistory();
+  const [ css ] = useStyletron();
   const [ signin ] = useMutation(SIGN_IN);
   const [ showSigninWithCompanyEmail, setShowSigninWithCompanyEmail ] = useState(false);
   const [ submittingForm, setSubmittingForm ] = useState(false);
@@ -715,15 +714,11 @@ function SignInForm({ handleSignupMode }) {
             clientId={process.env.REACT_APP_G_AUTH_ID}
             onSuccess={successGoogle}
             onFailure={() => {}}
-            render={({ onClick }) => {
-              return (
-                <Button onClick={onClick} kind="minimal"><FaGoogle /><span style={{marginLeft: '8px'}} /> Sign in with Google</Button>
-              );
-            }}
+            buttonText="Sign in with Google"
             cookiePolicy={'single_host_origin'}
           />
           <Block margin="8px" />
-          <Button onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
+          <Button kind="secondary" className={css({ justifyContent: 'left' })} onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
         </Block>
       </FormControl>
     </Block>

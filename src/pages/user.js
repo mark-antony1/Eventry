@@ -908,6 +908,24 @@ function TeamsForm({ close, showForm }) {
     </Modal>
   );
 };
+function random_bg_color() {
+  const x = Math.floor(Math.random() * 256);
+  const y = Math.floor(Math.random() * 256);
+  const z = Math.floor(Math.random() * 180);
+  const bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  return bgColor;
+}
+
+function TeamCell({ team }) {
+  return (
+    <Block backgroundColor={random_bg_color()} padding="12px" display="flex" marginTop="12px" alignItems="center">
+      <Label1 color="#fff">{team.name}</Label1>
+      <Block marginLeft="12px">
+        <Label3 $as="a" href={`/team/${team.id}`} color="#fff">See upcoming events</Label3>
+      </Block>
+    </Block>
+  );
+}
 
 function User() {
   const client = useApolloClient();
@@ -1057,7 +1075,7 @@ function User() {
             </Block>
             {
               teams.map((team) => {
-                return <Label1 key={team.id}>{team.name}</Label1>
+                return <TeamCell key={team.id} team={team} />;
               })
             }
           </Block>

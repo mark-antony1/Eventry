@@ -498,7 +498,7 @@ export const venues = [
 		"symbol": "werewolf"
 	},
 	{
-		"id": 20,
+		"id": 21,
 		"photos": [
 			"https://cf.geekdo-images.com/opengraph/img/KvWkw6TGLr4arA4E1lwnJocdy8E=/fit-in/1200x630/pic2582929.jpg",
 			"https://www.jbowens.org/static/images/codenames-spymaster-view.png"

@@ -531,9 +531,12 @@ export default function Discovery() {
                 <b>{Math.floor(venueIndex / 10) + 1}</b>
               </Block>
               <Block flex="1" display="flex" flexDirection="column">
-                <Button kind="minimal" onClick={handleNextPage}>
-                  <b>{Math.floor(venueIndex / 10) + 2}</b> <ChevronRight size={36} />
-                </Button>
+                {
+                  (venueIndex + LIST_SIZE) <= venues.length &&
+                  <Button kind="minimal" onClick={handleNextPage}>
+                    <b>{Math.floor(venueIndex / LIST_SIZE) + 2}</b> <ChevronRight size={36} />
+                  </Button>
+                }
               </Block>
             </Block>
           </Block> :

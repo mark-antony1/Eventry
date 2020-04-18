@@ -10,7 +10,8 @@ import {
   FaStar,
   FaUserFriends,
   FaMoneyBill,
-  FaClock
+  FaClock,
+  FaRegCalendarAlt
 } from 'react-icons/fa';
 import DeleteIcon from 'baseui/icon/delete';
 import CheckIcon from 'baseui/icon/check';
@@ -224,6 +225,14 @@ export default function Details() {
         overrides={{ Block: { style: { zIndex: 5, boxShadow: '0px 5px 20px 0px rgba(0,0,0,0.75)' }}}}
       >
         <Block display="flex" flex="1" alignItems="center" paddingLeft="12px">
+          {
+            venue.linkToBook &&
+            <Block marginRight="12px">
+              <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#FF9D15'}}}} $as="a" href={venue.linkToBook} target="_blank">
+                <FaRegCalendarAlt color="#fff" /><span style={{ marginLeft:"4px"}}><b>Book</b></span>
+              </Button>
+            </Block>
+          }
           <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
             <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
           </Button>

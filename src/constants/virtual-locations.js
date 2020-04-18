@@ -2,6 +2,7 @@ export const venues = [
 	{
 		"id": 17,
 		"photos": [
+			"https://lh3.googleusercontent.com/R-EqabTZGxpWJ7U05vIjhmnjbvS_xl5Z1QYJu38CpM1pqcznuOBsrHznauiXpxi77FdeLDIjYoStrEt458yRijFw72uiaFbEPSaeN13v_YBO1dzmTazDc5TqwIc22OY-Gc5xHqC9VX4h51V1aeVwkC4-qRjzEzBMj3R-_EOM7vP19Y-R_B6X_pvpCJnasgqRhPFLGoR_4aDvtxTbsOLp12K458h4Q1Iz39Mt-FjKEDUgh5av-jZijs-8F1rbqqvjqCjQRxajTyAWi19W0LEnS8uim1v9ckKxppjiBuBZDKQJmqlro0VNJgvu06-j1mGW2z34wrAhhAfU3xvgWT1XsXA_sbp3Jn0EZSftjLko3lPho-Bhzg9OOCKX5bIuQRoRV0kdnIOickJJnqfuF6-RIr_07kYsu2LpY8JAseCE0dq9H5Z8zRaHYsIXfkJ3mF60G7HDknf1iR8CeyoSghgP_K2LidxR9fQoGMya5hgHNaeXGzJF45eqMV0YDqPtQMfykCRdMPW_zzw36BrsndLqB4eOTf9Rk5OGpFFUextPGZNK-oPd9q84wTlqwJoADStErm-YqK5XKj8I0lMY8llVvy_OXdeNubmhke2ikOstSn79DQ23xKAV6atGyDNXrbFZ1eiUY8DUAxZAu6gbGutF0GykwNVZvoCyVjPlX-RsRjkB1neEyp-140jXi4nk07Kyp2qDjFsS9pNu2nvBebO5SUBgwa2exsZ_GgohwOSf9eh8rNiBiMdY=w1400-h1050-no",
 			"https://www.tryreason.com/wp-content/uploads/2020/04/rename-battery-1-scaled.jpg",
 			"https://www.tryreason.com/wp-content/uploads/2020/04/ISS-dashboard-scaled.jpg",
 			"https://www.tryreason.com/wp-content/uploads/2020/04/aux-power-scaled.jpg",
@@ -14,6 +15,7 @@ export const venues = [
 		"phoneNumber": "",
 		"email": "",
 		"linkToSite": "https://www.tryreason.com/lola-in-space/",
+		"linkToBook": "https://tryreason.rezdy.com/?agentCode=tb",
 		"relevantLinks": [],
 		"activityType": "event",
 		"tags": ["cooperative"],

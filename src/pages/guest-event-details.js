@@ -547,7 +547,7 @@ export default () => {
 
   const isPast = moment(time).isBefore(moment());
 
-  const renderStatus = () => {
+  const getStatus = () => {
     let progress = 0;
     let label = '';
     if (status === 'CANCELLED') {
@@ -560,27 +560,27 @@ export default () => {
       label = 'Past event';
     } else if (status === 'READY') {
       // event is booked
-      progress = 90;
-      label = 'You are all set! Event is upcoming';
+      progress = 100;
+      label = 'You are all set! Event is ready';
     } else if (status === 'CREATED' && symbol && time) {
       // symbol selected, time selected
-      progress = 90;
-      label = 'You are all set! Event is upcoming';
+      progress = 100;
+      label = 'You are all set! Event is ready';
     } else if (status === 'CREATED' && time) {
       // symbol selected, time selected
-      progress = 70;
+      progress = 80;
       label = 'Please finalize the venue';
     } else if (status === 'CREATED' && symbol) {
       // symbol selected
-      progress = 70;
+      progress = 80;
       label = 'Please finalize the schedule';
     } else if (status === 'CREATED' && polls.length && validPollExist) {
       // poll is actively being conducted
-      progress = 30;
+      progress = 50;
       label = 'Poll is actively being conducted';
     } else if (status === 'CREATED' && polls.length && !validPollExist) {
       // all poll is expired
-      progress = 30;
+      progress = 50;
       label = 'Poll is over, select the venue';
     } else if (status === 'CREATED') {
       // created, no polls
@@ -588,70 +588,23 @@ export default () => {
       progress = 20;
     }
 
-    const renderLabel = () => {
-      if (progress < 50) {
-        return (
-          <Block
-            position="absolute"
-            left={`calc(${progress}%)`}
-            backgroundColor="#000"
-            padding="8px"
-            overrides={{
-              Block: {
-                style: {
-                  borderRadius: '20px'
-                }
-              }
-            }}
-          >
-            <Label3 color="#fff">{label}</Label3>
-          </Block>
-        );
-      }
-      return (
-        <Block
-          position="absolute"
-          right={`calc(${100 - progress}%)`}
-          backgroundColor="#000"
-          padding="8px"
-          overrides={{
-            Block: {
-              style: {
-                borderRadius: '20px'
-              }
-            }
-          }}
-        >
-          <Label3 color="#fff">{label}</Label3>
-        </Block>
-      );
-    }
-    return (
-      <Block width="100%" display="flex" flexDirection="column">
-        <ProgressBar
-          value={progress}
-          successValue={100}
-          overrides={{
-            BarProgress: {
-              style: {
-                backgroundColor: '#77BA01'
-              }
-            }
-          }}
-        />
-        <Block width="100%" position="relative" marginBottom="24px">
-          {renderLabel()}
-        </Block>
-      </Block>
-    );
+    return {
+      progress,
+      progressLabel: label
+    };
   };
+
+  const {
+    progress,
+    progressLabel
+  } = getStatus();
 
   return (
     <Block display="flex" flexDirection="column" paddingLeft={["24px", "24px", "60px", "60px"]} paddingRight={["24px", "24px", "60px", "60px"]} paddingTop="24px" paddingBottom="24px">
       <Block>
         {
           !editingName &&
-          <Block display="flex">
+          <Block display="flex" alignItems="center">
             <Display4>
               <b>
                 {
@@ -667,13 +620,49 @@ export default () => {
             <Block marginLeft="8px">
               <Button kind="minimal" onClick={() => setEditingName(true)}><FaPen /></Button>
             </Block>
+            <Block
+              backgroundColor="#000"
+              marginLeft="12px"
+              padding="12px"
+              overrides={{
+                Block: {
+                  style: {
+                    borderRadius: '20px'
+                  }
+                }
+              }}
+            >
+              <span style={{ color: '#fff'}}>{progressLabel}</span>
+            </Block>
           </Block>
         }
         {
           editingName && <NameForm name={name} close={() => setEditingName(false)} />
         }
         <Block marginLeft="-6px">
-          {renderStatus()}
+          <ProgressBar
+            value={progress}
+            successValue={100}
+            overrides={{
+              BarProgress: {
+                style: {
+                  backgroundColor: '#77BA01'
+                }
+              },
+              Bar: {
+                style: {
+                  height: '24px'
+                }
+              }
+            }}
+            getProgressLabel={(value) => {
+              if (value !== 0) {
+                return `${value}% ready for event`;
+              }
+              return null;
+            }}
+            showLabel
+          />
         </Block>
         {
           polls.length ?

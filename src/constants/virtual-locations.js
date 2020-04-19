@@ -547,15 +547,15 @@ export const venues = [
 	{
 		"id": 29,
 		"photos": [
-			"https://uploads-ssl.webflow.com/5e7ab0002c9596561bf87e16/5e7ab258d160ce7f071a90ea_pfh-rooms-p-800.png",
-			"https://www.carlos-dp.com/images/pfh_banner.jpg"
+			"https://town.siempre.io/images/site/hn-cleaned.png",
+			"https://town.siempre.io/images/site/xr1.png"
 		],
 		"name": "Online Town",
 		"description": "Online Town lets you setup a virtual town where you can hang out virtually as an avatar with friends on a variety of town landscapes.",
 		"teaserDescription": "Virtual Hangout",
 		"phoneNumber": "",
 		"email": "",
-		"linkToSite": "https://www.partyfromhome.social/",
+		"linkToSite": "https://town.siempre.io/",
 		"relevantLinks": [],
 		"activityType": "hangout",
 		"tags": ["chill"],

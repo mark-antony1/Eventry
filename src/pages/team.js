@@ -88,6 +88,7 @@ function EventCell({ event }) {
       backgroundColor={getBackgroundColor()}
       className={css({
         cursor: 'pointer',
+        borderRadius: '15px',
         ':hover': {
           opacity: 0.6
         }

@@ -14,7 +14,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  ModalButton,
 } from 'baseui/modal';
 import {
   FaLocationArrow,
@@ -281,7 +280,7 @@ function TimeForm({ time, showForm, close }) {
         }
       </ModalBody>
       <ModalFooter>
-        <ModalButton onClick={handleUpdateEventTime}>Save</ModalButton>
+        <PillButton onClick={handleUpdateEventTime}>Save</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -332,7 +331,7 @@ function VenueModalForm({ showForm, close }) {
         }
       </ModalBody>
       <ModalFooter>
-        <ModalButton onClick={handleUpdateEventTime}>Save</ModalButton>
+        <PillButton onClick={handleUpdateEventTime}>Save</PillButton>
       </ModalFooter>
     </Modal>
   );

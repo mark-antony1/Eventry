@@ -10,6 +10,12 @@ import {
   Label3
 } from 'baseui/typography';
 import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'baseui/modal';
+import {
   FaUserFriends,
 } from 'react-icons/fa';
 import {
@@ -88,30 +94,9 @@ function InviteNewMember() {
     return <Loading compact={true} />;
   }
 
-  if (inputingEmail) {
-    return (
-      <Block display="flex" flexDirection="column" margin="6px">
-        <FormControl label="Invite your team" error={error} positive="">
-          <Input
-            value={email}
-            type="text"
-            placeholder="email for invitation"
-            onChange={e => {
-              setEmail(e.currentTarget.value);
-            }}
-          />
-        </FormControl>
-        <PillButton
-          onClick={handleSendInvitation}
-        >
-          Send Invitation
-        </PillButton>
-      </Block>
-    );
-  }
-
-  return (
+  return [
     <PillButton
+      size="compact"
       onClick={() => {
         setInputingEmail(true);
         getCompanyEmails({
@@ -122,8 +107,31 @@ function InviteNewMember() {
       }}
     >
       Invite your team <FaUserFriends style={{ marginLeft: '8px' }} />
-    </PillButton>
-  );
+    </PillButton>,
+    <Modal onClose={() => setInputingEmail(false)} isOpen={inputingEmail}>
+      {loading && <Loading compact={true} message="Sending invite..." />}
+      <ModalHeader>Send Invitation</ModalHeader>
+      <ModalBody>
+        <FormControl label="Invite your team" error={error} positive="">
+          <Input
+            value={email}
+            type="text"
+            placeholder="email for invitation"
+            onChange={e => {
+              setEmail(e.currentTarget.value);
+            }}
+          />
+        </FormControl>
+      </ModalBody>
+      <ModalFooter>
+        <PillButton
+          onClick={handleSendInvitation}
+        >
+          Send Invitation
+        </PillButton>
+      </ModalFooter>
+    </Modal>
+  ];
 }
 function Member({ member }) {
   const {
@@ -132,7 +140,18 @@ function Member({ member }) {
     email
   } = member;
   return (
-    <Block backgroundColor="#f6f6f6" padding="12px" margin="6px">
+    <Block
+      backgroundColor="#f6f6f6"
+      padding="12px"
+      margin="6px"
+      overrides={{
+        Block: {
+          style: {
+            borderRadius: '15px'
+          }
+        }
+      }}
+    >
       <Label1>{firstName} {lastName}</Label1>
       <Label3>{email}</Label3>
     </Block>
@@ -158,9 +177,6 @@ export default function() {
     <Block
       display="flex"
     >
-      <Block flex="1">
-        <InviteNewMember />
-      </Block>
       <Block
         flex="1"
         display="flex"
@@ -168,7 +184,11 @@ export default function() {
         justifyContent="center"
         width="fit-content"
       >
-        <Display4 margin="6px"><b>Members</b></Display4>
+        <Block display="flex" alignItems="center">
+          <Display4><b>Members</b></Display4>
+          <Block marginLeft="12px" />
+          <InviteNewMember />
+        </Block>
         {
           members.map((member) => {
             return <Member key={member.id} member={member} />;

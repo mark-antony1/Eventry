@@ -36,12 +36,12 @@ export default function Home() {
           <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
             <Block margin="12px">
               <Button kind="secondary" $as="a" href="/v">
-                <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Search Virtual Experiences
+                <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Search Virtual
               </Button>
             </Block>
             <Block margin="12px">
               <Button overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#77B900" color="#fff" $as="a" href="/s">
-                Search Experiences in San Francisco
+                Search San Francisco
               </Button>
             </Block>
           </Block>
@@ -56,7 +56,7 @@ export default function Home() {
         <Display4><b>Build relationships and hangout with the team <span style={{ color: '#FF9D15'}}>virtually</span></b></Display4>
         <Block marginTop="12px">
           <Button $as="a" href="/v" overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#FF9D15" color="#fff">
-            Search Virtual Experiences
+            <p style={{fontSize: "18px"}}>Search Virtual</p>
           </Button>
         </Block>
       </Block>
@@ -94,8 +94,8 @@ export default function Home() {
         </Block>
       </Block>
       <Block backgroundColor="#f7f7f7" padding="48px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Label1 color="#77B900"><b>team@teambright.co</b></Label1>
-        <Label1 color="#77B900" $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
+        <Label1><b>team@teambright.co</b></Label1>
+        <Label1 $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
       </Block>
     </Block>
   );

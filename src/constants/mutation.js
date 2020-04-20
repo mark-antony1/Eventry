@@ -99,6 +99,11 @@ mutation JoinTeam($teamId: String!){
   joinTeam(teamId: $teamId)
 }`;
 
+export const CREATE_TEAM = gql`
+mutation CreateTeam($name: String!){
+  createTeam(name: $name)
+}`;
+
 export const QUIT_TEAM = gql`
 mutation QuitTeam($teamId: String!){
   quitTeam(teamId: $teamId)

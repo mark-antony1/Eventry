@@ -6,6 +6,7 @@ import {
   StyledNavigationList,
   StyledNavigationItem
 } from 'baseui/header-navigation';
+import PlusIcon from 'baseui/icon/plus';
 import DownIcon from 'baseui/icon/chevron-down';
 import { StatefulPopover } from 'baseui/popover';
 import { Block } from 'baseui/block';
@@ -166,6 +167,9 @@ const ToTeam = () => {
                     );
                   })
                 }
+                <Button kind="minimal" $as="a" href={`/create-team`}>
+                  Create Team <PlusIcon />
+                </Button>
               </Block>
             );
           }}

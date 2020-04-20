@@ -26,11 +26,11 @@ export default ({ value, options, placeholder, onChange }) => {
         }}
         content={({close}) => {
           return (
-            <Block display="flex" flexDirection="column">
+            <Block display="flex" flexDirection="column" backgroundColor="#fff">
               {
                 options.map((option) => {
                   return (
-                    <Button key={option.id} onClick={() => {
+                    <Button kind="minimal" key={option.id} onClick={() => {
                       onChange(option);
                       close();
                     }}>

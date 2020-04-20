@@ -936,7 +936,7 @@ function TeamCell({ team }) {
     <Block backgroundColor={getBackgroundColor()} padding="12px" display="flex" marginTop="12px" alignItems="center" overrides={{ Block: { style: { borderRadius: '500px'}}}}>
       <Label3 color="#fff"><b>{team.name}</b></Label3>
       <Block marginLeft="12px">
-        <Label3 $as="a" href={`/team/${team.id}`} color="#fff">See upcoming events</Label3>
+        <Label3 $as="a" href={`/team/${team.id}`} color="#fff">View team</Label3>
       </Block>
     </Block>
   );

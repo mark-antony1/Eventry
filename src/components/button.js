@@ -29,8 +29,7 @@ export default React.forwardRef(({ color, backgroundColor, kind, children, ...pr
         border: getBorder(),
         backgroundColor: getBackgroundColor(),
         ':hover': {
-          backgroundColor: !backgroundColor ? '#f4f4f4 !important' : 'initial',
-          opacity: backgroundColor ? '0.8' : '1'
+          backgroundColor: !backgroundColor ? '#f4f4f4 !important' : '#777 !important',
         }
       })}
       overrides={{

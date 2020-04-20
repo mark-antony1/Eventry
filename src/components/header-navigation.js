@@ -156,11 +156,11 @@ const ToTeam = () => {
           dismissOnEsc={false}
           content={() => {
             return (
-              <Block display="flex" flexDirection="column">
+              <Block display="flex" backgroundColor="#fff" flexDirection="column">
                 {
                   teams.map((team) => {
                     return (
-                      <Button key={team.id} $as="a" href={`/team/${team.id}`}>
+                      <Button kind="minimal" key={team.id} $as="a" href={`/team/${team.id}`}>
                         {team.name}
                       </Button>
                     );

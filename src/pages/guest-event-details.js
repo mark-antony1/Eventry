@@ -577,38 +577,38 @@ export default () => {
     if (status === 'CANCELLED') {
       // cancelled
       progress = 0;
-      label = 'Event is cancelled';
+      label = 'Event is Cancelled';
     } else if (isPast) {
       // past event
       progress = 100;
-      label = 'Past event';
+      label = 'Past Event';
     } else if (status === 'READY') {
       // event is booked
       progress = 100;
-      label = 'You are all set! Event is ready';
+      label = 'You are All Set! Event is Ready';
     } else if (status === 'CREATED' && symbol && time) {
       // symbol selected, time selected
       progress = 100;
-      label = 'You are all set! Event is ready';
+      label = 'You are All Set! Event is Ready';
     } else if (status === 'CREATED' && time) {
       // symbol selected, time selected
       progress = 80;
-      label = 'Please finalize the venue';
+      label = 'Finalize The Venue';
     } else if (status === 'CREATED' && symbol) {
       // symbol selected
       progress = 80;
-      label = 'Please finalize the schedule';
+      label = 'Finalize The schedule';
     } else if (status === 'CREATED' && polls.length && validPollExist) {
       // poll is actively being conducted
       progress = 50;
-      label = 'Poll is actively being conducted';
+      label = 'Poll is Actively Being Conducted';
     } else if (status === 'CREATED' && polls.length && !validPollExist) {
       // all poll is expired
       progress = 50;
-      label = 'Poll is over, select the venue';
+      label = 'Poll is Over, Select The Venue';
     } else if (status === 'CREATED') {
       // created, no polls
-      label = 'Conduct the poll or select the venue';
+      label = 'Conduct the Poll or Select The Venue';
       progress = 20;
     }
 
@@ -757,7 +757,7 @@ export default () => {
         </Block>
         <Block flex="0 1 33%" marginBottom="24px">
           <FaUserAlt color="#727272" />
-          <Label1 color="#727272"><b>Master</b></Label1>
+          <Label1 color="#727272"><b>Event Owner</b></Label1>
           <Label1><b>{masterFirstName} {masterLastName} at {companyName}</b></Label1>
           <Label1><b>{masterEmail}</b></Label1>
           <Label1><b>{masterPhoneNumber}</b></Label1>

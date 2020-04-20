@@ -5,7 +5,7 @@ import {
   Label2,
   Label3,
 } from 'baseui/typography';
-import { Select } from 'baseui/select';
+import Select from '../select';
 import { Block } from 'baseui/block';
 import { venues as allVenues } from '../../constants/locations';
 import { venues as allVirtualVenues } from '../../constants/virtual-locations';

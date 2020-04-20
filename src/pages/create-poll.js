@@ -3,12 +3,12 @@ import { useParams, useHistory } from 'react-router-dom';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
 import Button from '../components/button';
-import { Select } from 'baseui/select';
+import Select from '../components/select';
 import { StatefulDatepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
-import { Input } from 'baseui/input';
+import Input from '../components/input';
 import { FormControl } from 'baseui/form-control';
-import { Textarea } from 'baseui/textarea';
+import Textarea from '../components/textarea';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {
@@ -148,7 +148,24 @@ function CreatePollForm() {
                 {
                   form.expiration &&
                   <Block marginLeft="24px">
-                    <TimePicker value={form.expiration} onChange={(date) => updateForm({ expiration: date })} />
+                    <TimePicker
+                      value={form.expiration}
+                      onChange={(date) => updateForm({ expiration: date })}
+                      overrides={{
+                        Select: {
+                          props: {
+                            overrides: {
+                              ControlContainer: {
+                                style: {
+                                  borderRadius: '5px !important',
+                                  backgroundColor: '#fff !important'
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }}
+                    />
                   </Block>
                 }
               </Block>

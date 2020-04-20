@@ -12,7 +12,6 @@ import { setContext } from 'apollo-link-context';
 import { onError } from "apollo-link-error";
 import { getCookie } from './utils';
 
-import './fonts/Helvetica400.ttf';
 import './index.css';
 
 import App from './App';

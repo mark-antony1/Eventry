@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'baseui/button';
-import { Input } from 'baseui/input';
+import Input from '../components/input';
 import {
   Display4,
   Label2,
@@ -111,7 +111,6 @@ function SearchBar({ filterValue, updateFilterValue }) {
         onChange={e => {
           setSearchTerm(e.target.value);
         }}
-        overrides={{ Input: { style: { backgroundColor: '#fff'}} }}
         placeholder="Search Venue"
       />
     </Block>

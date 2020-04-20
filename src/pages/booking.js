@@ -3,11 +3,11 @@ import { useParams, useHistory } from 'react-router-dom';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
-import { Select } from 'baseui/select';
+import Select from '../components/select';
 import { StatefulCalendar } from 'baseui/datepicker';
-import { Input } from 'baseui/input';
+import Input from '../components/input';
 import { FormControl } from 'baseui/form-control';
-import { Textarea } from 'baseui/textarea';
+import Textarea from '../components/textarea';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';
 import {

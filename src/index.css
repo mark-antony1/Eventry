@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: 'Helvetica';
-  src: local('Helvetica'), url(./fonts/Helvetica400.ttf) format('truetype');
+  src: local('AirbnbCerealMedium'), url(./fonts/AirbnbCerealMedium.ttf) format('truetype');
 }
 
 body {

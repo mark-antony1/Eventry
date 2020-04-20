@@ -9,12 +9,12 @@ import moment from 'moment-timezone';
 import Plus from 'baseui/icon/plus';
 import { useStyletron } from 'styletron-react';
 import { Tag } from 'baseui/tag';
-import { Select } from 'baseui/select';
+import Select from '../select';
 import { Button } from 'baseui/button';
 import { Datepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
 import { FormControl } from 'baseui/form-control';
-import { Input } from 'baseui/input';
+import Input from '../input';
 import { StatefulTooltip } from 'baseui/tooltip';
 import { Block } from 'baseui/block';
 import {
@@ -123,12 +123,16 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
       <Block
         flex="1"
         backgroundColor={(userVoted || selectedPollLineItemId === item.id) ? "#77BA01" : "#ddd"}
-        padding="12px"
+        paddingTop="12px"
+        paddingBottom="12px"
+        paddingLeft="24px"
+        paddingRight="24px"
         marginTop="4px"
         display="flex"
         alignItems="center"
         className={css({
           cursor: 'pointer',
+          borderRadius: '500px',
           ':hover': {
             backgroundColor: "#77BA01"
           }
@@ -243,11 +247,33 @@ function PollForm({ poll, showForm, close }) {
                   }
                   return false;
                 }}
+                overrides={{
+                  Input: {
+                    component: Input
+                  }
+                }}
               />
               {
                 form.expiration &&
                 <Block marginLeft="24px">
-                  <TimePicker value={form.expiration} onChange={(date) => updateForm({ expiration: date })} />
+                  <TimePicker
+                    value={form.expiration}
+                    onChange={(date) => updateForm({ expiration: date })}
+                    overrides={{
+                      Select: {
+                        props: {
+                          overrides: {
+                            ControlContainer: {
+                              style: {
+                                borderRadius: '5px !important',
+                                backgroundColor: '#fff !important'
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }}
+                  />
                 </Block>
               }
             </Block>

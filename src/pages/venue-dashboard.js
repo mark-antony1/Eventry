@@ -8,7 +8,7 @@ import { Block } from 'baseui/block';
 import PillButton from '../components/pill-button';
 import { FormControl } from 'baseui/form-control';
 import { Tag } from 'baseui/tag';
-import { Select } from 'baseui/select';
+import Select from '../components/select';
 import { Navigation } from 'baseui/side-navigation';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import ChevronRight from 'baseui/icon/chevron-right';

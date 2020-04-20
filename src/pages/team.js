@@ -4,7 +4,7 @@ import { useStyletron } from 'styletron-react';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
 import { Tabs, Tab } from 'baseui/tabs';
-import { Input } from 'baseui/input';
+import Input from '../components/input';
 import { FormControl } from 'baseui/form-control';
 import { Navigation } from 'baseui/side-navigation';
 import { Tag } from 'baseui/tag';

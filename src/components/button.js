@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Block } from 'baseui/block';
+import React from "react";
 import { Button } from 'baseui/button';
 import { Label3 } from 'baseui/typography';
 import { useStyletron } from 'styletron-react';

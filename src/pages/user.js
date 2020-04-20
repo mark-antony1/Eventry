@@ -18,9 +18,9 @@ import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
 import Button from '../components/button';
 import { FormControl } from 'baseui/form-control';
-import { Input } from 'baseui/input';
+import Input from '../components/input';
 import { Tag } from 'baseui/tag';
-import { Select } from 'baseui/select';
+import Select from '../components/select';
 import { FaAngleRight } from 'react-icons/fa';
 import { GoogleLogin } from 'react-google-login';
 import {
@@ -812,10 +812,22 @@ function TeamLineItem({ team }) {
   };
 
   return (
-    <Block display="flex" alignItems="center" position="relative">
+    <Block display="flex">
       {loading && <Loading compact={true} />}
-      <Block flex="1" backgroundColor="#f7f7f7" padding="8px">
-        <Label1>{team.name}</Label1>
+      <Block
+        flex="1"
+        backgroundColor={getBackgroundColor()}
+        padding="8px"
+        marginTop="8px"
+        overrides={{
+          Block: {
+            style: {
+              borderRadius: '500px'
+            }
+          }
+        }}
+      >
+        <Label3 color="#fff"><b>{team.name}</b></Label3>
       </Block>
       {
         !confirming && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Quit</PillButton>
@@ -911,7 +923,7 @@ function TeamsForm({ close, showForm }) {
     </Modal>
   );
 };
-function random_bg_color() {
+function getBackgroundColor() {
   const x = Math.floor(Math.random() * 256);
   const y = Math.floor(Math.random() * 256);
   const z = Math.floor(Math.random() * 180);
@@ -921,8 +933,8 @@ function random_bg_color() {
 
 function TeamCell({ team }) {
   return (
-    <Block backgroundColor={random_bg_color()} padding="12px" display="flex" marginTop="12px" alignItems="center">
-      <Label1 color="#fff">{team.name}</Label1>
+    <Block backgroundColor={getBackgroundColor()} padding="12px" display="flex" marginTop="12px" alignItems="center" overrides={{ Block: { style: { borderRadius: '500px'}}}}>
+      <Label3 color="#fff"><b>{team.name}</b></Label3>
       <Block marginLeft="12px">
         <Label3 $as="a" href={`/team/${team.id}`} color="#fff">See upcoming events</Label3>
       </Block>

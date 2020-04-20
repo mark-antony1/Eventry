@@ -4,7 +4,7 @@ import { useApolloClient } from '@apollo/react-hooks';
 import { Block } from 'baseui/block';
 import PillButton from '../pill-button';
 import { FormControl } from 'baseui/form-control';
-import { Textarea } from 'baseui/textarea';
+import Textarea from '../textarea';
 import {
   Display3,
   Paragraph1,

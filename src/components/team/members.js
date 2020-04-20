@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useStyletron } from 'styletron-react';
 import { Block } from 'baseui/block';
 import { FormControl } from 'baseui/form-control';
-import { Input } from 'baseui/input';
+import Input from '../input';
 import {
   Display4,
   Label1,

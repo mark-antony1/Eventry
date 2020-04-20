@@ -6,7 +6,7 @@ import { Datepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
 import { Block } from 'baseui/block';
 import { FormControl } from 'baseui/form-control';
-import { Input } from 'baseui/input';
+import Input from '../components/input';
 import { Tag } from 'baseui/tag';
 import { ProgressBar } from 'baseui/progress-bar';
 import {
@@ -256,7 +256,24 @@ function TimeForm({ time, showForm, close }) {
               {
                 form.time &&
                 <Block marginLeft="24px">
-                  <TimePicker value={form.time} onChange={(date) => updateForm({ time: date })} />
+                  <TimePicker
+                    value={form.time}
+                    onChange={(date) => updateForm({ time: date })}
+                    overrides={{
+                      Select: {
+                        props: {
+                          overrides: {
+                            ControlContainer: {
+                              style: {
+                                borderRadius: '5px !important',
+                                backgroundColor: '#fff !important'
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }}
+                  />
                 </Block>
               }
             </Block>
@@ -385,12 +402,16 @@ function VenueForm() {
                 key={pollItem.id}
                 flex="1"
                 backgroundColor={(selectedVenueSymbol === pollItem.symbol) ? "#77BA01" : "#ddd"}
-                padding="12px"
+                paddingTop="12px"
+                paddingBottom="12px"
+                paddingLeft="24px"
+                paddingRight="24px"
                 marginTop="4px"
                 display="flex"
                 alignItems="center"
                 className={css({
                   cursor: 'pointer',
+                  borderRadius: '500px',
                   ':hover': {
                     backgroundColor: "#77BA01"
                   }

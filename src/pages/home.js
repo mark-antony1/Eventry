@@ -66,30 +66,46 @@ export default function Home() {
           <Label3><b>Get Started</b></Label3>
         </Block>
         <Block flex="0 1 100%">
-          <Display2><b>How it works</b></Display2>
+          <Display2><b>Search for Events</b></Display2>
+        </Block>
+        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} marginTop="24px">
+          <img width="70%" src={process.env.PUBLIC_URL + './search.png'} />
+          <Block display="flex" alignItems="center" padding="12px">
+            <Label1><b>Browse a selection of the best curated experiences for teambuilding and hanging out. Whether you want to find some in person or virtual, we have a selection that your entire team will love.</b></Label1>
+          </Block>
+        </Block>
+
+
+      </Block>
+      <Block display="flex" flexWrap="wrap" padding="48px" marginTop="68px" marginBottom="68px">
+        <Block flex="0 1 100%" display="flex" alignItems="center">
+          <Block width="20px" height="20px" backgroundColor="#4284F2" marginRight="12px" />
+        </Block>
+        <Block flex="0 1 100%">
+          <Display2><b>Manage Your Team</b></Display2>
         </Block>
         <Block flex="0 1 50%" marginTop="12px">
           <Block paddingRight="12px">
-            <Display4 color="#77B900"><b>01</b></Display4>
-            <Label1><b>Choose your area or virtual experiences</b></Label1>
+            <Display4 color="#4284F2"><b>01</b></Display4>
+            <Label1><b>Create or Join your team</b></Label1>
           </Block>
         </Block>
         <Block flex="0 1 50%" marginTop="12px">
           <Block paddingRight="12px">
-            <Display4 color="#77B900"><b>02</b></Display4>
-            <Label1><b>Browse experiences</b></Label1>
+            <Display4 color="#4284F2"><b>02</b></Display4>
+            <Label1><b>Create or Select your team's event</b></Label1>
           </Block>
         </Block>
         <Block flex="0 1 50%" marginTop="12px">
           <Block paddingRight="12px">
-            <Display4 color="#77B900"><b>03</b></Display4>
-            <Label1><b>View experience details</b></Label1>
+            <Display4 color="#4284F2"><b>03</b></Display4>
+            <Label1><b>Vote on a poll</b></Label1>
           </Block>
         </Block>
         <Block flex="0 1 50%" marginTop="12px">
           <Block paddingRight="12px">
-            <Display4 color="#77B900"><b>04</b></Display4>
-            <Label1><b>Book your team experience!</b></Label1>
+            <Display4 color="#4284F2"><b>04</b></Display4>
+            <Label1><b>Choose your event and book</b></Label1>
           </Block>
         </Block>
       </Block>

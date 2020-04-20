@@ -51,7 +51,8 @@ export default ({ value, options, placeholder, onChange }) => {
             borderRadius: '500px',
             boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.18) !important',
             border: selected ? '1px solid #000' : '1px solid #ddd',
-            padding: '16px'
+            padding: '16px',
+            cursor: 'pointer'
           })}
         >
           <Label3>{value ? options.find(o => o.id === value).label : placeholder}</Label3>

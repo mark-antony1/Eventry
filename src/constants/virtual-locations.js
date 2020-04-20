@@ -427,29 +427,6 @@ export const venues = [
 		"symbol": "clue"
 	},
 	{
-		"id": 13,
-		"photos": [
-			"https://uploads-ssl.webflow.com/5e7ab0002c9596561bf87e16/5e7ab258d160ce7f071a90ea_pfh-rooms-p-800.png",
-			"https://www.carlos-dp.com/images/pfh_banner.jpg"
-		],
-		"name": "Party From Home",
-		"description": "Party from Home lets you setup a virtual party, complete with separate video 'party rooms', integrated online party games, and more quirky social features to help keep things light and fun.",
-		"teaserDescription": "Virtual Parties",
-		"phoneNumber": "",
-		"email": "",
-		"linkToSite": "https://www.partyfromhome.social/",
-		"relevantLinks": [],
-		"activityType": "hangout",
-		"tags": ["chill"],
-		"rating": 4.4,
-		"takesReservations": true,
-		"averageTimeSpent": 60,
-		"recommendedGroupsize": [2, 10],
-		"price": 0,
-		"priceReasoning": "Based on price per game",
-		"symbol": "party-from-home"
-	},
-	{
 		"id": 14,
 		"photos": [
 			"https://icebreaker.video/img/home/how-it-works-gather@2x.png",
@@ -566,5 +543,28 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": "App is free",
 		"symbol": "jqbx"
+	},
+	{
+		"id": 29,
+		"photos": [
+			"https://town.siempre.io/images/site/hn-cleaned.png",
+			"https://town.siempre.io/images/site/xr1.png"
+		],
+		"name": "Online Town",
+		"description": "Online Town lets you setup a virtual town where you can hang out virtually as an avatar with friends on a variety of town landscapes.",
+		"teaserDescription": "Virtual Hangout",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://town.siempre.io/",
+		"relevantLinks": [],
+		"activityType": "hangout",
+		"tags": ["chill"],
+		"rating": 4.4,
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "onlin-town"
 	}
 ]

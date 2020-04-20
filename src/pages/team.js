@@ -145,8 +145,8 @@ function NewEvents() {
       <Block display="flex" alignItems="center">
         <Display4><b>New</b></Display4>
         <Block marginLeft="12px">
-          <PillButton size="compact" $as="a" href={`/team/${teamId}/create-poll`}>
-            Create new poll
+          <PillButton size="compact" $as="a" href={`/team/${teamId}/create-event`}>
+            Create new event
           </PillButton>
         </Block>
       </Block>

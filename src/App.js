@@ -14,7 +14,7 @@ import VenueDashboard from './pages/venue-dashboard';
 import Event from './pages/event';
 import Team from './pages/team';
 import Home from './pages/home';
-import CreatePoll from './pages/create-poll';
+import CreateEvent from './pages/create-event';
 import VirtualEventDiscovery from './pages/virtual-event-discovery';
 import { withTracker } from './utils';
 import './App.css';
@@ -31,7 +31,7 @@ function App() {
           <Route exact component={withTracker(About)} path="/about" />
           <Route exact component={withTracker(User)} path="/user" />
           <Route component={withTracker(Event)} path="/event/:eventId" />
-          <Route exact component={withTracker(CreatePoll)} path="/team/:teamId/create-poll" />
+          <Route exact component={withTracker(CreateEvent)} path="/team/:teamId/create-event" />
           <Route component={withTracker(Team)} path="/team/:teamId" />
           <Route exact component={withTracker(Details)} path="/:venueSymbol" />
           <Route exact component={withTracker(Booking)} path="/:venueSymbol/booking" />

@@ -40,7 +40,6 @@ function CreatePollForm() {
   const { teamId } = useParams();
   const history = useHistory();
   const [ form, setForm ] = useState({
-    name: '',
     expiration: null
   });
   const [ formError, setFormError ] = useState(null);
@@ -72,7 +71,6 @@ function CreatePollForm() {
     }
     const res = await createPoll({
       variables: {
-        name: form.name,
         expiration: form.expiration,
         teamId
       }
@@ -118,22 +116,10 @@ function CreatePollForm() {
       justifyContent="center"
     >
       <Block display="flex" flexDirection="column" width={['100%', '100%', '50%', '50%']}>
-        <Display4><b>Create Poll</b></Display4>
+        <Display4><b>Create Event</b></Display4>
         <FormControl label="" positive="" error={formError}>
           <Block>
-            <FormControl label="Poll Name (optional)" error={null} caption="ex: Where you want to go on the product launch?">
-              <Input
-                value={form.name}
-                type="text"
-                placeholder="poll name"
-                onChange={e => {
-                  updateForm({
-                    name: e.currentTarget.value
-                  });
-                }}
-              />
-            </FormControl>
-            <FormControl label="Poll Closing Time" caption="YYYY/MM/DD HH:MM" positive="" error={null}>
+            <FormControl label="Poll Closing Time" caption="Choose the time when your poll is closing" positive="" error={null}>
               <Block display="flex">
                 <StatefulDatepicker
                   value={form.expiration ? [form.expiration] : null}
@@ -143,6 +129,11 @@ function CreatePollForm() {
                       return true;
                     }
                     return false;
+                  }}
+                  overrides={{
+                    Input: {
+                      component: Input
+                    }
                   }}
                 />
                 {

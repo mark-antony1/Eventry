@@ -30,6 +30,8 @@ import {
   venues
 } from '../constants/locations';
 import { showAlert, getErrorCode } from '../utils';
+
+import PillButton from '../components/pill-button';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
@@ -84,7 +86,7 @@ function DateForm({ setCurrentStep, form, updateForm }) {
 
     return timeBlocks.map((b, index) => {
       return (
-        <Button
+        <PillButton
           key={index}
           kind={
             (form.hour === b.hour && form.minute === b.minute) ?
@@ -98,7 +100,7 @@ function DateForm({ setCurrentStep, form, updateForm }) {
           }}
         >
           <b>{getHourMinute(b.hour, b.minute)}</b>
-        </Button>
+        </PillButton>
       );
     });
   };
@@ -154,12 +156,12 @@ function DateForm({ setCurrentStep, form, updateForm }) {
         null
       }
       <Block display="flex" alignItems="center">
-        <Button
+        <PillButton
           disabled={form.day === -1 || form.hour === -1}
           onClick={() => setCurrentStep(STEPS.DETAILS)}
         >
           Next <ChevronRight />
-        </Button>
+        </PillButton>
       </Block>
     </Block>
   );
@@ -177,11 +179,11 @@ function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent, bookin
   return (
     <Block paddingTop="48px" display="flex" justifyContent={['flex-start', 'flex-start', 'center', 'center']} flexDirection={['column', 'column', 'row', 'row']}>
       <Block display="flex" alignItems="center" marginRight="48px">
-        <Button
+        <PillButton
           onClick={() => setCurrentStep(STEPS.DATE)}
         >
           <ChevronLeft /> Prev
-        </Button>
+        </PillButton>
       </Block>
       <Block display="flex" flexDirection="column" marginRight="48px">
         <Display4 marginBottom="12px"><b>Details</b></Display4>
@@ -243,9 +245,9 @@ function DetailsForm({ setCurrentStep, form, updateForm, handleBookEvent, bookin
         </FormControl>
       </Block>
       <Block display="flex" alignItems="center">
-        <Button onClick={handleBookEvent}>
+        <PillButton onClick={handleBookEvent}>
           Book <ChevronRight />
-        </Button>
+        </PillButton>
       </Block>
     </Block>
   );
@@ -378,11 +380,13 @@ function BookingForm() {
         <Block display="flex" flexDirection="column" alignItems="center" margin="24px">
           <Label1><b>Join TeamBright and get access to the full booking experiences</b></Label1>
           <Block margin="24px">
-            <Button
+            <PillButton
               onClick={() => {
                 history.push(`/user/?from=${symbol}/booking`);
               }}
-            >Sign up for TeamBright</Button>
+            >
+              Sign up for TeamBright
+            </PillButton>
           </Block>
         </Block>
       }

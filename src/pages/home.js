@@ -2,8 +2,9 @@ import React from 'react';
 import { useStyletron } from 'styletron-react';
 import { Tag } from 'baseui/tag';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
 import HeaderNavigation from '../components/header-navigation';
+import Button from '../components/button';
+import PillButton from '../components/pill-button';
 import {
   Display4,
   Display2,
@@ -39,7 +40,7 @@ export default function Home() {
               </Button>
             </Block>
             <Block margin="12px">
-              <Button overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900', height: '34px'}}}} $as="a" href="/s">
+              <Button overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#77B900" color="#fff" $as="a" href="/s">
                 Search Experiences in San Francisco
               </Button>
             </Block>
@@ -54,7 +55,7 @@ export default function Home() {
         <Display2><b>Keep The Team Together</b></Display2>
         <Display4><b>Build relationships and hangout with the team <span style={{ color: '#FF9D15'}}>virtually</span></b></Display4>
         <Block marginTop="12px">
-          <Button $as="a" href="/v" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#FF9D15', height: '34px'}}}}>
+          <Button $as="a" href="/v" overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#FF9D15" color="#fff">
             Search Virtual Experiences
           </Button>
         </Block>

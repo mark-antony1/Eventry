@@ -33,6 +33,7 @@ import {
 } from '../../utils';
 
 import Loading from '../loading';
+import PillButton from '../pill-button'
 
 function InviteNewMember() {
   const client = useApolloClient();
@@ -100,34 +101,17 @@ function InviteNewMember() {
             }}
           />
         </FormControl>
-        <Block
-          padding="24px"
-          backgroundColor="#CEEDE8"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          className={css({
-            cursor: 'pointer',
-            ':hover': {
-              opacity: 0.6
-            }
-          })}
+        <PillButton
           onClick={handleSendInvitation}
         >
-          <Label1>Send Invitation</Label1>
-        </Block>
+          Send Invitation
+        </PillButton>
       </Block>
     );
   }
 
   return (
-    <Block
-      padding="24px"
-      margin="6px"
-      backgroundColor="#CEEDE8"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
+    <PillButton
       onClick={() => {
         setInputingEmail(true);
         getCompanyEmails({
@@ -136,16 +120,9 @@ function InviteNewMember() {
           }
         });
       }}
-      className={css({
-        cursor: 'pointer',
-        ':hover': {
-          opacity: 0.6
-        }
-      })}
     >
-      <FaUserFriends />
-      <Label1>Invite your team</Label1>
-    </Block>
+      Invite your team <FaUserFriends style={{ marginLeft: '8px' }} />
+    </PillButton>
   );
 }
 function Member({ member }) {

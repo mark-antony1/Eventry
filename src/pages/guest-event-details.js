@@ -5,7 +5,6 @@ import { useStyletron } from 'styletron-react';
 import { Datepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
 import { Tag } from 'baseui/tag';
@@ -49,6 +48,7 @@ import {
 import { showAlert, getErrorCode } from '../utils';
 import { venues as allPhysicalVenues } from '../constants/locations';
 import { venues as allVirtualVenues } from '../constants/virtual-locations';
+import PillButton from '../components/pill-button';
 import Poll from '../components/team/poll';
 import VenueNameSearchBar from '../components/venue/venue-name-search-bar';
 import Loading from '../components/loading';
@@ -84,7 +84,7 @@ function SuggestClose() {
       {loading && <Loading compact={true} />}
       <Label1><b>Has event been successfully finished?</b></Label1>
       <Block display="flex" justifyContent="flex-end" marginTop="8px">
-        <Button onClick={handleCloseEvent}>Yes</Button>
+        <PillButton onClick={handleCloseEvent}>Yes</PillButton>
       </Block>
     </Block>
   );
@@ -126,14 +126,14 @@ function CancelEvent() {
       {
         !confirmingCancel &&
         <Block display="flex" alignItems="center">
-          <Button
+          <PillButton
             kind="secondary"
             disabled={eventInDay}
             onClick={() => setConfirmingCancel(true)}
             overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#D44333'}}}}
           >
             Cancel Event
-          </Button>
+          </PillButton>
           {eventInDay && <Label1 marginLeft="12px">Unable to cancel 24 hours before the event</Label1>}
         </Block>
       }
@@ -142,13 +142,12 @@ function CancelEvent() {
         <Block>
           <Label1><b>Please confirm</b></Label1>
           <Block marginTop="8px">
-            <Button
+            <PillButton
               kind="secondary"
               onClick={handleCancelEvent}
-              overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#D44333'}}}}
             >
               Confirm Cancel Event
-            </Button>
+            </PillButton>
           </Block>
         </Block>
       }
@@ -183,8 +182,12 @@ function NameForm({ name, close }) {
         onChange={(e) => setNameValue(e.target.value)}
         placeholder="event name"
       />
-      <Button onClick={handleUpdateEventName}>Save</Button>
-      <Button kind="minimal" onClick={close}>Cancel</Button>
+      <Block marginLeft="8px">
+        <PillButton onClick={handleUpdateEventName}>Save</PillButton>
+      </Block>
+      <Block marginLeft="4px">
+        <PillButton kind="minimal" onClick={close}>Cancel</PillButton>
+      </Block>
     </Block>
   );
 }
@@ -424,7 +427,7 @@ function VenueForm() {
         <VenueNameSearchBar updateForm={handleSelectVenue} form={form} />
       </FormControl>
       <Block display="flex" justifyContent="center">
-        <Button disabled={!selectedVenueSymbol} onClick={handleSubmitForm}>Select</Button>
+        <PillButton disabled={!selectedVenueSymbol} onClick={handleSubmitForm}>Select</PillButton>
       </Block>
     </Block>
   );
@@ -473,7 +476,7 @@ function VenueInfo({ openVenueForm }) {
           {
             status === 'CREATED' &&
             <Block marginLeft="4px">
-              <Button size="compact" kind="minimal" onClick={openVenueForm}><FaPen /></Button>
+              <PillButton size="compact" kind="minimal" onClick={openVenueForm}><FaPen /></PillButton>
             </Block>
           }
         </Block>
@@ -618,7 +621,7 @@ export default () => {
               </b>
             </Display4>
             <Block marginLeft="8px">
-              <Button kind="minimal" onClick={() => setEditingName(true)}><FaPen /></Button>
+              <PillButton kind="minimal" onClick={() => setEditingName(true)}><FaPen /></PillButton>
             </Block>
             <Block
               backgroundColor="#000"
@@ -683,7 +686,7 @@ export default () => {
               <Block display="flex" alignItems="center">
                 Poll is expired
                 <Block marginLeft="8px">
-                  <Button kind="secondary" onClick={() => setHidePoll(false)}>See Past Poll</Button>
+                  <PillButton kind="secondary" onClick={() => setHidePoll(false)}>See Past Poll</PillButton>
                 </Block>
               </Block>
             }
@@ -707,7 +710,7 @@ export default () => {
             {
               status === 'CREATED' &&
               <Block marginLeft="4px">
-                <Button size="compact" kind="minimal" onClick={() => setEditingTime(true)}><FaPen /></Button>
+                <PillButton size="compact" kind="minimal" onClick={() => setEditingTime(true)}><FaPen /></PillButton>
               </Block>
             }
           </Block>

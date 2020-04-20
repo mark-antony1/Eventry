@@ -3,7 +3,6 @@ import { useParams, useHistory, Switch, Route } from 'react-router-dom';
 import { useStyletron } from 'styletron-react';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
 import { Tabs, Tab } from 'baseui/tabs';
 import { Input } from 'baseui/input';
 import { FormControl } from 'baseui/form-control';
@@ -37,7 +36,7 @@ import {
 import { getErrorCode, showAlert } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
-
+import PillButton from '../components/pill-button';
 import Members from '../components/team/members';
 import Poll from '../components/team/poll';
 
@@ -146,9 +145,9 @@ function NewEvents() {
       <Block display="flex" alignItems="center">
         <Display4><b>New</b></Display4>
         <Block marginLeft="12px">
-          <Button size="compact" $as="a" href={`/team/${teamId}/create-poll`}>
+          <PillButton size="compact" $as="a" href={`/team/${teamId}/create-poll`}>
             Create new poll
-          </Button>
+          </PillButton>
         </Block>
       </Block>
       {!events.length && <Label1><b>No new events</b></Label1>}
@@ -216,14 +215,14 @@ function PastEvents() {
       {events.sort((a, b) => moment(a.time).isBefore(b.time) ? -1 : 1).map((event, index) => <EventCell event={event} key={index} />)}
       <Block display="flex" width="100%" marginTop="12px">
         <Block flex="1" display="flex" flexDirection="column">
-          <Button kind="minimal" onClick={handlePrevPage} disabled={page === 0}>
+          <PillButton kind="minimal" onClick={handlePrevPage} disabled={page === 0}>
             <ChevronLeft size={36} />
-          </Button>
+          </PillButton>
         </Block>
         <Block flex="1" display="flex" flexDirection="column">
-          <Button kind="minimal" onClick={handleNextPage} disabled={EVENTS_PER_PAGE !== events.length}>
+          <PillButton kind="minimal" onClick={handleNextPage} disabled={EVENTS_PER_PAGE !== events.length}>
             <ChevronRight size={36} />
-          </Button>
+          </PillButton>
         </Block>
       </Block>
     </Block>
@@ -321,8 +320,12 @@ function TeamNameForm({ name, close }) {
           onChange={(e) => setNameValue(e.target.value)}
           placeholder="team name"
         />
-        <Button onClick={handleUpdateTeamName}>Save</Button>
-        <Button kind="minimal" onClick={close}>Cancel</Button>
+        <Block marginLeft="8px">
+          <PillButton onClick={handleUpdateTeamName}>Save</PillButton>
+        </Block>
+        <Block marginLeft="4px">
+          <PillButton kind="minimal" onClick={close}>Cancel</PillButton>
+        </Block>
       </Block>
     </FormControl>
   );
@@ -360,7 +363,7 @@ function TeamInfo() {
         <Block display="flex" alignItems="center">
           <Display4><b>{team.name}</b></Display4>
           <Block marginLeft="8px">
-            <Button kind="minimal" onClick={() => setEditingName(true)}><FaPen /></Button>
+            <PillButton kind="minimal" onClick={() => setEditingName(true)}><FaPen /></PillButton>
           </Block>
         </Block>
       }

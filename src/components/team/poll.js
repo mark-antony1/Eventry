@@ -49,6 +49,7 @@ import {
 import { showAlert, getErrorCode, getVenueBySymbol } from '../../utils';
 import VenueNameSearchBar from '../venue/venue-name-search-bar';
 import Loading from '../../components/loading';
+import PillButton from '../pill-button';
 
 function getHasUserVoted(userId, pollLineItems) {
   return pollLineItems.reduce((agg, item) => {
@@ -89,7 +90,7 @@ function RemovePollLineItemForm({ item, pollLineItemId, showForm, close }) {
         <Label1>Remove {name}?</Label1>
       </ModalBody>
       <ModalFooter>
-        <ModalButton onClick={handleRemovePollLineItem}>Remove</ModalButton>
+        <PillButton onClick={handleRemovePollLineItem}>Remove</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -163,7 +164,7 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
         </Block>
       </Block>
       <Block marginLeft="8px">
-        <Button onClick={() => setRemovingPollLineItem(true)} size="compact" kind="minimal"><FaTrashAlt /></Button>
+        <PillButton onClick={() => setRemovingPollLineItem(true)} size="compact" kind="minimal"><FaTrashAlt /></PillButton>
       </Block>
       <RemovePollLineItemForm item={item} pollLineItemId={item.id} close={() => setRemovingPollLineItem(false)} showForm={removingPollLineItem} />
     </Block>
@@ -254,7 +255,7 @@ function PollForm({ poll, showForm, close }) {
         }
       </ModalBody>
       <ModalFooter>
-        <ModalButton onClick={handleAddPollLineItem}>Save</ModalButton>
+        <PillButton onClick={handleAddPollLineItem}>Save</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -318,23 +319,23 @@ function PollLineItemForm({ pollId, showForm, close }) {
         <FormControl error={formError} label="Discover Venues" positive="">
           <Block display="flex">
             <Block display="flex" flex="1" flexDirection="column">
-              <Button kind="secondary" $as="a" target="_blank" href="/v">
+              <PillButton kind="secondary" $as="a" target="_blank" href="/v">
                 <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Virtual venues
-              </Button>
+              </PillButton>
             </Block>
             <Block margin="4px" />
             <Block display="flex" flex="1" flexDirection="column">
-              <Button target="_blank" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900', height: '34px'}}}} $as="a" href="/s">
+              <PillButton target="_blank" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900', height: '34px'}}}} $as="a" href="/s">
                 Venues in San Francisco
-              </Button>
+              </PillButton>
             </Block>
           </Block>
         </FormControl>
         <Block height="1px" backgroundColor="#ddd" width="100%" />
         <Block display="flex" marginTop="8px" flex="1" flexDirection="column">
-          <Button kind="minimal" size="compact" onClick={() => setShowManualName(!showManualName)}>
+          <PillButton kind="minimal" size="compact" onClick={() => setShowManualName(!showManualName)}>
             I Want to Manually Enter Name
-          </Button>
+          </PillButton>
         </Block>
         {
           showManualName &&
@@ -353,7 +354,7 @@ function PollLineItemForm({ pollId, showForm, close }) {
 
       </ModalBody>
       <ModalFooter>
-        <ModalButton disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</ModalButton>
+        <PillButton disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -430,7 +431,7 @@ export default ({ poll }) => {
         {
           (!hasPollExpired && pollLineItems.length && pollLineItems.length < 10) ?
           <Block marginLeft="12px">
-            <Button size="compact" kind="secondary" onClick={() => setAddingPollLineItem(true)}><Plus /> Add Item</Button>
+            <PillButton size="compact" kind="secondary" onClick={() => setAddingPollLineItem(true)}><Plus /> Add Item</PillButton>
           </Block> : null
         }
         <Block flex="1" display="flex" justifyContent="flex-end" alignItems="center">
@@ -440,7 +441,7 @@ export default ({ poll }) => {
             <Label3>Expires {moment(poll.expiration).calendar()}</Label3>
           }
           <Block marginLeft="12px">
-            <Button size="compact" kind="minimal" onClick={() => setEditingPoll(true)}><FaPen /></Button>
+            <PillButton size="compact" kind="minimal" onClick={() => setEditingPoll(true)}><FaPen /></PillButton>
           </Block>
         </Block>
       </Block>
@@ -460,29 +461,29 @@ export default ({ poll }) => {
       <Block display="flex" justifyContent="center" marginTop="12px">
         {
           (!hasPollExpired && hasUserVoted && pollLineItems.length) ?
-          <Button
+          <PillButton
             kind="minimal"
             onClick={handleUnvoteLineItem}
           >
             Undo Vote
-          </Button> : null
+          </PillButton> : null
         }
         {
           (!hasPollExpired && !hasUserVoted && pollLineItems.length) ?
-          <Button
+          <PillButton
             disabled={!selectedPollLineItemId}
             onClick={handleVoteLineItem}
           >
             Vote
-          </Button> : null
+          </PillButton> : null
         }
         {
           (!hasPollExpired && !pollLineItems.length) ?
-          <Button
+          <PillButton
             onClick={() => setAddingPollLineItem(true)}
           >
             <Plus /> Add Item
-          </Button> : null
+          </PillButton> : null
         }
       </Block>
       <PollLineItemForm pollId={pollId} showForm={addingPollLineItem} close={() => setAddingPollLineItem(false)} />

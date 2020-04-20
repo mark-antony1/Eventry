@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
+import Button from '../components/button';
 import { Select } from 'baseui/select';
 import { StatefulDatepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';

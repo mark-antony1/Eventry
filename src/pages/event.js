@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
+import PillButton from '../components/pill-button';
 import ChevronLeft from 'baseui/icon/chevron-left';
 import {
   Label1,
@@ -104,17 +104,17 @@ const BackButton = () => {
 
   if (auth === 'VENUE') {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={`/${venue.symbol}/dashboard`}>
+      <PillButton kind="secondary" $as="a" href={`/${venue.symbol}/dashboard`}>
         <ChevronLeft /> Dashboard
-      </Button>
+      </PillButton>
     );
   }
 
   if (auth === 'GUEST') {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={`/team/${team.id}`}>
+      <PillButton kind="secondary" $as="a" href={`/team/${team.id}`}>
         <ChevronLeft /> {team.name}
-      </Button>
+      </PillButton>
     );
   }
 

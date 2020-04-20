@@ -16,7 +16,7 @@ import {
 } from 'baseui/modal';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
-import { Button } from 'baseui/button';
+import Button from '../components/button';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
 import { Tag } from 'baseui/tag';
@@ -30,6 +30,7 @@ import {
   useQueryUrl,
   showAlert
 } from '../utils';
+import PillButton from '../components/pill-button';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 import {
@@ -92,9 +93,9 @@ function MyReview({ review }) {
         <Block display="flex" justifyContent="flex-end" marginTop="8px">
           {
             confirmingDelete ?
-            <Button onClick={handleDeleteEndorsement}>Delete Endorsement</Button>
+            <PillButton onClick={handleDeleteEndorsement}>Delete Endorsement</PillButton>
             :
-            <Button kind="minimal" onClick={() => setConfirmingDelete(true)}><FaTrashAlt /></Button>
+            <PillButton kind="minimal" onClick={() => setConfirmingDelete(true)}><FaTrashAlt /></PillButton>
           }
 
         </Block>
@@ -543,7 +544,7 @@ function SignUpMethod({ handleSigninMode }) {
         cookiePolicy={'single_host_origin'}
       />
       <Block margin="8px" />
-      <Button className={css({ justifyContent: 'left' })} kind="secondary" onClick={() => setShowSignUpForm(true)}>Sign up with Company Email</Button>
+      <Button kind="secondary" onClick={() => setShowSignUpForm(true)}>Sign up with Company Email</Button>
     </Block>
   );
 }
@@ -718,7 +719,7 @@ function SignInForm({ handleSignupMode }) {
             cookiePolicy={'single_host_origin'}
           />
           <Block margin="8px" />
-          <Button kind="secondary" className={css({ justifyContent: 'left' })} onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
+          <Button kind="secondary" onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
         </Block>
       </FormControl>
     </Block>
@@ -817,10 +818,10 @@ function TeamLineItem({ team }) {
         <Label1>{team.name}</Label1>
       </Block>
       {
-        !confirming && <Button size="compact" kind="minimal" onClick={() => setConfirming(true)}>Quit</Button>
+        !confirming && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Quit</PillButton>
       }
       {
-        confirming && <Button size="compact" onClick={handleQuitTeam}>Quit Confirm</Button>
+        confirming && <PillButton size="compact" onClick={handleQuitTeam}>Quit Confirm</PillButton>
       }
     </Block>
   );
@@ -900,7 +901,9 @@ function TeamsForm({ close, showForm }) {
                   }
                 }}
               />
-              <Button disabled={!team} onClick={handleJoinTeam}>Join</Button>
+              <Block marginLeft="6px">
+                <PillButton disabled={!team} onClick={handleJoinTeam}>Join</PillButton>
+              </Block>
             </Block>
           </FormControl>
         }
@@ -1004,23 +1007,23 @@ function User() {
         <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center">
           <Label1><b>{email}</b></Label1>
           <Block marginLeft="12px">
-            <Button size="compact" kind="minimal" onClick={() => setChangingPassword(!changingPassword)}>
+            <PillButton size="compact" kind="minimal" onClick={() => setChangingPassword(!changingPassword)}>
               Change password
-            </Button>
+            </PillButton>
           </Block>
           <Block marginLeft="12px">
-            <Button size="compact" kind="secondary" onClick={() => {
+            <PillButton size="compact" kind="secondary" onClick={() => {
               setCookie('userToken', '', 7);
               refetch();
               showAlert(client, 'See you next time!');
             }}>
               Sign out
-            </Button>
+            </PillButton>
           </Block>
         </Block>
         {
           changingPassword &&
-          <Block display="flex" flexDirection="column" marginTop="12px" marginBottom="12px" backgroundColor="#f7f7f7" padding="12px">
+          <Block display="flex" width="fit-content" flexDirection="column" marginTop="12px" marginBottom="12px" backgroundColor="#f7f7f7" padding="12px">
             <FormControl
               error={changePasswordError}
               positive=""

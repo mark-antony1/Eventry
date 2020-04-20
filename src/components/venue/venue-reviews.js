@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useApolloClient } from '@apollo/react-hooks';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
+import PillButton from '../pill-button';
 import { FormControl } from 'baseui/form-control';
 import { Textarea } from 'baseui/textarea';
 import {
@@ -90,7 +90,7 @@ const WriteEndorsement = ({ symbol, setWritingEndorsement }) => {
         />
       </FormControl>
       <Block display="flex" alignItems="center">
-        <Button onClick={handleCreateEndorsement}>Submit</Button>
+        <PillButton onClick={handleCreateEndorsement}>Submit</PillButton>
         <Label1 marginLeft="12px">{content.length} / 500</Label1>
       </Block>
     </Block>
@@ -136,7 +136,7 @@ export default function VenueReviews({ symbol }) {
         }
         {
           (!checkUserHasWrittenReview && !writingEndorsement) &&
-          <Button
+          <PillButton
             onClick={() => {
               if (authData) {
                 setWritingEndorsement(true);
@@ -146,7 +146,7 @@ export default function VenueReviews({ symbol }) {
             }}
           >
             Write an endorsement!
-          </Button>
+          </PillButton>
         }
       </Block>
     </Block>

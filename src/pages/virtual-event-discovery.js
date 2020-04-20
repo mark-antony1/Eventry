@@ -18,7 +18,7 @@ import { useDebounce, useQueryUrl, useGA } from '../utils';
 
 // Filter
 import { Checkbox } from 'baseui/checkbox';
-import { Select } from 'baseui/select';
+import Select from '../components/filter-select';
 
 const groupSizeOptions = [
   {
@@ -120,42 +120,33 @@ function SearchBar({ filterValue, updateFilterValue }) {
 
 function Filter({ venueCount, filterValue, updateFilterValue }) {
   return (
-    <Block display="flex" flexDirection="column" backgroundColor="#f4f4f4">
-      <Block display="flex" alignItems="center" flexWrap="wrap">
-        <Block width="130px" padding="12px">
+    <Block display="flex" flexDirection="column">
+      <Block display="flex" alignItems="center" flexWrap="wrap" padding="12px">
+        <Block padding="6px">
           <Select
-            clearable={false}
-            searchable={false}
-            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
             options={groupSizeOptions}
-            value={filterValue.recommendedGroupsize ? [{id: filterValue.recommendedGroupsize}] : null}
+            value={filterValue.recommendedGroupsize}
             placeholder="Group Size"
-            onChange={params => updateFilterValue({ recommendedGroupsize: params.value[0].id })}
+            onChange={option => updateFilterValue({ recommendedGroupsize: option.id })}
           />
         </Block>
-        <Block width="140px" padding="12px">
+        <Block padding="6px">
           <Select
-            clearable={false}
-            searchable={false}
-            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
             options={typeOptions}
-            value={filterValue.type ? [{id: filterValue.type}] : null}
+            value={filterValue.type}
             placeholder="Activity Type"
-            onChange={params => updateFilterValue({ type: params.value[0].id })}
+            onChange={option => updateFilterValue({ type: option.id })}
           />
         </Block>
-        <Block width="200px" padding="12px">
+        <Block padding="6px">
           <Select
-            clearable={false}
-            searchable={false}
-            overrides={{ ControlContainer: { style: { backgroundColor: '#fff'}} }}
             options={budgetOptions}
-            value={filterValue.price ? [{id: filterValue.price}] : null}
+            value={filterValue.price}
             placeholder="Budget Per Person"
-            onChange={params => updateFilterValue({ price: params.value[0].id })}
+            onChange={option => updateFilterValue({ price: option.id })}
           />
         </Block>
-        <Block padding="12px">
+        <Block padding="6px">
           <Label2 color="#484848"><b>{venueCount} results</b></Label2>
         </Block>
       </Block>
@@ -376,7 +367,7 @@ export default function Discovery() {
       <Block display="flex" flex="1 1 auto" overflow={["initial", "initial", "auto", "auto"]}>
         {
           venues.length ?
-          <Block display="flex" flex="3" flexDirection="column" overflow="auto" backgroundColor="#F4F4F4">
+          <Block display="flex" flex="3" flexDirection="column" overflow="auto">
             <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} flexWrap="wrap">
             {
               slicedVenues.map((venue, index) => {

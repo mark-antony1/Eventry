@@ -5,7 +5,7 @@ import moment from 'moment-timezone';
 import { FaTrashAlt } from 'react-icons/fa';
 import Plus from 'baseui/icon/plus';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
+import PillButton from '../components/pill-button';
 import { FormControl } from 'baseui/form-control';
 import { Tag } from 'baseui/tag';
 import { Select } from 'baseui/select';
@@ -183,14 +183,14 @@ function PastEvents() {
       {events.sort((a, b) => moment(a.time).isBefore(b.time) ? -1 : 1).map((event, index) => <EventCell event={event} key={index} />)}
       <Block display="flex" width="100%" marginTop="12px">
         <Block flex="1" display="flex" flexDirection="column">
-          <Button kind="minimal" onClick={handlePrevPage} disabled={page === 0}>
+          <PillButton kind="minimal" onClick={handlePrevPage} disabled={page === 0}>
             <ChevronLeft size={36} />
-          </Button>
+          </PillButton>
         </Block>
         <Block flex="1" display="flex" flexDirection="column">
-          <Button kind="minimal" onClick={handleNextPage} disabled={EVENTS_PER_PAGE !== events.length}>
+          <PillButton kind="minimal" onClick={handleNextPage} disabled={EVENTS_PER_PAGE !== events.length}>
             <ChevronRight size={36} />
-          </Button>
+          </PillButton>
         </Block>
       </Block>
     </Block>
@@ -261,7 +261,7 @@ function BusinessHour({ hour }) {
       <Block display="flex" alignItems="center" margin="12px">
         <Label1><b>Delete {getHourFromMilitaryHour(hour.open)} - {getHourFromMilitaryHour(hour.close)}?</b></Label1>
         <Block marginLeft="12px">
-          <Button onClick={handleDeleteBusinessHour}>Yes</Button>
+          <PillButton onClick={handleDeleteBusinessHour}>Yes</PillButton>
         </Block>
       </Block>
     );
@@ -473,10 +473,10 @@ function BusinessHourForm({ activeIndex: day, activeHours }) {
               />
             </Block>
             <Block marginLeft="12px">
-              <Button onClick={handleCreateBusinessHour}>
+              <PillButton onClick={handleCreateBusinessHour}>
                 <Plus />
                 Add
-              </Button>
+              </PillButton>
             </Block>
           </Block>
         </FormControl>
@@ -485,10 +485,10 @@ function BusinessHourForm({ activeIndex: day, activeHours }) {
   }
   return (
     <Block marginTop="12px">
-      <Button onClick={() => setShowForm(true)}>
+      <PillButton onClick={() => setShowForm(true)}>
         <Plus />
         Add new business hour
-      </Button>
+      </PillButton>
     </Block>
   );
 }

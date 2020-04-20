@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
+import Button from '../components/button';
 import { useStyletron } from 'styletron-react';
 import { StatefulTooltip } from 'baseui/tooltip';
 import { Tag } from 'baseui/tag';
@@ -26,6 +26,7 @@ import {
 import HeaderNavigation from '../components/header-navigation';
 import DiscoveryMap from '../components/map/discovery-map';
 import VenueReviews from '../components/venue/venue-reviews';
+import PillButton from '../components/pill-button';
 import VirtualEventDetails from './virtual-event-details';
 import { getHourFromMilitaryHour } from '../utils';
 import { venues as allVenues } from '../constants/locations';
@@ -113,15 +114,15 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
       flexDirection="column"
     >
       <Block>
-        <Button kind="minimal" onClick={hidePhotoDetails}>
+        <PillButton kind="minimal" onClick={hidePhotoDetails}>
           <DeleteIcon size={36} />
-        </Button>
+        </PillButton>
       </Block>
       <Block display="flex" flex="1">
         <Block display="flex" alignItems="center">
-          <Button kind="minimal" onClick={onPrevPhoto}>
+          <PillButton kind="minimal" onClick={onPrevPhoto}>
             <ChevronLeft size={36} />
-          </Button>
+          </PillButton>
         </Block>
         <Block flex="1" display="flex" flexDirection="column" height="100%" alignItems="center" justifyContent="center">
           <Block height="calc(80vh - 50px)">
@@ -132,9 +133,9 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
           </Block>
         </Block>
         <Block display="flex" alignItems="center">
-          <Button kind="minimal" onClick={onNextPhoto}>
+          <PillButton kind="minimal" onClick={onNextPhoto}>
             <ChevronRight size={36} />
-          </Button>
+          </PillButton>
         </Block>
       </Block>
     </Block>
@@ -160,9 +161,9 @@ export default function Details({ match: { params: {venueSymbol} } }) {
 
   const BackButton = () => {
     return (
-      <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/s">
+      <PillButton kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href="/s">
         <ChevronLeft /> Map
-      </Button>
+      </PillButton>
     );
   };
 
@@ -267,7 +268,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
             <Block display="flex" marginTop="12px">
               <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
               <Block marginLeft="12px">
-                <Button $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</Button>
+                <PillButton $as="a" href={`https://www.google.com/maps/place/${venue.address}`} target="_blank">Open Map</PillButton>
               </Block>
             </Block>
           </Block>
@@ -293,13 +294,13 @@ export default function Details({ match: { params: {venueSymbol} } }) {
           {
             venue.linkToBook &&
             <Block marginRight="12px">
-              <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#FF9D15'}}}} $as="a" href={venue.linkToBook} target="_blank">
-                <FaRegCalendarAlt color="#fff" /><span style={{ marginLeft:"4px"}}><b>Book</b></span>
+              <Button kind="secondary" color="#fff" backgroundColor="#FF9D15" $as="a" href={venue.linkToBook} target="_blank">
+                <FaRegCalendarAlt /><span style={{ marginLeft:"4px"}}><b>Book</b></span>
               </Button>
             </Block>
           }
-          <Button kind="secondary" overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#77B900'}}}} $as="a" href={venue.linkToSite} target="_blank">
-            <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
+          <Button kind="secondary" color="#fff" backgroundColor="#77B900" $as="a" href={venue.linkToSite} target="_blank">
+            <CheckIcon size={24} /><b>Visit Website</b>
           </Button>
           <Label2 color="#727272" marginLeft="24px"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
         </Block>

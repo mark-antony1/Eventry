@@ -21,6 +21,7 @@ import {
   GET_USER_BY_AUTH,
   GET_ALERT_MESSAGE
 } from '../constants/query';
+import PillButton from '../components/pill-button';
 import { venues } from '../constants/locations';
 import { useWindowSize } from '../utils';
 
@@ -82,9 +83,9 @@ const ToVenueDashboard = () => {
   return (
     <StyledNavigationItem>
       <Block>
-        <Button $as="a" href={`/${symbol}/dashboard`} kind="minimal">
+        <PillButton $as="a" href={`/${symbol}/dashboard`}>
           {userVenue.name}
-        </Button>
+        </PillButton>
       </Block>
     </StyledNavigationItem>
   );
@@ -118,9 +119,9 @@ const ToVenueDashboardReduced = () => {
   const userVenue = venues.find((v) => v.symbol === symbol) || {};
 
   return (
-    <Button $as="a" href={`/${symbol}/dashboard`} kind="minimal">
+    <PillButton $as="a" href={`/${symbol}/dashboard`}>
       {userVenue.name}
-    </Button>
+    </PillButton>
   );
 };
 
@@ -170,63 +171,12 @@ const ToTeam = () => {
           }}
           placement="bottomRight"
         >
-          <Button kind="minimal">
+          <PillButton>
             My Teams <DownIcon />
-          </Button>
+          </PillButton>
         </StatefulPopover>
       </Block>
     </StyledNavigationItem>
-  );
-};
-
-const ToTeamReduced = () => {
-  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
-  if (loading || error) {
-    return null;
-  }
-
-  const {
-    getUserByAuth: auth
-  } = data;
-
-  if (!auth) {
-    return null;
-  }
-
-  const {
-    user: {
-      teams
-    }
-  } = auth;
-
-  if (!teams || !teams.length) {
-    return null;
-  }
-
-  return (
-    <StatefulPopover
-      dismissOnEsc={false}
-      content={() => {
-        return (
-          <Block display="flex" flexDirection="column">
-            {
-              teams.map((team) => {
-                return (
-                  <Button key={team.id} $as="a" href={`/team/${team.id}`}>
-                    {team.name}
-                  </Button>
-                );
-              })
-            }
-          </Block>
-        );
-      }}
-      placement="bottomRight"
-    >
-      <Button kind="minimal">
-        My Teams <DownIcon />
-      </Button>
-    </StatefulPopover>
   );
 };
 
@@ -252,33 +202,42 @@ export default ({ leftButtons, children }) => {
           }
         }}
       >
-        <Block display="flex" flexDirection="column" height="100%">
-          <Button $as="a" href="/" kind="minimal">
-            Home
-          </Button>
+        <Block display="flex">
+          <Block padding="12px">
+            <PillButton $as="a" href="/">
+              Home
+            </PillButton>
+          </Block>
           {
             (!loading && !error && data && !data.getUserByAuth) &&
-            <Button $as="a" href="/user?p=signup" kind="minimal">
-              Sign up
-            </Button>
+            <Block padding="12px">
+              <PillButton $as="a" href="/user?p=signup">
+                Sign up
+              </PillButton>
+            </Block>
           }
           {
             (!loading && !error && data && !data.getUserByAuth) &&
-            <Button $as="a" href="/user" kind="minimal">
-              Sign in
-            </Button>
+            <Block padding="12px">
+              <PillButton $as="a" href="/user">
+                Sign in
+              </PillButton>
+            </Block>
           }
           {
             (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
-            <Button $as="a" href="/user" kind="minimal">
-              {data.getUserByAuth.user.firstName}
-            </Button>
+            <Block padding="12px">
+              <PillButton $as="a" href="/user">
+                {data.getUserByAuth.user.firstName}
+              </PillButton>
+            </Block>
           }
           <ToVenueDashboardReduced />
-          <ToTeamReduced />
-          <Button $as="a" href="/about" kind="minimal">
-            About
-          </Button>
+          <Block padding="12px">
+            <PillButton $as="a" href="/about">
+              About
+            </PillButton>
+          </Block>
         </Block>
       </Drawer>
     );
@@ -323,33 +282,33 @@ export default ({ leftButtons, children }) => {
       <StyledNavigationList $align={ALIGN.right} className={css({paddingRight: '12px !important'})}>
         <StyledNavigationItem>
           <Block>
-            <Button $as="a" href="/about" kind="minimal">
+            <PillButton $as="a" href="/about">
               About
-            </Button>
+            </PillButton>
           </Block>
         </StyledNavigationItem>
         {
           (!loading && !error && data && !data.getUserByAuth) &&
           <StyledNavigationItem>
-            <Button $as="a" href="/user?p=signup" kind="minimal">
+            <PillButton $as="a" href="/user?p=signup">
               Sign up
-            </Button>
+            </PillButton>
           </StyledNavigationItem>
         }
         {
           (!loading && !error && data && !data.getUserByAuth) &&
           <StyledNavigationItem>
-            <Button $as="a" href="/user" kind="minimal">
+            <PillButton $as="a" href="/user">
               Sign in
-            </Button>
+            </PillButton>
           </StyledNavigationItem>
         }
         {
           (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
           <StyledNavigationItem>
-            <Button $as="a" href="/user" kind="minimal">
+            <PillButton $as="a" href="/user">
               {data.getUserByAuth.user.firstName}
-            </Button>
+            </PillButton>
           </StyledNavigationItem>
         }
         <ToVenueDashboard />

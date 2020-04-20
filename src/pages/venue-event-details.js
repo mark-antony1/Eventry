@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment-timezone';
 import { Block } from 'baseui/block';
-import { Button } from 'baseui/button';
 import { Tag } from 'baseui/tag';
 import {
   FaUserFriends,
@@ -29,6 +28,7 @@ import {
 } from '../constants/mutation';
 import { showAlert } from '../utils';
 import Loading from '../components/loading';
+import PillButton from '../components/pill-button';
 
 function SuggestClose() {
   const client = useApolloClient();
@@ -59,7 +59,7 @@ function SuggestClose() {
       {loading && <Loading compact={true} />}
       <Label1><b>Has event been successfully finished?</b></Label1>
       <Block display="flex" justifyContent="flex-end" marginTop="8px">
-        <Button onClick={handleCloseEvent}>Yes</Button>
+        <PillButton onClick={handleCloseEvent}>Yes</PillButton>
       </Block>
     </Block>
   );
@@ -90,13 +90,13 @@ function CancelEvent() {
       {
         !confirmingCancel &&
         <Block>
-          <Button
+          <PillButton
             kind="secondary"
             onClick={() => setConfirmingCancel(true)}
             overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#D44333'}}}}
           >
             Cancel Event
-          </Button>
+          </PillButton>
         </Block>
       }
       {
@@ -104,13 +104,13 @@ function CancelEvent() {
         <Block>
           <Label1><b>Please confirm</b></Label1>
           <Block marginTop="8px">
-            <Button
+            <PillButton
               kind="secondary"
               onClick={handleCancelEvent}
               overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#D44333'}}}}
             >
               Confirm Cancel Event
-            </Button>
+            </PillButton>
           </Block>
         </Block>
       }

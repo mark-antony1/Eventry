@@ -11,7 +11,10 @@ export default function About() {
     <Block display="flex" flexDirection="column">
       <HeaderNavigation leftButtons={[]} />
       <Block display="flex" justifyContent="center">
-        <Block width={[ '85%', '85%', '55%', '55%' ]} marginTop="120px" marginBottom="120px">
+        <Block width={[ '85%', '85%', '55%', '55%' ]} marginTop="60px" marginBottom="120px">
+          <Block display="flex" justifyContent="center">
+            <img src="https://www.fiftheagle.com/wp-content/uploads/2019/03/our-team.png" />
+          </Block>
           <Display4>Welcome To TeamBright</Display4>
           <Paragraph1>
             We believe that teams perform more effectively when enhanced with strong personal bonds between team members.

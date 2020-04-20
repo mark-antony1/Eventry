@@ -24,7 +24,7 @@ const Review = ({ review }) => {
     <Block display="flex" paddingBottom="24px" flexDirection={['column', 'column', 'row', 'row']}>
       <Block display="flex" marginRight="24px" marginBottom="24px" alignItems="flex-start">
         <Block width="80px" display="flex" marginRight="12px">
-          {review.company.logo && <img alt="review-logo" width="100%" style={{ objectFit: 'contain' }} src={review.company.logo} />}
+          {review.company.logo && <img alt="review-logo" width="100%" style={{ objectFit: 'contain', borderRadius: "10px" }} src={review.company.logo} />}
         </Block>
         <Block width="200px">
           <Label1><b>{`${review.user.firstName}`}</b></Label1>

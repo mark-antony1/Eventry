@@ -208,7 +208,7 @@ export default () => {
         </Block>
         <Block flex="1">
           <Block height="50px" display="flex" alignItems="flex-end">
-            {companyLogo && <img alt="review-logo" height="100%" src={companyLogo} />}
+            {companyLogo && <img alt="review-logo" height="100%" style={{borderRadius: "10px"}} src={companyLogo} />}
           </Block>
           {
             teams.map((team, index) => {

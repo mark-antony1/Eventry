@@ -1001,7 +1001,7 @@ function User() {
         <Block display="flex">
           <Display4><b>Hello {firstName}!</b></Display4>
           <Block flex="1" display="flex" alignItems="center" justifyContent="flex-end">
-            {companyLogo && <img alt="review-logo" height="50px" src={companyLogo} />}
+            {companyLogo && <img alt="review-logo" height="50px" src={companyLogo} style={{borderRadius: '10px'}}/>}
           </Block>
         </Block>
         <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center">

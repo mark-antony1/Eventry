@@ -371,7 +371,7 @@ function TeamInfo() {
         editingName && <TeamNameForm name={team.name} close={() => setEditingName(false)} />
       }
       <Block display="flex">
-        {company.logo && <Block marginRight="12px"><img alt="review-logo" height="24px" src={company.logo} /></Block>}
+        {company.logo && <Block marginRight="12px"><img alt="review-logo" height="24px" style={{borderRadius: "6px"}} src={company.logo} /></Block>}
         <Label1><b>{company.name}</b></Label1>
       </Block>
     </Block>

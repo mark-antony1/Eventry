@@ -342,14 +342,16 @@ function TeamInfo() {
   }
 
   const {
-    getUserByAuth: {
-      user
-    }
+    getUserByAuth: auth
   } = data;
 
-  if (!user) {
+  if (!auth) {
     return null;
   }
+
+  const {
+    user
+  } = auth;
 
   const {
     teams,

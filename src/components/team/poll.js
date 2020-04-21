@@ -360,7 +360,7 @@ function PollLineItemForm({ pollId, showForm, close }) {
         <Block height="1px" backgroundColor="#ddd" width="100%" />
         <Block display="flex" marginTop="8px" flex="1" flexDirection="column">
           <PillButton kind="minimal" size="compact" onClick={() => setShowManualName(!showManualName)}>
-            I Want to Manually Enter Name
+            Manually Add Name
           </PillButton>
         </Block>
         {

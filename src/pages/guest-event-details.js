@@ -585,6 +585,10 @@ export default () => {
       // event is booked
       progress = 100;
       label = 'You are All Set! Event is Ready';
+    } else if (status === 'CREATED' && polls.length && validPollExist) {
+      // poll is actively being conducted
+      progress = 50;
+      label = 'Poll is Actively Being Conducted';
     } else if (status === 'CREATED' && symbol && time) {
       // symbol selected, time selected
       progress = 100;
@@ -597,10 +601,6 @@ export default () => {
       // symbol selected
       progress = 80;
       label = 'Finalize The schedule';
-    } else if (status === 'CREATED' && polls.length && validPollExist) {
-      // poll is actively being conducted
-      progress = 50;
-      label = 'Poll is Actively Being Conducted';
     } else if (status === 'CREATED' && polls.length && !validPollExist) {
       // all poll is expired
       progress = 50;

@@ -177,3 +177,11 @@ export function getVenueBySymbol(symbol) {
   const venue = allVenues.find(v => v.symbol === symbol);
   return venue;
 }
+
+export function getBackgroundColor() {
+  const x = Math.floor(Math.random() * 256);
+  const y = Math.floor(Math.random() * 256);
+  const z = Math.floor(Math.random() * 180);
+  const bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  return bgColor;
+}

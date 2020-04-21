@@ -167,7 +167,10 @@ const ToTeam = () => {
                     );
                   })
                 }
-                <Button kind="minimal" $as="a" href={`/create-team`}>
+                <Button kind="minimal" $as="a" href={`/user/team`}>
+                  Find Team
+                </Button>
+                <Button kind="minimal" $as="a" href={`/user/team/create`}>
                   Create Team <PlusIcon />
                 </Button>
               </Block>

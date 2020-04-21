@@ -3,6 +3,7 @@ import { StatefulPopover } from 'baseui/popover';
 import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Label3 } from 'baseui/typography';
+import Check from 'baseui/icon/check';
 import { useStyletron } from 'styletron-react';
 
 export default ({ value, options, placeholder, onChange }) => {
@@ -34,7 +35,13 @@ export default ({ value, options, placeholder, onChange }) => {
                       onChange(option);
                       close();
                     }}>
-                      {option.label}
+                      <span
+                        style={{
+                          color: option.id === value ? '#02A84E' : '#000'
+                        }}
+                      >
+                        {option.label}
+                      </span>
                     </Button>
                   );
                 })

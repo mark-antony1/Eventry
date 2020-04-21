@@ -28,7 +28,8 @@ import {
   setCookie,
   getErrorCode,
   useQueryUrl,
-  showAlert
+  showAlert,
+  getBackgroundColor
 } from '../utils';
 import PillButton from '../components/pill-button';
 import Loading from '../components/loading';
@@ -752,7 +753,7 @@ function Sign() {
     >
       {
         hasRedirect &&
-        <Block width={['95%', '95%', '500px', '400px']} display="flex" flexDirection="column" alignItems="center" backgroundColor="#f7f7f7" padding="12px" marginBottom="24px">
+        <Block width={['95%', '95%', '500px', '400px']} display="flex" flexDirection="column" alignItems="center" padding="12px" marginBottom="24px">
           <Tag closeable={false} variant="outlined" kind="positive">Sign In Required!</Tag>
           <Label3>
             Sign in to unlock full TeamBright experience
@@ -799,137 +800,6 @@ function WithLogin({ children }) {
   );
 }
 
-function TeamLineItem({ team }) {
-  const [ confirming, setConfirming ] = useState(false);
-  const [ quitTeam, { loading } ] = useMutation(QUIT_TEAM);
-  const handleQuitTeam = async () => {
-    await quitTeam({
-      variables: {
-        teamId: team.id
-      },
-      refetchQueries: ['LoadUserProfile']
-    }).catch(e => {});
-  };
-
-  return (
-    <Block display="flex">
-      {loading && <Loading compact={true} />}
-      <Block
-        flex="1"
-        backgroundColor={getBackgroundColor()}
-        padding="8px"
-        marginTop="8px"
-        overrides={{
-          Block: {
-            style: {
-              borderRadius: '500px'
-            }
-          }
-        }}
-      >
-        <Label3 color="#fff"><b>{team.name}</b></Label3>
-      </Block>
-      {
-        !confirming && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Quit</PillButton>
-      }
-      {
-        confirming && <PillButton size="compact" onClick={handleQuitTeam}>Quit Confirm</PillButton>
-      }
-    </Block>
-  );
-}
-
-function TeamsForm({ close, showForm }) {
-  const client = useApolloClient();
-  const { data: userData, loading, error } = useQuery(LOAD_USER_PROFILE);
-  const [ formError, setFormError ] = useState(null);
-  const [ team, setTeam ] = useState(null);
-  const [ joinTeam ] = useMutation(JOIN_TEAM);
-  const [ getTeamsByEmail, { data: teamsData } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
-
-  useEffect(() => {
-    if (userData && userData.getUserByAuth) {
-      getTeamsByEmail({ variables: { email: userData.getUserByAuth.user.email.split('@')[1] } });
-    }
-  }, [userData]);
-
-  if (loading || error) {
-    return null;
-  }
-
-  const {
-    getUserByAuth: {
-      user: {
-        teams
-      }
-    }
-  } = userData;
-
-  const handleJoinTeam = async () => {
-    const res = await joinTeam({
-      variables: {
-        teamId: team.id
-      },
-      refetchQueries: ['LoadUserProfile']
-    }).catch(e => {
-      setFormError(getErrorCode(e));
-    });
-
-    if (res) {
-      showAlert(client, "Team successfully added");
-    }
-  };
-  return (
-    <Modal onClose={close} isOpen={showForm}>
-      <ModalHeader>My Teams</ModalHeader>
-      <ModalBody>
-        {
-          teams.map((team) => {
-            return <TeamLineItem key={team.id} team={team} />;
-          })
-        }
-        {
-          teamsData &&
-          <FormControl label="Join new team" error={formError} positive="">
-            <Block display="flex">
-              <Select
-                options={
-                  teamsData.getTeamsByEmail.map((team, index) => {
-                    return {
-                      id: team.id,
-                      label: team.name
-                    };
-                  })
-                }
-                value={team ? [team] : null}
-                placeholder="select team"
-                searchable={true}
-                getValueLabel={({option}) => option.label}
-                onChange={params =>{
-                  if (params.value[0]) {
-                    setTeam(params.value[0]);
-                  } else {
-                    setTeam(null);
-                  }
-                }}
-              />
-              <Block marginLeft="6px">
-                <PillButton disabled={!team} onClick={handleJoinTeam}>Join</PillButton>
-              </Block>
-            </Block>
-          </FormControl>
-        }
-      </ModalBody>
-    </Modal>
-  );
-};
-function getBackgroundColor() {
-  const x = Math.floor(Math.random() * 256);
-  const y = Math.floor(Math.random() * 256);
-  const z = Math.floor(Math.random() * 180);
-  const bgColor = "rgb(" + x + "," + y + "," + z + ")";
-  return bgColor;
-}
 
 function TeamCell({ team }) {
   return (
@@ -950,7 +820,6 @@ function User() {
   const [ changePasswordError, setChangePasswordError ] = useState(null);
   const [ currentPassword, setCurrentPassword ] = useState('');
   const [ newPassword, setNewPassword ] = useState('');
-  const [ editingTeams, setEditingTeams ] = useState(false);
 
   const validateForm = () => {
     if (!currentPassword) {
@@ -1084,8 +953,8 @@ function User() {
             <FaUserFriends />
             <Block display="flex" alignItems="center">
               <Label1><b>My Teams</b></Label1>
-              <Block marginLeft="4px">
-                <Button size="compact" kind="minimal" onClick={() => setEditingTeams(true)}><FaPen /></Button>
+              <Block marginLeft="8px">
+                <PillButton size="compact" $as="a" href="/user/team">Manage Teams</PillButton>
               </Block>
             </Block>
             {
@@ -1100,7 +969,6 @@ function User() {
           <MyReviews />
         </Block>
       </Block>
-      <TeamsForm showForm={editingTeams} close={() => setEditingTeams(false)} />
     </Block>
   );
 }

@@ -162,7 +162,7 @@ function Dashboard() {
       paddingTop="60px"
       paddingBottom="60px"
     >
-      <Block display="flex" flexDirection="column" width={['100%', '100%', '50%', '30%']}>
+      <Block display="flex" flexDirection="column" width={['100%', '100%', '60%', '60%']}>
         <Block display="flex" alignItems="center">
           <Display4><b>Manage Teams</b></Display4>
           <Block marginLeft="8px" />

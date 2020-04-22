@@ -122,7 +122,7 @@ export const venues = [
 	{
 		"id": 2,
 		"photos": [
-			"http://playingcards.io/img/header.svg"
+			"https://lh3.googleusercontent.com/e5AA7ViNFO8IX2dZJcByzLv7o7S2sE6idTSACKNR-dPsIOFSzSd7dn9UbP-h6Tvxx-YuZ3N_BnUFY3_7ShB1dU1nzer6ntGInanOibhQDyKpGuynhXx4Yp-H9fDT9bkzCOssT6ehNuPsAy6n0EdV8TwoZ2xcbF06TfJeDeqx2ozQUJOUra2lXavmBy8tTb2GUDeCyjHbBSkYRSGnRc1S5n8ExjNLqPhgkzFRmTiMWHzY9pOxLbb9TAaYVp449mvbO7_KlE_QDej8rrt_NimV6oxkSoLVcGVKtZZ-iRsTPnMT6vOqxeCRlSRpYXzceF2epFtH9QU9ky1bRX5n26BGXUhs5Jw4n-cCFUiExfc8HwBqIsmArmKoEF0Kk7jDzWtzn_dA6JKlsH8MeJTcEtYOXUdto57LpoUZl9gvr692_oxzjwy9RsjmFUZwDAQ13xQtAUdrOTwItoEEyWK-mNk3pa1ESZV6R6NbuhEKcvO1C381ktRygigcs1AXiiyO5Q2AxdwIM9FT4bTk8yphXk6ufv3dX810rh7qpU4asCcttDaWvbQUBb61sfjf206da6Mz3DWqf2WAB-zOgSVnR1qFgjFVJ2OrzNOV3YwPh9cqZzh81C7n-88vASwaTTZXgND-n7G-CjCi_t0Y-ubDYPQlIOdn9K9N072pSwUOLVO8BlKEUHCnrlpZGoxP4fX1=w1920-h768-no"
 		],
 		"name": "Playing Cards",
 		"description": "Play any card game with friends. Use one of the standards games available, or create your own game.",

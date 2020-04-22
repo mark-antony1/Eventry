@@ -9,11 +9,6 @@ import {
   FaGoogle,
   FaPen
 } from 'react-icons/fa';
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from 'baseui/modal';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
 import Button from '../components/button';
@@ -85,7 +80,6 @@ function MyReview({ review }) {
 
   return (
     <Block marginTop="12px" position="relative">
-      {deletingEndorsement && <Loading compact={true} />}
       <Card>
         <Paragraph1>
           {review.content}
@@ -94,7 +88,7 @@ function MyReview({ review }) {
         <Block display="flex" justifyContent="flex-end" marginTop="8px">
           {
             confirmingDelete ?
-            <PillButton onClick={handleDeleteEndorsement}>Delete Endorsement</PillButton>
+            <PillButton loading={deletingEndorsement} onClick={handleDeleteEndorsement}>Delete Endorsement</PillButton>
             :
             <PillButton kind="minimal" onClick={() => setConfirmingDelete(true)}><FaTrashAlt /></PillButton>
           }
@@ -443,7 +437,6 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
       flexDirection="column"
       position="relative"
     >
-      {submittingForm && <Loading compact={true} message="Signing You Up" />}
       <Block display="flex" paddingBottom="24px" alignItems="flex-end">
         <Display4>Sign up</Display4>
         <Block
@@ -479,7 +472,7 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
           {renderPasswordInput()}
         </Block>
       </FormControl>
-      <Button onClick={handleSignup}>Sign up</Button>
+      <Button loading={submittingForm} onClick={handleSignup}>Sign up</Button>
     </Block>
   );
 }
@@ -631,7 +624,6 @@ function SignInForm({ handleSignupMode }) {
         flexDirection="column"
         position="relative"
       >
-        {submittingForm && <Loading compact={true} message="Logging You In" />}
         <Block display="flex" paddingBottom="24px" alignItems="flex-end">
           <Display4>Sign in</Display4>
           <Block
@@ -681,7 +673,7 @@ function SignInForm({ handleSignupMode }) {
             </FormControl>
           </Block>
         </FormControl>
-        <Button onClick={handleSignin}>Sign in</Button>
+        <Button onClick={handleSignin} loading={submittingForm}>Sign in</Button>
       </Block>
     );
   }
@@ -693,7 +685,6 @@ function SignInForm({ handleSignupMode }) {
       flexDirection="column"
       position="relative"
     >
-      {submittingForm && <Loading compact={true} message="Logging You In" />}
       <Block display="flex" paddingBottom="24px" alignItems="flex-end">
         <Display4>Sign in</Display4>
         <Block

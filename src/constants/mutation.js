@@ -120,7 +120,7 @@ mutation UpdateEventTime($eventId: String!, $time: DateTime!){
 }`;
 
 export const UPDATE_EVENT_SYMBOL = gql`
-mutation UpdateEventSymbol($eventId: String!, $symbol: String!){
+mutation UpdateEventSymbol($eventId: String!, $symbol: String){
   updateEventSymbol(eventId: $eventId, symbol: $symbol)
 }`;
 

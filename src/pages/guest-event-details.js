@@ -21,7 +21,8 @@ import {
   FaStickyNote,
   FaUserAlt,
   FaClock,
-  FaPen
+  FaPen,
+  FaTrashAlt
 } from 'react-icons/fa';
 import {
   Label1,
@@ -80,10 +81,9 @@ function SuggestClose() {
       padding="16px"
       position="relative"
     >
-      {loading && <Loading compact={true} />}
       <Label1><b>Has event been successfully finished?</b></Label1>
       <Block display="flex" justifyContent="flex-end" marginTop="8px">
-        <PillButton onClick={handleCloseEvent}>Yes</PillButton>
+        <PillButton loading={loading} onClick={handleCloseEvent}>Yes</PillButton>
       </Block>
     </Block>
   );
@@ -121,7 +121,6 @@ function CancelEvent() {
 
   return (
     <Block marginTop="24px">
-      {loading && <Loading compact={true} />}
       {
         !confirmingCancel &&
         <Block display="flex" alignItems="center">
@@ -143,6 +142,7 @@ function CancelEvent() {
           <Block marginTop="8px">
             <PillButton
               kind="secondary"
+              loading={loading}
               onClick={handleCancelEvent}
             >
               Confirm Cancel Event
@@ -235,52 +235,80 @@ function TimeForm({ time, showForm, close }) {
   };
   return (
     <Modal onClose={close} isOpen={showForm}>
-      {updating && <Loading compact={true} message="Save time..." />}
       <ModalHeader>Event Time</ModalHeader>
       <ModalBody>
-        {
-          !updating &&
-          <FormControl label="Time" caption="YYYY/MM/DD HH:MM" positive="" error={formError}>
-            <Block display="flex">
-              <Datepicker
-                value={form.time ? [form.time] : null}
-                onChange={({date}) => updateForm({ time: date })}
-                filterDate={(date) => {
-                  if (moment(date).isAfter(moment())) {
-                    return true;
-                  }
-                  return false;
-                }}
-              />
-              {
-                form.time &&
-                <Block marginLeft="24px">
-                  <TimePicker
-                    value={form.time}
-                    onChange={(date) => updateForm({ time: date })}
-                    overrides={{
-                      Select: {
-                        props: {
-                          overrides: {
-                            ControlContainer: {
-                              style: {
-                                borderRadius: '5px !important',
-                                backgroundColor: '#fff !important'
-                              }
+        <FormControl label="Time" caption="YYYY/MM/DD HH:MM" positive="" error={formError}>
+          <Block display="flex">
+            <Datepicker
+              value={form.time ? [form.time] : null}
+              onChange={({date}) => updateForm({ time: date })}
+              filterDate={(date) => {
+                if (moment(date).isAfter(moment())) {
+                  return true;
+                }
+                return false;
+              }}
+            />
+            {
+              form.time &&
+              <Block marginLeft="24px">
+                <TimePicker
+                  value={form.time}
+                  onChange={(date) => updateForm({ time: date })}
+                  overrides={{
+                    Select: {
+                      props: {
+                        overrides: {
+                          ControlContainer: {
+                            style: {
+                              borderRadius: '5px !important',
+                              backgroundColor: '#fff !important'
                             }
                           }
                         }
                       }
-                    }}
-                  />
-                </Block>
-              }
-            </Block>
-          </FormControl>
-        }
+                    }
+                  }}
+                />
+              </Block>
+            }
+          </Block>
+        </FormControl>
       </ModalBody>
       <ModalFooter>
-        <PillButton onClick={handleUpdateEventTime}>Save</PillButton>
+        <PillButton loading={updating} onClick={handleUpdateEventTime}>Save</PillButton>
+      </ModalFooter>
+    </Modal>
+  );
+}
+
+function RemoveVenueModalForm({ showForm, close }) {
+  const client = useApolloClient();
+  const { eventId } = useParams();
+  const [ formError, setFormError ] = useState(null);
+  const [ updateEventSymbol, { loading: updating } ] = useMutation(UPDATE_EVENT_SYMBOL);
+
+  const handleRemoveVenue = async () => {
+    const res = await updateEventSymbol({
+      variables: {
+        eventId,
+        symbol: null
+      },
+      refetchQueries: ['GetEvent']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+
+    if (res) {
+      showAlert(client, "Venue successfully removed");
+      close();
+    }
+  };
+  return (
+    <Modal onClose={close} isOpen={showForm}>
+      <ModalHeader>Remove Venue</ModalHeader>
+      <ModalFooter>
+        <PillButton loading={updating} onClick={handleRemoveVenue}>Remove</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -318,20 +346,16 @@ function VenueModalForm({ showForm, close }) {
   };
   return (
     <Modal onClose={close} isOpen={showForm}>
-      {updating && <Loading compact={true} message="Save venue..." />}
       <ModalHeader>Venue</ModalHeader>
       <ModalBody>
-        {
-          !updating &&
-          <FormControl label="Search venues by name" positive="" error={formError}>
-            <Block display="flex">
-              <VenueNameSearchBar updateForm={updateForm} form={form} />
-            </Block>
-          </FormControl>
-        }
+        <FormControl label="Search venues by name" positive="" error={formError}>
+          <Block display="flex">
+            <VenueNameSearchBar updateForm={updateForm} form={form} />
+          </Block>
+        </FormControl>
       </ModalBody>
       <ModalFooter>
-        <PillButton onClick={handleUpdateEventTime}>Save</PillButton>
+        <PillButton loading={updating} onClick={handleUpdateEventTime}>Save</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -453,7 +477,7 @@ function VenueForm() {
   );
 }
 
-function VenueInfo({ openVenueForm }) {
+function VenueInfo({ openVenueForm, openRemoveVenueForm }) {
   const { eventId } = useParams();
   const { data, loading, error } = useQuery(GET_EVENT, {
     variables: {
@@ -476,7 +500,15 @@ function VenueInfo({ openVenueForm }) {
     return (
       <Block>
         <FaLocationArrow color="#727272" />
-        <Label1 color="#727272"><b>Where</b></Label1>
+        <Block display="flex" alignItems="center">
+          <Label1 color="#727272"><b>Where</b></Label1>
+          {
+            status === 'CREATED' &&
+            <Block marginLeft="4px">
+              <PillButton size="compact" kind="minimal" onClick={openVenueForm}><FaPen /></PillButton>
+            </Block>
+          }
+        </Block>
         <Label1><b>N/A</b></Label1>
       </Block>
     );
@@ -497,6 +529,12 @@ function VenueInfo({ openVenueForm }) {
             status === 'CREATED' &&
             <Block marginLeft="4px">
               <PillButton size="compact" kind="minimal" onClick={openVenueForm}><FaPen /></PillButton>
+            </Block>
+          }
+          {
+            status === 'CREATED' && symbol &&
+            <Block marginLeft="4px">
+              <PillButton size="compact" kind="minimal" onClick={openRemoveVenueForm}><FaTrashAlt /></PillButton>
             </Block>
           }
         </Block>
@@ -520,6 +558,7 @@ export default () => {
   });
   const [ validPollExist, setValidPollExist ] = useState(false);
   const [ hidePoll, setHidePoll ] = useState(false);
+  const [ removingVenue, setRemovingVenue ] = useState(false);
   const [ editingVenue, setEditingVenue ] = useState(false);
   const [ editingTime, setEditingTime ] = useState(false);
   const [ editingName, setEditingName ] = useState(false);
@@ -721,7 +760,7 @@ export default () => {
       </Block>
       <Block marginTop="24px" display="flex" flexWrap="wrap">
         <Block flex="0 1 33%" marginBottom="24px">
-          <VenueInfo openVenueForm={() => setEditingVenue(true)} />
+          <VenueInfo openVenueForm={() => setEditingVenue(true)} openRemoveVenueForm={() => setRemovingVenue(true)} />
         </Block>
         <Block flex="0 1 33%" marginBottom="24px">
           <FaClock color="#727272" />
@@ -783,6 +822,7 @@ export default () => {
       </Block>
       <TimeForm showForm={editingTime} close={() => setEditingTime(false)} time={time} />
       <VenueModalForm showForm={editingVenue} close={() => setEditingVenue(false)} />
+      <RemoveVenueModalForm showForm={removingVenue} close={() => setRemovingVenue(false)} />
     </Block>
   );
 }

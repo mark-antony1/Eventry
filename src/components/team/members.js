@@ -109,7 +109,6 @@ function InviteNewMember() {
       Invite your team <FaUserFriends style={{ marginLeft: '8px' }} />
     </PillButton>,
     <Modal onClose={() => setInputingEmail(false)} isOpen={inputingEmail}>
-      {loading && <Loading compact={true} message="Sending invite..." />}
       <ModalHeader>Send Invitation</ModalHeader>
       <ModalBody>
         <FormControl label="Invite your team" error={error} positive="">
@@ -126,6 +125,7 @@ function InviteNewMember() {
       <ModalFooter>
         <PillButton
           onClick={handleSendInvitation}
+          loading={loading}
         >
           Send Invitation
         </PillButton>

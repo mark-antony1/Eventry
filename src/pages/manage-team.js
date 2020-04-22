@@ -9,11 +9,6 @@ import {
   FaGoogle,
   FaPen
 } from 'react-icons/fa';
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from 'baseui/modal';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
 import Button from '../components/button';
@@ -82,7 +77,6 @@ function TeamLineItem({ team }) {
 
   return (
     <Block display="flex">
-      {loading && <Loading compact={true} />}
       <Block
         flex="1"
         backgroundColor={getBackgroundColor()}
@@ -99,10 +93,10 @@ function TeamLineItem({ team }) {
         <Label3 color="#fff"><b>{team.name}</b></Label3>
       </Block>
       {
-        !confirming && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Quit</PillButton>
+        !confirming && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Leave</PillButton>
       }
       {
-        confirming && <PillButton size="compact" onClick={handleQuitTeam}>Quit Confirm</PillButton>
+        confirming && <PillButton size="compact" loading={loading} onClick={handleQuitTeam}>Confirm Leave</PillButton>
       }
     </Block>
   );

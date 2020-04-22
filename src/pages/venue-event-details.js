@@ -56,10 +56,9 @@ function SuggestClose() {
       padding="16px"
       position="relative"
     >
-      {loading && <Loading compact={true} />}
       <Label1><b>Has event been successfully finished?</b></Label1>
       <Block display="flex" justifyContent="flex-end" marginTop="8px">
-        <PillButton onClick={handleCloseEvent}>Yes</PillButton>
+        <PillButton loading={loading} onClick={handleCloseEvent}>Yes</PillButton>
       </Block>
     </Block>
   );
@@ -86,7 +85,6 @@ function CancelEvent() {
 
   return (
     <Block marginTop="24px">
-      {loading && <Loading compact={true} />}
       {
         !confirmingCancel &&
         <Block>
@@ -107,6 +105,7 @@ function CancelEvent() {
             <PillButton
               kind="secondary"
               onClick={handleCancelEvent}
+              loading={loading}
               overrides={{ BaseButton: { style: { color: '#fff', backgroundColor: '#D44333'}}}}
             >
               Confirm Cancel Event

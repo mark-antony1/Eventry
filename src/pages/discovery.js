@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Block } from 'baseui/block';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'baseui/button';
+import Button from '../components/button';
 import Input from '../components/input';
 import {
   Display4,
@@ -142,7 +142,6 @@ function SearchBar({ filterValue, updateFilterValue }) {
         onChange={e => {
           setSearchTerm(e.target.value);
         }}
-
         placeholder="Search Venue"
       />
     </Block>
@@ -188,6 +187,16 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
         <Block padding="6px">
           <Checkbox
             checked={filterValue.indoor}
+            overrides={{
+              Checkmark: {
+                style: {
+                  borderBottomRightRadius: '5px !important',
+                  borderTopRightRadius: '5px !important',
+                  borderBottomLeftRadius: '5px !important',
+                  borderTopLeftRadius: '5px !important',
+                }
+              }
+            }}
             onChange={e => updateFilterValue({ indoor: e.target.checked })}
           >
             Indoor
@@ -197,6 +206,16 @@ function Filter({ venueCount, filterValue, updateFilterValue }) {
           <Checkbox
             checked={filterValue.outdoor}
             onChange={e => updateFilterValue({ outdoor: e.target.checked })}
+            overrides={{
+              Checkmark: {
+                style: {
+                  borderBottomRightRadius: '5px !important',
+                  borderTopRightRadius: '5px !important',
+                  borderBottomLeftRadius: '5px !important',
+                  borderTopLeftRadius: '5px !important',
+                }
+              }
+            }}
           >
             Outdoor
           </Checkbox>
@@ -477,8 +496,8 @@ export default function Discovery() {
               zIndex: 1
             })}
           >
-            {largeMap && <Button size="compact" kind="secondary" onClick={() => setLargeMap(false)}><ChevronLeft /> Reduce Map</Button>}
-            {!largeMap && <Button size="compact" kind="secondary" onClick={() => setLargeMap(true)}>Large Map <ChevronRight /></Button>}
+            {largeMap && <Button size="compact" backgroundColor="#4284F2" color="#fff" onClick={() => setLargeMap(false)}><ChevronLeft /> Reduce Map</Button>}
+            {!largeMap && <Button size="compact" backgroundColor="#4284F2" color="#fff" onClick={() => setLargeMap(true)}>Large Map <ChevronRight /></Button>}
           </Block>
           <DiscoveryMap venues={venues} hoveredVenueId={hoveredVenueId} setHoveredVenueId={setHoveredVenueId} onVenueClicked={onVenueClicked} />
         </Block>

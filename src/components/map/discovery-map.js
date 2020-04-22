@@ -143,7 +143,7 @@ export default function DiscoveryMap({ venues, hoveredVenueId, disableScrollZoom
             onClick={() => { history.push(`/${pinnedVenue.symbol}`) }}
             overrides={{ Block: { style: { cursor: 'pointer' } } }}
           >
-            <Block backgroundColor="#0B6839" padding="8px">
+            <Block backgroundColor="#4284F2" padding="8px">
               <Label3 color="#fff">{pinnedVenue.name}</Label3>
               <Label2 color="#fff">{pinnedVenue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></Label2>
             </Block>

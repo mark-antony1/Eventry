@@ -7,12 +7,18 @@ export default ({ ...props }) => {
       overrides={{
         InputContainer: {
           style: {
-            borderRadius: '5px !important'
+            borderBottomRightRadius: '5px !important',
+            borderBottomLeftRadius: '5px !important',
+            borderTopLeftRadius: '5px !important',
+            borderTopRightRadius: '5px !important'
           }
         },
         Input: {
           style: {
-            borderRadius: '5px !important',
+            borderBottomRightRadius: '5px !important',
+            borderBottomLeftRadius: '5px !important',
+            borderTopLeftRadius: '5px !important',
+            borderTopRightRadius: '5px !important',
             backgroundColor: '#fff !important'
           }
         }

@@ -84,13 +84,12 @@ function RemovePollLineItemForm({ item, pollLineItemId, showForm, close }) {
   const name = item.symbol ? (getVenueBySymbol(item.symbol) || {}).name : item.name;
   return (
     <Modal onClose={close} isOpen={showForm}>
-      {removingPollLineItem && <Loading compact={true} message="Removing item..." />}
       <ModalHeader>Remove Poll Item</ModalHeader>
       <ModalBody>
         <Label1>Remove {name}?</Label1>
       </ModalBody>
       <ModalFooter>
-        <PillButton onClick={handleRemovePollLineItem}>Remove</PillButton>
+        <PillButton loading={removingPollLineItem} onClick={handleRemovePollLineItem}>Remove</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -221,7 +220,6 @@ function PollForm({ poll, showForm, close }) {
   };
   return (
     <Modal onClose={close} isOpen={showForm}>
-      {updatingPoll && <Loading compact={true} message="Save poll..." />}
       <ModalHeader>Edit Poll</ModalHeader>
       <ModalBody>
         <FormControl error={null} label="Name" positive="" caption="ex) 4th Street Bar">
@@ -234,54 +232,51 @@ function PollForm({ poll, showForm, close }) {
             }}
           />
         </FormControl>
-        {
-          !updatingPoll &&
-          <FormControl label="Poll Closing Time" caption="YYYY/MM/DD HH:MM" positive="" error={null}>
-            <Block display="flex">
-              <Datepicker
-                value={form.expiration ? [form.expiration] : null}
-                onChange={({date}) => updateForm({ expiration: date })}
-                filterDate={(date) => {
-                  if (moment(date).isAfter(moment())) {
-                    return true;
-                  }
-                  return false;
-                }}
-                overrides={{
-                  Input: {
-                    component: Input
-                  }
-                }}
-              />
-              {
-                form.expiration &&
-                <Block marginLeft="24px">
-                  <TimePicker
-                    value={form.expiration}
-                    onChange={(date) => updateForm({ expiration: date })}
-                    overrides={{
-                      Select: {
-                        props: {
-                          overrides: {
-                            ControlContainer: {
-                              style: {
-                                borderRadius: '5px !important',
-                                backgroundColor: '#fff !important'
-                              }
+        <FormControl label="Poll Closing Time" caption="YYYY/MM/DD HH:MM" positive="" error={null}>
+          <Block display="flex">
+            <Datepicker
+              value={form.expiration ? [form.expiration] : null}
+              onChange={({date}) => updateForm({ expiration: date })}
+              filterDate={(date) => {
+                if (moment(date).isAfter(moment())) {
+                  return true;
+                }
+                return false;
+              }}
+              overrides={{
+                Input: {
+                  component: Input
+                }
+              }}
+            />
+            {
+              form.expiration &&
+              <Block marginLeft="24px">
+                <TimePicker
+                  value={form.expiration}
+                  onChange={(date) => updateForm({ expiration: date })}
+                  overrides={{
+                    Select: {
+                      props: {
+                        overrides: {
+                          ControlContainer: {
+                            style: {
+                              borderRadius: '5px !important',
+                              backgroundColor: '#fff !important'
                             }
                           }
                         }
                       }
-                    }}
-                  />
-                </Block>
-              }
-            </Block>
-          </FormControl>
-        }
+                    }
+                  }}
+                />
+              </Block>
+            }
+          </Block>
+        </FormControl>
       </ModalBody>
       <ModalFooter>
-        <PillButton onClick={handleAddPollLineItem}>Save</PillButton>
+        <PillButton loading={updatingPoll} onClick={handleAddPollLineItem}>Save</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -332,15 +327,12 @@ function PollLineItemForm({ pollId, showForm, close }) {
 
   return (
     <Modal onClose={close} isOpen={showForm}>
-      {creatingPollLineItem && <Loading compact={true} message="Adding poll item..." />}
       <ModalHeader>Add Venue to Poll</ModalHeader>
       <ModalBody>
         <Block>
-          {!creatingPollLineItem &&
-            <FormControl error={null} label="Search and Select Venue by Name" positive="">
-              <VenueNameSearchBar updateForm={updateForm} form={form} />
-            </FormControl>
-          }
+          <FormControl error={null} label="Search and Select Venue by Name" positive="">
+            <VenueNameSearchBar updateForm={updateForm} form={form} />
+          </FormControl>
         </Block>
         <FormControl error={formError} label="Discover Venues" positive="">
           <Block display="flex">
@@ -380,7 +372,7 @@ function PollLineItemForm({ pollId, showForm, close }) {
 
       </ModalBody>
       <ModalFooter>
-        <PillButton disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</PillButton>
+        <PillButton loading={creatingPollLineItem} disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</PillButton>
       </ModalFooter>
     </Modal>
   );
@@ -450,8 +442,6 @@ export default ({ poll }) => {
   const hasPollExpired = moment(poll.expiration).isBefore(moment());
   return (
     <Block display="flex" flexDirection="column" padding="24px" backgroundColor="#f7f7f7" position="relative">
-      {voting && <Loading compact={true} message="Your vote is on the way" />}
-      {unvoting && <Loading compact={true} message="Undo voting..." />}
       <Block display="flex" alignItems="center">
         <Label1><b>{poll.name}</b></Label1>
         {
@@ -490,6 +480,7 @@ export default ({ poll }) => {
           <PillButton
             kind="minimal"
             onClick={handleUnvoteLineItem}
+            loading={unvoting}
           >
             Undo Vote
           </PillButton> : null
@@ -499,6 +490,7 @@ export default ({ poll }) => {
           <PillButton
             disabled={!selectedPollLineItemId}
             onClick={handleVoteLineItem}
+            loading={voting}
           >
             Vote
           </PillButton> : null

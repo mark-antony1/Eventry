@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from 'baseui/button';
 import { Label3 } from 'baseui/typography';
+import { Spinner } from 'baseui/spinner';
 import { useStyletron } from 'styletron-react';
 
-export default React.forwardRef(({ kind, children, ...props }, ref) => {
+export default React.forwardRef(({ kind, loading, children, ...props }, ref) => {
   const [ css ] = useStyletron();
   const { disabled } = props;
   const getBorder = () => {
@@ -46,6 +47,7 @@ export default React.forwardRef(({ kind, children, ...props }, ref) => {
         },
       }}
       kind={kind}
+      disabled={disabled || loading}
       {...props}
     >
       <Label3
@@ -55,7 +57,8 @@ export default React.forwardRef(({ kind, children, ...props }, ref) => {
           color: disabled ? '#777' : '#000'
         })}
       >
-        {children}
+        {loading && <Spinner size="16px" color="#000" />}
+        {!loading && children}
       </Label3>
     </Button>
   );

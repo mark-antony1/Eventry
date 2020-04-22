@@ -149,7 +149,7 @@ export default function Details({ match: { params: {venueSymbol} } }) {
   const venue = allVenues.find((v) => v.symbol === venueSymbol);
   const virtualLocation = allVirtualLocations.find((v) => v.symbol === venueSymbol);
   useEffect(() => {
-    document.title = `TeamBright | ${venue ? venue.name : ''}`;
+    document.title = `TeamBright | ${venue ? venue.name : (virtualLocation || {}).name}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

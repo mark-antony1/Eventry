@@ -110,8 +110,8 @@ export default function Home() {
         </Block>
       </Block>
       <Block backgroundColor="#f7f7f7" padding="48px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Label1><b>team@teambright.co</b></Label1>
-        <Label1 $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
+        <Label1 color="#484848"><b>team@teambright.co</b></Label1>
+        <Label1 color="#484848" $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
       </Block>
     </Block>
   );

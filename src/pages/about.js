@@ -1,5 +1,6 @@
 import React from 'react';
 import { Block } from 'baseui/block';
+import { Label1 } from 'baseui/typography';
 import HeaderNavigation from '../components/header-navigation';
 import {
   Display4,
@@ -29,6 +30,10 @@ export default function About() {
             If you have any comment or question, please reach out. We would love to hear from you.
           </Paragraph1>
         </Block>
+      </Block>
+      <Block backgroundColor="#f7f7f7" padding="48px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+        <Label1><b>team@teambright.co</b></Label1>
+        <Label1 $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
       </Block>
     </Block>
   );

@@ -54,7 +54,8 @@ import {
   CHANGE_PASSWORD,
   DELETE_ENDORSEMENT,
   JOIN_TEAM,
-  QUIT_TEAM
+  QUIT_TEAM,
+  GET_AUTH_BY_GOOGLE_AUTH_CODE
 } from '../constants/mutation';
 
 function MyReview({ review }) {
@@ -125,7 +126,7 @@ function MyReviews() {
   );
 }
 
-function SignUpForm({ handleSigninMode, googleEmailInfo }) {
+function SignUpForm({ handleSigninMode, googleAuthInfo }) {
   const client = useApolloClient();
   const queryUrl = useQueryUrl();
   const history = useHistory();
@@ -134,10 +135,10 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
   const [ getTeamsByEmail, { data: teamData } ] = useLazyQuery(GET_TEAMS_BY_EMAIL);
   const [ submittingForm, setSubmittingForm ] = useState(false);
   const [ emailVerified, setEmailVerified ] = useState(false);
-  const [ email, setEmail ] = useState((googleEmailInfo && googleEmailInfo.email) ? googleEmailInfo.email : '');
+  const [ email, setEmail ] = useState((googleAuthInfo && googleAuthInfo.email) ? googleAuthInfo.email : '');
   const [ password, setPassword ] = useState('');
-  const [ firstName, setFirstName ] = useState((googleEmailInfo && googleEmailInfo.firstName) ? googleEmailInfo.firstName : '');
-  const [ lastName, setLastName ] = useState((googleEmailInfo && googleEmailInfo.lastName) ? googleEmailInfo.lastName : '');
+  const [ firstName, setFirstName ] = useState((googleAuthInfo && googleAuthInfo.firstName) ? googleAuthInfo.firstName : '');
+  const [ lastName, setLastName ] = useState((googleAuthInfo && googleAuthInfo.lastName) ? googleAuthInfo.lastName : '');
   const [ team, setTeam ] = useState(null);
   const [ signupError, setSignupError ] = useState(null);
   const debouncedEmail = useDebounce(email, 1500);
@@ -219,7 +220,7 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
       setSignupError('Team is required');
       return false;
     }
-    if (!password && (!googleEmailInfo || !googleEmailInfo.googleTokenId)) {
+    if (!password && (!googleAuthInfo || !googleAuthInfo.tokenHash)) {
       setSignupError('Password is required');
       return false;
     }
@@ -247,7 +248,7 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
         lastName,
         password,
         team,
-        googleTokenId: googleEmailInfo ? googleEmailInfo.googleTokenId : null
+        googleTokenHash: googleAuthInfo ? googleAuthInfo.tokenHash : null
       },
       refetchQueries: ({ data: { createUser: {token} } }) => {
         setCookie('userToken', token, 7);
@@ -272,7 +273,7 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
     }
 
     // signup via google
-    if (googleEmailInfo && googleEmailInfo.email) {
+    if (googleAuthInfo && googleAuthInfo.email) {
       return (
         <Block>
           <Label1><b>{email}</b> <Tag closeable={false} variant="outlined" kind="positive">Email verified</Tag></Label1>
@@ -410,7 +411,7 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
   };
 
   const renderPasswordInput = () => {
-    if (googleEmailInfo) {
+    if (googleAuthInfo) {
       return null;
     }
     return (
@@ -479,32 +480,45 @@ function SignUpForm({ handleSigninMode, googleEmailInfo }) {
 
 function SignUpMethod({ handleSigninMode }) {
   const [ css ] = useStyletron();
+  const [ getAuthByGoogleAuthCode, { data: googleAuthData , loading: fetchingGoogleAuth } ] = useMutation(GET_AUTH_BY_GOOGLE_AUTH_CODE);
   const [ showSignUpForm, setShowSignUpForm ] = useState(false);
-  const [ googleEmailInfo, setGoogleEmailInfo ] = useState(null);
+  const [ googleAuthInfo, setGoogleAuthInfo ] = useState(null);
 
-  const successGoogle = (response) => {
-    if (response && response.profileObj) {
+  useEffect(() => {
+    if (googleAuthData && googleAuthData.getAuthByGoogleAuthCode) {
       const {
         email,
-        givenName,
-        familyName
-      } = response.profileObj;
-      const {
-        tokenId
-      } = response;
-      setGoogleEmailInfo({
+        firstName,
+        lastName,
+        tokenHash
+      } = googleAuthData.getAuthByGoogleAuthCode;
+      setGoogleAuthInfo({
         email,
-        firstName: givenName,
-        lastName: familyName,
-        googleTokenId: tokenId
+        firstName,
+        lastName,
+        tokenHash
       });
       setShowSignUpForm(true);
     }
+  }, [googleAuthData]);
+
+  const successGoogle = (response) => {
+    if (response && response.code) {
+      getAuthByGoogleAuthCode({
+        variables: {
+          googleAuthCode: response.code
+        }
+      }).catch(e => {});
+    }
+  };
+
+  if (fetchingGoogleAuth) {
+    return <Loading message="Loading..." />;
   }
 
   if (showSignUpForm) {
     return (
-      <SignUpForm handleSigninMode={handleSigninMode} googleEmailInfo={googleEmailInfo} />
+      <SignUpForm handleSigninMode={handleSigninMode} googleAuthInfo={googleAuthInfo} />
     );
   }
 
@@ -535,6 +549,10 @@ function SignUpMethod({ handleSigninMode }) {
         onSuccess={successGoogle}
         buttonText="Sign up with Google"
         onFailure={() => {}}
+        responseType="code"
+        accessType="offline"
+        prompt="consent"
+        scope="https://www.googleapis.com/auth/calendar.events"
         cookiePolicy={'single_host_origin'}
       />
       <Block margin="8px" />
@@ -708,6 +726,7 @@ function SignInForm({ handleSignupMode }) {
             onSuccess={successGoogle}
             onFailure={() => {}}
             buttonText="Sign in with Google"
+            scope="https://www.googleapis.com/auth/calendar.events"
             cookiePolicy={'single_host_origin'}
           />
           <Block margin="8px" />

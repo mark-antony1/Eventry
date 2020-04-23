@@ -4,8 +4,8 @@ import {
 } from './fragment';
 
 export const CREATE_USER = gql`
-mutation CreateUser($email: String!, $password: String!, $firstName: String!, $lastName: String!, $team: String!, $googleTokenId: String){
-  createUser(email: $email, password: $password, firstName: $firstName, lastName: $lastName, team: $team, googleTokenId: $googleTokenId){
+mutation CreateUser($email: String!, $password: String!, $firstName: String!, $lastName: String!, $team: String!, $googleTokenHash: String){
+  createUser(email: $email, password: $password, firstName: $firstName, lastName: $lastName, team: $team, googleTokenHash: $googleTokenHash){
     token
     user${User}
   }
@@ -127,4 +127,14 @@ mutation UpdateEventSymbol($eventId: String!, $symbol: String){
 export const REMOVE_POLL_LINEITEM = gql`
 mutation RemovePollLineItem($pollLineItemId: String!){
   removePollLineItem(pollLineItemId: $pollLineItemId)
+}`;
+
+export const GET_AUTH_BY_GOOGLE_AUTH_CODE = gql`
+mutation GetAuthByGoogleAuthCode($googleAuthCode: String!){
+  getAuthByGoogleAuthCode(googleAuthCode: $googleAuthCode){
+    email
+    firstName
+    lastName
+    tokenHash
+  }
 }`;

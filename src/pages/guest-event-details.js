@@ -49,7 +49,7 @@ import { showAlert, getErrorCode } from '../utils';
 import { venues as allPhysicalVenues } from '../constants/locations';
 import { venues as allVirtualVenues } from '../constants/virtual-locations';
 import PillButton from '../components/pill-button';
-import Poll from '../components/team/poll';
+import Poll, { CreatePollForm } from '../components/team/poll';
 import VenueNameSearchBar from '../components/venue/venue-name-search-bar';
 import Loading from '../components/loading';
 
@@ -559,6 +559,7 @@ export default () => {
   const [ validPollExist, setValidPollExist ] = useState(false);
   const [ hidePoll, setHidePoll ] = useState(false);
   const [ removingVenue, setRemovingVenue ] = useState(false);
+  const [ creatingPoll, setCreatingPoll ] = useState(false);
   const [ editingVenue, setEditingVenue ] = useState(false);
   const [ editingTime, setEditingTime ] = useState(false);
   const [ editingName, setEditingName ] = useState(false);
@@ -575,10 +576,11 @@ export default () => {
       if (areAllPastPolls) {
         setHidePoll(true);
       } else {
+        setHidePoll(false);
         setValidPollExist(true);
       }
     }
-  }, [loading]);
+  }, [data]);
   if (loading || error) {
     return <Loading />;
   }
@@ -726,36 +728,53 @@ export default () => {
             showLabel
           />
         </Block>
-        {
-          polls.length ?
-          <Block marginTop="24px" padding="24px" marginBottom="24px" display="flex" flexDirection="column" backgroundColor="#f7f7f7">
-            <Block display="flex" alignItems="center" paddingBottom="12px">
-              <Tag closeable={false} variant="outlined" kind="accent"><b>Choose what to do</b></Tag>
-              <Display4 marginLeft="12px"><b>Poll</b></Display4>
-            </Block>
+        <Block marginTop="24px" padding="24px" marginBottom="24px" display="flex" flexDirection="column" backgroundColor="#f7f7f7">
+          <Block display="flex" alignItems="center" paddingBottom="12px">
             {
-              !hidePoll ?
-              <Block>
-                {
-                  polls.map((poll) => {
-                    return <Poll key={poll.id} poll={poll} />;
-                  })
-                }
-              </Block> :
-              <Block display="flex" alignItems="center">
-                Poll is expired
-                <Block marginLeft="8px">
-                  <PillButton kind="secondary" onClick={() => setHidePoll(false)}>See Past Poll</PillButton>
-                </Block>
-              </Block>
+              polls.length ?
+              <Tag closeable={false} variant="outlined" kind="accent"><b>Choose what to do</b></Tag> :
+              <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag>
             }
-          </Block> : null
-        }
+            <Block display="flex" alignItems="center">
+              <Display4 marginLeft="12px"><b>Poll</b></Display4>
+              <Block marginLeft="12px" />
+              <PillButton size="compact" kind="secondary" onClick={() => setCreatingPoll(true)}>Create New Poll</PillButton>
+            </Block>
+          </Block>
+          {
+            (!hidePoll && polls.length) ?
+            <Block>
+              {
+                polls.map((poll) => {
+                  return <Poll key={poll.id} poll={poll} />;
+                })
+              }
+            </Block> : null
+          }
+          {
+            (hidePoll && polls.length) ?
+            <Block display="flex" alignItems="center">
+              Poll is expired
+              <Block marginLeft="8px">
+                <PillButton kind="secondary" onClick={() => setHidePoll(false)}>See Past Poll</PillButton>
+              </Block>
+            </Block> : null
+          }
+          {
+            !polls.length ?
+            <Block display="flex" alignItems="center">
+              No poll yet
+              <Block marginLeft="8px">
+                <PillButton kind="secondary" onClick={() => setCreatingPoll(true)}>Create First Poll</PillButton>
+              </Block>
+            </Block> : null
+          }
+        </Block>
         <Block>
           {isPast && status !== 'CLOSED' && <SuggestClose />}
         </Block>
         {
-          !symbol && !venue && <VenueForm />
+          (!symbol && !venue && polls.length) ? <VenueForm /> : null
         }
       </Block>
       <Block marginTop="24px" display="flex" flexWrap="wrap">
@@ -823,6 +842,7 @@ export default () => {
       <TimeForm showForm={editingTime} close={() => setEditingTime(false)} time={time} />
       <VenueModalForm showForm={editingVenue} close={() => setEditingVenue(false)} />
       <RemoveVenueModalForm showForm={removingVenue} close={() => setRemovingVenue(false)} />
+      <CreatePollForm showForm={creatingPoll} close={() => setCreatingPoll(false)} />
     </Block>
   );
 }

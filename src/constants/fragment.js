@@ -11,6 +11,7 @@ export const Poll = `{
     id
     name
     symbol
+    time
     voters {
       id
       firstName

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   FaUser,
@@ -43,7 +43,8 @@ import {
   REMOVE_POLL_LINEITEM,
   UNDO_VOTE_POLL_LINEITEM,
   ADD_POLL_LINEITEM,
-  UPDATE_POLL
+  UPDATE_POLL,
+  CREATE_POLL
 } from '../../constants/mutation';
 
 import { showAlert, getErrorCode, getVenueBySymbol } from '../../utils';
@@ -106,7 +107,7 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
   const [ css ] = useStyletron();
   const [ removingPollLineItem, setRemovingPollLineItem ] = useState(false);
   const [ showVoters, setShowVoters ] = useState(false);
-  const { name, symbol } = item;
+  const { name, time, symbol } = item;
   const userVoted = item.voters.find(v => v.id === userId);
 
   const renderName = () => {
@@ -138,7 +139,11 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
         })}
         onClick={() => handleSelectLineItem(item.id)}
       >
-        <Label1><b>{symbol ? renderName() : name}</b> {symbol && <Label3 $as="a" href={`/${item.symbol}`} target="_blank">Details</Label3>}</Label1>
+        {
+          (symbol || name) ? <Label1><b>{symbol ? renderName() : name}</b> {symbol && <Label3 $as="a" href={`/${item.symbol}`} target="_blank">Details</Label3>}</Label1> :
+          <Label1><b>{moment(time).format("MMM Do dddd h:mm a")}</b></Label1>
+        }
+
         <Block display="flex" flex="1" justifyContent="flex-end" alignItems="center">
           <StatefulTooltip
             content={() => {
@@ -177,7 +182,7 @@ function PollLineItem({ item, handleSelectLineItem, selectedPollLineItemId }) {
 function PollForm({ poll, showForm, close }) {
   const client = useApolloClient();
   const [ form, setForm ] = useState({
-    name: poll.name,
+    name: poll.name || '',
     expiration: new Date(poll.expiration)
   });
 
@@ -282,7 +287,104 @@ function PollForm({ poll, showForm, close }) {
   );
 }
 
-function PollLineItemForm({ pollId, showForm, close }) {
+export function CreatePollForm({ showForm, close }) {
+  const client = useApolloClient();
+  const { eventId } = useParams();
+  const [ form, setForm ] = useState({
+    expiration: null
+  });
+
+  const [ formError, setFormError ] = useState(null);
+  const [ createPoll, { loading: creatingPoll } ] = useMutation(CREATE_POLL);
+  const validateForm = () => {
+    if (!form.expiration) {
+      setFormError('Expiration is required');
+      return false;
+    }
+
+    return true;
+  };
+  const updateForm = (payload) => {
+    setForm({
+      ...form,
+      ...payload
+    });
+  };
+  const handleCreatePoll = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    const res = await createPoll({
+      variables: {
+        expiration: form.expiration,
+        eventId
+      },
+      refetchQueries: ['GetEvent']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+
+    if (res) {
+      showAlert(client, 'Successfully created poll');
+      close();
+    }
+  };
+  return (
+    <Modal onClose={close} isOpen={showForm}>
+      <ModalHeader>Create New Poll</ModalHeader>
+      <ModalBody>
+        <FormControl label="Poll Closing Time" caption="YYYY/MM/DD HH:MM" positive="" error={null}>
+          <Block display="flex">
+            <Datepicker
+              value={form.expiration ? [form.expiration] : null}
+              onChange={({date}) => updateForm({ expiration: date })}
+              filterDate={(date) => {
+                if (moment(date).isAfter(moment())) {
+                  return true;
+                }
+                return false;
+              }}
+              overrides={{
+                Input: {
+                  component: Input
+                }
+              }}
+            />
+            {
+              form.expiration &&
+              <Block marginLeft="24px">
+                <TimePicker
+                  value={form.expiration}
+                  onChange={(date) => updateForm({ expiration: date })}
+                  overrides={{
+                    Select: {
+                      props: {
+                        overrides: {
+                          ControlContainer: {
+                            style: {
+                              borderRadius: '5px !important',
+                              backgroundColor: '#fff !important'
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }}
+                />
+              </Block>
+            }
+          </Block>
+        </FormControl>
+      </ModalBody>
+      <ModalFooter>
+        <PillButton loading={creatingPoll} onClick={handleCreatePoll}>Save</PillButton>
+      </ModalFooter>
+    </Modal>
+  );
+}
+
+function VenuePollLineItemForm({ close, pollId }) {
   const client = useApolloClient();
   const [ showManualName, setShowManualName ] = useState(false);
   const [ form, setForm ] = useState({
@@ -326,7 +428,7 @@ function PollLineItemForm({ pollId, showForm, close }) {
   };
 
   return (
-    <Modal onClose={close} isOpen={showForm}>
+    <>
       <ModalHeader>Add Venue to Poll</ModalHeader>
       <ModalBody>
         <Block>
@@ -369,13 +471,176 @@ function PollLineItemForm({ pollId, showForm, close }) {
             />
           </FormControl>
         }
-
       </ModalBody>
       <ModalFooter>
         <PillButton loading={creatingPollLineItem} disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</PillButton>
       </ModalFooter>
+    </>
+  );
+}
+
+function TimePollLineItemForm({ close, pollId }) {
+  const client = useApolloClient();
+  const [ form, setForm ] = useState({
+    time: null
+  });
+  const [ formError, setFormError ] = useState(null);
+  const [ addPollLineItem, { loading: creatingPollLineItem } ] = useMutation(ADD_POLL_LINEITEM);
+  const validateForm = () => {
+    if (!form.time) {
+      return false;
+    }
+    return true;
+  };
+  const updateForm = (payload) => {
+    setForm({
+      ...form,
+      ...payload
+    });
+  };
+  const handleAddPollLineItem = async () => {
+    const res = await addPollLineItem({
+      variables: {
+        pollId,
+        time: form.time
+      },
+      refetchQueries: ['GetEvent']
+    }).catch(e => {
+      setFormError(getErrorCode(e));
+    });
+    if (res) {
+      showAlert(client, `Successfully added a poll item`);
+      setForm({
+        time: null
+      });
+      close();
+    }
+  };
+
+  return (
+    <>
+      <ModalHeader>Add Time to Poll</ModalHeader>
+      <ModalBody>
+        <FormControl label="When to Meet" caption="YYYY/MM/DD HH:MM" positive="" error={null}>
+          <Block display="flex">
+            <Datepicker
+              value={form.time ? [form.time] : null}
+              onChange={({date}) => updateForm({ time: date })}
+              filterDate={(date) => {
+                if (moment(date).isAfter(moment())) {
+                  return true;
+                }
+                return false;
+              }}
+              overrides={{
+                Input: {
+                  component: Input
+                }
+              }}
+            />
+            {
+              form.time &&
+              <Block marginLeft="24px">
+                <TimePicker
+                  value={form.time}
+                  onChange={(date) => updateForm({ time: date })}
+                  overrides={{
+                    Select: {
+                      props: {
+                        overrides: {
+                          ControlContainer: {
+                            style: {
+                              borderRadius: '5px !important',
+                              backgroundColor: '#fff !important'
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }}
+                />
+              </Block>
+            }
+          </Block>
+        </FormControl>
+      </ModalBody>
+      <ModalFooter>
+        <PillButton loading={creatingPollLineItem} disabled={!validateForm()} onClick={handleAddPollLineItem}>Add</PillButton>
+      </ModalFooter>
+    </>
+  );
+}
+
+function PollLineItemModeForm({ setFormMode }) {
+  return (
+    <>
+      <ModalHeader>Choose Poll Mode</ModalHeader>
+      <ModalBody>
+        <Block display="flex" justifyContent="center">
+          <Block margin="8px">
+            <PillButton onClick={() => setFormMode('TIME')}>Poll When to Meet</PillButton>
+          </Block>
+          <Block margin="8px">
+            <PillButton onClick={() => setFormMode('VENUE')}>Poll What to Do</PillButton>
+          </Block>
+        </Block>
+      </ModalBody>
+    </>
+  );
+}
+
+function PollLineItemForm({ pollId, showForm, close, mode }) {
+  const [ formMode, setFormMode ] = useState(mode);
+  useEffect(() => {
+    if (close) {
+      setFormMode(null);
+    }
+  }, [close]);
+  return (
+    <Modal onClose={close} isOpen={showForm}>
+      {
+        !mode && !formMode && <PollLineItemModeForm setFormMode={setFormMode} />
+      }
+      {
+        (mode === 'VENUE' || formMode === 'VENUE') && <VenuePollLineItemForm close={close} pollId={pollId} />
+      }
+      {
+        (mode === 'TIME' || formMode === 'TIME') && <TimePollLineItemForm close={close} pollId={pollId} />
+      }
     </Modal>
   );
+}
+
+const getMode = (lineItems) => {
+  if (!lineItems.length) {
+    return null;
+  }
+
+  if (lineItems[0].time) {
+    return 'TIME';
+  }
+
+  if (lineItems[0].name || lineItems[0].symbol) {
+    return 'VENUE';
+  }
+
+  return null;
+}
+
+const getDefaultName = (lineItems) => {
+  if (!lineItems.length) {
+    return 'New Poll';
+  }
+
+  if (lineItems[0].time) {
+    return 'When to Do';
+  }
+
+  if (lineItems[0].name || lineItems[0].symbol) {
+    return 'What to Do';
+  }
+
+  return '';
 }
 
 export default ({ poll }) => {
@@ -443,7 +708,7 @@ export default ({ poll }) => {
   return (
     <Block display="flex" flexDirection="column" padding="24px" backgroundColor="#f7f7f7" position="relative">
       <Block display="flex" alignItems="center">
-        <Label1><b>{poll.name}</b></Label1>
+        <Label1><b>{poll.name || getDefaultName(pollLineItems)}</b></Label1>
         {
           (!hasPollExpired && pollLineItems.length && pollLineItems.length < 10) ?
           <Block marginLeft="12px">
@@ -504,7 +769,7 @@ export default ({ poll }) => {
           </PillButton> : null
         }
       </Block>
-      <PollLineItemForm pollId={pollId} showForm={addingPollLineItem} close={() => setAddingPollLineItem(false)} />
+      <PollLineItemForm pollId={pollId} showForm={addingPollLineItem} mode={getMode(pollLineItems)} close={() => setAddingPollLineItem(false)} />
       <PollForm showForm={editingPoll} poll={poll} close={() => setEditingPoll(false)} />
     </Block>
   );

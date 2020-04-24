@@ -96,6 +96,30 @@ export const venues = [
 		"symbol": "jackbox"
 	},
 	{
+		"id": 14,
+		"photos": [
+			"https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/ce/e2/ac/cee2aca5-dc52-a1e5-a2f5-ea6cf4ae3be9/pr_source.png/230x0w.png",
+			"https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/b2/af/9d/b2af9d6e-3828-faa8-a634-21a987cc0cd1/pr_source.png/460x0w.png",
+			"https://i.ibb.co/4mh727K/summer.jpg",
+		],
+		"name": "Glimpse",
+		"description": "Randomly get paired with friends for 2 minutes in a room for your specific team or group.",
+		"teaserDescription": "2 Minute Team 1:1s",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.joinglimpse.com/",
+		"relevantLinks": [],
+		"activityType": "hangout",
+		"tags": ["fun", "social"],
+		"rating": 4.8,
+		"takesReservations": true,
+		"averageTimeSpent": 20,
+		"recommendedGroupsize": [2, 100],
+		"price": 0,
+		"priceReasoning": "Based on price per app install",
+		"symbol": "glimpse"
+	},
+	{
 		"id": 25,
 		"photos": [
 			"https://mattle.online/assets/images/games/online-go.png",

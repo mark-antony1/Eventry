@@ -188,28 +188,28 @@ export const venues = [
 		"symbol": "exploding kittens"
 	},
 	{
-		"id": 5,
+		"id": 30,
 		"photos": [
-			"https://images.techhive.com/images/article/2014/03/quizup2-100248921-large.jpg",
-			"https://quizup-web.s3.amazonaws.com/logos/logos-1200x630-store-buttons-centered-2014-12-10/quizup-logo-1200x630-2014-12-10/quizup-logo-1200x630-centered.png",
-			"https://cnet1.cbsistatic.com/img/fRcMQuCkbD3Ijo3iILBf-8rlf0A=/470x376/2014/03/19/6a1c3b10-b0c6-11e3-a24e-d4ae52e62bcc/QuizUp_Home_Activity.png"
+			"https://kahoot.com/files/2017/09/join_live_games_kahoot_app.jpg",
+			"https://www.agclassroom.org/ok/resources/images/classroom/kahoot.jpg",
+			"https://teachingwithipad.files.wordpress.com/2017/01/photo-jan-27-2017-313-pm.jpg"
 		],
-		"name": "Quiz Up",
-		"description": "Fun, addictive, challenging, online trivia, that has the best of two worlds.",
-		"teaserDescription": "Team Trivia",
+		"name": "Kahoot",
+		"description": "Fun online trivia, quizzes, learning.",
+		"teaserDescription": "Team Trivia/Learning",
 		"phoneNumber": "",
 		"email": "",
-		"linkToSite": "https://www.quizup.com/en",
+		"linkToSite": "https://create.kahoot.it/",
 		"relevantLinks": [],
 		"activityType": "game",
 		"tags": ["trivia"],
-		"rating": 4.6,
+		"rating": 4.7,
 		"takesReservations": true,
-		"averageTimeSpent": 60,
+		"averageTimeSpent": 20,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
 		"priceReasoning": "Based on price per game",
-		"symbol": "quiz-up"
+		"symbol": "kahoot"
 	},
 	{
 		"id": 6,
@@ -309,6 +309,30 @@ export const venues = [
 		"price": "0-20",
 		"priceReasoning": "Based on price per game depending on platform",
 		"symbol": "catan"
+	},
+	{
+		"id": 31,
+		"photos": [
+			"https://www.quizwitz.com/images/banner/ted.png",
+			"https://www.quizwitz.com/images/slides/QW_screen_3.jpg",
+			"https://www.quizwitz.com/images/slides/QW_screen_4.jpg"
+		],
+		"name": "Quiz Whitz",
+		"description": "Fun online community trivia with leaderboards.",
+		"teaserDescription": "Team Trivia",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.quizwitz.com/en/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["trivia"],
+		"rating": 4.7,
+		"takesReservations": true,
+		"averageTimeSpent": 20,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "quiz-whitz"
 	},
 	{
 		"id": 19,
@@ -566,5 +590,29 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": "Based on price per game",
 		"symbol": "onlin-town"
-	}
+	},
+	{
+		"id": 5,
+		"photos": [
+			"https://images.techhive.com/images/article/2014/03/quizup2-100248921-large.jpg",
+			"https://quizup-web.s3.amazonaws.com/logos/logos-1200x630-store-buttons-centered-2014-12-10/quizup-logo-1200x630-2014-12-10/quizup-logo-1200x630-centered.png",
+			"https://cnet1.cbsistatic.com/img/fRcMQuCkbD3Ijo3iILBf-8rlf0A=/470x376/2014/03/19/6a1c3b10-b0c6-11e3-a24e-d4ae52e62bcc/QuizUp_Home_Activity.png"
+		],
+		"name": "Quiz Up",
+		"description": "Fun, addictive, challenging, online trivia, that has the best of two worlds.",
+		"teaserDescription": "Team Trivia",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.quizup.com/en",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["trivia"],
+		"rating": 4.6,
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "quiz-up"
+	},
 ]

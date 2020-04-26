@@ -31,7 +31,7 @@ export default function Home() {
           alignItems="center"
           justifyContent="center"
         >
-          <Display2 color="#fff"><b>Find Your Next Team Experience</b></Display2>
+          <Display2 color="#fff"><b>Find Your Next Team Outing</b></Display2>
           <Label1 color="#fff"><b>70+ venues in person and virtually</b></Label1>
           <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
             <Block margin="12px">

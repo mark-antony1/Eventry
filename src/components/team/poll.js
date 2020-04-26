@@ -22,7 +22,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  ModalButton,
 } from 'baseui/modal';
 import {
   Display4,

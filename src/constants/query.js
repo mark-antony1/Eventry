@@ -79,6 +79,11 @@ query GetBusinessHours($symbol: String!){
   }
 }`;
 
+export const GET_EVENTS_BY_AUTH = gql`
+query GetEventsByAuth{
+  getEventsByAuth${EventListItem}
+}`;
+
 export const GET_NEW_EVENTS_BY_SYMBOL = gql`
 query GetNewEventsBySymbol($symbol: String!){
   getNewEventsBySymbol(symbol: $symbol)${EventListItem}

@@ -4,7 +4,7 @@ import { Label3 } from 'baseui/typography';
 import { Spinner } from 'baseui/spinner';
 import { useStyletron } from 'styletron-react';
 
-export default React.forwardRef(({ kind, loading, children, ...props }, ref) => {
+export default React.forwardRef(({ color, kind, loading, children, ...props }, ref) => {
   const [ css ] = useStyletron();
   const { disabled } = props;
   const getBorder = () => {
@@ -30,6 +30,17 @@ export default React.forwardRef(({ kind, loading, children, ...props }, ref) => 
     }
     return '#fff !important';
   };
+
+  const getColor = () => {
+    if (disabled) {
+      return '#777';
+    }
+
+    if (color) {
+      return color;
+    }
+    return '#000';
+  };
   return (
     <Button
       className={css({
@@ -54,7 +65,7 @@ export default React.forwardRef(({ kind, loading, children, ...props }, ref) => 
         className={css({
           display: 'flex',
           alignItems: 'center',
-          color: disabled ? '#777' : '#000'
+          color: getColor()
         })}
       >
         {loading && <Spinner size="16px" color="#000" />}

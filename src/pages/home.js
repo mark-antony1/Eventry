@@ -67,15 +67,12 @@ export default function Home() {
         </Block>
         <Block flex="0 1 100%">
           <Display2><b>Search for Events</b></Display2>
+          <Label1><b>Browse a selection of the best curated experiences for teambuilding and hanging out.</b></Label1>
+          <Label1><b>Whether you want to find some in person or virtual, we have a selection that your entire team will love.</b></Label1>
         </Block>
-        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} marginTop="24px">
-          <img width="70%" src={process.env.PUBLIC_URL + './search.png'} />
-          <Block display="flex" alignItems="center" padding="12px">
-            <Label1><b>Browse a selection of the best curated experiences for teambuilding and hanging out. Whether you want to find some in person or virtual, we have a selection that your entire team will love.</b></Label1>
-          </Block>
+        <Block display="flex" justifyContent="center" marginTop="24px">
+          <img width="80%" src={process.env.PUBLIC_URL + './search.png'} />
         </Block>
-
-
       </Block>
       <Block display="flex" flexWrap="wrap" padding="48px" marginTop="68px" marginBottom="68px">
         <Block flex="0 1 100%" display="flex" alignItems="center">

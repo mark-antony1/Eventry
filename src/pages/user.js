@@ -775,7 +775,8 @@ function Sign() {
                 <Display2><b>Keep</b></Display2>
                 <Display2><b>The Team</b></Display2>
                 <Display2><b>Together</b></Display2>
-                <Label1 marginTop="24px">Manage team events seamlessly</Label1>
+                <Label1 marginTop="24px">Create team events seamlessly</Label1>
+                <Label1 marginTop="24px">Invite teammates via email to your event</Label1>
                 <Label1>Sign up get full access</Label1>
               </Block>
             </Block>
@@ -793,8 +794,9 @@ function Sign() {
                 <Display2><b>Keep</b></Display2>
                 <Display2><b>The Team</b></Display2>
                 <Display2><b>Together</b></Display2>
-                <Label1 marginTop="24px">Manage team events seamlessly</Label1>
-                <Label1>Sign up get full access</Label1>
+                <Label1 marginTop="24px">Create team events seamlessly</Label1>
+                <Label1 marginTop="24px">Invite teammates via email to your event</Label1>
+                <Label1>Sign in get full access</Label1>
               </Block>
             </Block>
             <Block display="flex" flex="1" flexDirection="column" padding="36px">

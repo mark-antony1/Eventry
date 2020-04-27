@@ -943,7 +943,7 @@ function User() {
             {companyLogo && <img alt="review-logo" height="50px" src={companyLogo} style={{borderRadius: '10px'}}/>}
           </Block>
         </Block>
-        <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center">
+        <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center" flexWrap="wrap">
           <Label1><b>{email}</b></Label1>
           <Block marginLeft="12px">
             <PillButton size="compact" kind="minimal" onClick={() => setChangingPassword(!changingPassword)}>
@@ -1001,15 +1001,14 @@ function User() {
             </Button>
           </Block>
         }
-        <Block display="flex">
-          <Block flex="1">
+        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
+          <Block flex="1" marginBottom="24px">
             <FaHome />
             <Label1><b>Company</b></Label1>
             <Label1>{companyName}</Label1>
           </Block>
-          <Block flex="1">
+          <Block flex="1" marginBottom="24px">
             <MyEvents />
-
           </Block>
         </Block>
         <Block backgroundColor="#777" height="1px" width="100%" marginTop="24px" marginBottom="24px" />

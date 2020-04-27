@@ -705,12 +705,13 @@ export default ({ poll }) => {
   const hasUserVoted = getHasUserVoted(userId, pollLineItems);
   const hasPollExpired = moment(poll.expiration).isBefore(moment());
   return (
-    <Block display="flex" flexDirection="column" padding="24px" backgroundColor="#f7f7f7" position="relative">
-      <Block display="flex" alignItems="center">
-        <Label1><b>{poll.name || getDefaultName(pollLineItems)}</b></Label1>
+    <Block display="flex" flexDirection="column" padding={['6px', '6px', '24px', '24px']} backgroundColor="#f7f7f7" position="relative">
+      <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} alignItems={['flex-start', 'flex-start', 'center', 'center']}>
+        <Label1 display={['none', 'none', 'initial', 'initial']}><b>{poll.name || getDefaultName(pollLineItems)}</b></Label1>
+        <Block margin="6px" />
         {
           (!hasPollExpired && pollLineItems.length && pollLineItems.length < 10) ?
-          <Block marginLeft="12px">
+          <Block>
             <PillButton size="compact" kind="secondary" onClick={() => setAddingPollLineItem(true)}><Plus /> Add Item</PillButton>
           </Block> : null
         }

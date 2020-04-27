@@ -74,7 +74,7 @@ const BackButton = () => {
     if (userData && !userData.getUserByAuth) {
       history.push(`/user?p=signup&from=event/${eventId}`);
     }
-  }, [userData]);
+  }, [userDataLoading]);
   if (loading || error || eventDataLoading || eventDataError || userDataLoading) {
     return null;
   }

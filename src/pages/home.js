@@ -33,13 +33,13 @@ export default function Home() {
         >
           <Display2 color="#fff"><b>Find Your Next Team Event</b></Display2>
           <Label1 color="#fff"><b>70+ venues in person and virtually</b></Label1>
-          <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
-            <Block margin="12px">
+          <Block display="flex" width={['100%', '100%', 'fit-content', 'fit-content']} flexDirection={['column', 'column', 'row', 'row']}>
+            <Block margin="12px" width={['calc(100%-24px)', 'calc(100%-24px)', 'fit-content', 'fit-content']} display="flex" flexDirection="column">
               <Button kind="secondary" $as="a" href="/v">
                 <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Search Virtual
               </Button>
             </Block>
-            <Block margin="12px">
+            <Block margin="12px" width={['calc(100%-24px)', 'calc(100%-24px)', 'fit-content', 'fit-content']} display="flex" flexDirection="column">
               <Button overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#77B900" color="#fff" $as="a" href="/s">
                 Search San Francisco
               </Button>
@@ -70,7 +70,7 @@ export default function Home() {
           <Label1><b>Browse a selection of the best curated experiences for teambuilding and hanging out.</b></Label1>
           <Label1><b>Whether you want to find some in person or virtual, we have a selection that your entire team will love.</b></Label1>
         </Block>
-        <Block display="flex" justifyContent="center" marginTop="24px">
+        <Block display="flex" display={['none', 'none', 'initial', 'initial']} justifyContent="center" marginTop="24px">
           <img width="80%" src={process.env.PUBLIC_URL + './search.png'} />
         </Block>
       </Block>

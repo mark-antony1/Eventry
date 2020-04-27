@@ -456,7 +456,9 @@ function VenueForm() {
   return (
     <Block display="flex" flexDirection="column" backgroundColor="#f7f7f7" padding="24px">
       <Block display="flex" alignItems="center">
-        <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag>
+        <Block display={['none', 'none', 'initial', 'initial']}>
+          <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag>
+        </Block>
         <Display4 marginLeft="12px"><b>Have You Decided The Venue?</b></Display4>
       </Block>
       {
@@ -668,7 +670,7 @@ export default () => {
       <Block>
         {
           !editingName &&
-          <Block display="flex" alignItems="center">
+          <Block display="flex" alignItems={["flex-start", "flex-start", "center", "center"]} flexDirection={['column', 'column', 'row', 'row']}>
             <Display4>
               <b>
                 {
@@ -681,12 +683,12 @@ export default () => {
                 }
               </b>
             </Display4>
-            <Block marginLeft="8px">
+            <Block marginLeft="8px" display={['none', 'none', 'initial', 'initial']}>
               <PillButton kind="minimal" onClick={() => setEditingName(true)}><FaPen /></PillButton>
             </Block>
+            <Block margin="6px" />
             <Block
               backgroundColor="#000"
-              marginLeft="12px"
               padding="12px"
               overrides={{
                 Block: {
@@ -738,7 +740,9 @@ export default () => {
             <Block display="flex" alignItems="center">
               <Display4 marginLeft="12px"><b>Poll</b></Display4>
               <Block marginLeft="12px" />
-              <PillButton size="compact" kind="secondary" onClick={() => setCreatingPoll(true)}>Create New Poll</PillButton>
+              <Block display={['none', 'none', 'initial', 'initial']}>
+                <PillButton size="compact" kind="secondary" onClick={() => setCreatingPoll(true)}>Create New Poll</PillButton>
+              </Block>
             </Block>
           </Block>
           {

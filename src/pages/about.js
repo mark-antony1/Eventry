@@ -14,7 +14,7 @@ export default function About() {
       <Block display="flex" justifyContent="center">
         <Block width={[ '85%', '85%', '55%', '55%' ]} marginTop="60px" marginBottom="120px">
           <Block display="flex" justifyContent="center">
-            <img src="https://www.fiftheagle.com/wp-content/uploads/2019/03/our-team.png" />
+            <img width="70%" src="https://www.fiftheagle.com/wp-content/uploads/2019/03/our-team.png" />
           </Block>
           <Display4 color="#484848">Welcome To TeamBright</Display4>
           <Paragraph1 color="#212121">

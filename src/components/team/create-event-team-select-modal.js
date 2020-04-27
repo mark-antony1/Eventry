@@ -17,7 +17,7 @@ import {
 
 import { TeamLineItem } from '../../pages/manage-team';
 
-export default ({ showModal, close }) => {
+export default ({ showModal, close, symbol }) => {
   const history = useHistory();
   const { data: userData, loading, error } = useQuery(GET_USER_BY_AUTH);
 
@@ -56,7 +56,11 @@ export default ({ showModal, close }) => {
                     }
                   }}
                   onClick={() => {
-                    history.push(`/team/${team.id}/create-event`);
+                    if (symbol) {
+                      history.push(`/team/${team.id}/create-event?symbol=${symbol}`);
+                    } else {
+                      history.push(`/team/${team.id}/create-event`);
+                    }
                   }}
                 >
                   <TeamLineItem team={team} viewOnly={true} />

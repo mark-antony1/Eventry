@@ -80,8 +80,8 @@ mutation CreatePoll($expiration: DateTime!, $eventId: String!){
 }`;
 
 export const CREATE_EVENT = gql`
-mutation CreateEvent($name: String!, $teamId: String!){
-  createEvent(name: $name, teamId: $teamId)
+mutation CreateEvent($name: String!, $teamId: String!, $symbol: String){
+  createEvent(name: $name, teamId: $teamId, symbol: $symbol)
 }`;
 
 export const ADD_POLL_LINEITEM = gql`

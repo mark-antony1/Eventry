@@ -733,7 +733,7 @@ export default () => {
         <Block marginTop="24px" padding="24px" marginBottom="24px" display="flex" flexDirection="column" backgroundColor="#f7f7f7">
           <Block display="flex" alignItems="center" paddingBottom="12px">
             {
-              polls.length ?
+              (polls.length || (symbol || venue)) ?
               <Tag closeable={false} variant="outlined" kind="accent"><b>Choose what to do</b></Tag> :
               <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag>
             }

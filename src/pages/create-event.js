@@ -31,11 +31,12 @@ import {
 import {
   venues
 } from '../constants/locations';
-import { showAlert, getErrorCode } from '../utils';
+import { showAlert, getErrorCode, useQueryUrl } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
 function CreateEventForm() {
+  const queryUrl = useQueryUrl();
   const client = useApolloClient();
   const { teamId } = useParams();
   const history = useHistory();
@@ -72,6 +73,7 @@ function CreateEventForm() {
     const res = await createEvent({
       variables: {
         name: form.name,
+        symbol: queryUrl.get('symbol') ? queryUrl.get('symbol') : null,
         teamId
       }
     }).catch(e => {

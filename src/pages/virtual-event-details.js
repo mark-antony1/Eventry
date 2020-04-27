@@ -27,6 +27,8 @@ import {
 } from 'baseui/typography';
 import HeaderNavigation from '../components/header-navigation';
 import VenueReviews from '../components/venue/venue-reviews';
+import CreateEventButton from '../components/team/create-event-button';
+import CreateEventSelectTeamModal from '../components/team/create-event-team-select-modal';
 import { venues as allVenues } from '../constants/locations';
 import { venues as allVirtualLocations } from '../constants/virtual-locations';
 
@@ -111,6 +113,7 @@ export default function Details() {
   const { venueSymbol } = useParams();
   const [ showPhotoDetails, setShowPhotoDetails ] = useState(false);
   const [ initialPhotoIndex, setInitialPhotoIndex ] = useState(null);
+  const [ showCreateEventTeamSelect, setShowCreateEventTeamSelect ] = useState(false);
   const [ css ] = useStyletron();
   const venue = allVirtualLocations.find((v) => v.symbol === venueSymbol);
   useEffect(() => {
@@ -192,7 +195,14 @@ export default function Details() {
       </Block>
       <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
         <Block display="flex" flexDirection="column">
-          <Label1 marginBottom="24px"><b>About this virtual event</b></Label1>
+          <Block display="flex" alignItems="center" marginBottom="12px">
+            <Label1><b>About the venue</b></Label1>
+            <Block marginLeft="12px">
+              <Button kind="secondary" color="#fff" backgroundColor="#77B900" $as="a" href={venue.linkToSite} target="_blank">
+                <CheckIcon size={24} /><b>Visit Website</b>
+              </Button>
+            </Block>
+          </Block>
           <Block>{venue.description}</Block>
         </Block>
         {
@@ -234,12 +244,11 @@ export default function Details() {
               </Button>
             </Block>
           }
-          <Button kind="secondary" color="#fff" backgroundColor="#77B900" $as="a" href={venue.linkToSite} target="_blank">
-            <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
-          </Button>
+          <CreateEventButton showModal={() => setShowCreateEventTeamSelect(true)} />
           <Label2 color="#727272" marginLeft="24px"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
         </Block>
       </Block>
+      <CreateEventSelectTeamModal showModal={showCreateEventTeamSelect} close={() => setShowCreateEventTeamSelect(false)} symbol={venue.symbol} />
     </Block>
   );
 }

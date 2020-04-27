@@ -775,9 +775,9 @@ function Sign() {
                 <Display2><b>Keep</b></Display2>
                 <Display2><b>The Team</b></Display2>
                 <Display2><b>Together</b></Display2>
-                <Label1 marginTop="24px">Create team events seamlessly</Label1>
-                <Label1 marginTop="24px">Invite teammates via email to your event</Label1>
-                <Label1>Sign up get full access</Label1>
+                <Label1 marginTop="24px">Create Team Events Seamlessly</Label1>
+                <Label1 marginTop="24px">Invite Teammates Via Email To Your Event</Label1>
+                <Label1 marginTop="24px">Sign Up and Get Full Access To The Beta Release</Label1>
               </Block>
             </Block>
             <Block display="flex" flex="1" flexDirection="column" padding="36px">
@@ -794,9 +794,9 @@ function Sign() {
                 <Display2><b>Keep</b></Display2>
                 <Display2><b>The Team</b></Display2>
                 <Display2><b>Together</b></Display2>
-                <Label1 marginTop="24px">Create team events seamlessly</Label1>
-                <Label1 marginTop="24px">Invite teammates via email to your event</Label1>
-                <Label1>Sign in get full access</Label1>
+                <Label1 marginTop="24px">Create Team Events Seamlessly</Label1>
+                <Label1 marginTop="24px">Invite Teammates Via Email To Your Event</Label1>
+                <Label1 marginTop="24px">Sign In and Get Full Access To The Beta Release</Label1>
               </Block>
             </Block>
             <Block display="flex" flex="1" flexDirection="column" padding="36px">

@@ -25,7 +25,7 @@ export default function Home() {
             backgroundSize: 'cover, contain',
           })}
           padding="24px"
-          height="calc(100vh - 120px)"
+          height="calc(100vh - 300px)"
           display="flex"
           flexDirection="column"
           alignItems="center"

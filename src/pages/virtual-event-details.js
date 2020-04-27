@@ -245,7 +245,9 @@ export default function Details() {
             </Block>
           }
           <CreateEventButton showModal={() => setShowCreateEventTeamSelect(true)} />
-          <Label2 color="#727272" marginLeft="24px"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
+          <Block marginLeft="24px" display={['none', 'none', 'initial', 'initial']}>
+            <Label2 color="#727272"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
+          </Block>
         </Block>
       </Block>
       <CreateEventSelectTeamModal showModal={showCreateEventTeamSelect} close={() => setShowCreateEventTeamSelect(false)} symbol={venue.symbol} />

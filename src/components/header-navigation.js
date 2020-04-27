@@ -205,7 +205,7 @@ export default ({ leftButtons, children }) => {
             (!loading && !error && data && !data.getUserByAuth) &&
             <Block padding="12px">
               <PillButton color="#fff" backgroundColor="#4284F2" $as="a" href="/user?p=signup">
-                Start Team Event
+                Create Event
               </PillButton>
             </Block>
           }
@@ -276,7 +276,7 @@ export default ({ leftButtons, children }) => {
           (!loading && !error && data && !data.getUserByAuth) &&
           <StyledNavigationItem>
             <PillButton color="#fff" backgroundColor="#4284F2" $as="a" href="/user?p=signup">
-              Start Team Event
+              Create Event
             </PillButton>
           </StyledNavigationItem>
         }

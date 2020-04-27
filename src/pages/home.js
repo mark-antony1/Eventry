@@ -105,6 +105,11 @@ export default function Home() {
             <Label1><b>Choose your event and book</b></Label1>
           </Block>
         </Block>
+        <Block flex="0 1 100%" marginTop="12px">
+          <Button $as="a" href="/user?p=signup" overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#4284F2" color="#fff">
+            <p style={{fontSize: "18px"}}>Start Team Event</p>
+          </Button>
+        </Block>
       </Block>
       <Block backgroundColor="#f7f7f7" padding="48px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         <Label1 color="#484848"><b>team@teambright.co</b></Label1>

@@ -12,6 +12,7 @@ import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Drawer } from 'baseui/drawer';
 import { Label1 } from 'baseui/typography';
+import CustomButton from './button';
 import CreateEventSelectTeamModal from './team/create-event-team-select-modal';
 import { useStyletron } from 'baseui';
 import {
@@ -156,7 +157,7 @@ const ToEvent = () => {
                   })
                 }
                 <Button kind="minimal" onClick={() => setShowModal(true)}>
-                  <span style={{ color: '#4284F2' }}>Create Event</span>
+                  <span style={{ color: '#4284F2' }}>Create New Event</span>
                 </Button>
               </Block>
             );
@@ -204,9 +205,9 @@ export default ({ leftButtons, children }) => {
           {
             (!loading && !error && data && !data.getUserByAuth) &&
             <Block padding="12px">
-              <PillButton color="#4284F2" $as="a" href="/user?p=signup">
-                Create Event
-              </PillButton>
+              <CustomButton color="#fff" backgroundColor="#4284F2" $as="a" href="/user?p=signup">
+                Start Team Event
+              </CustomButton>
             </Block>
           }
           {
@@ -275,9 +276,9 @@ export default ({ leftButtons, children }) => {
         {
           (!loading && !error && data && !data.getUserByAuth) &&
           <StyledNavigationItem>
-            <PillButton color="#4284F2" $as="a" href="/user?p=signup">
-              Create Event
-            </PillButton>
+            <CustomButton color="#fff" backgroundColor="#4284F2" $as="a" href="/user?p=signup">
+              Start Team Event
+            </CustomButton>
           </StyledNavigationItem>
         }
         {

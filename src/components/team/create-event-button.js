@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import PillButton from '../pill-button';
+import Button from '../button';
 
 import { GET_USER_BY_AUTH } from '../../constants/query';
 import {
@@ -21,26 +21,28 @@ export default ({ showModal }) => {
   } = data;
   if (!auth) {
     return (
-      <PillButton
-        color="#4284F2"
+      <Button
+        color="#fff"
+        backgroundColor="#4284F2"
         kind="secondary"
         onClick={() => {
           history.push(`/user/?from=${symbol}`);
         }}
       >
-        <b>Create Event</b>
-      </PillButton>
+        <b>Start Team Event</b>
+      </Button>
     );
   }
   return (
-    <PillButton
-      color="#4284F2"
+    <Button
+      color="#fff"
+      backgroundColor="#4284F2"
       kind="secondary"
       onClick={() => {
         showModal();
       }}
     >
-      <b>Create Event</b>
-    </PillButton>
+      <b>Start Team Event</b>
+    </Button>
   );
 };

@@ -857,7 +857,7 @@ function MyEvents() {
       <Block display="flex" alignItems="center">
         <Label1><b>My Events</b></Label1>
         <Block marginLeft="8px">
-          <PillButton color="#4284F2" size="compact" onClick={() => setShowModal(true)}>Create Event</PillButton>
+          <Button backgroundColor="#4284F2" color="#fff" size="compact" onClick={() => setShowModal(true)}>Start New Event</Button>
         </Block>
       </Block>
       <Block>

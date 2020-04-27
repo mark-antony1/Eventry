@@ -21,7 +21,7 @@ export default ({ showModal, close }) => {
   const history = useHistory();
   const { data: userData, loading, error } = useQuery(GET_USER_BY_AUTH);
 
-  if (loading || error || !userData || !userDate.getUserByAuth) {
+  if (loading || error || !userData || !userData.getUserByAuth) {
     return null;
   }
 

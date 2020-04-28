@@ -352,7 +352,7 @@ export default function Discovery() {
   const slicedVenues = venues.slice(venueIndex, venueIndex + LIST_SIZE);
 
   return (
-    <Block display="flex" flexDirection="column" height="100vh">
+    <Block display="flex" flexDirection="column" height={['auto', 'auto', '100vh', '100vh']}>
       <HeaderNavigation>
         <SearchBar filterValue={filterValue} updateFilterValue={updateFilterValue} />
       </HeaderNavigation>
@@ -372,7 +372,7 @@ export default function Discovery() {
               slicedVenues.map((venue, index) => {
                 return (
                   <Block
-                    flex={"0 1 calc(33% - 24px)"}
+                    flex={"0 1 calc(100% - 24px)"}
                     margin="12px"
                     ref={venueRefs[venue.id]}
                     key={venue.id}

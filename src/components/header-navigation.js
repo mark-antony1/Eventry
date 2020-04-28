@@ -296,7 +296,7 @@ export default ({ leftButtons, children }) => {
   return (
     <HeaderNavigation overrides={{ Root: { style: {border: 'none', position: 'relative'} } }}>
       <Alert />
-      <StyledNavigationList $align={ALIGN.left}>
+      <StyledNavigationList $align={ALIGN.left} className={css({paddingRight: '0px !important'})}>
         {leftButtons ? leftButtons.map((LB, index) => {
           return (
             <StyledNavigationItem key={index} className={css({paddingLeft: '0px !important'})}>

@@ -372,7 +372,7 @@ export default function Discovery() {
               slicedVenues.map((venue, index) => {
                 return (
                   <Block
-                    flex={"0 1 calc(100% - 24px)"}
+                    flex={"0 1 calc(33% - 24px)"}
                     margin="12px"
                     ref={venueRefs[venue.id]}
                     key={venue.id}

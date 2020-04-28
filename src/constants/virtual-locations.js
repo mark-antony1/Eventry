@@ -311,6 +311,29 @@ export const venues = [
 		"symbol": "song-pop"
 	},
 	{
+		"id": 32,
+		"photos": [
+			"https://i.redd.it/113nu2z42qh21.png",
+			"https://miro.medium.com/max/2069/1*jQRplWPgZc6m1LuvIQWx7g.png"
+		],
+		"name": "Netgames.io",
+		"description": "A website that supports and hosts a variety of social deduction games including werewolf, secret hitler, and codenames.",
+		"teaserDescription": "Social Deduction Games",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://netgames.io/games/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["immersive", "fun", "deceit"],
+		"rating": 4.8,
+		"takesReservations": true,
+		"averageTimeSpent": 30,
+		"recommendedGroupsize": [4, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "net-games"
+	},
+	{
 		"id": 9,
 		"photos": [
 			"https://www.catan.com/files/styles/lightboxy/public/gallery/screenshot_mobile_6.png?itok=jLlrC5Hg",

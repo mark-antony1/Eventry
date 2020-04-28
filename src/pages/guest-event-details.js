@@ -740,9 +740,12 @@ export default () => {
             <Block display="flex" alignItems="center">
               <Display4 marginLeft="12px"><b>Poll</b></Display4>
               <Block marginLeft="12px" />
-              <Block display={['none', 'none', 'initial', 'initial']}>
-                <PillButton size="compact" kind="secondary" onClick={() => setCreatingPoll(true)}>Create New Poll</PillButton>
-              </Block>
+              {
+                polls.length &&
+                <Block display={['none', 'none', 'initial', 'initial']}>
+                  <PillButton size="compact" kind="secondary" onClick={() => setCreatingPoll(true)}>Create New Poll</PillButton>
+                </Block>
+              }
             </Block>
           </Block>
           {

@@ -735,7 +735,7 @@ export default ({ poll }) => {
         {
           !pollLineItems.length &&
           <Block display="flex" alignItems="center" justifyContent="center" marginTop="12px">
-            <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag> There is no poll item yet. Add first poll item
+            <Tag closeable={false} variant="outlined" kind="warning"><b>Next step</b></Tag> There are no poll items yet. Add the first poll item!
           </Block>
         }
       </Block>

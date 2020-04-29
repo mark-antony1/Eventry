@@ -24,6 +24,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 6],
 		"price": 30,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "lola-space"
 	},
@@ -46,6 +48,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 20],
 		"price": "varies",
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "speakeasy"
 	},
@@ -68,6 +72,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 20],
 		"price": 0,
+		"videoTitle": "Trailer",
+		"videoLink": "https://youtu.be/m_B1YOIYM3Q",
 		"priceReasoning": "Based on price per game",
 		"symbol": "netflix-party"
 	},
@@ -92,6 +98,8 @@ export const venues = [
 		"averageTimeSpent": 30,
 		"recommendedGroupsize": [2, 10],
 		"price": 5,
+		"videoTitle": "Trailer",
+		"videoLink": "https://youtu.be/uuPY0_8CO6o",
 		"priceReasoning": "Based on price per game",
 		"symbol": "jackbox"
 	},
@@ -116,6 +124,8 @@ export const venues = [
 		"averageTimeSpent": 20,
 		"recommendedGroupsize": [2, 100],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per app install",
 		"symbol": "glimpse"
 	},
@@ -140,6 +150,8 @@ export const venues = [
 		"averageTimeSpent": 30,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "mattle"
 	},
@@ -162,6 +174,8 @@ export const venues = [
 		"averageTimeSpent": 30,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "Demo",
+		"videoLink": "https://youtu.be/1BPap52PC5k",
 		"priceReasoning": "Based on price per game",
 		"symbol": "playing-cards"
 	},
@@ -185,6 +199,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 10],
 		"price": 0,
+		"videoTitle": "Demo",
+		"videoLink": "https://www.youtube.com/watch?v=nKVLNVEnpOk",
 		"priceReasoning": "Based on price per game",
 		"symbol": "secret-hitler"
 	},
@@ -208,6 +224,8 @@ export const venues = [
 		"averageTimeSpent": 10,
 		"recommendedGroupsize": [2, 5],
 		"price": 2,
+		"videoTitle": "Trailer and Gameplay",
+		"videoLink": "https://www.youtube.com/watch?v=66Nm6rVQ-_8",
 		"priceReasoning": "Based on price of app",
 		"symbol": "exploding kittens"
 	},
@@ -232,6 +250,8 @@ export const venues = [
 		"averageTimeSpent": 20,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "Demo",
+		"videoLink": "https://www.youtube.com/watch?v=pAfnia7-rMk",
 		"priceReasoning": "Based on price per game",
 		"symbol": "kahoot"
 	},
@@ -257,6 +277,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "Trailer",
+		"videoLink": "https://www.youtube.com/watch?v=Rc9l5g7oXX0",
 		"priceReasoning": "Based on price per game",
 		"symbol": "heads-up-house-party"
 	},
@@ -284,6 +306,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "scattegories"
 	},
@@ -307,6 +331,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 10],
 		"price": 5,
+		"videoTitle": "Demo",
+		"videoLink": "https://www.youtube.com/watch?v=Wna241zBN2I",
 		"priceReasoning": "Based on price per month",
 		"symbol": "song-pop"
 	},
@@ -330,6 +356,8 @@ export const venues = [
 		"averageTimeSpent": 30,
 		"recommendedGroupsize": [4, 10],
 		"price": 0,
+		"videoTitle": "Demo",
+		"videoLink": "https://www.youtube.com/watch?v=azGwqntHJfQ",
 		"priceReasoning": "Based on price per game",
 		"symbol": "net-games"
 	},
@@ -354,6 +382,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 6],
 		"price": "0-20",
+		"videoTitle": "Trailer",
+		"videoLink": "https://www.youtube.com/watch?v=9LQdidVUa1U",
 		"priceReasoning": "Based on price per game depending on platform",
 		"symbol": "catan"
 	},
@@ -378,6 +408,8 @@ export const venues = [
 		"averageTimeSpent": 20,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "Trailer",
+		"videoLink": "https://www.youtube.com/watch?v=Px23d-OZDY8",
 		"priceReasoning": "Based on price per game",
 		"symbol": "quiz-whitz"
 	},
@@ -402,6 +434,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 20],
 		"price": "varies",
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "teambuilding"
 	},
@@ -424,6 +458,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 6],
 		"price": "0",
+		"videoTitle": "Tutorial",
+		"videoLink": "https://www.youtube.com/watch?v=-oHvONNjxYw",
 		"priceReasoning": "Based on price per game depending on platform",
 		"symbol": "colonist"
 	},
@@ -447,6 +483,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 9],
 		"price": 0,
+		"videoTitle": "Old Demo",
+		"videoLink": "https://www.youtube.com/watch?v=IrLIQvXv54M&t=18s",
 		"priceReasoning": "Based on price per game",
 		"symbol": "pokerrr"
 	},
@@ -471,6 +509,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 9],
 		"price": 0,
+		"videoTitle": "Trailer",
+		"videoLink": "https://www.youtube.com/watch?v=L0CnvKLNCGE",
 		"priceReasoning": "Based on price per game",
 		"symbol": "mario-kart"
 	},
@@ -494,6 +534,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 6],
 		"price": 4,
+		"videoTitle": "Trailer",
+		"videoLink": "https://www.youtube.com/watch?v=3GHK4ruLdW8",
 		"priceReasoning": "Based on price per game",
 		"symbol": "clue"
 	},
@@ -517,6 +559,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 100],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "icebreaker"
 	},
@@ -542,6 +586,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [4, 10],
 		"price": 20,
+		"videoTitle": "Trailer",
+		"videoLink": "https://www.youtube.com/watch?v=SxKy2lrGBBQ",
 		"priceReasoning": "Based on price per game",
 		"symbol": "werewolf"
 	},
@@ -565,6 +611,8 @@ export const venues = [
 		"averageTimeSpent": 30,
 		"recommendedGroupsize": [2, 6],
 		"price": 0,
+		"videoTitle": "Tutorial",
+		"videoLink": "https://www.youtube.com/watch?v=TusM9kevpRA",
 		"priceReasoning": "Based on price per game",
 		"symbol": "horsepaste"
 	},
@@ -588,6 +636,8 @@ export const venues = [
 		"averageTimeSpent": 51,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "App is free",
 		"symbol": "hous-party"
 	},
@@ -612,6 +662,8 @@ export const venues = [
 		"averageTimeSpent": 15,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "Demo",
+		"videoLink": "https://www.youtube.com/watch?v=ww2ChsirdE0",
 		"priceReasoning": "App is free",
 		"symbol": "jqbx"
 	},
@@ -635,6 +687,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "onlin-town"
 	},
@@ -659,6 +713,8 @@ export const venues = [
 		"averageTimeSpent": 60,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
+		"videoTitle": "",
+		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "quiz-up"
 	},

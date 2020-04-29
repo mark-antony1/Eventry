@@ -17,6 +17,7 @@ import Home from './pages/home';
 import CreateEvent from './pages/create-event';
 import CreateTeam from './pages/create-team';
 import ManageTeams from './pages/manage-team';
+import MyPermissions from './pages/permissions';
 import VirtualEventDiscovery from './pages/virtual-event-discovery';
 import { withTracker } from './utils';
 import './App.css';
@@ -35,6 +36,7 @@ function App() {
           <Route component={withTracker(Event)} path="/event/:eventId" />
           <Route exact component={withTracker(CreateTeam)} path="/user/team/create" />
           <Route exact component={withTracker(ManageTeams)} path="/user/team" />
+          <Route exact component={withTracker(MyPermissions)} path="/user/permissions" />
           <Route exact component={withTracker(CreateEvent)} path="/team/:teamId/create-event" />
           <Route component={withTracker(Team)} path="/team/:teamId" />
           <Route exact component={withTracker(Details)} path="/:venueSymbol" />

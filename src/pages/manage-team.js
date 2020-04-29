@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useStyletron } from 'styletron-react';
 import { useApolloClient } from '@apollo/react-hooks';
-import {
-  FaTrashAlt,
-  FaHome,
-  FaUserFriends,
-  FaGoogle,
-  FaPen
-} from 'react-icons/fa';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
 import Button from '../components/button';

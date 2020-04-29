@@ -146,3 +146,8 @@ export const GET_TEAM_POLLS = gql`
 query GetTeamPolls($teamId: String!){
   getTeamPolls(teamId: $teamId)${Poll}
 }`;
+
+export const GET_SCOPES_BY_AUTH = gql`
+query GetScopesByAuth{
+  getScopesByAuth
+}`;

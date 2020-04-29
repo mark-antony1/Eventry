@@ -143,3 +143,8 @@ mutation GetAuthByGoogleAuthCode($googleAuthCode: String!){
     tokenHash
   }
 }`;
+
+export const UPDATE_GOOGLE_REFRESH_TOKEN = gql`
+mutation UpdateGoogleRefreshToken($googleAuthCode: String!){
+  updateGoogleRefreshToken(googleAuthCode: $googleAuthCode)
+}`;

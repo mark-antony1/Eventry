@@ -96,6 +96,30 @@ export const venues = [
 		"symbol": "jackbox"
 	},
 	{
+		"id": 14,
+		"photos": [
+			"https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/ce/e2/ac/cee2aca5-dc52-a1e5-a2f5-ea6cf4ae3be9/pr_source.png/230x0w.png",
+			"https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/b2/af/9d/b2af9d6e-3828-faa8-a634-21a987cc0cd1/pr_source.png/460x0w.png",
+			"https://i.ibb.co/4mh727K/summer.jpg",
+		],
+		"name": "Glimpse",
+		"description": "Randomly get paired with friends for 2 minutes in a room for your specific team or group.",
+		"teaserDescription": "2 Minute Team 1:1s",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.joinglimpse.com/",
+		"relevantLinks": [],
+		"activityType": "hangout",
+		"tags": ["fun", "social"],
+		"rating": 4.8,
+		"takesReservations": true,
+		"averageTimeSpent": 20,
+		"recommendedGroupsize": [2, 100],
+		"price": 0,
+		"priceReasoning": "Based on price per app install",
+		"symbol": "glimpse"
+	},
+	{
 		"id": 25,
 		"photos": [
 			"https://mattle.online/assets/images/games/online-go.png",
@@ -122,7 +146,7 @@ export const venues = [
 	{
 		"id": 2,
 		"photos": [
-			"https://lh3.googleusercontent.com/e5AA7ViNFO8IX2dZJcByzLv7o7S2sE6idTSACKNR-dPsIOFSzSd7dn9UbP-h6Tvxx-YuZ3N_BnUFY3_7ShB1dU1nzer6ntGInanOibhQDyKpGuynhXx4Yp-H9fDT9bkzCOssT6ehNuPsAy6n0EdV8TwoZ2xcbF06TfJeDeqx2ozQUJOUra2lXavmBy8tTb2GUDeCyjHbBSkYRSGnRc1S5n8ExjNLqPhgkzFRmTiMWHzY9pOxLbb9TAaYVp449mvbO7_KlE_QDej8rrt_NimV6oxkSoLVcGVKtZZ-iRsTPnMT6vOqxeCRlSRpYXzceF2epFtH9QU9ky1bRX5n26BGXUhs5Jw4n-cCFUiExfc8HwBqIsmArmKoEF0Kk7jDzWtzn_dA6JKlsH8MeJTcEtYOXUdto57LpoUZl9gvr692_oxzjwy9RsjmFUZwDAQ13xQtAUdrOTwItoEEyWK-mNk3pa1ESZV6R6NbuhEKcvO1C381ktRygigcs1AXiiyO5Q2AxdwIM9FT4bTk8yphXk6ufv3dX810rh7qpU4asCcttDaWvbQUBb61sfjf206da6Mz3DWqf2WAB-zOgSVnR1qFgjFVJ2OrzNOV3YwPh9cqZzh81C7n-88vASwaTTZXgND-n7G-CjCi_t0Y-ubDYPQlIOdn9K9N072pSwUOLVO8BlKEUHCnrlpZGoxP4fX1=w1920-h768-no"
+			"https://lh3.googleusercontent.com/tOhMr6zvwYuTOx6fHHJJfjOT7IJEV7U4x_kiJgYXA83EJ3PuoDc-9xwV4gHC9fkWpC_Oabji7iQciMbJAAsWT9wP-y5EGMnmBnTAM7DsSv0L4aH69KmqGhVzNInGptmtoah3Ln8A=w2400"
 		],
 		"name": "Playing Cards",
 		"description": "Play any card game with friends. Use one of the standards games available, or create your own game.",
@@ -188,28 +212,28 @@ export const venues = [
 		"symbol": "exploding kittens"
 	},
 	{
-		"id": 5,
+		"id": 30,
 		"photos": [
-			"https://images.techhive.com/images/article/2014/03/quizup2-100248921-large.jpg",
-			"https://quizup-web.s3.amazonaws.com/logos/logos-1200x630-store-buttons-centered-2014-12-10/quizup-logo-1200x630-2014-12-10/quizup-logo-1200x630-centered.png",
-			"https://cnet1.cbsistatic.com/img/fRcMQuCkbD3Ijo3iILBf-8rlf0A=/470x376/2014/03/19/6a1c3b10-b0c6-11e3-a24e-d4ae52e62bcc/QuizUp_Home_Activity.png"
+			"https://kahoot.com/files/2017/09/join_live_games_kahoot_app.jpg",
+			"https://www.agclassroom.org/ok/resources/images/classroom/kahoot.jpg",
+			"https://teachingwithipad.files.wordpress.com/2017/01/photo-jan-27-2017-313-pm.jpg"
 		],
-		"name": "Quiz Up",
-		"description": "Fun, addictive, challenging, online trivia, that has the best of two worlds.",
-		"teaserDescription": "Team Trivia",
+		"name": "Kahoot",
+		"description": "Fun online trivia, quizzes, learning.",
+		"teaserDescription": "Team Trivia/Learning",
 		"phoneNumber": "",
 		"email": "",
-		"linkToSite": "https://www.quizup.com/en",
+		"linkToSite": "https://create.kahoot.it/",
 		"relevantLinks": [],
 		"activityType": "game",
 		"tags": ["trivia"],
-		"rating": 4.6,
+		"rating": 4.7,
 		"takesReservations": true,
-		"averageTimeSpent": 60,
+		"averageTimeSpent": 20,
 		"recommendedGroupsize": [2, 10],
 		"price": 0,
 		"priceReasoning": "Based on price per game",
-		"symbol": "quiz-up"
+		"symbol": "kahoot"
 	},
 	{
 		"id": 6,
@@ -287,6 +311,29 @@ export const venues = [
 		"symbol": "song-pop"
 	},
 	{
+		"id": 32,
+		"photos": [
+			"https://i.redd.it/113nu2z42qh21.png",
+			"https://miro.medium.com/max/2069/1*jQRplWPgZc6m1LuvIQWx7g.png"
+		],
+		"name": "Netgames.io",
+		"description": "A website that supports and hosts a variety of social deduction games including werewolf, secret hitler, and codenames.",
+		"teaserDescription": "Social Deduction Games",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://netgames.io/games/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["immersive", "fun", "deceit"],
+		"rating": 4.8,
+		"takesReservations": true,
+		"averageTimeSpent": 30,
+		"recommendedGroupsize": [4, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "net-games"
+	},
+	{
 		"id": 9,
 		"photos": [
 			"https://www.catan.com/files/styles/lightboxy/public/gallery/screenshot_mobile_6.png?itok=jLlrC5Hg",
@@ -309,6 +356,30 @@ export const venues = [
 		"price": "0-20",
 		"priceReasoning": "Based on price per game depending on platform",
 		"symbol": "catan"
+	},
+	{
+		"id": 31,
+		"photos": [
+			"https://www.quizwitz.com/images/banner/ted.png",
+			"https://www.quizwitz.com/images/slides/QW_screen_3.jpg",
+			"https://www.quizwitz.com/images/slides/QW_screen_4.jpg"
+		],
+		"name": "Quiz Whitz",
+		"description": "Fun online community trivia with leaderboards.",
+		"teaserDescription": "Team Trivia",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.quizwitz.com/en/",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["trivia"],
+		"rating": 4.7,
+		"takesReservations": true,
+		"averageTimeSpent": 20,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "quiz-whitz"
 	},
 	{
 		"id": 19,
@@ -566,5 +637,29 @@ export const venues = [
 		"price": 0,
 		"priceReasoning": "Based on price per game",
 		"symbol": "onlin-town"
-	}
+	},
+	{
+		"id": 5,
+		"photos": [
+			"https://images.techhive.com/images/article/2014/03/quizup2-100248921-large.jpg",
+			"https://quizup-web.s3.amazonaws.com/logos/logos-1200x630-store-buttons-centered-2014-12-10/quizup-logo-1200x630-2014-12-10/quizup-logo-1200x630-centered.png",
+			"https://cnet1.cbsistatic.com/img/fRcMQuCkbD3Ijo3iILBf-8rlf0A=/470x376/2014/03/19/6a1c3b10-b0c6-11e3-a24e-d4ae52e62bcc/QuizUp_Home_Activity.png"
+		],
+		"name": "Quiz Up",
+		"description": "Fun, addictive, challenging, online trivia, that has the best of two worlds.",
+		"teaserDescription": "Team Trivia",
+		"phoneNumber": "",
+		"email": "",
+		"linkToSite": "https://www.quizup.com/en",
+		"relevantLinks": [],
+		"activityType": "game",
+		"tags": ["trivia"],
+		"rating": 4.6,
+		"takesReservations": true,
+		"averageTimeSpent": 60,
+		"recommendedGroupsize": [2, 10],
+		"price": 0,
+		"priceReasoning": "Based on price per game",
+		"symbol": "quiz-up"
+	},
 ]

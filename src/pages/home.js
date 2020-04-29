@@ -25,21 +25,21 @@ export default function Home() {
             backgroundSize: 'cover, contain',
           })}
           padding="24px"
-          height="calc(100vh - 120px)"
+          height="calc(100vh - 300px)"
           display="flex"
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
         >
-          <Display2 color="#fff"><b>Find Your Next Team Experience</b></Display2>
+          <Display2 color="#fff"><b>Find Your Next Team Event</b></Display2>
           <Label1 color="#fff"><b>70+ venues in person and virtually</b></Label1>
-          <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
-            <Block margin="12px">
+          <Block display="flex" width={['100%', '100%', 'fit-content', 'fit-content']} flexDirection={['column', 'column', 'row', 'row']}>
+            <Block margin="12px" width={['calc(100%-24px)', 'calc(100%-24px)', 'fit-content', 'fit-content']} display="flex" flexDirection="column">
               <Button kind="secondary" $as="a" href="/v">
                 <Tag closeable={false} variant="outlined" kind="negative">New</Tag> Search Virtual
               </Button>
             </Block>
-            <Block margin="12px">
+            <Block margin="12px" width={['calc(100%-24px)', 'calc(100%-24px)', 'fit-content', 'fit-content']} display="flex" flexDirection="column">
               <Button overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#77B900" color="#fff" $as="a" href="/s">
                 Search San Francisco
               </Button>
@@ -67,15 +67,12 @@ export default function Home() {
         </Block>
         <Block flex="0 1 100%">
           <Display2><b>Search for Events</b></Display2>
+          <Label1><b>Browse a selection of the best curated experiences for teambuilding and hanging out.</b></Label1>
+          <Label1><b>Whether you want to find some in person or virtual, we have a selection that your entire team will love.</b></Label1>
         </Block>
-        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']} marginTop="24px">
-          <img width="70%" src={process.env.PUBLIC_URL + './search.png'} />
-          <Block display="flex" alignItems="center" padding="12px">
-            <Label1><b>Browse a selection of the best curated experiences for teambuilding and hanging out. Whether you want to find some in person or virtual, we have a selection that your entire team will love.</b></Label1>
-          </Block>
+        <Block display="flex" display={['none', 'none', 'initial', 'initial']} justifyContent="center" marginTop="24px">
+          <img width="80%" src={process.env.PUBLIC_URL + './search.png'} />
         </Block>
-
-
       </Block>
       <Block display="flex" flexWrap="wrap" padding="48px" marginTop="68px" marginBottom="68px">
         <Block flex="0 1 100%" display="flex" alignItems="center">
@@ -108,10 +105,15 @@ export default function Home() {
             <Label1><b>Choose your event and book</b></Label1>
           </Block>
         </Block>
+        <Block flex="0 1 100%" marginTop="12px">
+          <Button $as="a" href="/user?p=signup" overrides={{ BaseButton: { style: { height: '34px'}}}} backgroundColor="#4284F2" color="#fff">
+            <p style={{fontSize: "18px"}}>Start Team Event</p>
+          </Button>
+        </Block>
       </Block>
       <Block backgroundColor="#f7f7f7" padding="48px" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Label1><b>team@teambright.co</b></Label1>
-        <Label1 $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
+        <Label1 color="#484848"><b>team@teambright.co</b></Label1>
+        <Label1 color="#484848" $as="a" href="/privacy"><b>Privacy Policy</b></Label1>
       </Block>
     </Block>
   );

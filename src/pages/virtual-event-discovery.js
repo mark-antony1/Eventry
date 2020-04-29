@@ -17,7 +17,6 @@ import { venues as allVenues } from '../constants/virtual-locations';
 import { useDebounce, useQueryUrl, useGA } from '../utils';
 
 // Filter
-import { Checkbox } from 'baseui/checkbox';
 import Select from '../components/filter-select';
 
 const groupSizeOptions = [
@@ -352,7 +351,7 @@ export default function Discovery() {
   const slicedVenues = venues.slice(venueIndex, venueIndex + LIST_SIZE);
 
   return (
-    <Block display="flex" flexDirection="column" height="100vh">
+    <Block display="flex" flexDirection="column" height={['auto', 'auto', '100vh', '100vh']}>
       <HeaderNavigation>
         <SearchBar filterValue={filterValue} updateFilterValue={updateFilterValue} />
       </HeaderNavigation>

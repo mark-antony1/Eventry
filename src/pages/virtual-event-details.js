@@ -27,6 +27,8 @@ import {
 } from 'baseui/typography';
 import HeaderNavigation from '../components/header-navigation';
 import VenueReviews from '../components/venue/venue-reviews';
+import CreateEventButton from '../components/team/create-event-button';
+import CreateEventSelectTeamModal from '../components/team/create-event-team-select-modal';
 import { venues as allVenues } from '../constants/locations';
 import { venues as allVirtualLocations } from '../constants/virtual-locations';
 
@@ -83,21 +85,15 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
           <DeleteIcon size={36} />
         </PillButton>
       </Block>
-      <Block display="flex" flex="1">
-        <Block display="flex" alignItems="center">
+      <Block flex="1" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+        <Block height="calc(80vh - 50px)">
+          <img alt="details-venue" style={{ objectFit: 'contain' }} height="100%" src={photos[photoIndex]} />
+        </Block>
+        <Block display="flex" marginTop="12px" alignItems="center" justifyContent="center">
           <PillButton kind="minimal" onClick={onPrevPhoto}>
             <ChevronLeft size={36} />
           </PillButton>
-        </Block>
-        <Block flex="1" display="flex" flexDirection="column" height="100%" alignItems="center" justifyContent="center">
-          <Block height="calc(80vh - 50px)">
-            <img alt="details-venue" height="100%" src={photos[photoIndex]} />
-          </Block>
-          <Block height="50px" display="flex" alignItems="center" justifyContent="center">
-            <Label2>{photoIndex + 1} / {photos.length}</Label2>
-          </Block>
-        </Block>
-        <Block display="flex" alignItems="center">
+          <Label2>{photoIndex + 1} / {photos.length}</Label2>
           <PillButton kind="minimal" onClick={onNextPhoto}>
             <ChevronRight size={36} />
           </PillButton>
@@ -111,6 +107,7 @@ export default function Details() {
   const { venueSymbol } = useParams();
   const [ showPhotoDetails, setShowPhotoDetails ] = useState(false);
   const [ initialPhotoIndex, setInitialPhotoIndex ] = useState(null);
+  const [ showCreateEventTeamSelect, setShowCreateEventTeamSelect ] = useState(false);
   const [ css ] = useStyletron();
   const venue = allVirtualLocations.find((v) => v.symbol === venueSymbol);
   useEffect(() => {
@@ -169,7 +166,7 @@ export default function Details() {
           <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
           <Label2 color="#0B6839" marginTop="8px"><b>{venue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
         </Block>
-        <Block flex="1" display="flex" padding="24px">
+        <Block flex="1" display="flex" padding={['0px', '0px', '24px', '24px']}>
           <Block flex="1" padding="24px">
             <FaUserFriends />
             <Label2 color="#727272">Group Size</Label2>
@@ -192,7 +189,14 @@ export default function Details() {
       </Block>
       <Block backgroundColor="#f4f4f4" paddingLeft="36px" paddingRight="36px" paddingTop="56px" paddingBottom="150px">
         <Block display="flex" flexDirection="column">
-          <Label1 marginBottom="24px"><b>About this virtual event</b></Label1>
+          <Block display="flex" alignItems="center" marginBottom="12px">
+            <Label1><b>About the venue</b></Label1>
+            <Block marginLeft="12px">
+              <Button kind="secondary" color="#fff" backgroundColor="#77B900" $as="a" href={venue.linkToSite} target="_blank">
+                <CheckIcon size={24} /><b>Visit Website</b>
+              </Button>
+            </Block>
+          </Block>
           <Block>{venue.description}</Block>
         </Block>
         {
@@ -234,12 +238,13 @@ export default function Details() {
               </Button>
             </Block>
           }
-          <Button kind="secondary" color="#fff" backgroundColor="#77B900" $as="a" href={venue.linkToSite} target="_blank">
-            <CheckIcon size={24} color="#fff" /><b>Visit Website</b>
-          </Button>
-          <Label2 color="#727272" marginLeft="24px"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
+          <CreateEventButton showModal={() => setShowCreateEventTeamSelect(true)} />
+          <Block marginLeft="24px" display={['none', 'none', 'initial', 'initial']}>
+            <Label2 color="#727272"><b>{venue.name} "{venue.teaserDescription}" from ${venue.price} / person</b></Label2>
+          </Block>
         </Block>
       </Block>
+      <CreateEventSelectTeamModal showModal={showCreateEventTeamSelect} close={() => setShowCreateEventTeamSelect(false)} symbol={venue.symbol} />
     </Block>
   );
 }

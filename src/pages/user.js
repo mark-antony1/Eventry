@@ -7,7 +7,8 @@ import {
   FaHome,
   FaUserFriends,
   FaGoogle,
-  FaPen
+  FaPen,
+  FaBirthdayCake
 } from 'react-icons/fa';
 import { Block } from 'baseui/block';
 import { Card } from 'baseui/card';
@@ -26,10 +27,13 @@ import {
   showAlert,
   getBackgroundColor
 } from '../utils';
+import CreateEventSelectTeamModal from '../components/team/create-event-team-select-modal';
+import EventCell from '../components/team/event-cell';
 import PillButton from '../components/pill-button';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 import {
+  Display2,
   Display4,
   Paragraph1,
   Label1,
@@ -43,6 +47,7 @@ import {
 
 import { venues } from '../constants/locations';
 import {
+  GET_EVENTS_BY_AUTH,
   GET_TEAMS_BY_EMAIL,
   LOAD_USER_PROFILE,
   GET_REVIEWS_BY_AUTH,
@@ -440,19 +445,6 @@ function SignUpForm({ handleSigninMode, googleAuthInfo }) {
     >
       <Block display="flex" paddingBottom="24px" alignItems="flex-end">
         <Display4>Sign up</Display4>
-        <Block
-          overrides={{
-            Block: {
-              style: {
-                cursor: 'pointer'
-              }
-            }
-          }}
-          marginLeft="12px"
-          onClick={handleSigninMode}
-        >
-          <Label1 color="#777">I have an account <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
-        </Block>
       </Block>
       <FormControl
         error={signupError}
@@ -474,6 +466,20 @@ function SignUpForm({ handleSigninMode, googleAuthInfo }) {
         </Block>
       </FormControl>
       <Button loading={submittingForm} onClick={handleSignup}>Sign up</Button>
+      <Block marginTop="24px" display="flex" justifyContent="center">
+        <Block
+          overrides={{
+            Block: {
+              style: {
+                cursor: 'pointer'
+              }
+            }
+          }}
+          onClick={handleSigninMode}
+        >
+          <Label3 color="#777">I have an account</Label3>
+        </Block>
+      </Block>
     </Block>
   );
 }
@@ -528,22 +534,8 @@ function SignUpMethod({ handleSigninMode }) {
       flexDirection="column"
       position="relative"
     >
-      <Block display="flex" paddingBottom="24px" alignItems="flex-end">
-        <Display4>Sign up</Display4>
-        <Block
-          overrides={{
-            Block: {
-              style: {
-                cursor: 'pointer'
-              }
-            }
-          }}
-          marginLeft="12px"
-          onClick={handleSigninMode}
-        >
-          <Label1 color="#777">I have an account <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
-        </Block>
-      </Block>
+      <Display4>Sign up</Display4>
+      <Block margin="8px" />
       <GoogleLogin
         clientId={process.env.REACT_APP_G_AUTH_ID}
         onSuccess={successGoogle}
@@ -556,7 +548,29 @@ function SignUpMethod({ handleSigninMode }) {
         cookiePolicy={'single_host_origin'}
       />
       <Block margin="8px" />
-      <Button kind="secondary" onClick={() => setShowSignUpForm(true)}>Sign up with Company Email</Button>
+      <Button
+        size="compact"
+        onClick={() => setShowSignUpForm(true)}
+      >
+        Sign up with Email
+      </Button>
+      <Block display="flex" flexDirection="column" alignItems="center">
+        <Block marginTop="24px">
+          <Block
+            width="fit-content"
+            overrides={{
+              Block: {
+                style: {
+                  cursor: 'pointer'
+                }
+              }
+            }}
+            onClick={handleSigninMode}
+          >
+            <Label3 color="#777">I have an account</Label3>
+          </Block>
+        </Block>
+      </Block>
     </Block>
   );
 }
@@ -642,22 +656,8 @@ function SignInForm({ handleSignupMode }) {
         flexDirection="column"
         position="relative"
       >
-        <Block display="flex" paddingBottom="24px" alignItems="flex-end">
-          <Display4>Sign in</Display4>
-          <Block
-            overrides={{
-              Block: {
-                style: {
-                  cursor: 'pointer'
-                }
-              }
-            }}
-            marginLeft="12px"
-            onClick={handleSignupMode}
-          >
-            <Label1 color="#777">I want to sign up <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
-          </Block>
-        </Block>
+        <Display4>Sign in</Display4>
+        <Block margin="8px" />
         <FormControl
           error={signinError}
           positive=""
@@ -692,6 +692,20 @@ function SignInForm({ handleSignupMode }) {
           </Block>
         </FormControl>
         <Button onClick={handleSignin} loading={submittingForm}>Sign in</Button>
+        <Block display="flex" justifyContent="center" marginTop="24px">
+          <Block
+            overrides={{
+              Block: {
+                style: {
+                  cursor: 'pointer'
+                }
+              }
+            }}
+            onClick={handleSignupMode}
+          >
+            <Label3 color="#777">I want to sign up</Label3>
+          </Block>
+        </Block>
       </Block>
     );
   }
@@ -703,22 +717,8 @@ function SignInForm({ handleSignupMode }) {
       flexDirection="column"
       position="relative"
     >
-      <Block display="flex" paddingBottom="24px" alignItems="flex-end">
-        <Display4>Sign in</Display4>
-        <Block
-          overrides={{
-            Block: {
-              style: {
-                cursor: 'pointer'
-              }
-            }
-          }}
-          marginLeft="12px"
-          onClick={handleSignupMode}
-        >
-          <Label1 color="#777">I want to sign up <FaAngleRight style={{verticalAlign: 'middle'}} /></Label1>
-        </Block>
-      </Block>
+      <Display4>Sign in</Display4>
+      <Block margin="8px" />
       <FormControl label="" error={signinError} positive="">
         <Block display="flex" flexDirection="column">
           <GoogleLogin
@@ -730,9 +730,23 @@ function SignInForm({ handleSignupMode }) {
             cookiePolicy={'single_host_origin'}
           />
           <Block margin="8px" />
-          <Button kind="secondary" onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
+          <Button kind="secondary" size="compact" onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
         </Block>
       </FormControl>
+      <Block display="flex" justifyContent="center" marginTop="24px">
+        <Block
+          overrides={{
+            Block: {
+              style: {
+                cursor: 'pointer'
+              }
+            }
+          }}
+          onClick={handleSignupMode}
+        >
+          <Label3 color="#777">I want to sign up</Label3>
+        </Block>
+      </Block>
     </Block>
   );
 }
@@ -770,17 +784,41 @@ function Sign() {
           </Label3>
         </Block>
       }
-      <Block width={['95%', '95%', '500px', '400px']}>
+      <Block width="80%">
         {
           showSignUp &&
-          <Block display="flex" flexDirection="column">
-            <SignUpMethod handleSigninMode={handleSigninMode} />
+          <Block display="flex" alignItems="center">
+            <Block flex="1" display="flex" display={['none', 'none', 'initial', 'initial']} justifyContent="center">
+              <Block marginTop="24px" marginBottom="24px">
+                <Block width="20px" height="20px" backgroundColor="#4284F2" marginRight="12px" />
+                <Display2><b>Keep</b></Display2>
+                <Display2><b>The Team</b></Display2>
+                <Display2><b>Together</b></Display2>
+                <Label1 marginTop="24px">Create Team Events Seamlessly</Label1>
+                <Label1 marginTop="24px">Invite Teammates Via Email To Your Event</Label1>
+                <Label1 marginTop="24px">Sign Up and Get Full Access To The Beta Release</Label1>
+              </Block>
+            </Block>
+            <Block display="flex" flex="1" flexDirection="column" padding="36px">
+              <SignUpMethod handleSigninMode={handleSigninMode} />
+            </Block>
           </Block>
         }
         {
           showSignin &&
-          <Block display="flex" flexDirection="column">
-            <Block display="flex" flexDirection="column">
+          <Block display="flex" alignItems="center">
+            <Block flex="1" display="flex" display={['none', 'none', 'initial', 'initial']} justifyContent="center">
+              <Block marginTop="24px" marginBottom="24px">
+                <Block width="20px" height="20px" backgroundColor="#4284F2" marginRight="12px" />
+                <Display2><b>Keep</b></Display2>
+                <Display2><b>The Team</b></Display2>
+                <Display2><b>Together</b></Display2>
+                <Label1 marginTop="24px">Create Team Events Seamlessly</Label1>
+                <Label1 marginTop="24px">Invite Teammates Via Email To Your Event</Label1>
+                <Label1 marginTop="24px">Sign In and Get Full Access To The Beta Release</Label1>
+              </Block>
+            </Block>
+            <Block display="flex" flex="1" flexDirection="column" padding="36px">
               <SignInForm handleSignupMode={handleSignupMode} />
             </Block>
           </Block>
@@ -818,6 +856,35 @@ function TeamCell({ team }) {
       <Block marginLeft="12px">
         <Label3 $as="a" href={`/team/${team.id}`} color="#fff">View team</Label3>
       </Block>
+    </Block>
+  );
+}
+
+function MyEvents() {
+  const { data, loading, error } = useQuery(GET_EVENTS_BY_AUTH);
+  const [ showModal, setShowModal ] = useState(false);
+  if (loading || error) {
+    return <Loading />;
+  }
+
+  const {
+    getEventsByAuth: events
+  } = data;
+  return (
+    <Block>
+      <FaBirthdayCake />
+      <Block display="flex" alignItems="center">
+        <Label1><b>My Events</b></Label1>
+        <Block marginLeft="8px">
+          <Button backgroundColor="#4284F2" color="#fff" size="compact" onClick={() => setShowModal(true)}>Create Event</Button>
+        </Block>
+      </Block>
+      <Block>
+        {
+          events.map(e => <EventCell key={e.id} event={e} />)
+        }
+      </Block>
+      <CreateEventSelectTeamModal showModal={showModal} close={() => setShowModal(false)} />
     </Block>
   );
 }
@@ -895,7 +962,7 @@ function User() {
             {companyLogo && <img alt="review-logo" height="50px" src={companyLogo} style={{borderRadius: '10px'}}/>}
           </Block>
         </Block>
-        <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center">
+        <Block marginTop="12px" marginBottom="24px" display="flex" alignItems="center" flexWrap="wrap">
           <Label1><b>{email}</b></Label1>
           <Block marginLeft="12px">
             <PillButton size="compact" kind="minimal" onClick={() => setChangingPassword(!changingPassword)}>
@@ -953,29 +1020,33 @@ function User() {
             </Button>
           </Block>
         }
-        <Block display="flex">
-          <Block flex="1">
+        <Block display="flex" flexDirection={['column', 'column', 'row', 'row']}>
+          <Block flex="1" marginBottom="24px">
             <FaHome />
             <Label1><b>Company</b></Label1>
             <Label1>{companyName}</Label1>
           </Block>
-          <Block flex="1">
-            <FaUserFriends />
-            <Block display="flex" alignItems="center">
-              <Label1><b>My Teams</b></Label1>
-              <Block marginLeft="8px">
-                <PillButton size="compact" $as="a" href="/user/team">Manage Teams</PillButton>
-              </Block>
-            </Block>
-            {
-              teams.map((team) => {
-                return <TeamCell key={team.id} team={team} />;
-              })
-            }
+          <Block flex="1" marginBottom="24px">
+            <MyEvents />
           </Block>
         </Block>
         <Block backgroundColor="#777" height="1px" width="100%" marginTop="24px" marginBottom="24px" />
-        <Block>
+        <Block marginTop="24px">
+          <FaUserFriends />
+          <Block display="flex" alignItems="center">
+            <Label1><b>My Teams</b></Label1>
+            <Block marginLeft="8px">
+              <PillButton size="compact" $as="a" href="/user/team">Manage Teams</PillButton>
+            </Block>
+          </Block>
+          {
+            teams.map((team) => {
+              return <TeamCell key={team.id} team={team} />;
+            })
+          }
+        </Block>
+        <Block backgroundColor="#777" height="1px" width="100%" marginTop="24px" marginBottom="24px" />
+        <Block marginTop="24px">
           <MyReviews />
         </Block>
       </Block>

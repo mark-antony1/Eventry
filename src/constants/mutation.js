@@ -75,13 +75,18 @@ mutation VotePollLineItem($pollLineItemId: String!){
 }`;
 
 export const CREATE_POLL = gql`
-mutation CreatePoll($name: String, $expiration: DateTime!, $teamId: String!){
-  createPoll(name: $name, expiration: $expiration, teamId: $teamId)
+mutation CreatePoll($expiration: DateTime!, $eventId: String!, $notify: Boolean!){
+  createPoll(expiration: $expiration, eventId: $eventId, notify: $notify)
+}`;
+
+export const CREATE_EVENT = gql`
+mutation CreateEvent($name: String!, $teamId: String!, $symbol: String, $notify: Boolean!){
+  createEvent(name: $name, teamId: $teamId, symbol: $symbol, notify: $notify)
 }`;
 
 export const ADD_POLL_LINEITEM = gql`
-mutation AddPollLineItem($pollId: String!, $symbol: String, $name: String!){
-  addPollLineItem(pollId: $pollId, symbol: $symbol, name: $name)
+mutation AddPollLineItem($pollId: String!, $symbol: String, $name: String, $time: String){
+  addPollLineItem(pollId: $pollId, symbol: $symbol, name: $name, time: $time)
 }`;
 
 export const UPDATE_EVENT_NAME = gql`

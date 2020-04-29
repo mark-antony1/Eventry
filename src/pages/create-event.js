@@ -7,6 +7,7 @@ import Select from '../components/select';
 import { StatefulDatepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
 import Input from '../components/input';
+import Checkbox from '../components/checkbox';
 import { FormControl } from 'baseui/form-control';
 import Textarea from '../components/textarea';
 import ChevronLeft from 'baseui/icon/chevron-left';
@@ -26,24 +27,26 @@ import {
   LOAD_BOOKING_FORM
 } from '../constants/query';
 import {
-  CREATE_POLL
+  CREATE_EVENT
 } from '../constants/mutation';
 import {
   venues
 } from '../constants/locations';
-import { showAlert, getErrorCode } from '../utils';
+import { showAlert, getErrorCode, useQueryUrl } from '../utils';
 import Loading from '../components/loading';
 import HeaderNavigation from '../components/header-navigation';
 
-function CreatePollForm() {
+function CreateEventForm() {
+  const queryUrl = useQueryUrl();
   const client = useApolloClient();
   const { teamId } = useParams();
   const history = useHistory();
   const [ form, setForm ] = useState({
-    expiration: null
+    name: '',
+    notify: true
   });
   const [ formError, setFormError ] = useState(null);
-  const [ createPoll, { loading: creatingPoll } ] = useMutation(CREATE_POLL);
+  const [ createEvent, { loading: creatingEvent } ] = useMutation(CREATE_EVENT);
   const { loading, error } = useQuery(GET_UPCOMING_EVENTS_BY_TEAM, {
     variables: {
       teamId
@@ -58,29 +61,31 @@ function CreatePollForm() {
   };
 
   const validateForm = () => {
-    if (!form.expiration) {
-      setFormError('Poll closing time is required');
+    if (!form.name) {
+      setFormError('Please enter event name');
       return false;
     }
     return true;
   };
 
-  const handleCreatePoll = async () => {
+  const handleCreateEvent = async () => {
     if (!validateForm()) {
       return;
     }
-    const res = await createPoll({
+    const res = await createEvent({
       variables: {
-        expiration: form.expiration,
+        name: form.name,
+        notify: form.notify,
+        symbol: queryUrl.get('symbol') ? queryUrl.get('symbol') : null,
         teamId
       }
     }).catch(e => {
       setFormError(e);
     });
 
-    if (res && res.data && res.data.createPoll) {
-      showAlert(client, 'Poll successfully created!');
-      history.push(`/event/${res.data.createPoll}`);
+    if (res && res.data && res.data.createEvent) {
+      showAlert(client, 'Event successfully created!');
+      history.push(`/event/${res.data.createEvent}`);
     }
   };
 
@@ -88,8 +93,8 @@ function CreatePollForm() {
     return <Loading />;
   }
 
-  if (creatingPoll) {
-    return <Loading message="Creating poll..." />;
+  if (creatingEvent) {
+    return <Loading message="Creating event..." />;
   }
 
   if (error && (getErrorCode(error) === 'NOT_AUTHORIZED' || getErrorCode(error) === 'NOT_AUTHENTICATED')) {
@@ -117,53 +122,25 @@ function CreatePollForm() {
     >
       <Block display="flex" flexDirection="column" width={['100%', '100%', '50%', '50%']}>
         <Display4><b>Create Event</b></Display4>
-        <FormControl label="" positive="" error={formError}>
+        <FormControl label="Event Name" positive="" error={formError}>
           <Block>
-            <FormControl label="Poll Closing Time" caption="Choose the time when your poll is closing" positive="" error={null}>
-              <Block display="flex">
-                <StatefulDatepicker
-                  value={form.expiration ? [form.expiration] : null}
-                  onChange={({date}) => updateForm({ expiration: date })}
-                  filterDate={(date) => {
-                    if (moment(date).isAfter(moment())) {
-                      return true;
-                    }
-                    return false;
-                  }}
-                  overrides={{
-                    Input: {
-                      component: Input
-                    }
-                  }}
-                />
-                {
-                  form.expiration &&
-                  <Block marginLeft="24px">
-                    <TimePicker
-                      value={form.expiration}
-                      onChange={(date) => updateForm({ expiration: date })}
-                      overrides={{
-                        Select: {
-                          props: {
-                            overrides: {
-                              ControlContainer: {
-                                style: {
-                                  borderRadius: '5px !important',
-                                  backgroundColor: '#fff !important'
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }}
-                    />
-                  </Block>
-                }
-              </Block>
-            </FormControl>
+            <Input
+              placeholder="name"
+              value={form.name}
+              onChange={(e) => {
+                updateForm({ name: e.target.value })
+              }}
+            />
+            <Block margin="6px" />
+            <Checkbox
+              checked={form.notify}
+              onChange={e => updateForm({ notify: e.target.checked })}
+            >
+              Notify team member via email
+            </Checkbox>
           </Block>
         </FormControl>
-        <Button onClick={handleCreatePoll}>Create</Button>
+        <Button onClick={handleCreateEvent}>Create Event</Button>
       </Block>
     </Block>
   );
@@ -174,7 +151,7 @@ export default () => {
     <Block display="flex" flexDirection="column" height="100vh">
       <HeaderNavigation leftButtons={[]} />
       <Block>
-        <CreatePollForm />
+        <CreateEventForm />
       </Block>
     </Block>
   );

@@ -12,6 +12,7 @@ import { Block } from 'baseui/block';
 import { Button } from 'baseui/button';
 import { Drawer } from 'baseui/drawer';
 import { Label1 } from 'baseui/typography';
+import CreateEventSelectTeamModal from './team/create-event-team-select-modal';
 import { useStyletron } from 'baseui';
 import {
   useQuery
@@ -19,7 +20,8 @@ import {
 
 import {
   GET_USER_BY_AUTH,
-  GET_ALERT_MESSAGE
+  GET_ALERT_MESSAGE,
+  GET_EVENTS_BY_AUTH
 } from '../constants/query';
 import PillButton from '../components/pill-button';
 import { venues } from '../constants/locations';
@@ -125,29 +127,16 @@ const ToVenueDashboardReduced = () => {
   );
 };
 
-const ToTeam = () => {
-  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+const ToEvent = () => {
+  const [ showModal, setShowModal ] = useState(false);
+  const { data, loading, error } = useQuery(GET_EVENTS_BY_AUTH);
   if (loading || error) {
     return null;
   }
 
   const {
-    getUserByAuth: auth
+    getEventsByAuth: events
   } = data;
-
-  if (!auth) {
-    return null;
-  }
-
-  const {
-    user: {
-      teams
-    }
-  } = auth;
-
-  if (!teams || !teams.length) {
-    return null;
-  }
 
   return (
     <StyledNavigationItem>
@@ -158,16 +147,16 @@ const ToTeam = () => {
             return (
               <Block display="flex" backgroundColor="#fff" flexDirection="column">
                 {
-                  teams.map((team) => {
+                  events.map((e) => {
                     return (
-                      <Button kind="minimal" key={team.id} $as="a" href={`/team/${team.id}`}>
-                        {team.name}
+                      <Button kind="minimal" key={e.id} $as="a" href={`/event/${e.id}`}>
+                        {e.name}
                       </Button>
                     );
                   })
                 }
-                <Button kind="minimal" $as="a" href={`/user/team`}>
-                  <span style={{ color: '#02A84E' }}>Manage Teams</span>
+                <Button kind="minimal" onClick={() => setShowModal(true)}>
+                  <span style={{ color: '#4284F2' }}>Create New Event</span>
                 </Button>
               </Block>
             );
@@ -175,10 +164,11 @@ const ToTeam = () => {
           placement="bottomRight"
         >
           <PillButton>
-            My Teams <DownIcon />
+            My Events <DownIcon />
           </PillButton>
         </StatefulPopover>
       </Block>
+      <CreateEventSelectTeamModal showModal={showModal} close={() => setShowModal(false)} />
     </StyledNavigationItem>
   );
 };
@@ -214,16 +204,8 @@ export default ({ leftButtons, children }) => {
           {
             (!loading && !error && data && !data.getUserByAuth) &&
             <Block padding="12px">
-              <PillButton $as="a" href="/user?p=signup">
-                Sign up
-              </PillButton>
-            </Block>
-          }
-          {
-            (!loading && !error && data && !data.getUserByAuth) &&
-            <Block padding="12px">
-              <PillButton $as="a" href="/user">
-                Sign in
+              <PillButton color="#4284F2" $as="a" href="/user?p=signup">
+                Create Event
               </PillButton>
             </Block>
           }
@@ -293,16 +275,8 @@ export default ({ leftButtons, children }) => {
         {
           (!loading && !error && data && !data.getUserByAuth) &&
           <StyledNavigationItem>
-            <PillButton $as="a" href="/user?p=signup">
-              Sign up
-            </PillButton>
-          </StyledNavigationItem>
-        }
-        {
-          (!loading && !error && data && !data.getUserByAuth) &&
-          <StyledNavigationItem>
-            <PillButton $as="a" href="/user">
-              Sign in
+            <PillButton color="#4284F2" $as="a" href="/user?p=signup">
+              Create Event
             </PillButton>
           </StyledNavigationItem>
         }
@@ -315,14 +289,14 @@ export default ({ leftButtons, children }) => {
           </StyledNavigationItem>
         }
         <ToVenueDashboard />
-        <ToTeam />
+        <ToEvent />
       </StyledNavigationList>
     );
   };
   return (
     <HeaderNavigation overrides={{ Root: { style: {border: 'none', position: 'relative'} } }}>
       <Alert />
-      <StyledNavigationList $align={ALIGN.left}>
+      <StyledNavigationList $align={ALIGN.left} className={css({paddingRight: '0px !important'})}>
         {leftButtons ? leftButtons.map((LB, index) => {
           return (
             <StyledNavigationItem key={index} className={css({paddingLeft: '0px !important'})}>

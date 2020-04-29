@@ -58,7 +58,7 @@ import {
 } from '../constants/mutation';
 
 
-function TeamLineItem({ team }) {
+export function TeamLineItem({ team, viewOnly }) {
   const client = useApolloClient();
   const [ confirming, setConfirming ] = useState(false);
   const [ quitTeam, { loading } ] = useMutation(QUIT_TEAM);
@@ -93,10 +93,10 @@ function TeamLineItem({ team }) {
         <Label3 color="#fff"><b>{team.name}</b></Label3>
       </Block>
       {
-        !confirming && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Leave</PillButton>
+        !confirming && !viewOnly && <PillButton size="compact" kind="minimal" onClick={() => setConfirming(true)}>Leave</PillButton>
       }
       {
-        confirming && <PillButton size="compact" loading={loading} onClick={handleQuitTeam}>Confirm Leave</PillButton>
+        confirming && !viewOnly && <PillButton size="compact" loading={loading} onClick={handleQuitTeam}>Confirm Leave</PillButton>
       }
     </Block>
   );
@@ -168,7 +168,7 @@ function Dashboard() {
             <Block display="flex">
               <Select
                 options={
-                  teamsData.getTeamsByEmail.map((team, index) => {
+                  (teamsData.getTeamsByEmail || []).map((team, index) => {
                     return {
                       id: team.id,
                       label: team.name

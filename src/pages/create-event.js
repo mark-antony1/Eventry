@@ -7,6 +7,7 @@ import Select from '../components/select';
 import { StatefulDatepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
 import Input from '../components/input';
+import Checkbox from '../components/checkbox';
 import { FormControl } from 'baseui/form-control';
 import Textarea from '../components/textarea';
 import ChevronLeft from 'baseui/icon/chevron-left';
@@ -41,7 +42,8 @@ function CreateEventForm() {
   const { teamId } = useParams();
   const history = useHistory();
   const [ form, setForm ] = useState({
-    name: ''
+    name: '',
+    notify: true
   });
   const [ formError, setFormError ] = useState(null);
   const [ createEvent, { loading: creatingEvent } ] = useMutation(CREATE_EVENT);
@@ -73,6 +75,7 @@ function CreateEventForm() {
     const res = await createEvent({
       variables: {
         name: form.name,
+        notify: form.notify,
         symbol: queryUrl.get('symbol') ? queryUrl.get('symbol') : null,
         teamId
       }
@@ -120,13 +123,22 @@ function CreateEventForm() {
       <Block display="flex" flexDirection="column" width={['100%', '100%', '50%', '50%']}>
         <Display4><b>Create Event</b></Display4>
         <FormControl label="Event Name" positive="" error={formError}>
-          <Input
-            placeholder="name"
-            value={form.name}
-            onChange={(e) => {
-              updateForm({ name: e.target.value })
-            }}
-          />
+          <Block>
+            <Input
+              placeholder="name"
+              value={form.name}
+              onChange={(e) => {
+                updateForm({ name: e.target.value })
+              }}
+            />
+            <Block margin="6px" />
+            <Checkbox
+              checked={form.notify}
+              onChange={e => updateForm({ notify: e.target.checked })}
+            >
+              Notify team member via email
+            </Checkbox>
+          </Block>
         </FormControl>
         <Button onClick={handleCreateEvent}>Create Event</Button>
       </Block>

@@ -17,7 +17,6 @@ import { venues as allVenues } from '../constants/virtual-locations';
 import { useDebounce, useQueryUrl, useGA } from '../utils';
 
 // Filter
-import { Checkbox } from 'baseui/checkbox';
 import Select from '../components/filter-select';
 
 const groupSizeOptions = [

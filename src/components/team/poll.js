@@ -15,6 +15,7 @@ import { Datepicker } from 'baseui/datepicker';
 import { TimePicker } from 'baseui/timepicker';
 import { FormControl } from 'baseui/form-control';
 import Input from '../input';
+import Checkbox from '../checkbox';
 import { StatefulTooltip } from 'baseui/tooltip';
 import { Block } from 'baseui/block';
 import {
@@ -290,7 +291,8 @@ export function CreatePollForm({ showForm, close }) {
   const client = useApolloClient();
   const { eventId } = useParams();
   const [ form, setForm ] = useState({
-    expiration: null
+    expiration: null,
+    notify: true
   });
 
   const [ formError, setFormError ] = useState(null);
@@ -317,6 +319,7 @@ export function CreatePollForm({ showForm, close }) {
     const res = await createPoll({
       variables: {
         expiration: form.expiration,
+        notify: form.notify,
         eventId
       },
       refetchQueries: ['GetEvent']
@@ -334,45 +337,54 @@ export function CreatePollForm({ showForm, close }) {
       <ModalHeader>Create New Poll</ModalHeader>
       <ModalBody>
         <FormControl label="Poll Closing Time" caption="YYYY/MM/DD HH:MM" positive="" error={null}>
-          <Block display="flex">
-            <Datepicker
-              value={form.expiration ? [form.expiration] : null}
-              onChange={({date}) => updateForm({ expiration: date })}
-              filterDate={(date) => {
-                if (moment(date).isAfter(moment())) {
-                  return true;
-                }
-                return false;
-              }}
-              overrides={{
-                Input: {
-                  component: Input
-                }
-              }}
-            />
-            {
-              form.expiration &&
-              <Block marginLeft="24px">
-                <TimePicker
-                  value={form.expiration}
-                  onChange={(date) => updateForm({ expiration: date })}
-                  overrides={{
-                    Select: {
-                      props: {
-                        overrides: {
-                          ControlContainer: {
-                            style: {
-                              borderRadius: '5px !important',
-                              backgroundColor: '#fff !important'
+          <Block>
+            <Block display="flex">
+              <Datepicker
+                value={form.expiration ? [form.expiration] : null}
+                onChange={({date}) => updateForm({ expiration: date })}
+                filterDate={(date) => {
+                  if (moment(date).isAfter(moment())) {
+                    return true;
+                  }
+                  return false;
+                }}
+                overrides={{
+                  Input: {
+                    component: Input
+                  }
+                }}
+              />
+              {
+                form.expiration &&
+                <Block marginLeft="24px">
+                  <TimePicker
+                    value={form.expiration}
+                    onChange={(date) => updateForm({ expiration: date })}
+                    overrides={{
+                      Select: {
+                        props: {
+                          overrides: {
+                            ControlContainer: {
+                              style: {
+                                borderRadius: '5px !important',
+                                backgroundColor: '#fff !important'
+                              }
                             }
                           }
                         }
                       }
-                    }
-                  }}
-                />
-              </Block>
-            }
+                    }}
+                  />
+                </Block>
+              }
+            </Block>
+            <Block margin="6px" />
+            <Checkbox
+              checked={form.notify}
+              onChange={e => updateForm({ notify: e.target.checked })}
+            >
+              Notify team member via email
+            </Checkbox>
           </Block>
         </FormControl>
       </ModalBody>

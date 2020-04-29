@@ -87,7 +87,7 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
       </Block>
       <Block flex="1" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         <Block height="calc(80vh - 50px)">
-          <img alt="details-venue" style={{ objectFit: 'contain' }} height="100%" src={photos[photoIndex]} />
+          <img alt="details-venue" height="100%" src={photos[photoIndex]} />
         </Block>
         <Block display="flex" marginTop="12px" alignItems="center" justifyContent="center">
           <PillButton kind="minimal" onClick={onPrevPhoto}>

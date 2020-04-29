@@ -85,21 +85,15 @@ const PhotoDetails = ({ photos, initialPhotoIndex, setShowPhotoDetails }) => {
           <DeleteIcon size={36} />
         </PillButton>
       </Block>
-      <Block display="flex" flex="1">
-        <Block display="flex" alignItems="center">
+      <Block flex="1" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+        <Block height="calc(80vh - 50px)">
+          <img alt="details-venue" style={{ objectFit: 'contain' }} height="100%" src={photos[photoIndex]} />
+        </Block>
+        <Block display="flex" marginTop="12px" alignItems="center" justifyContent="center">
           <PillButton kind="minimal" onClick={onPrevPhoto}>
             <ChevronLeft size={36} />
           </PillButton>
-        </Block>
-        <Block flex="1" display="flex" flexDirection="column" height="100%" alignItems="center" justifyContent="center">
-          <Block height="calc(80vh - 50px)">
-            <img alt="details-venue" height="100%" src={photos[photoIndex]} />
-          </Block>
-          <Block height="50px" display="flex" alignItems="center" justifyContent="center">
-            <Label2>{photoIndex + 1} / {photos.length}</Label2>
-          </Block>
-        </Block>
-        <Block display="flex" alignItems="center">
+          <Label2>{photoIndex + 1} / {photos.length}</Label2>
           <PillButton kind="minimal" onClick={onNextPhoto}>
             <ChevronRight size={36} />
           </PillButton>
@@ -172,7 +166,7 @@ export default function Details() {
           <a rel="noopener noreferrer" className={css({ textDecoration: 'none' })} href={`https://www.google.com/maps/place/${venue.address}`} target="_blank"><Label1 marginTop="8px"><b>{venue.address}</b></Label1></a>
           <Label2 color="#0B6839" marginTop="8px"><b>{venue.rating} <FaStar style={{verticalAlign: 'text-top'}} /></b></Label2>
         </Block>
-        <Block flex="1" display="flex" padding="24px">
+        <Block flex="1" display="flex" padding={['0px', '0px', '24px', '24px']}>
           <Block flex="1" padding="24px">
             <FaUserFriends />
             <Label2 color="#727272">Group Size</Label2>

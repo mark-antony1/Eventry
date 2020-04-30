@@ -7,6 +7,7 @@ import { TimePicker } from 'baseui/timepicker';
 import { Block } from 'baseui/block';
 import { FormControl } from 'baseui/form-control';
 import Input from '../components/input';
+import Checkbox from '../components/checkbox';
 import { Tag } from 'baseui/tag';
 import { ProgressBar } from 'baseui/progress-bar';
 import {
@@ -36,7 +37,8 @@ import {
   useApolloClient
 } from '@apollo/react-hooks';
 import {
-  GET_EVENT
+  GET_EVENT,
+  GET_SCOPES_BY_AUTH
 } from '../constants/query';
 import {
   CLOSE_EVENT,
@@ -54,40 +56,6 @@ import VenueNameSearchBar from '../components/venue/venue-name-search-bar';
 import Loading from '../components/loading';
 
 const allVenues = [...allPhysicalVenues, ...allVirtualVenues];
-
-function SuggestClose() {
-  const client = useApolloClient();
-  const { eventId } = useParams();
-  const [ closeEvent, { loading } ] = useMutation(CLOSE_EVENT);
-  const handleCloseEvent = async () => {
-    const response = await closeEvent({
-      variables: {
-        eventId
-      },
-      refetchQueries: ['GetEvent']
-    }).catch((e) => {
-
-    });
-    if (response) {
-      showAlert(client, 'Successfully closed the event');
-    }
-  };
-
-  return (
-    <Block
-      marginTop="12px"
-      backgroundColor="#CEEDE8"
-      width="fit-content"
-      padding="16px"
-      position="relative"
-    >
-      <Label1><b>Has event been successfully finished?</b></Label1>
-      <Block display="flex" justifyContent="flex-end" marginTop="8px">
-        <PillButton loading={loading} onClick={handleCloseEvent}>Yes</PillButton>
-      </Block>
-    </Block>
-  );
-}
 
 function CancelEvent() {
   const client = useApolloClient();
@@ -191,14 +159,31 @@ function NameForm({ name, close }) {
   );
 }
 
-function TimeForm({ time, showForm, close }) {
+function TimeForm({ time, showForm, close, calendarId }) {
   const client = useApolloClient();
   const [ form, setForm ] = useState({
-    time: time ? new Date(time) : null
+    time: time ? new Date(time) : null,
+    upsertCalendar: false
   });
   const { eventId } = useParams();
   const [ formError, setFormError ] = useState(null);
+  const [ googleCalendarAuth, setGoogleCalendarAuth ] = useState(false);
+  const { data: scopesData, loading: loadingScope } = useQuery(GET_SCOPES_BY_AUTH);
   const [ updateEventTime, { loading: updating } ] = useMutation(UPDATE_EVENT_TIME);
+
+  useEffect(() => {
+    if (scopesData) {
+      const {
+        getScopesByAuth: scopes
+      } = scopesData;
+      const CALENDAR_EVENT = 'https://www.googleapis.com/auth/calendar.events';
+      if (scopes.find(s => s === CALENDAR_EVENT)) {
+        updateForm({ upsertCalendar: true });
+        setGoogleCalendarAuth(true);
+      }
+    }
+  }, [loadingScope]);
+
   const validateForm = () => {
     if (!form.time) {
       setFormError('Time is required');
@@ -221,7 +206,8 @@ function TimeForm({ time, showForm, close }) {
     const res = await updateEventTime({
       variables: {
         eventId,
-        time: form.time
+        time: form.time,
+        upsertCalendar: form.upsertCalendar
       },
       refetchQueries: ['GetEvent']
     }).catch(e => {
@@ -237,40 +223,53 @@ function TimeForm({ time, showForm, close }) {
     <Modal onClose={close} isOpen={showForm}>
       <ModalHeader>Event Time</ModalHeader>
       <ModalBody>
-        <FormControl label="Time" caption="YYYY/MM/DD HH:MM" positive="" error={formError}>
-          <Block display="flex">
-            <Datepicker
-              value={form.time ? [form.time] : null}
-              onChange={({date}) => updateForm({ time: date })}
-              filterDate={(date) => {
-                if (moment(date).isAfter(moment())) {
-                  return true;
-                }
-                return false;
-              }}
-            />
-            {
-              form.time &&
-              <Block marginLeft="24px">
-                <TimePicker
-                  value={form.time}
-                  onChange={(date) => updateForm({ time: date })}
-                  overrides={{
-                    Select: {
-                      props: {
-                        overrides: {
-                          ControlContainer: {
-                            style: {
-                              borderRadius: '5px !important',
-                              backgroundColor: '#fff !important'
+        <FormControl label="When" positive="" error={formError}>
+          <Block>
+            <Block display="flex">
+              <Datepicker
+                value={form.time ? [form.time] : null}
+                onChange={({date}) => updateForm({ time: date })}
+                filterDate={(date) => {
+                  if (moment(date).isAfter(moment())) {
+                    return true;
+                  }
+                  return false;
+                }}
+              />
+              {
+                form.time &&
+                <Block marginLeft="24px">
+                  <TimePicker
+                    value={form.time}
+                    onChange={(date) => updateForm({ time: date })}
+                    overrides={{
+                      Select: {
+                        props: {
+                          overrides: {
+                            ControlContainer: {
+                              style: {
+                                borderRadius: '5px !important',
+                                backgroundColor: '#fff !important'
+                              }
                             }
                           }
                         }
                       }
-                    }
-                  }}
-                />
-              </Block>
+                    }}
+                  />
+                </Block>
+              }
+            </Block>
+            <Block margin="6px" />
+            {
+              googleCalendarAuth ?
+              <Checkbox
+                checked={form.upsertCalendar}
+                onChange={e => updateForm({ upsertCalendar: e.target.checked })}
+              >
+                {calendarId ? 'Update Google Calendar' : 'Create Google Calendar'}
+              </Checkbox> :
+              <Block></Block>
             }
           </Block>
         </FormControl>
@@ -607,10 +606,17 @@ export default () => {
       },
       polls,
       symbol,
-      venue
+      venue,
+      calendarId
+    },
+    getUserByAuth: {
+      user: {
+        email: currentUserEmail
+      }
     }
   } = data;
 
+  const isEventOwner = currentUserEmail === masterEmail;
   const isPast = moment(time).isBefore(moment());
 
   const getStatus = () => {
@@ -777,9 +783,6 @@ export default () => {
             </Block> : null
           }
         </Block>
-        <Block>
-          {isPast && status !== 'CLOSED' && <SuggestClose />}
-        </Block>
         {
           (!symbol && !venue && polls.length) ? <VenueForm /> : null
         }
@@ -793,7 +796,7 @@ export default () => {
           <Block display="flex" alignItems="center">
             <Label1 color="#727272"><b>When</b></Label1>
             {
-              status === 'CREATED' &&
+              status === 'CREATED' && isEventOwner &&
               <Block marginLeft="4px">
                 <PillButton size="compact" kind="minimal" onClick={() => setEditingTime(true)}><FaPen /></PillButton>
               </Block>
@@ -846,7 +849,7 @@ export default () => {
       <Block>
         {!isPast && status !== 'CLOSED' && status !== 'CANCELLED' && <CancelEvent />}
       </Block>
-      <TimeForm showForm={editingTime} close={() => setEditingTime(false)} time={time} />
+      <TimeForm showForm={editingTime} close={() => setEditingTime(false)} time={time} calendarId={calendarId} />
       <VenueModalForm showForm={editingVenue} close={() => setEditingVenue(false)} />
       <RemoveVenueModalForm showForm={removingVenue} close={() => setRemovingVenue(false)} />
       <CreatePollForm showForm={creatingPoll} close={() => setCreatingPoll(false)} />

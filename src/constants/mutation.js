@@ -120,8 +120,8 @@ mutation UpdatePoll($pollId: String!, $expiration: DateTime!, $name: String){
 }`;
 
 export const UPDATE_EVENT_TIME = gql`
-mutation UpdateEventTime($eventId: String!, $time: DateTime!){
-  updateEventTime(eventId: $eventId, time: $time)
+mutation UpdateEventTime($eventId: String!, $time: DateTime!, $upsertCalendar: Boolean!){
+  updateEventTime(eventId: $eventId, time: $time, upsertCalendar: $upsertCalendar)
 }`;
 
 export const UPDATE_EVENT_SYMBOL = gql`

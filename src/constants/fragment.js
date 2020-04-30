@@ -74,4 +74,5 @@ export const EventDetails= `{
   master${User}
   polls${Poll}
   symbol
+  calendarId
 }`;

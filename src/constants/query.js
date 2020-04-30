@@ -122,6 +122,10 @@ query AuthorizeEventPage($eventId: String!){
 export const GET_EVENT = gql`
 query GetEvent($eventId: String!){
   getEvent(eventId: $eventId)${EventDetails}
+  getUserByAuth{
+    token
+    user${User}
+  }
 }`;
 
 export const GET_TEAM_MEMBERS = gql`

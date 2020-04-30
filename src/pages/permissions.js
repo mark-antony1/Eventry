@@ -28,6 +28,7 @@ import {
 
 import {
   getErrorCode,
+  useQueryUrl
 } from '../utils';
 import { venues } from '../constants/locations';
 import {
@@ -55,6 +56,8 @@ function Permission({ scope }) {
 }
 
 function Dashboard() {
+  const history = useHistory();
+  const queryUrl = useQueryUrl();
   const { data, loading, error } = useQuery(GET_SCOPES_BY_AUTH);
   const [ formError, setFormError ] = useState(null);
   const [ updateGoogleRefreshToken, { loading: fetchingGoogleAuth } ] = useMutation(UPDATE_GOOGLE_REFRESH_TOKEN);
@@ -70,7 +73,7 @@ function Dashboard() {
 
   const successGoogle = async (response) => {
     if (response && response.code) {
-      await updateGoogleRefreshToken({
+      const res = await updateGoogleRefreshToken({
         variables: {
           googleAuthCode: response.code
         },
@@ -78,6 +81,10 @@ function Dashboard() {
       }).catch(e => {
         setFormError(getErrorCode(e));
       });
+
+      if (res && queryUrl.get('from')) {
+        history.push(`/${queryUrl.get('from')}`);
+      }
     }
   };
 
@@ -97,17 +104,25 @@ function Dashboard() {
           error={formError}
           positive=""
         >
-          <GoogleLogin
-            clientId={process.env.REACT_APP_G_AUTH_ID}
-            onSuccess={successGoogle}
-            buttonText="Grant Permissions with Google"
-            onFailure={() => {}}
-            responseType="code"
-            accessType="offline"
-            prompt="consent"
-            scope="https://www.googleapis.com/auth/calendar.events"
-            cookiePolicy={'single_host_origin'}
-          />
+          <Block>
+            {
+              !scopes.length ?
+              <Block marginBottom="8px">
+                <Label1 color="#02A84E">Grant permissions to access the full TeamBright experiences such as calendar invitation</Label1>
+              </Block> : null
+            }
+            <GoogleLogin
+              clientId={process.env.REACT_APP_G_AUTH_ID}
+              onSuccess={successGoogle}
+              buttonText="Grant Permissions with Google"
+              onFailure={() => {}}
+              responseType="code"
+              accessType="offline"
+              prompt="consent"
+              scope="https://www.googleapis.com/auth/calendar.events"
+              cookiePolicy={'single_host_origin'}
+            />
+          </Block>
         </FormControl>
         {
           scopes.map((scope) => {

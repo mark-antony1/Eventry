@@ -551,6 +551,7 @@ function SignUpMethod({ handleSigninMode }) {
       <Block margin="8px" />
       <Button
         size="compact"
+        color="#777"
         onClick={() => setShowSignUpForm(true)}
       >
         Sign up with Email
@@ -731,7 +732,7 @@ function SignInForm({ handleSignupMode }) {
             cookiePolicy={'single_host_origin'}
           />
           <Block margin="8px" />
-          <Button kind="secondary" size="compact" onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Company Email</Button>
+          <Button color="#777" kind="secondary" size="compact" onClick={() => setShowSigninWithCompanyEmail(true)}>Sign in with Email</Button>
         </Block>
       </FormControl>
       <Block display="flex" justifyContent="center" marginTop="24px">

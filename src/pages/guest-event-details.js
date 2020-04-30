@@ -269,7 +269,9 @@ function TimeForm({ time, showForm, close, calendarId }) {
               >
                 {calendarId ? 'Update Google Calendar' : 'Create Google Calendar'}
               </Checkbox> :
-              <Block></Block>
+              <Block display="flex" alignItems="center">
+                <PillButton size="compact" color="#02A84E" $as="a" href={`/user/permissions?from=event/${eventId}`}>Create Calendar Invite</PillButton>
+              </Block>
             }
           </Block>
         </FormControl>

@@ -30,30 +30,6 @@ export const venues = [
 		"symbol": "lola-space"
 	},
 	{
-		"id": 18,
-		"photos": [
-			"https://uploads-ssl.webflow.com/5e715b7883e9f1e1fdda73b5/5e8387a1cbca0ebcdd38014a_Magic%20Screen%20Shot%20(Hands%20in%20the%20air)-p-1080.png"
-		],
-		"name": "Speakeasy",
-		"description": "Speakeasy is an early-stage startup offering intimate online events with compelling speakers and performers. Their vision is to bring the vibrancy of a university campus to people everywhere.",
-		"teaserDescription": "Online Talks and Workshops",
-		"phoneNumber": "",
-		"email": "",
-		"linkToSite": "https://www.speakeasy.com/",
-		"relevantLinks": [],
-		"activityType": "event",
-		"tags": ["listen", "learn"],
-		"rating": 4.7,
-		"takesReservations": true,
-		"averageTimeSpent": 60,
-		"recommendedGroupsize": [2, 20],
-		"price": "varies",
-		"videoTitle": "",
-		"videoLink": "",
-		"priceReasoning": "Based on price per game",
-		"symbol": "speakeasy"
-	},
-	{
 		"id": 15,
 		"photos": [
 			"https://netflixparty.s3.amazonaws.com/img/land/chat-display.svg"
@@ -717,5 +693,29 @@ export const venues = [
 		"videoLink": "",
 		"priceReasoning": "Based on price per game",
 		"symbol": "quiz-up"
-	},
+	}
+	// {
+	// 	"id": 18,
+	// 	"photos": [
+	// 		"https://uploads-ssl.webflow.com/5e715b7883e9f1e1fdda73b5/5e8387a1cbca0ebcdd38014a_Magic%20Screen%20Shot%20(Hands%20in%20the%20air)-p-1080.png"
+	// 	],
+	// 	"name": "Speakeasy",
+	// 	"description": "Speakeasy is an early-stage startup offering intimate online events with compelling speakers and performers. Their vision is to bring the vibrancy of a university campus to people everywhere.",
+	// 	"teaserDescription": "Online Talks and Workshops",
+	// 	"phoneNumber": "",
+	// 	"email": "",
+	// 	"linkToSite": "https://www.speakeasy.com/",
+	// 	"relevantLinks": [],
+	// 	"activityType": "event",
+	// 	"tags": ["listen", "learn"],
+	// 	"rating": 4.7,
+	// 	"takesReservations": true,
+	// 	"averageTimeSpent": 60,
+	// 	"recommendedGroupsize": [2, 20],
+	// 	"price": "varies",
+	// 	"videoTitle": "",
+	// 	"videoLink": "",
+	// 	"priceReasoning": "Based on price per game",
+	// 	"symbol": "speakeasy"
+	// },
 ]

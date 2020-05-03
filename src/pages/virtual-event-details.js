@@ -200,6 +200,19 @@ export default function Details() {
           <Block>{venue.description}</Block>
         </Block>
         {
+          venue.videoTitle && venue.videoTitle.length > 0 ?
+          <Block display="flex" flexDirection="column" marginTop="30px">
+            <Block display="flex" alignItems="center" flexDirection="column" marginBottom="12px">
+              <Label1><b>{venue.videoTitle}</b></Label1>
+              <Block marginTop="20px">
+
+              <iframe title="t" width="560" height="315" src={venue.videoLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+              </iframe>
+              </Block>
+            </Block>
+          </Block> : null
+        }
+        {
           venue.relevantLinks && venue.relevantLinks.length ?
           <Block display="flex" marginTop="68px" flexDirection="column">
             <Label1 marginBottom="24px"><b>Relevant links</b></Label1>

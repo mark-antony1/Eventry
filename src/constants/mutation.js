@@ -3,6 +3,36 @@ import {
   User
 } from './fragment';
 
+export const SIGN_IN = gql`
+mutation Signin($email: String!, $password: String!){
+  signin(email: $email, password: $password)${User}
+}`;
+
+export const REPLY_TO_INSTAGRAM_MEDIA_COMMENT = gql`
+mutation ReplyInstagramComment($message: String!, $comment_id: String!){
+  replyToInstagramMediaComment(message: $message, comment_id: $comment_id)
+}`;
+
+export const REPLY_TO_YELP_REVIEW = gql`
+mutation ReplyToYelpReview($name: String!, $content: String!, $link: String!){
+  replyToYelpReview(name: $name, content: $content, link: $link)
+}`;
+
+export const ARCHIVE_TASK = gql`
+mutation ArchiveTask($media_id: String!){
+  archiveTask(media_id: $media_id)
+}`;
+
+export const VALIDATE_DROP = gql`
+mutation ValidateDrop($drop_id: String!){
+  validateDrop(drop_id: $drop_id)
+}`;
+
+export const CREATE_DROP = gql`
+mutation CreateDrop($start_at: DateTime!, $end_at: DateTime!, $content: String!){
+  createDrop(start_at: $start_at, end_at: $end_at, content: $content)
+}`;
+
 export const CREATE_USER = gql`
 mutation CreateUser($email: String!, $password: String!, $firstName: String!, $lastName: String!, $team: String!, $googleTokenHash: String){
   createUser(email: $email, password: $password, firstName: $firstName, lastName: $lastName, team: $team, googleTokenHash: $googleTokenHash){
@@ -14,14 +44,6 @@ mutation CreateUser($email: String!, $password: String!, $firstName: String!, $l
 export const CHANGE_PASSWORD = gql`
 mutation ChangePassword($currentPassword: String!, $newPassword: String!){
   changePassword(currentPassword: $currentPassword, newPassword: $newPassword)
-}`;
-
-export const SIGN_IN = gql`
-mutation Signin($email: String!, $password: String!, $googleTokenId: String){
-  signin(email: $email, password: $password, googleTokenId: $googleTokenId){
-    token
-    user${User}
-  }
 }`;
 
 export const CREATE_ENDORSEMENT = gql`

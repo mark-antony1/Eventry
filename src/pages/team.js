@@ -35,8 +35,9 @@ import {
 
 import { getErrorCode, showAlert } from '../utils';
 import Loading from '../components/loading';
-import EventCell from '../components/team/event-cell';
 import HeaderNavigation from '../components/header-navigation';
+import EventCell from '../components/team/event-cell';
+
 import PillButton from '../components/pill-button';
 import Members from '../components/team/members';
 import Poll from '../components/team/poll';

@@ -4,8 +4,49 @@ import {
   Review,
   EventListItem,
   EventDetails,
-  Poll
+  Poll,
+  Drop,
+  YelpReview
 } from './fragment';
+
+export const LOAD_FEED = gql`
+query LoadFeed{
+  feed{
+    yelpReviewList${YelpReview}
+    dropList${Drop}
+    instagramMediaList{
+      id
+      caption
+      permalink
+      comments_count
+      like_count
+      media_url
+      media_type
+      timestamp
+      username
+      comments{
+        id
+        text
+        timestamp
+      }
+      insight{
+        engagement
+        impressions
+        reach
+      }
+    }
+  }
+}`;
+
+export const LOAD_DROP = gql`
+query LoadFeed($drop_id: String!){
+  drop(drop_id: $drop_id)${Drop}
+}`;
+
+export const GET_USER_BY_AUTH = gql`
+query GetUserByAuth{
+  user${User}
+}`;
 
 export const LOAD_VENUE_REVIEWS = gql`
 query LoadVenueReviews($symbol: String!){
@@ -19,14 +60,6 @@ query LoadVenueReviews($symbol: String!){
 export const GET_REVIEWS_BY_AUTH = gql`
 query GetReviewsByAuth{
   getReviewsByAuth${Review}
-}`;
-
-export const GET_USER_BY_AUTH = gql`
-query GetUserByAuth{
-  getUserByAuth{
-    token
-    user${User}
-  }
 }`;
 
 export const LOAD_USER_PROFILE = gql`

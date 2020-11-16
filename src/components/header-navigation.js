@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import {
   HeaderNavigation,
   ALIGN,
@@ -15,7 +15,8 @@ import { Label1 } from 'baseui/typography';
 import CreateEventSelectTeamModal from './team/create-event-team-select-modal';
 import { useStyletron } from 'baseui';
 import {
-  useQuery
+  useQuery,
+  useApolloClient
 } from '@apollo/react-hooks';
 
 import {
@@ -25,7 +26,7 @@ import {
 } from '../constants/query';
 import PillButton from '../components/pill-button';
 import { venues } from '../constants/locations';
-import { useWindowSize } from '../utils';
+import { useWindowSize, setCookie, showAlert } from '../utils';
 
 const Alert = () => {
   const [ css ] = useStyletron();
@@ -43,10 +44,10 @@ const Alert = () => {
   }, [ data && data.successAlert ]);
 
   return (
-    <Block position="fixed" bottom="15px" left="15px" className={css({ zIndex: 5 })}>
+    <Block position="fixed" className={css({ zIndex: 5, left: '50%', transform: 'translateX(-50%)'})}>
       {
         showAlert ?
-        <Block padding="12px" backgroundColor="rgb(119, 185, 0)">
+        <Block padding="12px" backgroundColor="rgb(119, 185, 0)" className={css({ borderRadius: '10px' })}>
           <span style={{ color: '#fff'}}>{data && data.successAlert}</span>
         </Block> :
         null
@@ -55,130 +56,14 @@ const Alert = () => {
   )
 }
 
-const ToVenueDashboard = () => {
-  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
-  if (loading || error) {
-    return null;
-  }
-
-  const {
-    getUserByAuth: auth
-  } = data;
-
-  if (!auth) {
-    return null;
-  }
-
-  const {
-    user: {
-      venue
-    }
-  } = auth;
-
-  if (!venue) {
-    return null;
-  }
-
-  const { symbol } = venue;
-  const userVenue = venues.find((v) => v.symbol === symbol) || {};
-
-  return (
-    <StyledNavigationItem>
-      <Block>
-        <PillButton $as="a" href={`/${symbol}/dashboard`}>
-          {userVenue.name}
-        </PillButton>
-      </Block>
-    </StyledNavigationItem>
-  );
-};
-
-const ToVenueDashboardReduced = () => {
-  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
-  if (loading || error) {
-    return null;
-  }
-
-  const {
-    getUserByAuth: auth
-  } = data;
-
-  if (!auth) {
-    return null;
-  }
-
-  const {
-    user: {
-      venue
-    }
-  } = auth;
-
-  if (!venue) {
-    return null;
-  }
-
-  const { symbol } = venue;
-  const userVenue = venues.find((v) => v.symbol === symbol) || {};
-
-  return (
-    <PillButton $as="a" href={`/${symbol}/dashboard`}>
-      {userVenue.name}
-    </PillButton>
-  );
-};
-
-const ToEvent = () => {
-  const [ showModal, setShowModal ] = useState(false);
-  const { data, loading, error } = useQuery(GET_EVENTS_BY_AUTH);
-  if (loading || error) {
-    return null;
-  }
-
-  const {
-    getEventsByAuth: events
-  } = data;
-
-  return (
-    <StyledNavigationItem>
-      <Block>
-        <StatefulPopover
-          dismissOnEsc={false}
-          content={() => {
-            return (
-              <Block display="flex" backgroundColor="#fff" flexDirection="column">
-                {
-                  events.map((e) => {
-                    return (
-                      <Button kind="minimal" key={e.id} $as="a" href={`/event/${e.id}`}>
-                        {e.name}
-                      </Button>
-                    );
-                  })
-                }
-                <Button kind="minimal" onClick={() => setShowModal(true)}>
-                  <span style={{ color: '#4284F2' }}>Create New Event</span>
-                </Button>
-              </Block>
-            );
-          }}
-          placement="bottomRight"
-        >
-          <PillButton>
-            My Events <DownIcon />
-          </PillButton>
-        </StatefulPopover>
-      </Block>
-      <CreateEventSelectTeamModal showModal={showModal} close={() => setShowModal(false)} />
-    </StyledNavigationItem>
-  );
-};
-
 const COLLAPSE_MODE_LIMIT = 800;
 export default ({ leftButtons, children }) => {
+  const client = useApolloClient();
+  const history = useHistory();
   const location = useLocation();
   const windowSize = useWindowSize();
   const [ showDrawer, setShowDrawer ] = useState(false);
-  const { data, loading, error } = useQuery(GET_USER_BY_AUTH);
+  const { data, loading, error, refetch } = useQuery(GET_USER_BY_AUTH);
   const [css] = useStyletron();
 
   const renderDrawer = () => {
@@ -202,22 +87,34 @@ export default ({ leftButtons, children }) => {
             </PillButton>
           </Block>
           {
-            (!loading && !error && data && !data.getUserByAuth) &&
+            (!loading && !error && data && data.user) &&
             <Block padding="12px">
-              <PillButton color="#4284F2" $as="a" href="/user?p=signup">
-                Create Event
+              <PillButton $as="a" href="/feed">
+                {data.user.business_name}
               </PillButton>
             </Block>
           }
           {
-            (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
+            (!loading && !error && data && data.user) &&
             <Block padding="12px">
-              <PillButton $as="a" href="/user">
-                {data.getUserByAuth.user.firstName}
+              <PillButton kind="secondary" onClick={async () => {
+                setCookie('userToken', '', 7);
+                await refetch();
+                showAlert(client, 'See you next time!');
+                history.push('/');
+              }}>
+                Sign out
               </PillButton>
             </Block>
           }
-          <ToVenueDashboardReduced />
+          {
+            (!loading && !error && !data.user) &&
+            <Block padding="12px">
+              <PillButton $as="a" href="/signin">
+                Sign in
+              </PillButton>
+            </Block>
+          }
           <Block padding="12px">
             <PillButton $as="a" href="/about">
               About
@@ -228,7 +125,6 @@ export default ({ leftButtons, children }) => {
     );
   };
   const renderLogo = () => {
-    const homePath = location.pathname === '/s' ? '/s' : '/';
     if (windowSize.width < COLLAPSE_MODE_LIMIT) {
       return (
         <StyledNavigationItem>
@@ -253,12 +149,13 @@ export default ({ leftButtons, children }) => {
     }
     return (
       <StyledNavigationItem>
-        <a href={homePath}>
+        <a href="/">
           <img height="48px" alt="logo" src={process.env.PUBLIC_URL + '/logo.png'} />
         </a>
       </StyledNavigationItem>
     );
   };
+
   const renderNavRightButton = () => {
     if (windowSize.width < COLLAPSE_MODE_LIMIT) {
       return null;
@@ -273,23 +170,34 @@ export default ({ leftButtons, children }) => {
           </Block>
         </StyledNavigationItem>
         {
-          (!loading && !error && data && !data.getUserByAuth) &&
+          (!loading && !error && data && data.user) &&
           <StyledNavigationItem>
-            <PillButton color="#4284F2" $as="a" href="/user?p=signup">
-              Create Event
+            <PillButton $as="a" href="/feed">
+              {data.user.business_name}
             </PillButton>
           </StyledNavigationItem>
         }
         {
-          (!loading && !error && data && data.getUserByAuth && data.getUserByAuth.user) &&
+          (!loading && !error && data && data.user) &&
           <StyledNavigationItem>
-            <PillButton $as="a" href="/user">
-              {data.getUserByAuth.user.firstName}
+            <PillButton kind="secondary" onClick={async () => {
+              setCookie('userToken', '', 7);
+              await refetch();
+              showAlert(client, 'See you next time!');
+              history.push('/');
+            }}>
+              Sign out
             </PillButton>
           </StyledNavigationItem>
         }
-        <ToVenueDashboard />
-        <ToEvent />
+        {
+          (!loading && !error && !data.user) &&
+          <StyledNavigationItem>
+            <PillButton $as="a" href="/signin">
+              Sign in
+            </PillButton>
+          </StyledNavigationItem>
+        }
       </StyledNavigationList>
     );
   };

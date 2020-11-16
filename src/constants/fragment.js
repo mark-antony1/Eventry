@@ -1,3 +1,24 @@
+export const Drop = `{
+  id
+  start_at
+  end_at
+  content
+}`;
+
+export const YelpReview = `{
+  id
+  post_at
+  content
+  name
+  link
+}`;
+
+export const User = `{
+  name
+  business_name
+  token
+}`;
+
 export const Company = `{
   name
   logo
@@ -27,16 +48,6 @@ export const Team = `{
 
 export const Venue = `{
   symbol
-}`;
-
-export const User = `{
-  id
-  firstName
-  lastName
-  email
-  company${Company}
-  venue${Venue}
-  teams${Team}
 }`;
 
 export const Review = `{

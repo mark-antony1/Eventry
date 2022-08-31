@@ -15,7 +15,7 @@
     "baseui": "^9.60.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
-    "moment-timezone": "^0.5.28",
+    "moment-timezone": "^0.5.35",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-ga": "^2.7.0",
